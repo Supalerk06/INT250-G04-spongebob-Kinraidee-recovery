@@ -9,8 +9,8 @@ const routes = [
     component: Kinraidee
   },
   {
-    path: "/nearby",
-    name: "Nearby",
+    path: "/restaurants",
+    name: "restaurants",
     component: NearMeRestaurant
   }
 ]
