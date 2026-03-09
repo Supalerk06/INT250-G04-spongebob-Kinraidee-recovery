@@ -7,7 +7,7 @@
         class="flex w-full max-w-[1280px] items-center justify-between"
       >
         <!-- Logo -->
-        <div class="flex items-center gap-4">
+       <a href="/"><div class="flex items-center gap-4">
           <div
             class="size-8 text-primary flex items-center justify-center rounded-lg bg-primary/10"
           >
@@ -18,7 +18,7 @@
           <h2 class="text-xl font-bold leading-tight tracking-tight">
             KinRaiDee
           </h2>
-        </div>
+        </div></a> 
 
         <!-- Desktop Menu -->
         <div
@@ -26,7 +26,7 @@
         >
           <nav class="flex items-center gap-6 lg:gap-9">
             <a
-              href="#"
+              href="/kinraidee"
               class="text-sm font-medium hover:text-primary transition-colors"
             >
               KinRaiDee
