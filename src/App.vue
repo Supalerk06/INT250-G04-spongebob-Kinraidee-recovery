@@ -6,7 +6,6 @@ import MyFridge from './pages/MyFridge.vue';
 <template>
 <div>
   <Navbar/>
-  <MyFridge />
 </div>
 </template>
 
