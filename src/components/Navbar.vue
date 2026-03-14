@@ -32,11 +32,11 @@
               KinRaiDee
             </a>
             <a
-              href="#"
+              href="/tumraidee"
               class="text-sm font-medium hover:text-primary transition-colors"
             >
               TumraiDee
-            </a>
+          </a>
             <a
               href="#"
               class="text-sm font-medium hover:text-primary transition-colors"
@@ -86,7 +86,7 @@
         <a class="text-sm font-medium hover:text-primary transition-colors" href="#">
           KinRaiDee
         </a>
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="#">
+        <a href="/tumraidee" class="text-sm font-medium hover:text-primary transition-colors" >
           TumraiDee
         </a>
         <a class="text-sm font-medium hover:text-primary transition-colors" href="#">
