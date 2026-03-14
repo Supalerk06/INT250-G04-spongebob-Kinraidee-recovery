@@ -38,7 +38,7 @@
               TumraiDee
             </a>
             <a
-              href="#"
+              href="/tumraidee"
               class="text-sm font-medium hover:text-primary transition-colors"
             >
               Fridge

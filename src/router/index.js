@@ -12,6 +12,11 @@ const routes = [
     path: "/kinraidee",
     name: "kinraidee",
     component: Kinraidee
+  },
+  {
+    path: "/tumraidee",
+    name: "tumraidee",
+    component: MyFridge
   }
 ]
 
