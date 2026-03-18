@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router"
 import LandingPage from "@/pages/LandingPage.vue"
 import Kinraidee from "../pages/Kinraidee.vue"
+import MyFridge from "../pages/MyFridge.vue"
 
 const routes = [
   {

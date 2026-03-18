@@ -63,19 +63,18 @@ function getExpiryClassDiv(expiredDate) {
 </script>
 
 <template>
-  <div
-    class="flex flex-wrap justify-center sm:justify-start w-full gap-4 md:gap-7 py-3"
-  >
+  <div>
     <div
       v-if="!fridgeItems || fridgeItems.length === 0"
       class="flex flex-col justify-center items-center w-full p-3"
     >
       <h1 class="">No items found</h1>
     </div>
-    <div
-      v-else
-      v-for="item in fridgeItems"
-      class="relative py-7 px-4 flex flex-col justify-center items-start rounded-4xl bg-white shadow w-full gap-4 max-w-45 min-w-50 md:max-w-57 md:min-w-fit"
+    <div v-else class="grid grid-cols-[repeat(auto-fit,minmax(185px,1fr))] justify-center w-full py-3 gap-4
+    md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">
+
+    <div v-for="item in props.fridgeItems"
+      class="relative py-7 px-4 flex flex-col justify-center items-center rounded-3xl bg-white shadow w-full gap-4"
       :class="getExpiryClassDiv(item.expiredDate)"
     >
       <div class="absolute top-5 right-5">
@@ -153,9 +152,11 @@ function getExpiryClassDiv(expiredDate) {
           class="rounded px-3 py-2 w-fit text-sm font-bold"
           :class="getExpiryClassText(item.expiredDate)"
         >
-          <span class="text-xs">●</span> {{ getExpiryMsg(item.expiredDate) }}
+          <span class="text-xs font-thin">●</span> {{ getExpiryMsg(item.expiredDate) }}
         </h1>
       </div>
+    </div>
+
     </div>
   </div>
 </template>

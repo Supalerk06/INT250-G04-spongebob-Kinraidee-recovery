@@ -58,7 +58,7 @@
               Login
             </button>
             <button
-              class="flex h-10 px-5 items-center justify-center rounded-xl bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 text-sm font-bold transition-all"
+              class="flex h-10 px-5 items-center justify-center rounded-xl bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 text-sm font-bold transition-all"
             >
               Sign Up
             </button>
