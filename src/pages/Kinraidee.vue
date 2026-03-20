@@ -165,7 +165,7 @@
           </p>
 
           <div class="flex flex-col gap-3 w-full">
-            <button @click="orderOnGrab(result.name)" class="w-full bg-gradient-to-r from-[#00B14F] to-[#009c45] text-white py-4 rounded-2xl font-black text-lg transition-all shadow-[0_10px_20px_rgba(0,177,79,0.3)] hover:shadow-[0_15px_30px_rgba(0,177,79,0.4)] flex items-center justify-center gap-2 hover:-translate-y-1">
+            <button @click="goToRestaurant(result.name)" class="w-full bg-gradient-to-r from-[#00B14F] to-[#009c45] text-white py-4 rounded-2xl font-black text-lg transition-all shadow-[0_10px_20px_rgba(0,177,79,0.3)] hover:shadow-[0_15px_30px_rgba(0,177,79,0.4)] flex items-center justify-center gap-2 hover:-translate-y-1">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
               สั่งเลยผ่าน Grab
             </button>
@@ -189,7 +189,13 @@
 
 <script setup>
 import { ref } from "vue"
+import { useRouter } from 'vue-router'
 import foods from "@/data/foods"
+
+const router = useRouter()
+const goToRestaurant = () => {
+  router.push('/restaurants?menu=' + result.value.name)
+}
 
 const filters = ref({
   halal: false,
@@ -229,10 +235,10 @@ function rollFood() {
   }, 2000)
 }
 
-function orderOnGrab(foodName) {
-  const grabUrl = `https://food.grab.com/th/th/restaurants?search=${encodeURIComponent(foodName)}`
-  window.open(grabUrl, '_blank')
-}
+// function orderOnGrab(foodName) {
+//   const grabUrl = `https://food.grab.com/th/th/restaurants?search=${encodeURIComponent(foodName)}`
+//   window.open(grabUrl, '_blank')
+// }
 
 function closeModal() {
   showResult.value = false

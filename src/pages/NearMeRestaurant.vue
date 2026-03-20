@@ -1,11 +1,12 @@
+
 <script setup>
+import RestaurantCard from '@/components/RestaurantCard.vue'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import foods from '../data/foods.js'
 
 const route = useRoute()
-
-const targetMenu = computed(() => route.query.menu || "กะเพรา") // hardcode ลอง
+const targetMenu = computed(() => route.query.menu)
 
 const filteredFoods = computed(() => {
   if (!targetMenu.value) return []
@@ -40,7 +41,7 @@ console.log(filteredFoods.value)
       class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.05] mix-blend-overlay -z-10">
     </div>
 
-    <header class="relative bg-red-900 pt-5 pb-28  rounded-b-[70px] border-b border-red-500/40 shadow-[0_10px_40px_rgba(0,0,0,0.6)]">
+    <header class="relative bg-red-800 pt-5 pb-28 rounded-b-[70px] border-b border-red-500/40 shadow-2xl">
 
       <div class="relative z-10 max-w-7xl mx-auto">
         <button
@@ -85,7 +86,7 @@ console.log(filteredFoods.value)
                 จัดเรียงตาม
               </span>
               <select
-                class="bg-transparent font-bold text-white text-sm focus:outline-none cursor-pointer pb-1 border-b border-white/30 hover:border-primary transition-colors pr-6">
+                class="bg-transparent font-bold text-white text-sm cursor-pointer pb-1 border-b border-white/30 hover:border-primary transition-colors pr-6">
                 <option class="text-text">ใกล้ที่สุด</option>
                 <option class="text-text">คะแนนรีวิว</option>
               </select>
@@ -99,49 +100,7 @@ console.log(filteredFoods.value)
     <!-- card -->
     <main class="relative z-20 max-w-7xl mx-auto px-6 -mt-20">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-
-        <div v-for="(shop, index) in allRestaurants" :key="index" class="bg-white rounded-[2.5rem] p-3 shadow-xl hover:shadow-[0_10px_30px_rgba(255,215,0,0.25)] hover:-translate-y-2 transition-all duration-500 group border border-gray-100 flex flex-col">
-
-          <div class="relative aspect-[4/3] overflow-hidden rounded-[2rem] mb-4 bg-gray-50">
-
-            <img :src="shop.imageUrl"
-              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-
-            <div class="absolute bottom-3 left-3 right-3 flex justify-between items-center">
-              <div
-                class="bg-black/60 backdrop-blur-md text-white px-3 py-1.5 rounded-xl text-[10px] font-bold flex items-center gap-1">
-                <span class="material-symbols-outlined text-primary text-[14px]">star</span>
-                {{ shop.star }}
-              </div>
-            </div>
-          </div>
-
-          <div class="px-2 pb-2 flex-1 flex flex-col justify-between">
-            <h3
-              class="font-display font-black text-xl group-hover:text-secondary transition-colors mb-4">
-              {{ shop.name }}
-            </h3>
-
-            <div class="flex items-center justify-between pt-4 border-t border-gray-100">
-              <div class="flex flex-col">
-                <span
-                  class="text-[9px] font-bold text-gray-400 tracking-widest font-display mb-0.5">DISTANCE</span>
-                <span class="text-xl font-display font-black text-secondary">
-                  {{ shop.distance }} KM
-                </span>
-              </div>
-              <button
-                class="bg-primary hover:bg-white text-red-950 hover:text-secondary border-2 border-primary px-5 py-2.5 rounded-2xl text-xs font-black transition-all duration-300 shadow-[0_5px_15px_rgba(255,235,59,0.3)] flex items-center gap-2 group/btn">
-                ไปที่ร้าน
-                <span
-                  class="material-symbols-outlined text-[16px] group-hover/btn:translate-x-1 transition-transform font-bold">
-                  arrow_forward
-                </span>
-              </button>
-            </div>
-          </div>
-        </div>
-
+        <RestaurantCard v-for="(shop, index) in allRestaurants" :key="index" :shop="shop"/>
       </div>
     </main>
 
