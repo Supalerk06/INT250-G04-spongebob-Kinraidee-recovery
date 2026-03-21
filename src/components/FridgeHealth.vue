@@ -30,7 +30,7 @@ const freshnessScore = computed(() => {
 </script>
 
 <template>
-<div class="bg-primary rounded-3xl flex flex-col p-5 shadow gap-4">
+<div class="bg-green-400 rounded-3xl flex flex-col p-5 shadow gap-4 text-white">
             <h3 class="font-bold text-xl">Fridge Health</h3>
             <div class="flex justify-between">
                 <div>
@@ -42,7 +42,7 @@ const freshnessScore = computed(() => {
                     <h2>Total Items</h2>
                 </div>
             </div>
-            <div class="bg-yellow-400  w-full p-1 rounded-full">
+            <div class="bg-green-500  w-full p-1 rounded-full">
                 <div class="p-1 rounded-full bg-white" :style="{ width: freshnessScore + '%' }"></div>
             </div>
         </div>

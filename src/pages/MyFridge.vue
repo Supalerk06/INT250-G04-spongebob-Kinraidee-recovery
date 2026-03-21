@@ -3,7 +3,10 @@ import FridgeItems from '../components/FridgeItems.vue';
 import UseItUp from '../components/UseItUp.vue';
 import FridgeHealth from '../components/FridgeHealth.vue';
 import RecommendMenu from '../components/RecommendMenu.vue';
+import users from '../data/users.js'
 import { ref, watch , computed } from "vue";
+
+let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || [])
 
 const showModal = ref(false)
 
@@ -30,7 +33,6 @@ function closeModal() {
   expiredDate.value = "";
 }
 
-let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || [])
 
 // error handling
 const error = ref({
@@ -396,8 +398,13 @@ const getIngredientIcon = (name) => {
 
     <div class="flex justify-between py-2">
         <div class="flex flex-col gap-1">
-            <h1 class="text-3xl font-bold">My Fridge</h1>
-            <p class="text-neutral-500">Manage your household ingredients</p>
+            <h1 class="text-3xl font-bold flex items-center gap-1">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+</svg>
+
+              My Fridge</h1>
+            <p class="text-neutral-600">Manage your household ingredients</p>
         </div>
         <button class="rounded-full flex justify-center items-center min-w-[129px] shadow shadow-success
          bg-success text-white h-full max-h-10 gap-2 hover:scale-[1.025] transition py-3 px-1
