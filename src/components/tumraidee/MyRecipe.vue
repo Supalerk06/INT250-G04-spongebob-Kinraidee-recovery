@@ -1,15 +1,24 @@
 <script setup>
 import { db } from '@/data/userRecipes'
 import RecipePopup from './RecipePopup.vue';
-import { ref } from 'vue';
-import { fridgeItems } from '@/data/fridgeItems';
+import { ref , watch} from 'vue';
+// import { fridgeItems } from '@/data/fridgeItems';
 import { toRaw } from 'vue'
 
 
-const Props = defineProps(['id', 'name', 'short_description', 'image', "ingredients", "steps"])
+const Props = defineProps(['fridgeItems','id', 'name', 'short_description', 'image', "ingredients", "steps"])
 
 const emit = defineEmits(['cook', 'delete'])
 
+// let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || [])
+
+watch(
+  Props.fridgeItems,
+  (newVal) => {
+    localStorage.setItem("fridgeItems", JSON.stringify(newVal))
+  },
+  { deep: true }
+)
 
 const showModal = ref(false)
 const showDeleteConfirm = ref(false)
@@ -33,52 +42,49 @@ function handleCook() {
 
 const errorMessage = ref([])
 
-function confirmCook() {
-    if (isCooking.value) return
 
+
+function confirmCook() {
     const missingItems = []
 
-    // 🔍 เช็คของก่อน
     Props.ingredients.forEach(recipeItem => {
-        const itemInFridge = fridgeItems.value.find(
-            item => item.name.toLowerCase() === recipeItem.name.toLowerCase()
+        const item = Props.fridgeItems.find(
+            i => i.name.toLowerCase() === recipeItem.name.toLowerCase()
         )
 
-        if (!itemInFridge) {
+        if (!item) {
             missingItems.push(`${recipeItem.name} (ไม่มี)`)
-        } else if (itemInFridge.quantity < recipeItem.quantity) {
+        } else if (item.quantity < recipeItem.quantity) {
             missingItems.push(
-                `${recipeItem.name} (ต้อง ${recipeItem.quantity} ${recipeItem.unit} แต่มี ${itemInFridge.quantity})`
+                `${recipeItem.name} (ต้อง ${recipeItem.quantity} ${recipeItem.unit} แต่มี ${item.quantity})`
             )
         }
     })
 
-    // ❌ ถ้าขาด → หยุด + แสดง error
     if (missingItems.length > 0) {
         errorMessage.value = missingItems
         return
     }
 
-    // ✅ ของครบ → ค่อยหัก
     Props.ingredients.forEach(recipeItem => {
-        const itemInFridge = fridgeItems.value.find(
-            item => item.name.toLowerCase() === recipeItem.name.toLowerCase()
+        const index = Props.fridgeItems.findIndex(
+            i => i.name.toLowerCase() === recipeItem.name.toLowerCase()
         )
 
-        itemInFridge.quantity -= recipeItem.quantity
+        if (index !== -1) {
+            Props.fridgeItems[index].quantity -= recipeItem.quantity
 
-        if (itemInFridge.quantity <= 0) {
-            const index = fridgeItems.value.findIndex(i => i.id === itemInFridge.id)
-            if (index !== -1) fridgeItems.value.splice(index, 1)
+            if (Props.fridgeItems[index].quantity <= 0) {
+                Props.fridgeItems.splice(index, 1)
+            }
         }
     })
 
-    // reset error
-    errorMessage.value = []
+    Props.fridgeItems = [...Props.fridgeItems]
 
-    isCooking.value = true
-    emit('cook')
+    errorMessage.value = []
     showConfirm.value = false
+    emit('cook')
 }
 
 function cancelCook() {

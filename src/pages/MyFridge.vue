@@ -6,7 +6,10 @@ import RecommendMenu from '../components/RecommendMenu.vue';
 import users from '../data/users.js'
 import { ref, watch , computed } from "vue";
 
+import {fridgeItems as Mock} from '@/data/fridgeItems';
+
 let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || [])
+// let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || Mock.value )
 
 const showModal = ref(false)
 

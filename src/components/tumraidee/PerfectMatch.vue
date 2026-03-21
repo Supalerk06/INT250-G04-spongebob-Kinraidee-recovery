@@ -1,10 +1,11 @@
 <script setup>
 import RecipePopup from './RecipePopup.vue';
-import { ref, toRaw } from 'vue'
-import {fridgeItems} from '@/data/fridgeItems';
+import { ref, toRaw , watch } from 'vue'
+// import {fridgeItems} from '@/data/fridgeItems';
 
+// let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || [])
 
-const Props = defineProps(['id', 'name', 'short_description', 'difficulty', 'image', 'video', "ingredients", "steps"])
+const Props = defineProps(['fridgeItems','id', 'name', 'short_description', 'difficulty', 'image', 'video', "ingredients", "steps"])
 
 const emit = defineEmits(['cook']);
 
@@ -25,30 +26,31 @@ function handleCook() {
     showConfirm.value = true
 }
 
+watch(
+  Props.fridgeItems,
+  (newVal) => {
+    localStorage.setItem("fridgeItems", JSON.stringify(newVal))
+  },
+  { deep: true }
+)
+
 function confirmCook() {
-    if (isCooking.value) return
-
     Props.ingredients.forEach(recipeItem => {
-        const itemInFridge = fridgeItems.value.find(
+        const itemIndex = Props.fridgeItems.findIndex(
             item => item.name.toLowerCase() === recipeItem.name.toLowerCase()
-        );
+        )
 
-        if (itemInFridge) {
-            // 2. ลบจำนวนออก
-            itemInFridge.quantity -= recipeItem.quantity;
+        if (itemIndex !== -1) {
+            Props.fridgeItems[itemIndex].quantity -= recipeItem.quantity
 
-            // 3. (Optional) ถ้าจำนวนเหลือ 0 หรือน้อยกว่า ให้ลบทิ้งจากตู้เย็น
-            if (itemInFridge.quantity <= 0) {
-                fridgeItems.value = fridgeItems.value.filter(i => i.id !== itemInFridge.id);
+            if (Props.fridgeItems[itemIndex].quantity <= 0) {
+                Props.fridgeItems.splice(itemIndex, 1)
             }
         } else {
-            console.warn(`ไม่พบวัตถุดิบ ${recipeItem.name} ในตู้เย็น`);
+            console.warn(`ไม่พบ ${recipeItem.name}`)
         }
-    }); 
+    })
 
-    console.log(toRaw(fridgeItems.value));
-
-    isCooking.value = true
     emit('cook')
     showConfirm.value = false
 }

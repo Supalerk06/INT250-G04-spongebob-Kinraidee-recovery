@@ -1,12 +1,13 @@
 <script setup>
-import { computed } from 'vue';
-import {fridgeItems} from '@/data/fridgeItems';
-
-
+import {  ref, computed ,toRaw} from 'vue';
+const Props = defineProps(['fridgeItems'])
+// import {fridgeItems} from '@/data/fridgeItems';
+console.log(toRaw(Props.fridgeItems));
+// let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || [])
 
 
 const groupedItems = computed(() => {
-    return fridgeItems.value.reduce((acc, item) => {
+    return Props.fridgeItems.reduce((acc, item) => {
         const cat = item.category.toUpperCase();
         if (!acc[cat]) acc[cat] = [];
         acc[cat].push(item);
@@ -38,7 +39,7 @@ const groupedItems = computed(() => {
         </div>
 
         <a class="text-sm text-primary font-bold flex items-center justify-center gap-2 hover:underline mt-4"
-            href="/Fridge">
+            href="/myfridge">
             View Full Inventory
             <span class="material-symbols-outlined text-sm">arrow_forward</span>
         </a>

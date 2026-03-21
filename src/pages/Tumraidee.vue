@@ -4,10 +4,10 @@ import { useObservable } from '@vueuse/rxjs'
 import { liveQuery } from 'dexie'
 
 import {recipes} from "@/data/recipes";
-import {fridgeItems} from "@/data/fridgeItems";
+// import {fridgeItems} from "@/data/fridgeItems";
 import { db } from "@/data/userRecipes";
 
-
+let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || [])
 
 import PerfectMatch from "@/components/tumraidee/PerfectMatch.vue";
 import AlmostMatch from "@/components/tumraidee/AlmostMatch.vue";
@@ -93,7 +93,7 @@ async function deleteRecipe(id) {
         <div class="flex-1 max-w-[1400px] w-full mx-auto p-6 md:p-8 lg:p-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 ">
                 <aside class="lg:col-span-3">
-                    <MyFridge></MyFridge>
+                    <MyFridge :fridgeItems="fridgeItems"></MyFridge>
                 </aside>
 
                 <!-- หน้าหลัก -->
@@ -135,7 +135,7 @@ async function deleteRecipe(id) {
                     </p>
                     <!-- ของด้านล่าง -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
-                        <PerfectMatch v-for="Perfect in availableRecipes" :id="Perfect.id" :name="Perfect.name"
+                        <PerfectMatch v-for="Perfect in availableRecipes" :fridgeItems="fridgeItems" :id="Perfect.id" :name="Perfect.name"
                             :short_description="Perfect.short_description" :difficulty="Perfect.difficulty"
                             :image="Perfect.image" :video="Perfect.video" :ingredients="Perfect.ingredients"
                             :steps="Perfect.steps"></PerfectMatch>
@@ -167,7 +167,7 @@ async function deleteRecipe(id) {
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                        <MyRecipe v-for="(myRecipes, index) in userRecipes" :id="myRecipes.id"
+                        <MyRecipe v-for="(myRecipes, index) in userRecipes" :fridgeItems="fridgeItems" :id="myRecipes.id"
                             :name="myRecipes.name" :short_description="myRecipes.short_description"
                             :image="myRecipes.image" :ingredients="myRecipes.ingredients" :steps="myRecipes.steps"
                             @delete="deleteRecipe" />
