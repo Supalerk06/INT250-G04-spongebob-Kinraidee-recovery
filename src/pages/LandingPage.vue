@@ -82,7 +82,7 @@
               ปรับรัศมีค้นหาได้ตามใจ (เช่น 500 เมตร, 2 กิโลเมตร)
             </li>
           </ul>
-          <a href="/restaurant-near-me" class="group inline-flex items-center gap-2 bg-red-600 text-white px-8 py-3.5 rounded-full font-bold text-lg hover:bg-red-500 transition-all shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_30px_rgba(220,38,38,0.5)]">
+          <a href="/restaurants" class="group inline-flex items-center gap-2 bg-red-600 text-white px-8 py-3.5 rounded-full font-bold text-lg hover:bg-red-500 transition-all shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_30px_rgba(220,38,38,0.5)]">
             ค้นหาร้านอาหารใกล้ฉัน
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
           </a>
@@ -134,7 +134,7 @@
               เช็คสถานะความสดใหม่ผ่านระบบ Color Code
             </li>
           </ul>
-          <a href="/tumraidee" class="group inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3.5 rounded-full font-bold text-lg hover:bg-blue-500 transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)]">
+          <a href="/myfridge" class="group inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3.5 rounded-full font-bold text-lg hover:bg-blue-500 transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)]">
             จัดการตู้เย็นของคุณ
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
           </a>
@@ -164,7 +164,7 @@
               ระบบ เพิ่ม แก้ไข ลบ (CRUD) สูตรอาหารส่วนตัว
             </li>
           </ul>
-          <a href="/recipes" class="group inline-flex items-center gap-2 bg-orange-600 text-white px-8 py-3.5 rounded-full font-bold text-lg hover:bg-orange-500 transition-all shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:shadow-[0_0_30px_rgba(234,88,12,0.5)]">
+          <a href="/tumraidee" class="group inline-flex items-center gap-2 bg-orange-600 text-white px-8 py-3.5 rounded-full font-bold text-lg hover:bg-orange-500 transition-all shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:shadow-[0_0_30px_rgba(234,88,12,0.5)]">
             ค้นหาสูตรอาหาร
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
           </a>

@@ -1,6 +1,7 @@
 <script setup>
 import { computed , ref} from "vue";
-import { recipes } from "@/data/recipes";
+import { recipes } from "../data/recipes.js"
+
 
 
 const props = defineProps({
