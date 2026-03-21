@@ -1,6 +1,6 @@
 <script setup>
 import { computed , ref} from "vue";
-import recipes from "../data/recipes.js"
+import { recipes } from "@/data/recipes";
 
 
 const props = defineProps({
@@ -10,7 +10,7 @@ const props = defineProps({
 const selectedCategory = ref("All");
 
 const availableRecipes = computed(() => {
-  return recipes.filter((recipe) => {
+  return recipes.value.filter((recipe) => {
     const matchCategory =
       selectedCategory.value === "All" ||
       recipe.categories.includes(selectedCategory.value);

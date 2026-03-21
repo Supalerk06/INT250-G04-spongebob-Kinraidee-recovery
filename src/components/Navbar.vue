@@ -38,7 +38,7 @@
               TumraiDee
           </a>
             <a
-              href="/tumraidee"
+              href="/myfridge"
               class="text-sm font-medium hover:text-primary transition-colors"
             >
               Fridge
@@ -89,7 +89,7 @@
         <a href="/tumraidee" class="text-sm font-medium hover:text-primary transition-colors" >
           TumraiDee
         </a>
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="#">
+        <a class="text-sm font-medium hover:text-primary transition-colors" href="/myfridge">
           Fridge
         </a>
         <a class="text-sm font-medium hover:text-primary transition-colors" href="#">
