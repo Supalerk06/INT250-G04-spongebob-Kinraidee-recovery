@@ -1,27 +1,64 @@
 <script setup>
 import RecipePopup from './RecipePopup.vue';
-import { ref } from 'vue'
+import { ref, toRaw } from 'vue'
+import {fridgeItems} from '@/data/fridgeItems';
 
-defineProps(['id', 'name', 'short_description', 'difficulty', 'image', 'video', "ingredients", "steps"])
+
+const Props = defineProps(['id', 'name', 'short_description', 'difficulty', 'image', 'video', "ingredients", "steps"])
 
 const emit = defineEmits(['cook']);
+
 const showModal = ref(false)
 
 
 function openRecipe() {
-  showModal.value = true;
-
+    showModal.value = true;
 }
 
 function closeModal() {
-  showModal.value = false;
+    showModal.value = false;
+}
+const showConfirm = ref(false)
+
+function handleCook() {
+    closeModal()        // 👈 ปิด popup หลักก่อน
+    showConfirm.value = true
 }
 
-// เมื่อกด Cook ใน Popup ให้ส่งสัญญาณต่อไปยังหน้าหลัก (Parent)
-function handleCook() {
-  emit('cook'); // ส่งข้อมูลเมนูนี้กลับไปด้วย
-  closeModal();
+function confirmCook() {
+    if (isCooking.value) return
+
+    Props.ingredients.forEach(recipeItem => {
+        const itemInFridge = fridgeItems.value.find(
+            item => item.name.toLowerCase() === recipeItem.name.toLowerCase()
+        );
+
+        if (itemInFridge) {
+            // 2. ลบจำนวนออก
+            itemInFridge.quantity -= recipeItem.quantity;
+
+            // 3. (Optional) ถ้าจำนวนเหลือ 0 หรือน้อยกว่า ให้ลบทิ้งจากตู้เย็น
+            if (itemInFridge.quantity <= 0) {
+                fridgeItems.value = fridgeItems.value.filter(i => i.id !== itemInFridge.id);
+            }
+        } else {
+            console.warn(`ไม่พบวัตถุดิบ ${recipeItem.name} ในตู้เย็น`);
+        }
+    }); 
+
+    console.log(toRaw(fridgeItems.value));
+
+    isCooking.value = true
+    emit('cook')
+    showConfirm.value = false
 }
+
+function cancelCook() {
+    showConfirm.value = false
+}
+
+const isCooking = ref(false)
+
 
 </script>
 
@@ -63,13 +100,26 @@ function handleCook() {
             </div>
         </div>
     </article>
-    <RecipePopup v-if="showModal" 
-    :name = "name" 
-    :image = "image"
-    :video = "video"
-    :ingredients = "ingredients"
-    :steps = "steps"
-    @close="closeModal" 
-    @cook="handleCook"></RecipePopup>
+
+    <RecipePopup v-if="showModal" :name="name" :image="image" :video="video" :ingredients="ingredients" :steps="steps"
+        @close="closeModal" @cook="handleCook" ></RecipePopup>
+
+    <!-- pop up confirm -->
+    <div v-if="showConfirm" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl w-[90%] max-w-md shadow-xl">
+            <h3 class="text-lg font-bold mb-4 text-center">
+                Are you sure you finished cooking?
+            </h3>
+            <div class="flex justify-center gap-4">
+                <button @click="cancelCook" class="font-bold px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-700">
+                    Cancel
+                </button>
+
+                <button @click="confirmCook" class="font-bold px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-700">
+                    Yes, Done
+                </button>
+            </div>
+        </div>
+    </div>
 
 </template>

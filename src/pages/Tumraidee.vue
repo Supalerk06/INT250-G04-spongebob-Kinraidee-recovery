@@ -1,14 +1,26 @@
 <script setup>
-import { ref, computed } from "vue"
+import { ref, computed, onMounted, toRaw } from "vue"
+import { useObservable } from '@vueuse/rxjs'
+import { liveQuery } from 'dexie'
 
-import recipes from "@/data/recipes";
-import fridgeItems from "@/data/fridgeItems";
+import {recipes} from "@/data/recipes";
+import {fridgeItems} from "@/data/fridgeItems";
+import { db } from "@/data/userRecipes";
 
-import PerfectMatch from "@/components/PerfectMatch.vue";
-import RecipePopup from "@/components/RecipePopup.vue";
-import AlmostMatch from "@/components/AlmostMatch.vue";
-import MyRecipe from "@/components/MyRecipe.vue";
-import MyFridge from "@/components/MyFridge.vue";
+
+
+import PerfectMatch from "@/components/tumraidee/PerfectMatch.vue";
+import AlmostMatch from "@/components/tumraidee/AlmostMatch.vue";
+import MyRecipe from "@/components/tumraidee/MyRecipe.vue";
+import MyFridge from "@/components/tumraidee/MyFridge.vue";
+import FormPopUp from "@/components/tumraidee/FormPopup.vue";
+
+
+const showForm = ref(false)
+
+const openForm = () => {
+    showForm.value = true
+}
 
 const selectedCategory = ref('All');
 const categories = ['All', 'Thai', 'Western', 'Chinese', 'Mexican', 'Halal', 'Vegetarian', 'Vegan'];
@@ -19,14 +31,14 @@ const setCategory = (category) => {
 
 
 const availableRecipes = computed(() => {
-    return recipes.filter(recipe => {
+    return recipes.value.filter(recipe => {
         // กรองตามหมวดหมู่ก่อน
         const matchCategory = selectedCategory.value === 'All' || recipe.categories.includes(selectedCategory.value);
         if (!matchCategory) return false;
 
         // แล้วค่อยเช็คเรื่องวัตถุดิบในตู้เย็น
         return recipe.ingredients.every(ingredient => {
-            const itemInFridge = fridgeItems.find(
+            const itemInFridge = fridgeItems.value.find(
                 item => item.name.toLowerCase() === ingredient.name.toLowerCase()
             );
             return itemInFridge && itemInFridge.quantity >= ingredient.quantity;
@@ -36,13 +48,13 @@ const availableRecipes = computed(() => {
 
 // 3. แก้ไข almostReadyRecipes ให้กรองตามหมวดหมู่ด้วย
 const almostReadyRecipes = computed(() => {
-    if (!recipes || !fridgeItems) return [];
+    if (!recipes.value || !fridgeItems.value) return [];
 
-    return recipes
+    return recipes.value
         .filter(recipe => selectedCategory.value === 'All' || recipe.categories.includes(selectedCategory.value)) // กรองหมวดหมู่
         .map(recipe => {
             const missingIngredients = recipe.ingredients.filter(ing => {
-                const itemInFridge = fridgeItems.find(
+                const itemInFridge = fridgeItems.value.find(
                     item => item.name.toLowerCase() === ing.name.toLowerCase()
                 );
                 return !itemInFridge || itemInFridge.quantity < ing.quantity;
@@ -58,6 +70,20 @@ const almostReadyRecipes = computed(() => {
         .sort((a, b) => a.missingCount - b.missingCount);
 });
 
+const userRecipes = useObservable(
+    liveQuery(() => db.recipes.toArray())
+)
+
+
+
+async function deleteRecipe(id) {
+  // ลบ DB
+  await db.recipes.delete(id)
+
+  // ลบ UI
+  const index = userRecipes.value.findIndex(r => r.id === id)
+  if (index !== -1) userRecipes.value.splice(index, 1)
+}
 
 </script>
 
@@ -96,7 +122,7 @@ const almostReadyRecipes = computed(() => {
                                     : 'bg-white text-secondary/90 hover:-translate-y-0.5 shadow-secondary/40' // สไตล์ปกติ
                             ]">
                                 <span class="material-symbols-outlined text-[18px]">
-                                    {{ selectedCategory === cat ? 'check_circle' : 'award_meal' }}
+                                    {{ selectedCategory === cat ? 'check_circle' : 'Search' }}
                                 </span>
                                 {{ cat }}
                             </button>
@@ -111,7 +137,8 @@ const almostReadyRecipes = computed(() => {
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
                         <PerfectMatch v-for="Perfect in availableRecipes" :id="Perfect.id" :name="Perfect.name"
                             :short_description="Perfect.short_description" :difficulty="Perfect.difficulty"
-                            :image="Perfect.image" :video="Perfect.video" :ingredients="Perfect.ingredients" :steps="Perfect.steps"></PerfectMatch>
+                            :image="Perfect.image" :video="Perfect.video" :ingredients="Perfect.ingredients"
+                            :steps="Perfect.steps"></PerfectMatch>
                     </div>
 
 
@@ -128,14 +155,22 @@ const almostReadyRecipes = computed(() => {
 
 
                     <!-- ของฉัน -->
-                    <div>
-                        <p class="flex gap-2  text-xl font-bold  text-white"><span
-                                class="material-symbols-outlined text-green-400">bookmark</span>My Food Recipes (Your
-                            own recipes)</p>
+                    <div class="flex justify-between">
+                        <p class="flex gap-2  text-xl font-bold  text-white ">
+                            <span class="material-symbols-outlined text-green-400">bookmark</span>My Food Recipes (Your
+                            own recipes)
+                        </p>
+                        <button @click="showForm = true"
+                            class="px-5 py-2 flex items-center font-semibold rounded-lg text-white gap-1 bg-green-500 shadow-xs hover:bg-green-700">Add
+                            your own Recipes <span class="material-symbols-outlined"> add </span></button>
+                        <FormPopUp v-if="showForm" @close="showForm = false" />
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                        <MyRecipe></MyRecipe>
+                        <MyRecipe v-for="(myRecipes, index) in userRecipes" :id="myRecipes.id"
+                            :name="myRecipes.name" :short_description="myRecipes.short_description"
+                            :image="myRecipes.image" :ingredients="myRecipes.ingredients" :steps="myRecipes.steps"
+                            @delete="deleteRecipe" />
                     </div>
                 </main>
             </div>

@@ -1,9 +1,12 @@
 <script setup>
 import { computed } from 'vue';
-import fridgeItems from '@/data/fridgeItems';
+import {fridgeItems} from '@/data/fridgeItems';
+
+
+
 
 const groupedItems = computed(() => {
-    return fridgeItems.reduce((acc, item) => {
+    return fridgeItems.value.reduce((acc, item) => {
         const cat = item.category.toUpperCase();
         if (!acc[cat]) acc[cat] = [];
         acc[cat].push(item);

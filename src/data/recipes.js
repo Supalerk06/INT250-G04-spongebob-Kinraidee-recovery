@@ -1,4 +1,5 @@
-const recipes = [
+import { ref } from "vue"
+export const recipes = ref([
   {
     "id": 1,
     "name": "Classic Omelette",
@@ -1075,6 +1076,5 @@ const recipes = [
       "Allow the brownies to cool completely in the pan before slicing into squares."
     ]
   }
-]
+])
 
-export default recipes;

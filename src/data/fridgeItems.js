@@ -1,4 +1,5 @@
-const fridgeItems = [
+import { ref } from "vue"
+export const fridgeItems = ref([
   { id: 1, name: "Chicken Breast", category: "Meat", quantity: 2000, unit: "g", purchaseDate: '2026-03-05', expiredDate: '2026-03-12' },  
   { id: 2, name: "Broccoli", category: "Vegetable", quantity: 500, unit: "g", purchaseDate: '2026-03-08', expiredDate: '2026-03-10' }, 
   { id: 3, name: "Milk", category: "Dairy", quantity: 1000, unit: "ml", purchaseDate: '2026-03-09', expiredDate: '2026-03-16' }, 
@@ -23,6 +24,4 @@ const fridgeItems = [
   { id: 22, name: "Oil", category: "Dairy", quantity: 1000, unit: "ml", purchaseDate: '2026-03-09', expiredDate: '2026-03-14' },
   { id: 23, name: "Pepper", category: "Dairy", quantity: 1000, unit: "g", purchaseDate: '2026-03-09', expiredDate: '2026-03-14' },
   { id: 24, name: "Potato", category: "Dairy", quantity: 500, unit: "g", purchaseDate: '2026-03-09', expiredDate: '2026-03-14' },
-];
-
-export default fridgeItems;
+]);

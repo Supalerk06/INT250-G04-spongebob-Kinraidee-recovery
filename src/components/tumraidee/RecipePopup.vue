@@ -1,11 +1,10 @@
-ingredients
 <script setup>
-const emit = defineEmits(["close"])
+const emit = defineEmits(["close", "cook"])
 defineProps(['name', 'image', 'ingredients', 'steps', 'video'])
 </script>
 
 <template>
-    <div class=" bg-black/50 fixed inset-0 lg:col-span-9 flex items-center justify-center z-50 p-4 ">
+    <div class=" bg-black/50 fixed inset-0  flex items-center justify-center z-50 p-4 ">
 
         <div
             class="bg-white w-full max-w-4xl max-h-[90vh] rounded-2xl shadow-2xl overflow-y-auto border border-gray-100">
@@ -70,9 +69,9 @@ defineProps(['name', 'image', 'ingredients', 'steps', 'video'])
                     </div>
                 </div>
 
-                <div class="mt-12 rounded-xl overflow-hidden shadow-inner bg-gray-100 p-2">
-                    <div class="aspect-video w-full">
-                        <iframe class="w-full h-full rounded-lg" :src="video" frameborder="0"
+                <div class="mt-12 rounded-xl overflow-hidden shadow-inner bg-gray-100 p-2" v-if="video">
+                    <div class="aspect-video w-full" >
+                        <iframe class="w-full h-full rounded-lg"  :src="video" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
                         </iframe>
@@ -83,12 +82,12 @@ defineProps(['name', 'image', 'ingredients', 'steps', 'video'])
                     <button
                         class="bg-red-500 text-white px-8 py-3 rounded-full font-bold hover:bg-red-900 transition-all shadow-lg active:scale-95"
                         @click="emit('close')">
-                        ปิดหน้าต่างนี้
+                        Close
                     </button>
                     <button
                         class="bg-green-500 text-white px-8 py-3 rounded-full font-bold hover:bg-green-900 transition-all shadow-lg active:scale-95"
-                        @click="emit('close')">
-                        ทำอาหารเสร็จแล้ว
+                        @click="emit('cook')">
+                        Finished cooking
                     </button>
                 </div>
             </div>
