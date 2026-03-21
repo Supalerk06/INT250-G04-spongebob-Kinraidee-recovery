@@ -2,6 +2,7 @@
 import FridgeItems from '../components/FridgeItems.vue';
 import UseItUp from '../components/UseItUp.vue';
 import FridgeHealth from '../components/FridgeHealth.vue';
+import RecommendMenu from '../components/RecommendMenu.vue';
 import { ref, watch , computed } from "vue";
 
 const showModal = ref(false)
@@ -22,15 +23,14 @@ function closeModal() {
   unit:'',
   expiredDate: ''
 }
+  name.value = "";
+  category.value = "";
+  quantity.value = "";
+  unit.value = "";
+  expiredDate.value = "";
 }
-
 
 let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || [])
-if (fridgeItems === []){
-  localStorage.setItem("fridgeItems", JSON.stringify([]))
-}
-
-
 
 // error handling
 const error = ref({
@@ -41,87 +41,69 @@ const error = ref({
   expiredDate: ''
 })
 
+
 function validateForm() {
+  // รีเซ็ต error ทุกครั้งที่กด Submit เพื่อล้างค่าเก่า
   error.value = { name: '', category: '', quantity: '', unit: '', expiredDate: '' }
-  
-  let errorCount = 0
-  let tempErrors = { name: '', category: '', quantity: '', unit: '', expiredDate: '' }
+  let isValid = true
 
+  // --- 1. Name ---
   if (!name.value.trim()) {
-    tempErrors.name = 'Please enter an item name.'
-    errorCount++
-  }
-  
-  if (!name.value.trim()) {
-    tempErrors.name = 'Please enter an item name.'
-    errorCount++
+    error.value.name = 'Please enter an item name.'
+    isValid = false
   } else {
+    // เช็คความสมเหตุสมผล (ชื่อซ้ำ)
     const isDuplicate = fridgeItems.value.some(item => {
-      if (editingItemId.value && item.id === editingItemId.value) {
-        return false;
-      }
-      return item.name.toLowerCase() === name.value.trim().toLowerCase();
-    });
-
+      if (editingItemId.value && item.id === editingItemId.value) return false
+      return item.name.toLowerCase() === name.value.trim().toLowerCase()
+    })
     if (isDuplicate) {
-      tempErrors.name = 'This item already exists in your fridge.'
-      errorCount++
+      error.value.name = 'This item already exists in your fridge. Please go to that item and click “Edit.”'
+      isValid = false
     }
   }
-  
+
+  // --- 2. Category ---
   if (!category.value) {
-    tempErrors.category = 'Please select a category.'
-    errorCount++
+    error.value.category = 'Please select a category.'
+    isValid = false
   }
 
-  if (!quantity.value || isNaN(quantity.value) || Number(quantity.value) <= 0) {
-    tempErrors.quantity = 'Quantity must be greater than 0.'
-    errorCount++
+  // --- 3. Quantity ---
+  if (!quantity.value) { // เช็คว่ามีค่าไหม
+    error.value.quantity = 'Please enter the quantity.'
+    isValid = false
+  } else if (isNaN(quantity.value) || Number(quantity.value) <= 0) { // เช็ค Type และความสมเหตุสมผล
+    error.value.quantity = 'Quantity must be a valid number greater than 0.'
+    isValid = false
   }
 
-  if (!unit.value.trim()) {
-    tempErrors.unit = 'Please select an item unit.'
-    errorCount++
+  // --- 4. Unit ---
+  if (!unit.value) {
+    error.value.unit = 'Please select a unit.'
+    isValid = false
   }
 
-  if (!expiredDate.value) {
-    tempErrors.expiredDate = 'Please select an expiration date.'
-    errorCount++
-  }
-
-  if (!expiredDate.value) {
-    tempErrors.expiredDate = 'Please select an expiration date.'
-    errorCount++
+  // --- 5. Expired Date ---
+  if (!expiredDate.value) { // เช็คว่าเลือกวันหรือยัง
+    error.value.expiredDate = 'Please select an expiration date.'
+    isValid = false
   } else {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0); 
-
-    const selectedDate = new Date(expiredDate.value);
-    selectedDate.setHours(0, 0, 0, 0);
+    // เช็คความสมเหตุสมผล (หมดอายุไปแล้วหรือยัง)
+    const today = new Date()
+    today.setHours(0, 0, 0, 0) // รีเซ็ตเวลาให้เป็นเที่ยงคืน เพื่อเทียบแค่วันที่
+    
+    const selectedDate = new Date(expiredDate.value)
+    selectedDate.setHours(0, 0, 0, 0)
+    
     if (selectedDate < today) {
-      tempErrors.expiredDate = 'Expiration date cannot be in the past.'
-      errorCount++
+      error.value.expiredDate = 'Expiration date cannot be in the past.'
+      isValid = false
     }
   }
 
-  if (errorCount > 1) {
-    const generalMsg = 'Please fill in all required fields.'
-    
-    if (tempErrors.name) error.value.name = generalMsg
-    if (tempErrors.category) error.value.category = generalMsg
-    if (tempErrors.quantity) error.value.quantity = generalMsg
-    if (tempErrors.unit) error.value.unit = generalMsg
-    if (tempErrors.expiredDate) error.value.expiredDate = generalMsg
-
-  } else if (errorCount === 1) {
-    error.value = { ...tempErrors }
-  }
-
-  return errorCount === 0
+  return isValid
 }
-
-
-
 
 
 const originalItemData = ref(null);
@@ -143,11 +125,28 @@ const openAddModal = () => {
 
 
 // deleteItem
-const deleteItem = (id) => {
-  if (confirm('Are you sure you want to delete this item?')) {
-    fridgeItems.value = fridgeItems.value.filter(item => item.id !== id);
+const showDeleteModal = ref(false);
+const itemToDeleteId = ref(null);
+// เมื่อกดรูปถังขยะจาก FridgeItems หรือ UseItUp จะเรียกฟังก์ชันนี้
+const confirmDelete = (id) => {
+  itemToDeleteId.value = id;
+  showDeleteModal.value = true;
+};
+// เมื่อกดยืนยันใน Modal
+const executeDelete = () => {
+  if (itemToDeleteId.value !== null) {
+    fridgeItems.value = fridgeItems.value.filter(item => item.id !== itemToDeleteId.value);
+    showDeleteModal.value = false;
+    itemToDeleteId.value = null;
   }
-}
+};
+// เมื่อกดยกเลิกใน Modal
+const cancelDelete = () => {
+  showDeleteModal.value = false;
+  itemToDeleteId.value = null;
+};
+
+
 
 
 // editItem
@@ -241,8 +240,27 @@ watch(
 
 
 
+// คำนวนวันหมดอายุ
+function calculateExpiredDate(expiredDate) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const targetDate = new Date(expiredDate);
+  targetDate.setHours(0, 0, 0, 0);
+
+  const diffInMs = targetDate - today;
+  return Math.round(diffInMs / (1000 * 60 * 60 * 24)); 
+}
 
 
+// เปลี่ยนสี/ข้อความ
+function getExpiryMsg(expiredDate) {
+  const diffInDays = calculateExpiredDate(expiredDate);
+  if (diffInDays > 1) return `${diffInDays} days left`;
+  else if (diffInDays === 1) return "Exp. Tomorrow";
+  else if (diffInDays === 0) return "Exp. Today";
+  else return "Expired";
+}
 
 
 // sort 
@@ -276,18 +294,17 @@ const processedFridgeItems = computed(() => {
     );
   }
 
-  // --- Step 2: FILTER (เวลาที่เหลือ) ---
-if (filterBy.value !== "all") {
-    const now = new Date().getTime();
+// --- Step 2: FILTER (เวลาที่เหลือ) ---
+  if (filterBy.value !== "all") {
     result = result.filter(item => {
-      const expTime = new Date(item.expiredDate).getTime();
-      const diffInHours = (expTime - now) / (1000 * 60 * 60);
+      // เรียกใช้ฟังก์ชันเดียวกันกับ UI เลย
+      const diffInDays = calculateExpiredDate(item.expiredDate);
 
-      if (filterBy.value === "24h") return diffInHours >= 0 && diffInHours <= 24;
-      if (filterBy.value === "48h") return diffInHours > 24 && diffInHours <= 48;
-      if (filterBy.value === "more") return diffInHours > 48;
-      if (filterBy.value === "expired") return diffInHours < 0; 
-      
+      // จัดกลุ่มให้ตรงกับ UI
+      if (filterBy.value === "24h") return diffInDays === 0 || diffInDays === 1; // วันนี้ และ พรุ่งนี้
+      if (filterBy.value === "48h") return diffInDays === 2; // มะรืนนี้ (2 วัน)
+      if (filterBy.value === "more") return diffInDays > 2;  // มากกว่า 2 วัน (สีเขียว)
+      if (filterBy.value === "expired") return diffInDays < 0; // หมดอายุไปแล้ว (สีแดง)
       return true;
     });
   }
@@ -449,27 +466,29 @@ const getIngredientIcon = (name) => {
   >
     {{ cat.name }}
   </button>
-</div>
+  </div>
 
-<FridgeItems 
-  :fridgeItems="processedFridgeItems" 
-  :getIcon="getIngredientIcon"
-  @delete-item="deleteItem" 
-  @edit-item="editItem" 
-/>
+    <FridgeItems 
+      :fridgeItems="processedFridgeItems" 
+      :getIcon="getIngredientIcon"
+      @delete-item="confirmDelete" 
+      @edit-item="editItem" 
+      :calculateExpiredDate="calculateExpiredDate" 
+      :getExpiryMsg="getExpiryMsg"
+    />
     </div>
 
     <div class="flex flex-col gap-4 w-full lg:max-w-[350px]">
         <UseItUp 
         :fridgeItems="fridgeItems" 
         :getIcon="getIngredientIcon"
+        :calculateExpiredDate="calculateExpiredDate"
+        :getExpiryMsg="getExpiryMsg"
+        @delete-item="confirmDelete"
         />
 
         <FridgeHealth :fridgeItems="fridgeItems" />
-
-        <div class="bg-white  rounded-2xl flex flex-col p-5 shadow gap-2">
-            <h3 class="font-bold text-xl">Suggest menu</h3>
-        </div>
+        <RecommendMenu :fridgeItems="fridgeItems" />
     </div>
 
 
@@ -477,56 +496,46 @@ const getIngredientIcon = (name) => {
 
 <!-- Add Item -->
     <div v-if="showModal" class="fixed inset-0 flex items-center justify-center bg-black/50">
-  <div class="bg-white p-6 rounded-xl w-80">
+  <div class="bg-white p-6 rounded-xl w-full max-w-[360px] max-h-[600px] overflow-y-scroll
+  lg:max-w-[620px] lg:max-h-fit lg:py-10">
 
-    <h2 class="text-xl font-bold mb-4">Add Item</h2>
-    <form action="" @submit.prevent="submitAddItem" class="flex flex-col gap-3">
+    <h2 class="text-2xl font-bold mb-4">
+      {{ editingItemId ? 'Edit Item' : 'Add Item' }}
+    </h2>
+    <form @submit.prevent="submitAddItem" class="flex flex-col lg:grid grid-cols-2 gap-4">
+  
 
-      <div class="flex flex-col gap-1">
+    <div class="flex flex-col gap-1 lg:order-0">
 
-    <label for="item-name">Name</label>
-    <input
-      type="text"
-      id="item-name"
-      v-model="name"
-      placeholder="Item Name (e.g. Egg)"
-      class="border-2 py-2 px-4 w-full rounded-xl focus:border-success focus:ring-0 focus:outline-none"
-      :class="error.name ? 'border-danger focus:border-danger' : 'border-gray-200 focus:border-success'"
-    />
-      </div>
+      <label for="item-name">Name</label>
+      <input 
+        type="text" 
+        id="item-name"
+        v-model="name"
+        placeholder="Item Name (e.g. Egg)"
+        class="border-2 py-2 px-4 w-full rounded-xl focus:border-success focus:ring-0 focus:outline-none"
+       :class="error.name ? 'border-danger focus:border-danger' : 'border-gray-200 focus:border-success'"
+      />
+      <div v-if="error.name" class="text-danger text-sm mt-1 ml-1">{{ error.name }}</div>
+    </div>
 
-<div class="flex flex-col gap-1">
-
-    <label for="item-category">Category</label>
-    <select 
-    id="item-category"
-    v-model="category"
-    class="border-2 py-2 px-4 w-full rounded-xl focus:border-success focus:ring-0 focus:outline-none"
-    :class="error.category ? 'border-danger focus:border-danger' : 'border-gray-200 focus:border-success'">
-        <option value="" disabled selected>Select Category</option>
-        <option v-for="cat in categories.slice(1)" :value="cat.id">{{cat.name}}</option>
-    </select>
-</div>
-
-    
-<di class="flex flex-col gap-1">
-
-    <label for="item-quantity">Quantity</label>
-    <input
-      type="text"
-      id="item-quantity"
-      v-model="quantity"
-      placeholder="Item Quantity (e.g. 3)"
-      class="border-2 py-2 px-4 w-full rounded-xl focus:border-success focus:ring-0 focus:outline-none"
-      :class="error.quantity ? 'border-danger focus:border-danger' : 'border-gray-200 focus:border-success'"
-    />
-</di>
+    <div class="flex flex-col gap-1 lg:order-2">
+      <label for="item-quantity">Quantity</label>
+      <input 
+        type="number" 
+        id="item-quantity"
+        v-model="quantity" 
+        placeholder="Item Quantity (e.g. 3)"
+        class="border-2 py-2 px-4 w-full rounded-xl focus:border-success focus:ring-0 focus:outline-none"
+        :class="error.quantity ? 'border-danger focus:border-danger' : 'border-gray-200 focus:border-success'"
+      />
+      <div v-if="error.quantity" class="text-danger text-sm mt-1 ml-1">{{ error.quantity }}</div>
+    </div>
 
 
+    <div class="flex flex-col gap-1 lg:order-3">
 
-<di class="flex flex-col gap-1">
-
-    <label for="item-unit">Unit</label>
+      <label for="item-unit">Unit</label>
     <select 
     id="item-unit"
     v-model="unit"
@@ -537,45 +546,83 @@ const getIngredientIcon = (name) => {
         <option value="g">Gram</option>
         <option value="pcs">Pieces</option>
     </select>
-</di>
+      <div v-if="error.unit" class="text-danger text-sm mt-1 ml-1">{{ error.unit }}</div>
+    </div>
+  
 
-<di class="flex flex-col gap-1">
-
-    <label for="item-expired-date">Expired Date</label>
-    <input
-      type="date"
-      id="item-expired-date"
-      v-model="expiredDate"
-      placeholder="Item Expired Date"
-      class="border-2 py-2 px-4 w-full rounded-xl focus:border-success focus:ring-0 focus:outline-none"
-      :class="error.expiredDate ? 'border-danger focus:border-danger' : 'border-gray-200 focus:border-success'"
-    />
-</di>
-    
-<div 
-      v-if="error.name || error.category || error.quantity || error.unit || error.expiredDate" 
-      class="text-danger text-sm font-bold text-center my-1"
-    >
-      {{ error.name || error.category || error.quantity || error.unit || error.expiredDate }}
+    <div class="flex flex-col gap-1 lg:order-1">
+      <label for="item-category">Category</label>
+    <select 
+    id="item-category"
+    v-model="category"
+    class="border-2 py-2 px-4 w-full rounded-xl focus:border-success focus:ring-0 focus:outline-none"
+    :class="error.category ? 'border-danger focus:border-danger' : 'border-gray-200 focus:border-success'"
+      >
+        <option value="" disabled selected>Select Category</option>
+        <option v-for="cat in categories.slice(1)" :value="cat.id">{{cat.name}}</option>
+        </select>
+      <div v-if="error.category" class="text-danger text-sm mt-1 ml-1">{{ error.category }}</div>
     </div>
 
-    <div class="flex justify-end gap-1">
+    <div class="flex flex-col gap-1 lg:order-4">
+      <label for="item-expired-date">Expired Date</label>
+      <input 
+        type="date" 
+        id="item-expired-date"
+        v-model="expiredDate" 
+        placeholder="Item Expired Date"
+        class="border-2 py-2 px-4 w-full rounded-xl focus:border-success focus:ring-0 focus:outline-none"
+        :class="error.expiredDate ? 'border-danger focus:border-danger' : 'border-gray-200 focus:border-success'"
+      />
+      <div v-if="error.expiredDate" class="text-danger text-sm mt-1 ml-1">{{ error.expiredDate }}</div>
+    </div>
+
+    <div class="flex justify-end items-end gap-2 
+    lg:order-5">
       <button 
         @click="closeModal"
         class="px-4 py-2 hover:bg-neutral-400 transition bg-gray-300 rounded-xl focus:border-success focus:ring-0 focus:outline-none"
       >
         Cancel
       </button>
-
       <button 
         class="px-4 py-2 hover:bg-green-500 transition bg-success text-white rounded-xl focus:border-success focus:ring-0 focus:outline-none"
         type="submit"
       >
         Add
       </button>
+    
     </div>
-    </form>
+</form>
 
+  </div>
+</div>
+
+<div v-if="showDeleteModal" class="fixed inset-0 flex items-center justify-center bg-black/50 z-[60]">
+  <div class="bg-white p-6 rounded-2xl w-full max-w-[320px] text-center shadow-xl">
+    <div class="flex justify-center mb-4">
+      <div class="bg-red-100 p-4 rounded-full">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 text-danger">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+        </svg>
+      </div>
+    </div>
+    <h2 class="text-xl font-bold mb-2">Delete Item?</h2>
+    <p class="text-neutral-500 mb-6 text-sm">Are you sure you want to delete this item? This action cannot be undone.</p>
+    <div class="flex justify-center gap-3">
+      <button 
+        @click="cancelDelete"
+        class="flex-1 py-2 hover:bg-neutral-200 transition bg-neutral-100 text-neutral-700 font-bold rounded-xl focus:outline-none"
+      >
+        Cancel
+      </button>
+      <button 
+        @click="executeDelete"
+        class="flex-1 py-2 hover:bg-danger transition bg-danger text-white font-bold rounded-xl focus:outline-none shadow-md shadow-red-200"
+      >
+        Delete
+      </button>
+    </div>
   </div>
 </div>
 

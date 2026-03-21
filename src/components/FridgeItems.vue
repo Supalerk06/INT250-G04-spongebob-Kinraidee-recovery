@@ -7,6 +7,14 @@ const props = defineProps({
     type: Function,
     required: true,
   },
+  calculateExpiredDate: {
+    type: Function,
+    required: true,
+  },
+  getExpiryMsg: {
+    type: Function,
+    required: true,
+  },
 });
 
 // edit/delete button on card
@@ -21,26 +29,9 @@ const closeMenu = () => {
 onMounted(() => window.addEventListener("click", closeMenu));
 onUnmounted(() => window.removeEventListener("click", closeMenu));
 
-// คำนวนวันหมดอายุ
-function calculateExpiredDate(expiredDate) {
-  const currentDate = new Date();
-  const targetDate = new Date(expiredDate);
-  const diffInMs = targetDate - currentDate;
-  return Math.ceil(diffInMs / (1000 * 60 * 60 * 24));
-}
-
-// เปลี่ยนสี/ข้อความ
-
-function getExpiryMsg(expiredDate) {
-  const diffInDays = calculateExpiredDate(expiredDate);
-  if (diffInDays > 1) return `${diffInDays} days left`;
-  else if (diffInDays === 1) return "Exp. Tomorrow";
-  else if (diffInDays === 0) return "Exp. Today";
-  else return "Expired";
-}
 
 function getExpiryClassText(expiredDate) {
-  const diffInDays = calculateExpiredDate(expiredDate);
+  const diffInDays = props.calculateExpiredDate(expiredDate);
   if (diffInDays < 0) {
     return "text-danger bg-red-100";
   } else if (diffInDays >= 0 && diffInDays <= 2) {
@@ -51,7 +42,7 @@ function getExpiryClassText(expiredDate) {
 }
 
 function getExpiryClassDiv(expiredDate) {
-  const diffInDays = calculateExpiredDate(expiredDate);
+  const diffInDays = props.calculateExpiredDate(expiredDate);
   if (diffInDays < 0) {
     return "border-4 border-red-200 shadow-red-100";
   } else if (diffInDays >= 0 && diffInDays <= 2) {
@@ -71,7 +62,8 @@ function getExpiryClassDiv(expiredDate) {
       <h1 class="">No items found</h1>
     </div>
     <div v-else class="grid grid-cols-[repeat(auto-fit,minmax(185px,1fr))] justify-center w-full py-3 gap-4
-    md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">
+  md:grid-cols-3
+    lg:grid-cols-4">
 
     <div v-for="item in props.fridgeItems"
       class="relative py-7 px-4 flex flex-col justify-center items-center rounded-3xl bg-white shadow w-full gap-4"

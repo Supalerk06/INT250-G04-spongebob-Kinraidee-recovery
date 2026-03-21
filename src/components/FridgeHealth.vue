@@ -30,7 +30,7 @@ const freshnessScore = computed(() => {
 </script>
 
 <template>
-<div class="bg-primary  rounded-2xl flex flex-col p-5 shadow gap-4">
+<div class="bg-primary rounded-3xl flex flex-col p-5 shadow gap-4">
             <h3 class="font-bold text-xl">Fridge Health</h3>
             <div class="flex justify-between">
                 <div>
