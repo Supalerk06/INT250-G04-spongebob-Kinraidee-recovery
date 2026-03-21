@@ -1,0 +1,403 @@
+<script setup>
+import { db } from '@/data/userRecipes'
+import RecipePopup from './RecipePopup.vue';
+import { ref } from 'vue';
+import { fridgeItems } from '@/data/fridgeItems';
+import { toRaw } from 'vue'
+
+
+const Props = defineProps(['id', 'name', 'short_description', 'image', "ingredients", "steps"])
+
+const emit = defineEmits(['cook', 'delete'])
+
+
+const showModal = ref(false)
+const showDeleteConfirm = ref(false)
+
+
+function openRecipe() {
+    showModal.value = true;
+
+}
+
+function closeModal() {
+    showModal.value = false;
+}
+const showConfirm = ref(false)
+
+function handleCook() {
+    closeModal()        // 👈 ปิด popup หลักก่อน
+    errorMessage.value = []
+    showConfirm.value = true
+}
+
+const errorMessage = ref([])
+
+function confirmCook() {
+    if (isCooking.value) return
+
+    const missingItems = []
+
+    // 🔍 เช็คของก่อน
+    Props.ingredients.forEach(recipeItem => {
+        const itemInFridge = fridgeItems.value.find(
+            item => item.name.toLowerCase() === recipeItem.name.toLowerCase()
+        )
+
+        if (!itemInFridge) {
+            missingItems.push(`${recipeItem.name} (ไม่มี)`)
+        } else if (itemInFridge.quantity < recipeItem.quantity) {
+            missingItems.push(
+                `${recipeItem.name} (ต้อง ${recipeItem.quantity} ${recipeItem.unit} แต่มี ${itemInFridge.quantity})`
+            )
+        }
+    })
+
+    // ❌ ถ้าขาด → หยุด + แสดง error
+    if (missingItems.length > 0) {
+        errorMessage.value = missingItems
+        return
+    }
+
+    // ✅ ของครบ → ค่อยหัก
+    Props.ingredients.forEach(recipeItem => {
+        const itemInFridge = fridgeItems.value.find(
+            item => item.name.toLowerCase() === recipeItem.name.toLowerCase()
+        )
+
+        itemInFridge.quantity -= recipeItem.quantity
+
+        if (itemInFridge.quantity <= 0) {
+            const index = fridgeItems.value.findIndex(i => i.id === itemInFridge.id)
+            if (index !== -1) fridgeItems.value.splice(index, 1)
+        }
+    })
+
+    // reset error
+    errorMessage.value = []
+
+    isCooking.value = true
+    emit('cook')
+    showConfirm.value = false
+}
+
+function cancelCook() {
+    showConfirm.value = false
+}
+
+const isCooking = ref(false)
+
+
+function confirmDelete() {
+    emit('delete', Props.id)  // 👈 ส่ง id กลับไปลบใน parent
+    showDeleteConfirm.value = false
+}
+
+function cancelDelete() {
+    showDeleteConfirm.value = false
+}
+
+const showEditModal = ref(false)
+const editForm = ref({
+    id: null,
+    name: '',
+    short_description: '',
+    image: '',
+    ingredients: [],
+    steps: []
+})
+
+function openEdit(recipe) {
+    console.log('CLICK EDIT', recipe)
+
+    editForm.value = {
+        id: recipe.id,
+        name: recipe.name,
+        short_description: recipe.short_description,
+        image: recipe.image,
+
+        ingredients: recipe.ingredients.map(item => ({
+            name: item.name,
+            quantity: item.quantity,
+            unit: item.unit
+        })),
+
+        steps: recipe.steps.map(step => step)
+    }
+
+    showEditModal.value = true
+}
+
+async function saveEdit() {
+    const rawData = toRaw(editForm.value)
+
+    await db.recipes.update(rawData.id, {
+        name: rawData.name,
+        short_description: rawData.short_description,
+        image: rawData.image,
+
+        // 👇 clone ใหม่กัน proxy
+        ingredients: rawData.ingredients.map(i => ({
+            name: i.name,
+            quantity: i.quantity,
+            unit: i.unit
+        })),
+
+        steps: rawData.steps.map(s => s)
+    })
+
+    showEditModal.value = false
+}
+
+function cancelEdit() {
+    showEditModal.value = false
+}
+
+function handleEditFile(e) {
+    const file = e.target.files[0]
+    if (!file) return
+
+    const reader = new FileReader()
+    reader.onload = () => {
+        editForm.value.image = reader.result
+    }
+    reader.readAsDataURL(file)
+}
+
+// ➕➖ INGREDIENT
+function addIngredient() {
+    editForm.value.ingredients.push({ name: '', quantity: 1, unit: 'pcs' })
+}
+
+function removeIngredient(i) {
+    if (editForm.value.ingredients.length > 1) {
+        editForm.value.ingredients.splice(i, 1)
+    }
+}
+
+// ➕➖ STEP
+function addStep() {
+    editForm.value.steps.push('')
+}
+
+function removeStep(i) {
+    if (editForm.value.steps.length > 1) {
+        editForm.value.steps.splice(i, 1)
+    }
+}
+
+</script>
+<template>
+
+    <article @click="openRecipe"
+        class="border-2 border-primary group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-soft hover:shadow-lift transition-all duration-300 flex flex-col">
+        <div class="h-48 relative overflow-hidden">
+            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                data-alt="Thai style omelette on rice" :style="{ backgroundImage: `url(${image})` }">
+            </div>
+            <button @click.stop="showDeleteConfirm = true"
+                class="absolute top-2 right-2 bg-red-500 text-white px-3 py-1 rounded-full shadow-lg hover:bg-red-700 transition">
+                <span class="material-symbols-outlined text-sm">delete</span>
+            </button>
+            <button @click.stop="openEdit({
+                id,
+                name,
+                short_description,
+                image,
+                ingredients,
+                steps
+            })"
+                class="absolute top-2 right-14 bg-blue-500 text-white px-3 py-1 rounded-full shadow-lg hover:bg-blue-700 transition">
+                <span class="material-symbols-outlined text-sm">edit</span>
+            </button>
+        </div>
+        <div class="p-5 flex-1 flex flex-col">
+            <div class="mb-3">
+                <h4 class="text-xl font-bold text-text-main dark:text-white mb-1">{{ name }}</h4>
+                <p class="text-xs text-text-muted">{{ short_description }}</p>
+            </div>
+            <div class="mt-auto pt-4 border-t border-gray-100 dark:border-gray-700 flex items-center justify-center">
+                <button @click.stop="openRecipe" class="text-primary font-bold text-sm  hover:underline">View
+                    Recipe</button>
+            </div>
+        </div>
+    </article>
+    <Teleport to="body">
+        <RecipePopup v-if="showModal" :name="name" :image="image" :ingredients="ingredients" :steps="steps"
+            @close="closeModal" @cook="handleCook" />
+    </Teleport>
+
+
+    <div v-if="showConfirm" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl w-[90%] max-w-md shadow-xl">
+            <h3 class="text-lg font-bold mb-4 text-center">
+                Are you sure you finished cooking?
+            </h3>
+            <div v-if="errorMessage.length" class="bg-red-100 text-red-700 p-4 rounded-lg mb-4">
+                <p class="font-bold">❌ Cook ไม่สำเร็จ</p>
+                <ul class="list-disc ml-5">
+                    <li v-for="(item, i) in errorMessage" :key="i">
+                        {{ item }}
+                    </li>
+                </ul>
+            </div>
+            <div class="flex justify-center gap-4">
+                <button @click="cancelCook"
+                    class="font-bold px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-700">
+                    Cancel
+                </button>
+
+                <button @click="confirmCook"
+                    class="font-bold px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-700">
+                    Yes, Done
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div v-if="showDeleteConfirm" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl w-[90%] max-w-md shadow-xl">
+
+            <h3 class="text-lg font-bold mb-4 text-center text-red-500">
+                🗑 Delete Recipe
+            </h3>
+
+            <p class="text-center mb-6 text-gray-600">
+                Are you sure you want to delete <br>
+                <span class="font-bold text-black">{{ name }}</span> ?
+            </p>
+
+            <div class="flex justify-center gap-4">
+                <button @click="cancelDelete" class="px-4 py-2 rounded-lg bg-gray-300 hover:bg-gray-400 font-bold">
+                    Cancel
+                </button>
+
+                <button @click="confirmDelete"
+                    class="px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-700 font-bold">
+                    Delete
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div v-if="showEditModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+
+        <div class="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl">
+
+            <!-- HEADER -->
+            <div class="p-6 border-b flex justify-between items-center sticky top-0 bg-white z-10">
+                <h2 class="text-2xl font-bold text-gray-800">
+                    Edit Recipe
+                </h2>
+                <button @click="cancelEdit" class="text-gray-500 hover:text-gray-700">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <!-- BODY -->
+            <div class="p-6 space-y-6">
+
+                <!-- NAME -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Recipe Name</label>
+                    <input v-model="editForm.name"
+                        class="w-full px-4 py-2 border rounded-lg outline-none border-gray-300" />
+                </div>
+
+                <!-- DESCRIPTION -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Short Description</label>
+                    <input v-model="editForm.short_description"
+                        class="w-full px-4 py-2 border rounded-lg outline-none border-gray-300" />
+                </div>
+
+                <!-- IMAGE -->
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Upload Photo</label>
+                    <input type="file" @change="handleEditFile"
+                        class="w-full px-4 py-2 border rounded-lg border-gray-300" />
+
+                    <img v-if="editForm.image" :src="editForm.image" class="w-40 mt-3 rounded-lg shadow" />
+                </div>
+
+                <!-- INGREDIENT -->
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="block text-sm font-semibold text-gray-700">Ingredients</label>
+                        <button @click="addIngredient" type="button"
+                            class="text-sm bg-blue-50 text-blue-600 px-3 py-1 rounded-md hover:bg-blue-100 flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm">add</span>
+                            Add Ingredient
+                        </button>
+                    </div>
+
+                    <div v-for="(item, index) in editForm.ingredients" :key="index" class="flex gap-2 mb-2 flex-col">
+
+                        <div class="flex gap-2">
+                            <input v-model="item.name" class="flex-1 px-3 py-2 border rounded-md border-gray-300"
+                                placeholder="Name" />
+
+                            <input v-model.number="item.quantity" type="number"
+                                class="w-20 px-3 py-2 border rounded-md border-gray-300" />
+
+                            <select v-model="item.unit" class="w-24 px-3 py-2 border rounded-md border-gray-300">
+                                <option value="pcs">pcs</option>
+                                <option value="ml">ml</option>
+                                <option value="g">g</option>
+                            </select>
+
+                            <button @click="removeIngredient(index)" class="text-red-500 hover:bg-red-50 p-1 rounded">
+                                <span class="material-symbols-outlined">delete</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- STEPS -->
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="block text-sm font-semibold text-gray-700">Steps</label>
+                        <button @click="addStep" type="button"
+                            class="text-sm bg-blue-50 text-blue-600 px-3 py-1 rounded-md hover:bg-blue-100 flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm">add</span>
+                            Add Step
+                        </button>
+                    </div>
+
+                    <div v-for="(step, index) in editForm.steps" :key="index" class="flex gap-3 mb-3 items-start">
+
+                        <span class="mt-2 font-bold text-gray-400">
+                            {{ index + 1 }}.
+                        </span>
+
+                        <textarea v-model="editForm.steps[index]"
+                            class="flex-1 px-3 py-2 border rounded-md h-20 border-gray-300"></textarea>
+
+                        <button @click="removeStep(index)" class="mt-2 text-red-500 hover:bg-red-50 p-1 rounded">
+                            <span class="material-symbols-outlined">delete</span>
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- FOOTER -->
+            <div class="p-6 border-t flex justify-end gap-3 bg-gray-50">
+                <button @click="cancelEdit" class="px-6 py-2 border rounded-lg text-white bg-red-500 hover:bg-red-700">
+                    Cancel
+                </button>
+
+                <button @click="saveEdit"
+                    class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold shadow-md">
+                    Save Recipe
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</template>
