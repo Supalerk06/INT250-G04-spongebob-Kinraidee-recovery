@@ -5,11 +5,12 @@ defineProps({
 </script>
 
 <template>
-  <div class="bg-white rounded-[2.5rem] p-3 shadow-xl hover:-translate-y-2 transition-all duration-500 group border border-gray-100 flex flex-col">
+  <div
+  class="bg-white rounded-[2.5rem] p-3 shadow-xl hover:-translate-y-2 transition-all duration-500 group border border-gray-100 flex flex-col">
 
-    <div class="relative overflow-hidden rounded-3xl mb-4 bg-gray-50">
+    <div class="relative overflow-hidden rounded-3xl mb-4 bg-gray-50 h-48">
       <img :src="shop.imageUrl"
-        class="w-full h-full object-cover rounded-3xl group-hover:scale-110 transition-transform duration-700" />
+        class="w-full h-full object-cover  rounded-3xl group-hover:scale-110 transition-transform duration-700 " />
 
       <div class="absolute bottom-3 left-3 right-3 flex justify-between items-center">
         <div class="bg-black/60 text-white px-3 py-1.5 rounded-xl text-[10px] font-bold flex items-center gap-1">

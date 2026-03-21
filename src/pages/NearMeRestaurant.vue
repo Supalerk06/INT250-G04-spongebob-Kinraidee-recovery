@@ -1,29 +1,38 @@
 
 <script setup>
 import RestaurantCard from '@/components/RestaurantCard.vue'
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import foods from '../data/foods.js'
 
 const route = useRoute()
 const targetMenu = computed(() => route.query.menu)
+const sortBy = ref('distance')
 
 const filteredFoods = computed(() => {
-  if (!targetMenu.value) return []
+  if (!targetMenu.value) return foods
 
   return foods.filter(f =>
     f.name.includes(targetMenu.value)
   )
 })
 
-const allRestaurants = computed(() =>
-  filteredFoods.value.flatMap(f =>
+const allRestaurants = computed(() => {
+  let restaurants = filteredFoods.value.flatMap(f =>
     f.restaurants.map(r => ({
       ...r,
       imageUrl: f.imageUrl
     }))
   )
-)
+
+  if (sortBy.value === 'distance') {
+    restaurants.sort((a, b) => a.distance - b.distance)
+  } else if (sortBy.value === 'rating') {
+    restaurants.sort((a, b) => b.star - a.star)
+  }
+
+  return restaurants
+})
 
 console.log(targetMenu.value)
 console.log(filteredFoods.value)
@@ -41,14 +50,9 @@ console.log(filteredFoods.value)
       class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.05] mix-blend-overlay -z-10">
     </div>
 
-    <header class="relative bg-red-800 pt-5 pb-28 rounded-b-[70px] border-b border-red-500/40 shadow-2xl">
+    <header class="relative bg-red-800 pt-10 pb-28 rounded-b-[70px] border-b border-red-500/40 shadow-2xl">
 
       <div class="relative z-10 max-w-7xl mx-auto">
-        <button
-          class="flex items-center gap-2 text-white/80 hover:text-primary transition-all text-sm font-bold mb-8 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
-          <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-          หน้าแรก
-        </button>
 
         <!-- text left -->
         <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8">
@@ -58,7 +62,7 @@ console.log(filteredFoods.value)
               Current Location: KMUTT
             </span>
             <h1 class="text-4xl md:text-6xl font-display font-black text-white">
-              {{ targetMenu }}
+              {{ targetMenu || 'ร้านอาหารทั้งหมด' }}
             </h1>
           </div>
 
@@ -85,10 +89,10 @@ console.log(filteredFoods.value)
               <span class="text-[12px] font-bold text-red-100 font-display">
                 จัดเรียงตาม
               </span>
-              <select
+              <select v-model="sortBy"
                 class="bg-transparent font-bold text-white text-sm cursor-pointer pb-1 border-b border-white/30 hover:border-primary transition-colors pr-6">
-                <option class="text-text">ใกล้ที่สุด</option>
-                <option class="text-text">คะแนนรีวิว</option>
+                <option value="distance" class="text-text">ใกล้ที่สุด</option>
+                <option value="rating" class="text-text">คะแนนรีวิว</option>
               </select>
             </div>
 
