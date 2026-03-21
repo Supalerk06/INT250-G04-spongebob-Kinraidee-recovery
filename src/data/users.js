@@ -1,0 +1,22 @@
+const users = [{"id":1,"username":"rburg0","first_name":"Raf","last_name":"Burg","email":"rburg0@un.org","password":"hV6%O7On8","fridgeItems":true},
+{"id":2,"username":"ecourt1","first_name":"Emmye","last_name":"Court","email":"ecourt1@columbia.edu","password":"lI5/%WK7vP?CJw","fridgeItems":false},
+{"id":3,"username":"cduncklee2","first_name":"Carmela","last_name":"Duncklee","email":"cduncklee2@gov.uk","password":"mK0`8@d7?kftQJv","fridgeItems":true},
+{"id":4,"username":"mcouper3","first_name":"Malvin","last_name":"Couper","email":"mcouper3@biglobe.ne.jp","password":"pO6~5uZ/>b\"T","fridgeItems":true},
+{"id":5,"username":"rmacharg4","first_name":"Rupert","last_name":"MacHarg","email":"rmacharg4@pcworld.com","password":"fG1!\"A~G4","fridgeItems":true},
+{"id":6,"username":"fjoseph5","first_name":"Fielding","last_name":"Joseph","email":"fjoseph5@java.com","password":"oY0\"IsHAe","fridgeItems":false},
+{"id":7,"username":"vkeeney6","first_name":"Verge","last_name":"Keeney","email":"vkeeney6@1688.com","password":"lW6_a4N<0","fridgeItems":false},
+{"id":8,"username":"bosanne7","first_name":"Basilius","last_name":"Osanne","email":"bosanne7@whitehouse.gov","password":"rI0<x#{)K","fridgeItems":true},
+{"id":9,"username":"rmaleney8","first_name":"Ruben","last_name":"Maleney","email":"rmaleney8@topsy.com","password":"pS1&U\"!!v}seWC","fridgeItems":true},
+{"id":10,"username":"lpizzie9","first_name":"Loralee","last_name":"Pizzie","email":"lpizzie9@ibm.com","password":"lR2\\{IRXoq","fridgeItems":false},
+{"id":11,"username":"vstetsona","first_name":"Venus","last_name":"Stetson","email":"vstetsona@omniture.com","password":"nV5+BgXXjC}f","fridgeItems":true},
+{"id":12,"username":"msteansonb","first_name":"Marcy","last_name":"Steanson","email":"msteansonb@wikipedia.org","password":"oI6#ku1*pn19/=","fridgeItems":false},
+{"id":13,"username":"hcasebournec","first_name":"Hall","last_name":"Casebourne","email":"hcasebournec@cargocollective.com","password":"bI0~6hoU","fridgeItems":true},
+{"id":14,"username":"lmullesd","first_name":"Linn","last_name":"Mulles","email":"lmullesd@hexun.com","password":"cX3&1RJ*","fridgeItems":true},
+{"id":15,"username":"dsalvadore","first_name":"Damaris","last_name":"Salvador","email":"dsalvadore@who.int","password":"bA1,sY6rJ2I#{5%6","fridgeItems":true},
+{"id":16,"username":"jbuxtonf","first_name":"Josi","last_name":"Buxton","email":"jbuxtonf@wix.com","password":"dW0>B9$xMr?aw","fridgeItems":false},
+{"id":17,"username":"ireihmg","first_name":"Isaak","last_name":"Reihm","email":"ireihmg@hibu.com","password":"qC2=o'G?xC4l5","fridgeItems":true},
+{"id":18,"username":"hdinneenh","first_name":"Hazel","last_name":"Dinneen","email":"hdinneenh@cnbc.com","password":"fM0~M2G0\\25dXF'","fridgeItems":true},
+{"id":19,"username":"eainscoughi","first_name":"Elicia","last_name":"Ainscough","email":"eainscoughi@theguardian.com","password":"cZ3+GdoM","fridgeItems":true},
+{"id":20,"username":"psoffj","first_name":"Pepito","last_name":"Soff","email":"psoffj@pinterest.com","password":"wL9\"x.XJG`","fridgeItems":true}]
+
+export default users;
