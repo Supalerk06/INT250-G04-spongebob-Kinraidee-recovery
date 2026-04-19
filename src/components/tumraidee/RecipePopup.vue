@@ -11,8 +11,8 @@ defineProps(['name', 'image', 'ingredients', 'steps', 'video'])
 
             <div
                 class="sticky top-0 bg-white/80 backdrop-blur-md z-10 p-6 border-b border-gray-100 flex justify-between items-center">
-                <h2 class="text-2xl md:text-3xl font-black text-gray-800 uppercase tracking-tight">
-                    Recipe of <span class="text-primary underline decoration-primary/30 text-3xl md:text-5xl">{{ name
+                <h2 class="text-2xl md:text-3xl font-black text-slate-800 uppercase tracking-tight">
+                    Recipe of <span class="text-secondary underline decoration-secondary/30 text-3xl md:text-5xl leading-tight">{{ name
                     }}</span>
                 </h2>
                 <button @click="emit('close')" class="text-gray-400 hover:text-gray-600 transition-colors">
@@ -31,7 +31,7 @@ defineProps(['name', 'image', 'ingredients', 'steps', 'video'])
                     <div>
                         <h3 class="font-bold text-xl md:text-2xl mb-4 flex items-center gap-2 text-gray-800">
                             <span
-                                class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">kitchen</span>
+                                class="material-symbols-outlined text-secondary p-2 bg-secondary/10 rounded-lg">kitchen</span>
                             Ingredients
                         </h3>
                         <ul class="space-y-3">
@@ -50,14 +50,14 @@ defineProps(['name', 'image', 'ingredients', 'steps', 'video'])
                     <div>
                         <h3 class="font-bold text-xl md:text-2xl mb-4 flex items-center gap-2 text-gray-800">
                             <span
-                                class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">cooking</span>
+                                class="material-symbols-outlined text-secondary p-2 bg-secondary/10 rounded-lg">cooking</span>
                             Step by Step
                         </h3>
                         <ol class="space-y-4">
                             <li v-for="(step, index) in steps" :key="index" class="flex gap-4">
 
                                 <span
-                                    class="flex-none w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                                    class="flex-none w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center font-bold">
                                     {{ index + 1 }}
                                 </span>
 
@@ -80,12 +80,12 @@ defineProps(['name', 'image', 'ingredients', 'steps', 'video'])
 
                 <div class="mt-10 flex justify-center gap-10">
                     <button
-                        class="bg-red-500 text-white px-8 py-3 rounded-full font-bold hover:bg-red-900 transition-all shadow-lg active:scale-95"
+                        class="bg-slate-100 text-slate-500 px-8 py-3 rounded-full font-bold hover:bg-slate-200 transition-all active:scale-95"
                         @click="emit('close')">
                         Close
                     </button>
                     <button
-                        class="bg-green-500 text-white px-8 py-3 rounded-full font-bold hover:bg-green-900 transition-all shadow-lg active:scale-95"
+                        class="bg-secondary text-white px-8 py-3 rounded-full font-bold hover:bg-red-600 transition-all shadow-lg active:scale-95 shadow-secondary/20"
                         @click="emit('cook')">
                         Finished cooking
                     </button>

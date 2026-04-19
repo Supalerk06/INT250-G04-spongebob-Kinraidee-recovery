@@ -208,7 +208,7 @@ onMounted(() => {
           <div class="flex justify-between items-center mb-2">
             <label class="block text-sm font-semibold text-gray-700">Ingredients</label>
             <button @click="addIngredient" type="button"
-              class="text-sm bg-blue-50 text-blue-600 px-3 py-1 rounded-md hover:bg-blue-100 flex items-center gap-1">
+              class="text-sm bg-secondary/10 text-secondary px-3 py-1 rounded-md hover:bg-secondary/20 flex items-center gap-1 font-bold transition-colors">
               <span class="material-symbols-outlined text-sm">add</span> Add Ingredient
             </button>
           </div>
@@ -250,7 +250,7 @@ onMounted(() => {
           <div class="flex justify-between items-center mb-2">
             <label class="block text-sm font-semibold text-gray-700">Steps</label>
             <button @click="addStep" type="button"
-              class="text-sm bg-blue-50 text-blue-600 px-3 py-1 rounded-md hover:bg-blue-100 flex items-center gap-1">
+              class="text-sm bg-secondary/10 text-secondary px-3 py-1 rounded-md hover:bg-secondary/20 flex items-center gap-1 font-bold transition-colors">
               <span class="material-symbols-outlined text-sm">add</span> Add Step
             </button>
           </div>
@@ -273,11 +273,11 @@ onMounted(() => {
         </div>
       </div>
 
-      <div class="p-6 border-t flex justify-end gap-3 bg-gray-50">
+      <div class="p-6 border-t flex justify-end gap-3 bg-slate-50">
         <button @click="emit('close')"
-          class="px-6 py-2 border rounded-lg text-white bg-red-500 hover:bg-red-700">Cancel</button>
+          class="px-6 py-2 border border-gray-100 rounded-xl text-slate-500 bg-white hover:bg-slate-100 font-bold transition-colors">Cancel</button>
         <button @click="handleSubmit"
-          class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold shadow-md">
+          class="px-8 py-2 bg-secondary text-white rounded-xl hover:bg-red-600 font-bold shadow-lg shadow-secondary/20 transition-all">
           Save Recipe
         </button>
       </div>

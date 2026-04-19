@@ -9,7 +9,7 @@
         <!-- Logo -->
        <a href="/"><div class="flex items-center gap-4">
           <div
-            class="size-8 text-primary flex items-center justify-center rounded-lg bg-primary/10"
+            class="size-8 text-secondary flex items-center justify-center rounded-lg bg-secondary/10"
           >
             <span class="material-symbols-outlined text-2xl">
               restaurant_menu
@@ -27,27 +27,21 @@
           <nav class="flex items-center gap-6 lg:gap-9">
             <a
               href="/kinraidee"
-              class="text-sm font-medium hover:text-primary transition-colors"
+              class="text-sm font-medium hover:text-secondary transition-colors"
             >
               KinRaiDee
             </a>
             <a
               href="/tumraidee"
-              class="text-sm font-medium hover:text-primary transition-colors"
+              class="text-sm font-medium hover:text-secondary transition-colors"
             >
               TumraiDee
           </a>
             <a
               href="/myfridge"
-              class="text-sm font-medium hover:text-primary transition-colors"
+              class="text-sm font-medium hover:text-secondary transition-colors"
             >
               Fridge
-            </a>
-            <a
-              href="#"
-              class="text-sm font-medium hover:text-primary transition-colors"
-            >
-              About
             </a>
           </nav>
 
@@ -58,7 +52,7 @@
               Login
             </button>
             <button
-              class="flex h-10 px-5 items-center justify-center rounded-xl bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20 text-sm font-bold transition-all"
+              class="flex h-10 px-5 items-center justify-center rounded-xl bg-secondary hover:bg-red-600 shadow-lg shadow-secondary/20 text-white text-sm font-bold transition-all"
             >
               Sign Up
             </button>
@@ -83,16 +77,16 @@
       class="md:hidden border-t border-gray-100 dark:border-[#2a302d] bg-white dark:bg-card-dark px-4 pb-4"
     >
       <nav class="flex flex-col gap-4 py-4">
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="#">
+        <a class="text-sm font-medium hover:text-secondary transition-colors" href="#">
           KinRaiDee
         </a>
-        <a href="/tumraidee" class="text-sm font-medium hover:text-primary transition-colors" >
+        <a href="/tumraidee" class="text-sm font-medium hover:text-secondary transition-colors" >
           TumraiDee
         </a>
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="/myfridge">
+        <a class="text-sm font-medium hover:text-secondary transition-colors" href="/myfridge">
           Fridge
         </a>
-        <a class="text-sm font-medium hover:text-primary transition-colors" href="#">
+        <a class="text-sm font-medium hover:text-secondary transition-colors" href="#">
           About
         </a>
       </nav>
@@ -104,7 +98,7 @@
           Login
         </button>
         <button
-          class="h-10 rounded-xl bg-primary hover:bg-primary/90 text-white text-sm font-bold"
+          class="h-10 rounded-xl bg-secondary hover:bg-red-600 text-white text-sm font-bold shadow-lg shadow-secondary/20"
         >
           Sign Up
         </button>

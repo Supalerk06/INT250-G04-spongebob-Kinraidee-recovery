@@ -57,9 +57,9 @@ function getExpiryClassDiv(expiredDate) {
   <div>
     <div
       v-if="!fridgeItems || fridgeItems.length === 0"
-      class="flex flex-col justify-center items-center w-full p-3"
+      class="flex flex-col justify-center items-center w-full p-12 bg-white rounded-[2.5rem] border-2 border-dashed border-gray-100"
     >
-      <h1 class="">No items found</h1>
+      <h1 class="text-slate-400 font-bold">No items found in your fridge</h1>
     </div>
     <div v-else class="grid grid-cols-[repeat(auto-fit,minmax(185px,1fr))] justify-center w-full py-3 gap-4
   md:grid-cols-3
@@ -136,8 +136,8 @@ function getExpiryClassDiv(expiredDate) {
       />
       <div class="flex flex-col gap-3 w-full">
         <div>
-          <h1 class="text-xl font-bold line-clamp-1">{{ item.name }}</h1>
-          <p class="text-neutral-500">{{ item.quantity }} {{ item.unit }}</p>
+          <h1 class="text-xl font-bold line-clamp-1 text-slate-900">{{ item.name }}</h1>
+          <p class="text-slate-500 font-medium text-sm">{{ item.quantity }} {{ item.unit }}</p>
         </div>
         <hr />
         <h1

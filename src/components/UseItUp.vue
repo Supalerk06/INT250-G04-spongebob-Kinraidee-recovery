@@ -43,12 +43,12 @@ function getExpiryClassText(expiredDate) {
 <template>
 <div>
 
-  <div v-if="aboutToExpire.length > 0" class="bg-white rounded-3xl flex flex-col p-5 border-2 shadow shadow-warning border-warning gap-2">
-    <h3 class="font-bold text-xl"> 
-      <span class="px-3 py-1 rounded-full text-warning text-xl bg-orange-100 font-black">!</span> 
+  <div v-if="aboutToExpire.length > 0" class="bg-white rounded-3xl flex flex-col p-5 border shadow-xl shadow-secondary/10 border-secondary/20 gap-2">
+    <h3 class="font-bold text-xl flex items-center gap-2"> 
+      <span class="size-6 flex items-center justify-center rounded-full text-white text-sm bg-secondary font-black">!</span> 
       Use it up!
     </h3>
-    <p class="text-neutral-500">These items are expiring within 48 hours.</p>
+    <p class="text-slate-500 text-sm">These items are expiring within 48 hours.</p>
     
     <div class="flex flex-col gap-1">
 

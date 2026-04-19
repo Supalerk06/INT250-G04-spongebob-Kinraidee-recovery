@@ -5,7 +5,7 @@ defineProps(['id','name','image','missList','missingCount'])
 <template>
     <!-- 1 -->
     <article
-        class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-soft hover:shadow-lift transition-all duration-300 flex flex-col border-2 border-primary dark:hover:border-gray-700">
+        class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col border border-gray-100 hover:border-secondary/30">
         <div class="h-40 relative overflow-hidden">
             <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 grayscale-[30%] group-hover:grayscale-0"
                 data-alt="Bowl of Tom Yum Kung soup"

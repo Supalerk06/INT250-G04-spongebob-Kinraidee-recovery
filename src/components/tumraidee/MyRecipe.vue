@@ -196,7 +196,7 @@ function removeStep(i) {
 <template>
 
     <article @click="openRecipe"
-        class="border-2 border-primary group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-soft hover:shadow-lift transition-all duration-300 flex flex-col">
+        class="border border-slate-100 hover:border-secondary/30 group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col">
         <div class="h-48 relative overflow-hidden">
             <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                 data-alt="Thai style omelette on rice" :style="{ backgroundImage: `url(${image})` }">
@@ -219,11 +219,11 @@ function removeStep(i) {
         </div>
         <div class="p-5 flex-1 flex flex-col">
             <div class="mb-3">
-                <h4 class="text-xl font-bold text-text-main dark:text-white mb-1">{{ name }}</h4>
-                <p class="text-xs text-text-muted">{{ short_description }}</p>
+                <h4 class="text-xl font-bold text-slate-900 mb-1">{{ name }}</h4>
+                <p class="text-xs text-slate-500">{{ short_description }}</p>
             </div>
             <div class="mt-auto pt-4 border-t border-gray-100 dark:border-gray-700 flex items-center justify-center">
-                <button @click.stop="openRecipe" class="text-primary font-bold text-sm  hover:underline">View
+                <button @click.stop="openRecipe" class="text-secondary font-black text-sm hover:underline">View
                     Recipe</button>
             </div>
         </div>
@@ -249,12 +249,12 @@ function removeStep(i) {
             </div>
             <div class="flex justify-center gap-4">
                 <button @click="cancelCook"
-                    class="font-bold px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-700">
+                    class="font-bold px-6 py-2.5 rounded-xl bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors">
                     Cancel
                 </button>
 
                 <button @click="confirmCook"
-                    class="font-bold px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-700">
+                    class="font-bold px-6 py-2.5 rounded-xl bg-secondary text-white hover:bg-red-600 shadow-lg shadow-secondary/20 transition-all">
                     Yes, Done
                 </button>
             </div>
@@ -392,13 +392,13 @@ function removeStep(i) {
             </div>
 
             <!-- FOOTER -->
-            <div class="p-6 border-t flex justify-end gap-3 bg-gray-50">
-                <button @click="cancelEdit" class="px-6 py-2 border rounded-lg text-white bg-red-500 hover:bg-red-700">
+            <div class="p-6 border-t flex justify-end gap-3 bg-slate-50">
+                <button @click="cancelEdit" class="px-6 py-2 border border-gray-100 rounded-xl text-slate-500 bg-white hover:bg-slate-50 transition-colors font-bold">
                     Cancel
                 </button>
 
                 <button @click="saveEdit"
-                    class="px-6 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 font-semibold shadow-md">
+                    class="px-8 py-2 bg-secondary text-white rounded-xl hover:bg-red-600 font-bold shadow-lg shadow-secondary/20 transition-all">
                     Save Recipe
                 </button>
             </div>

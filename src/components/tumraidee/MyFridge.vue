@@ -17,28 +17,29 @@ const groupedItems = computed(() => {
 
 </script>
 <template>
-    <div class="rounded-2xl p-6 shadow-soft bg-white/10 backdrop-blur-xl border border-white/20 text-white">
+    <div class="rounded-2xl p-6 shadow-xl bg-white border border-gray-100 text-slate-800">
         <h3 class="font-bold text-lg flex items-center gap-2 mb-4">
-            <span class="material-symbols-outlined text-primary">kitchen</span>
+            <span class="material-symbols-outlined text-secondary">kitchen</span>
             My Fridge
         </h3>
+        <hr class="mb-4 border-gray-100">
 
         <div v-for="(items, category) in groupedItems" :key="category" class="mb-6">
-            <p class="text-sm font-bold text-primary uppercase mb-3">
+            <p class="text-xs font-black text-secondary uppercase mb-3 tracking-wider">
                 {{ category }}
             </p>
 
             <ul class="space-y-3">
-                <li v-for="item in items" :key="item.id" class="flex justify-between">
-                    <span>{{ item.name }}</span>
-                    <span class="text-xs text-text-muted">
+                <li v-for="item in items" :key="item.id" class="flex justify-between items-center bg-slate-50/50 p-2 rounded-lg">
+                    <span class="font-medium text-sm">{{ item.name }}</span>
+                    <span class="text-[10px] font-bold bg-white px-2 py-0.5 rounded border border-gray-100 text-slate-400">
                         {{ item.quantity }} {{ item.unit }}
                     </span>
                 </li>
             </ul>
         </div>
 
-        <a class="text-sm text-primary font-bold flex items-center justify-center gap-2 hover:underline mt-4"
+        <a class="text-sm text-secondary font-black flex items-center justify-center gap-2 hover:underline mt-4 pt-4 border-t border-gray-50"
             href="/myfridge">
             View Full Inventory
             <span class="material-symbols-outlined text-sm">arrow_forward</span>
