@@ -8,6 +8,13 @@ import foods from '../data/foods.js'
 const route = useRoute()
 const targetMenu = computed(() => route.query.menu)
 const sortBy = ref('distance')
+const maxDistance = ref(1) 
+
+const displayDistance = computed(() => {
+  return maxDistance.value >= 1
+    ? maxDistance.value + ' km'
+    : (maxDistance.value * 1000) + ' m'
+})
 
 const filteredFoods = computed(() => {
   if (!targetMenu.value) return foods
@@ -31,7 +38,15 @@ const allRestaurants = computed(() => {
     restaurants.sort((a, b) => b.star - a.star)
   }
 
-  return restaurants
+  let filtered = restaurants.filter(r => r.distance <= maxDistance.value)
+
+  if (filtered.length === 0 && restaurants.length > 0) {
+    const nearest = restaurants[0]
+    maxDistance.value = nearest.distance   // ⭐ สำคัญ
+    filtered = [nearest]
+  }
+
+  return filtered
 })
 
 console.log(targetMenu.value)
@@ -75,10 +90,10 @@ console.log(filteredFoods.value)
                   ระยะทางค้นหา
                 </span>
                 <span class="text-red-900 font-black bg-primary px-2.5 py-0.5 rounded-md text-[11px] shadow-lg">
-                  1000 M
+                  {{ displayDistance }}
                 </span>
               </div>
-              <input type="range"
+              <input type="range" v-model="maxDistance" min="0" max="10" step="0.1"
                 class="w-full h-1.5 bg-white/20 rounded-full appearance-none cursor-pointer accent-primary transition-all" />
             </div>
 
