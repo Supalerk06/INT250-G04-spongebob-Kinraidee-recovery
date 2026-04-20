@@ -89,8 +89,8 @@
         </div>
         <div class="w-full lg:w-1/2 relative group">
           <div class="absolute inset-0 bg-secondary/10 blur-[50px] rounded-full group-hover:bg-secondary/20 transition-colors duration-500"></div>
-          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80" alt="Restaurant Near Me" class="relative z-10 rounded-3xl shadow-xl border border-gray-100 object-cover h-[500px] w-full" />
-          <div class="absolute top-10 -left-6 bg-white border border-gray-100 p-3 rounded-2xl shadow-xl z-20 flex items-center gap-3">
+          <img :src="menu" alt="Random Food" class="relative z-10 rounded-3xl shadow-xl border border-gray-100 object-cover w-full" />
+          <div class="absolute bottom-2 -right-6 bg-white border border-gray-100 p-3 rounded-2xl shadow-xl z-20 flex items-center gap-3">
             <div class="bg-secondary/20 p-2 rounded-full text-secondary">📍</div>
             <p class="font-bold text-slate-900 text-sm">พบ 15 ร้านในระยะ 1 กม.</p>
           </div>
@@ -100,7 +100,7 @@
       <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
         <div class="w-full lg:w-1/2 order-2 lg:order-1 relative group">
           <div class="absolute inset-0 bg-secondary/10 blur-[50px] rounded-full group-hover:bg-secondary/20 transition-colors duration-500"></div>
-          <img src="https://images.unsplash.com/photo-1583258292688-d0213dc5a3a8?auto=format&fit=crop&w=1000&q=80" alt="Fridge Management" class="relative z-10 rounded-3xl shadow-xl border border-gray-100 object-cover h-[500px] w-full" />
+          <img :src="myfridge" alt="Fridge Management" class="relative z-10 rounded-3xl shadow-xl border border-gray-100 object-cover  w-full" />
           
           <div class="absolute bottom-10 -right-6 bg-white/95 backdrop-blur border border-gray-100 p-4 rounded-2xl shadow-2xl z-20 w-64">
              <div class="flex justify-between items-center mb-3">
@@ -171,7 +171,7 @@
         </div>
         <div class="w-full lg:w-1/2 relative group">
           <div class="absolute inset-0 bg-secondary/10 blur-[50px] rounded-full group-hover:bg-secondary/20 transition-colors duration-500"></div>
-          <img src="https://www.njlifestylemag.com/content/images/size/w1304/2023/12/AdobeStock_267334945.jpeg" alt="Cooking Recipe" class="relative z-10 rounded-3xl shadow-xl border border-gray-100 object-cover h-[500px] w-full" />
+          <img :src="tumraidee" alt="Cooking Recipe" class="relative z-10 rounded-3xl shadow-xl border border-gray-100 object-cover h-[500px] w-full" />
         </div>
       </div>
 
@@ -195,6 +195,9 @@
 
 <script setup>
 import kinraidee from "../assets/kinraidee.png"
+import menu from "../assets/menu.png"
+import myfridge from "../assets/myfridge.png"
+import tumraidee from "../assets/tumraidee.png"
 </script>
 
 <style scoped>
