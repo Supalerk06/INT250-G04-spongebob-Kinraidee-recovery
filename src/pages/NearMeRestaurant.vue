@@ -1,4 +1,3 @@
-
 <script setup>
 import RestaurantCard from '@/components/RestaurantCard.vue'
 import { ref, computed } from 'vue'
@@ -8,7 +7,7 @@ import foods from '../data/foods.js'
 const route = useRoute()
 const targetMenu = computed(() => route.query.menu)
 const sortBy = ref('distance')
-const maxDistance = ref(1) 
+const maxDistance = ref(1)
 
 const displayDistance = computed(() => {
   return maxDistance.value >= 1
@@ -32,6 +31,9 @@ const allRestaurants = computed(() => {
     }))
   )
 
+  restaurants = restaurants.filter(r => r.distance <= maxDistance.value)
+
+  // sort
   if (sortBy.value === 'distance') {
     restaurants.sort((a, b) => a.distance - b.distance)
   } else if (sortBy.value === 'rating') {
@@ -42,87 +44,124 @@ const allRestaurants = computed(() => {
 
   if (filtered.length === 0 && restaurants.length > 0) {
     const nearest = restaurants[0]
-    maxDistance.value = nearest.distance   // ⭐ สำคัญ
+    maxDistance.value = nearest.distance
     filtered = [nearest]
   }
 
   return filtered
 })
 
+const distanceOptions = [
+  { label: 'Very Close', value: 0.5 },
+  { label: '1 km', value: 1 },
+  { label: 'Moderate', value: 3 },
+  { label: 'All', value: 10 }
+]
+
+const resetFilters = () => {
+  maxDistance.value = 1
+  sortBy.value = 'distance'
+}
+
+
 console.log(targetMenu.value)
 console.log(filteredFoods.value)
 
 </script>
-
-
 <template>
-  <div class="min-h-screen font-body text-slate-800 pb-24 relative overflow-hidden bg-slate-50">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_90%_0%,rgba(238,27,36,0.05),transparent_40%),radial-gradient(circle_at_0%_100%,rgba(238,27,36,0.05),transparent_40%)] -z-10 pointer-events-none"></div>
-    <div class="absolute top-[-10%] right-[-5%] w-[40vw] h-[40vw] bg-secondary/5 blur-[150px] rounded-full -z-10">
-    </div>
-    <div class="absolute bottom-[-20%] left-[-10%] w-[30vw] h-[30vw] bg-secondary/5 blur-[120px] rounded-full -z-10"></div>
-    <div
-      class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.02] mix-blend-overlay -z-10">
-    </div>
+  <div class="min-h-screen font-body text-slate-800 bg-slate-50">
 
-    <header class="relative bg-white pt-10 pb-28 rounded-b-[70px] border-b border-gray-100 shadow-xl">
+    <main class="max-w-7xl mx-auto pt-12 space-y-5"> 
 
-      <div class="relative z-10 max-w-7xl mx-auto">
+      <div class="flex flex-col lg:flex-row justify-between gap-8 px-6 pb-2">
+        <div class="space-y-3">
+          <span
+            class="flex items-center gap-2 text-secondary font-black font-display text-[11px] uppercase tracking-[0.2em]">
+            📍 Current Location: KMUTT
+          </span>
+          <h1 class="text-3xl md:text-5xl font-black text-slate-900">
+            {{ targetMenu || 'ร้านอาหารทั้งหมด' }}
+          </h1>
+          <p class="text-slate-500 text-sm font-display font-medium">
+            Discover great restaurants around you
+          </p>
+        </div>
 
-        <!-- text left -->
-        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8">
-          <div class="space-y-1">
-            <span
-              class="flex items-center gap-2 text-secondary font-black text-[11px] uppercase tracking-[0.2em] mb-2 font-display">
-              📍 Current Location: KMUTT
-            </span>
-            <h1 class="text-4xl md:text-6xl font-display font-black text-slate-900">
-              {{ targetMenu || 'ร้านอาหารทั้งหมด' }}
-            </h1>
+
+        <!-- distance box  -->
+        <div
+          class="flex flex-col sm:flex-row items-center gap-6 w-full lg:w-auto bg-white p-5 rounded-3xl border border-gray-100 shadow-sm">
+
+          <div class="w-full sm:w-60">
+            <div class="flex justify-between items-center mb-3">
+              <span class="text-[12px] font-bold text-slate-400 font-display">
+                Distance
+              </span>
+              <span
+                class="text-white font-black bg-secondary px-2.5 py-0.5 rounded-md text-[11px] shadow-lg shadow-secondary/20">
+                {{ displayDistance }}
+              </span>
+
+            </div>
+
+            <input type="range" v-model="maxDistance" min="0" max="10" step="0.1"
+              class="w-full h-1.5 bg-black rounded-full appearance-none cursor-pointer accent-secondary" />
           </div>
 
-          <!-- distance box  -->
-          <div
-            class="flex flex-col sm:flex-row items-center gap-6 w-full lg:w-auto bg-slate-50 p-5 rounded-3xl border border-gray-100 shadow-sm">
-            <div class="w-full sm:w-60">
-              <div class="flex justify-between items-center mb-3">
-                <span class="text-[12px] font-bold text-slate-400 font-display">
-                  ระยะทางค้นหา
-                </span>
-                <span class="text-white font-black bg-secondary px-2.5 py-0.5 rounded-md text-[11px] shadow-lg shadow-secondary/20">
-                  {{ displayDistance }}
-                </span>
-              </div>
-              <input type="range" v-model="maxDistance" min="0" max="10" step="0.1"
-                class="w-full h-1.5 bg-slate-200 rounded-full appearance-none cursor-pointer accent-secondary transition-all" />
-            </div>
+          <div class="h-10 border-r border-gray-200 hidden sm:block"></div>
 
-            <div class="h-10 w-px bg-gray-200 hidden sm:block mx-1"></div>
-
-            <!-- select option -->
-            <div class="relative flex flex-col gap-1 w-full sm:w-[140px]">
-              <span class="text-[12px] font-bold text-slate-400 font-display">
-                จัดเรียงตาม
-              </span>
-              <select v-model="sortBy"
-                class="bg-transparent font-bold text-slate-700 text-sm cursor-pointer pb-1 border-b border-gray-200 hover:border-secondary transition-colors pr-6 focus:outline-none">
-                <option value="distance" class="text-slate-700">ใกล้ที่สุด</option>
-                <option value="rating" class="text-slate-700">คะแนนรีวิว</option>
-              </select>
-            </div>
-
+          <!-- select option -->
+         <div class="flex flex-col w-full sm:w-[140px] space-y-1">
+            <span class="text-xs font-bold font-display text-slate-400">
+              Sort by
+            </span>
+            <select v-model="sortBy"
+              class="text-sm font-bold font-display text-slate-700 border-b border-gray-200 focus:border-secondary outline-none cursor-pointer">
+              <option value="distance">Nearest</option>
+              <option value="rating">Top rated</option>
+            </select>
+            <button @click="resetFilters"
+              class="text-xs font-bold text-red-500 hover:text-red-600 transition pt-1 text-left">
+              Reset all
+            </button>
           </div>
         </div>
       </div>
-    </header>
 
-    <!-- card -->
-    <main class="relative z-20 max-w-7xl mx-auto px-6 -mt-20">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <RestaurantCard v-for="(shop, index) in allRestaurants" :key="index" :shop="shop"/>
+      <!-- quick option button -->
+      <div class="flex gap-3 px-6">
+        <button v-for="option in distanceOptions" :key="option.value" @click="maxDistance = option.value"
+          class="shrink-0 rounded-full px-4 py-2 font-display font-bold text-sm transition-all duration-200 border border-gray-200 hover:bg-gray-100"
+          :class="maxDistance === option.value
+            ? 'bg-secondary text-white shadow-secondary/20 hover:bg-secondary'
+            : 'bg-white text-slate-600'">
+         {{ option.label }}
+        </button>
       </div>
-    </main>
 
+      <!-- count rest -->
+      <div class="flex items-center gap-2 ml-7 pt-2">
+        <span class="text-xl font-black text-secondary">{{ allRestaurants.length }}</span>
+        <p class="text-slate-500 font-display font-bold text-base">restaurants nearby</p>
+      </div>
+
+      <!-- card -->
+      <!-- กรณีถ้าร้านไม่มีในระยะทางนั้น ๆ -->
+      <div v-if="allRestaurants.length === 0" class="text-center py-20 px-6">
+        <div class="text-6xl mb-4">😢</div>
+        <h2 class="text-2xl font-black text-slate-700 font-display ">
+          No restaurants found
+        </h2>
+        <p class="text-sm text-slate-400 mt-2 font-display">
+          Try adjusting your filters or distance🍜
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <RestaurantCard v-for="(shop, index) in allRestaurants" :key="index" :shop="shop" />
+      </div>
+
+    </main>
   </div>
 </template>
 
