@@ -4,94 +4,123 @@ defineProps(['name', 'image', 'ingredients', 'steps', 'video'])
 </script>
 
 <template>
-    <div class=" bg-black/50 fixed inset-0  flex items-center justify-center z-50 p-4 ">
+  <div class="bg-slate-900/60 backdrop-blur-sm fixed inset-0 flex items-center justify-center z-50 p-0 md:p-6 transition-all">
+    
+    <!-- Modal Container -->
+    <div class="bg-white w-full max-w-5xl max-h-screen md:max-h-[92vh] md:rounded-3xl shadow-2xl overflow-hidden flex flex-col relative">
+      
+      <!-- Close Button (Floating) -->
+      <button 
+        @click="emit('close')" 
+        class="absolute top-4 right-4 z-50 bg-white/80 backdrop-blur-md p-2 rounded-full shadow-lg hover:bg-white transition-all active:scale-90 text-slate-600"
+      >
+        <span class="material-symbols-outlined block">close</span>
+      </button>
 
-        <div
-            class="bg-white w-full max-w-4xl max-h-[90vh] rounded-2xl shadow-2xl overflow-y-auto border border-gray-100">
-
-            <div
-                class="sticky top-0 bg-white/80 backdrop-blur-md z-10 p-6 border-b border-gray-100 flex justify-between items-center">
-                <h2 class="text-2xl md:text-3xl font-black text-gray-800 uppercase tracking-tight">
-                    Recipe of <span class="text-primary underline decoration-primary/30 text-3xl md:text-5xl">{{ name
-                    }}</span>
-                </h2>
-                <button @click="emit('close')" class="text-gray-400 hover:text-gray-600 transition-colors">
-                    <span class="material-symbols-outlined text-3xl">close</span>
-                </button>
+      <!-- Scrollable Content -->
+      <div class="overflow-y-auto custom-scrollbar">
+        
+        <!-- Hero Section -->
+        <div class="relative h-[300px] md:h-[450px] overflow-hidden">
+          <img :src="image" :alt="name" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end">
+            <div class="p-6 md:p-10 w-full">
+              <span class="inline-block px-3 py-1 bg-secondary text-white text-xs font-bold rounded-full mb-3 uppercase tracking-widest">Recipe</span>
+              <h2 class="text-3xl md:text-5xl font-black text-white leading-tight drop-shadow-md">
+                {{ name }}
+              </h2>
             </div>
-
-            <div class="p-6 md:p-10">
-                <div class="rounded-xl overflow-hidden shadow-lg mb-8">
-                    <img class="w-full h-64 md:h-96 object-cover hover:scale-105 transition-transform duration-500"
-                        :src="image" :alt="name">
-                </div>
-
-                <div class="grid grid-cols-1 gap-10">
-
-                    <div>
-                        <h3 class="font-bold text-xl md:text-2xl mb-4 flex items-center gap-2 text-gray-800">
-                            <span
-                                class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">kitchen</span>
-                            Ingredients
-                        </h3>
-                        <ul class="space-y-3">
-                            <li v-for="(ing, index) in ingredients" :key="index" class="pb-2 border-b border-gray-50">
-
-                                <p class="flex justify-between text-gray-600 italic">
-                                    {{ ing.name }}
-                                    <span class="font-bold text-gray-800">
-                                        {{ ing.quantity }} {{ ing.unit }}
-                                    </span>
-                                </p>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h3 class="font-bold text-xl md:text-2xl mb-4 flex items-center gap-2 text-gray-800">
-                            <span
-                                class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">cooking</span>
-                            Step by Step
-                        </h3>
-                        <ol class="space-y-4">
-                            <li v-for="(step, index) in steps" :key="index" class="flex gap-4">
-
-                                <span
-                                    class="flex-none w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">
-                                    {{ index + 1 }}
-                                </span>
-
-                                <p class="text-gray-600 leading-relaxed">
-                                    ขั้นตอนที่ {{ index + 1 }} : {{ step }}
-                                </p>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-
-                <div class="mt-12 rounded-xl overflow-hidden shadow-inner bg-gray-100 p-2" v-if="video">
-                    <div class="aspect-video w-full" >
-                        <iframe class="w-full h-full rounded-lg"  :src="video" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
-
-                <div class="mt-10 flex justify-center gap-10">
-                    <button
-                        class="bg-red-500 text-white px-8 py-3 rounded-full font-bold hover:bg-red-900 transition-all shadow-lg active:scale-95"
-                        @click="emit('close')">
-                        Close
-                    </button>
-                    <button
-                        class="bg-green-500 text-white px-8 py-3 rounded-full font-bold hover:bg-green-900 transition-all shadow-lg active:scale-95"
-                        @click="emit('cook')">
-                        Finished cooking
-                    </button>
-                </div>
-            </div>
+          </div>
         </div>
+
+        <div class="p-6 md:p-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            <!-- Left Side: Ingredients -->
+            <div class="lg:col-span-5">
+              <div class="sticky top-0">
+                <h3 class="font-bold text-2xl mb-6 flex items-center gap-3 text-slate-800">
+                  <span class="material-symbols-outlined text-secondary bg-secondary/10 p-2 rounded-xl">restaurant_menu</span>
+                  Ingredients
+                </h3>
+                
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+                  <ul class="space-y-4">
+                    <li v-for="(ing, index) in ingredients" :key="index" 
+                        class="group flex items-center justify-between p-3 rounded-xl hover:bg-white hover:shadow-sm transition-all border-b border-slate-200/50 last:border-0">
+                      <div class="flex items-center gap-3">
+                        <div class="w-2 h-2 rounded-full bg-secondary/40 group-hover:bg-secondary transition-colors"></div>
+                        <span class="text-slate-600 font-medium">{{ ing.name }}</span>
+                      </div>
+                      <span class="bg-white px-3 py-1 rounded-lg text-sm font-bold text-slate-800 shadow-sm border border-slate-100">
+                        {{ ing.quantity }} {{ ing.unit }}
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Side: Steps -->
+            <div class="lg:col-span-7">
+              <h3 class="font-bold text-2xl mb-6 flex items-center gap-3 text-slate-800">
+                <span class="material-symbols-outlined text-secondary bg-secondary/10 p-2 rounded-xl">instacart</span>
+                Cooking Steps
+              </h3>
+
+              <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-z-10 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-secondary/20 before:to-transparent">
+                <div v-for="(step, index) in steps" :key="index" class="relative flex gap-6 group">
+                  <!-- Number Circle -->
+                  <div class="flex-none w-10 h-10 rounded-full bg-white border-4 border-secondary text-secondary flex items-center justify-center font-black shadow-sm group-hover:bg-secondary group-hover:text-white transition-all">
+                    {{ index + 1 }}
+                  </div>
+                  
+                  <!-- Step Card -->
+                  <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm group-hover:shadow-md transition-all flex-grow">
+                    <p class="text-slate-600 leading-relaxed">
+                      {{ step }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Video Section -->
+              <div v-if="video" class="mt-12">
+                <h3 class="font-bold text-xl mb-4 text-slate-800 flex items-center gap-2">
+                   <span class="material-symbols-outlined">play_circle</span>
+                   Video Tutorial
+                </h3>
+                <div class="rounded-2xl overflow-hidden shadow-xl aspect-video border-4 border-slate-100">
+                  <iframe class="w-full h-full" :src="video" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Actions -->
+      <div class="p-6 border-t border-slate-100 bg-white/80 backdrop-blur-md flex flex-col md:flex-row justify-end gap-4">
+        <button
+          @click="emit('close')"
+          class="order-2 md:order-1 px-8 py-3 rounded-xl font-bold text-slate-500 hover:bg-slate-100 transition-all active:scale-95">
+          Back to Recipes
+        </button>
+        <button
+          @click="emit('cook')"
+          class="order-1 md:order-2 bg-secondary text-white px-10 py-3 rounded-xl font-bold hover:brightness-110 transition-all shadow-lg shadow-secondary/25 active:scale-95 flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-sm">check_circle</span>
+          I've Finished Cooking!
+        </button>
+      </div>
+
     </div>
+  </div>
 </template>
-<style scoped></style>
+
+<style scoped>
+</style>
