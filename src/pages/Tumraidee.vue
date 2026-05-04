@@ -1,12 +1,7 @@
 <script setup>
-import { ref, computed, onMounted, toRaw } from "vue";
-import { useObservable } from "@vueuse/rxjs";
-import { liveQuery } from "dexie";
-
+import { ref, computed } from "vue";
 import { recipes } from "@/data/recipes";
-import { db } from "@/data/userRecipes";
-
-let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || []);
+import { userRecipes, db } from "@/data/userRecipes";
 
 import PerfectMatch from "@/components/tumraidee/PerfectMatch.vue";
 import AlmostMatch from "@/components/tumraidee/AlmostMatch.vue";
@@ -14,11 +9,9 @@ import MyRecipe from "@/components/tumraidee/MyRecipe.vue";
 import MyFridge from "@/components/tumraidee/MyFridge.vue";
 import FormPopUp from "@/components/tumraidee/FormPopup.vue";
 
-const showForm = ref(false);
+let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || []);
 
-const openForm = () => {
-  showForm.value = true;
-};
+const showForm = ref(false);
 
 const selectedCategory = ref("All");
 const categories = [
@@ -31,19 +24,18 @@ const categories = [
   "Vegetarian",
   "Vegan",
 ];
+
 const setCategory = (category) => {
   selectedCategory.value = category;
 };
 
 const availableRecipes = computed(() => {
   return recipes.value.filter((recipe) => {
-    // กรองตามหมวดหมู่ก่อน
     const matchCategory =
       selectedCategory.value === "All" ||
       recipe.categories.includes(selectedCategory.value);
     if (!matchCategory) return false;
 
-    // แล้วค่อยเช็คเรื่องวัตถุดิบในตู้เย็น
     return recipe.ingredients.every((ingredient) => {
       const itemInFridge = fridgeItems.value.find(
         (item) => item.name.toLowerCase() === ingredient.name.toLowerCase(),
@@ -53,7 +45,6 @@ const availableRecipes = computed(() => {
   });
 });
 
-// 3. แก้ไข almostReadyRecipes ให้กรองตามหมวดหมู่ด้วย
 const almostReadyRecipes = computed(() => {
   if (!recipes.value || !fridgeItems.value) return [];
 
@@ -62,7 +53,7 @@ const almostReadyRecipes = computed(() => {
       (recipe) =>
         selectedCategory.value === "All" ||
         recipe.categories.includes(selectedCategory.value),
-    ) // กรองหมวดหมู่
+    )
     .map((recipe) => {
       const missingIngredients = recipe.ingredients.filter((ing) => {
         const itemInFridge = fridgeItems.value.find(
@@ -81,15 +72,8 @@ const almostReadyRecipes = computed(() => {
     .sort((a, b) => a.missingCount - b.missingCount);
 });
 
-const userRecipes = useObservable(liveQuery(() => db.recipes.toArray()));
-
 async function deleteRecipe(id) {
-  // ลบ DB
-  await db.recipes.delete(id);
-
-  // ลบ UI
-  const index = userRecipes.value.findIndex((r) => r.id === id);
-  if (index !== -1) userRecipes.value.splice(index, 1);
+  db.recipes.delete(id);
 }
 </script>
 

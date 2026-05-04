@@ -100,8 +100,7 @@ const removeStep = (index) => {
   if (recipe.steps.length > 1) recipe.steps.splice(index, 1)
 }
 
-const handleSubmit = async () => {
-
+const handleSubmit = () => {
   if (!validateForm()) return
 
   try {
@@ -109,11 +108,11 @@ const handleSubmit = async () => {
 
     if (props.recipeData?.id) {
       // ✏️ EDIT MODE
-      await db.recipes.update(props.recipeData.id, data)
+      db.recipes.update(props.recipeData.id, data)
       console.log("Updated ✅")
     } else {
       // ➕ ADD MODE
-      await db.recipes.add({
+      db.recipes.add({
         ...data,
         createdAt: new Date()
       })
