@@ -80,7 +80,7 @@ const isCooking = ref(false)
                         class="text-2xl font-bold text-slate-900 group-hover:text-secondary transition-colors">
                         {{ name }}</h4>
                     <div
-                        class="flex items-center gap-1 text-xs font-bold text-green-400 bg-green-400/20 px-2 py-1 rounded-md">
+                        class="flex items-center gap-1 text-xs font-bold text-secondary bg-secondary/10 px-2 py-1 rounded-md">
                         <span class="material-symbols-outlined text-[14px]">check</span>
                         You have all items
                     </div>
@@ -95,7 +95,7 @@ const isCooking = ref(false)
             </div>
             <div class="flex items-center justify-between mt-auto">
                 <button @click.stop="openRecipe"
-                    class="bg-secondary hover:bg-red-600 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-secondary/20 transition-all active:scale-95 flex items-center gap-2">
+                    class="bg-secondary hover:bg-orange-600 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-secondary/20 transition-all active:scale-95 flex items-center gap-2">
                     Cook Now
                     <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
                 </button>
@@ -113,11 +113,11 @@ const isCooking = ref(false)
                 Are you sure you finished cooking?
             </h3>
             <div class="flex justify-center gap-4">
-                <button @click="cancelCook" class="font-bold px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-700">
+                <button @click="cancelCook" class="font-bold px-4 py-2 rounded-lg bg-orange-500 text-white hover:bg-orange-700">
                     Cancel
                 </button>
 
-                <button @click="confirmCook" class="font-bold px-4 py-2 rounded-lg bg-green-500 text-white hover:bg-green-700">
+                <button @click="confirmCook" class="font-bold px-4 py-2 rounded-lg bg-secondary text-white hover:bg-orange-600 transition-all shadow-lg shadow-secondary/20">
                     Yes, Done
                 </button>
             </div>

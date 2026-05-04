@@ -33,22 +33,22 @@ onUnmounted(() => window.removeEventListener("click", closeMenu));
 function getExpiryClassText(expiredDate) {
   const diffInDays = props.calculateExpiredDate(expiredDate);
   if (diffInDays < 0) {
-    return "text-danger bg-red-100";
+    return "text-danger bg-orange-100";
   } else if (diffInDays >= 0 && diffInDays <= 2) {
     return "text-warning bg-yellow-100";
   } else {
-    return "text-success bg-green-100";
+    return "text-orange-800 bg-orange-100";
   }
 }
 
 function getExpiryClassDiv(expiredDate) {
   const diffInDays = props.calculateExpiredDate(expiredDate);
   if (diffInDays < 0) {
-    return "border-4 border-red-400 shadow-red-100";
+    return "border-4 border-orange-400 shadow-orange-100";
   } else if (diffInDays >= 0 && diffInDays <= 2) {
     return "border-4 border-yellow-200 shadow-yellow-100";
   } else {
-    return "border-4 border-green-300 shadow-green-100";
+    return "border-4 border-orange-200 shadow-orange-50";
   }
 }
 </script>
@@ -109,7 +109,7 @@ function getExpiryClassDiv(expiredDate) {
           </button>
           <button
             @click="emit('delete-item', item.id)"
-            class="w-full text-left px-5 py-3 text-sm hover:bg-red-50 hover:text-danger transition flex items-center gap-2"
+            class="w-full text-left px-5 py-3 text-sm hover:bg-orange-50 hover:text-danger transition flex items-center gap-2"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -68,7 +68,7 @@ defineProps(['name', 'image', 'ingredients', 'steps', 'video'])
                 Cooking Steps
               </h3>
 
-              <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-z-10 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-secondary/20 before:to-transparent">
+              <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-z-10 before:h-full before:w-0.5 before:bg-secondary/10">
                 <div v-for="(step, index) in steps" :key="index" class="relative flex gap-6 group">
                   <!-- Number Circle -->
                   <div class="flex-none w-10 h-10 rounded-full bg-white border-4 border-secondary text-secondary flex items-center justify-center font-black shadow-sm group-hover:bg-secondary group-hover:text-white transition-all">

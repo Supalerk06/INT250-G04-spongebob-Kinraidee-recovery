@@ -33,7 +33,7 @@ const allRestaurants = computed(() => {
 
   restaurants = restaurants.filter(r => r.distance <= maxDistance.value)
 
-  // sort
+
   if (sortBy.value === 'distance') {
     restaurants.sort((a, b) => a.distance - b.distance)
   } else if (sortBy.value === 'rating') {
@@ -41,12 +41,6 @@ const allRestaurants = computed(() => {
   }
 
   let filtered = restaurants.filter(r => r.distance <= maxDistance.value)
-
-  if (filtered.length === 0 && restaurants.length > 0) {
-    const nearest = restaurants[0]
-    maxDistance.value = nearest.distance
-    filtered = [nearest]
-  }
 
   return filtered
 })
@@ -80,7 +74,7 @@ console.log(filteredFoods.value)
             📍 Current Location: KMUTT
           </span>
           <h1 class="text-3xl md:text-5xl font-black text-slate-900">
-            {{ targetMenu || 'ร้านอาหารทั้งหมด' }}
+            {{ targetMenu || 'All Restaurants' }}
           </h1>
           <p class="text-slate-500 text-sm font-display font-medium">
             Discover great restaurants around you
@@ -121,7 +115,7 @@ console.log(filteredFoods.value)
               <option value="rating">Top rated</option>
             </select>
             <button @click="resetFilters"
-              class="text-xs font-bold text-red-500 hover:text-red-600 transition pt-1 text-left">
+              class="text-xs font-bold text-orange-500 hover:text-orange-600 transition pt-1 text-left">
               Reset all
             </button>
           </div>

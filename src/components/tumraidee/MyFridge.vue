@@ -1,9 +1,7 @@
 <script setup>
 import {  ref, computed ,toRaw} from 'vue';
 const Props = defineProps(['fridgeItems'])
-// import {fridgeItems} from '@/data/fridgeItems';
 console.log(toRaw(Props.fridgeItems));
-// let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || [])
 
 
 const groupedItems = computed(() => {

@@ -4,7 +4,6 @@ import { useObservable } from "@vueuse/rxjs";
 import { liveQuery } from "dexie";
 
 import { recipes } from "@/data/recipes";
-// import {fridgeItems} from "@/data/fridgeItems";
 import { db } from "@/data/userRecipes";
 
 let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || []);
@@ -95,27 +94,19 @@ async function deleteRecipe(id) {
 </script>
 
 <template>
-  <div
-    class="bg-white font-display text-slate-900 min-h-screen flex flex-col overflow-x-hidden relative"
-  >
-    <div
-      class="absolute inset-0 bg-[radial-gradient(circle_at_90%_0%,rgba(238,27,36,0.05),transparent_40%),radial-gradient(circle_at_0%_100%,rgba(238,27,36,0.05),transparent_40%)] pointer-events-none"
-    ></div>
+  <div class="bg-white font-display text-slate-900 min-h-screen flex flex-col overflow-x-hidden relative">
+    <div class="absolute inset-0 bg-slate-50/30 pointer-events-none"></div>
     <div class="flex-1 max-w-[1400px] w-full mx-auto p-6 md:p-8 lg:p-10">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <aside class="lg:col-span-3">
           <MyFridge :fridgeItems="fridgeItems"></MyFridge>
         </aside>
-
-        <!-- หน้าหลัก -->
-        <!-- <RecipePopup ></RecipePopup> -->
         <main class="lg:col-span-9 flex flex-col gap-8">
           <div class="gap-5 flex flex-col">
             <div>
               <h2 class="mb-2 text-4xl text-slate-900 md:text-5xl font-black">
                 What to Cook?
               </h2>
-              <!-- จำนวนเมนู -->
               <p class="text-lg text-slate-500 flex gap-2">
                 Generating ideas from
                 <strong class="text-secondary font-black">
@@ -144,14 +135,10 @@ async function deleteRecipe(id) {
             </div>
           </div>
 
-          <!-- Perfect mactch -->
           <p class="flex gap-2 text-xl font-bold text-slate-800">
-            <span class="material-symbols-outlined text-secondary fill-current"
-              >star</span
-            >
+            <span class="material-symbols-outlined text-secondary fill-current">star</span>
             Perfect Match (100%)
           </p>
-          <!-- ของด้านล่าง -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
             <PerfectMatch
               v-for="Perfect in availableRecipes"
@@ -167,13 +154,9 @@ async function deleteRecipe(id) {
             ></PerfectMatch>
           </div>
 
-          <!-- Almostนะ -->
           <p class="flex gap-2 text-xl font-bold text-slate-800">
-            <span class="material-symbols-outlined text-orange-500"
-              >shopping_basket</span
-            >Almost There (Missing 1-2 items)
+            <span class="material-symbols-outlined text-orange-500">shopping_basket</span>Almost There (Missing 1-2 items)
           </p>
-          <!-- ข้างล่าง -->
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5">
             <AlmostMatch
               v-for="Almost in almostReadyRecipes"
@@ -186,18 +169,14 @@ async function deleteRecipe(id) {
             </AlmostMatch>
           </div>
 
-          <!-- ของฉัน -->
-          <div
-            class="flex justify-between items-center bg-slate-50 p-6 rounded-2xl border border-gray-100"
-          >
+          <div class="flex justify-between items-center bg-slate-50 p-6 rounded-2xl border border-gray-100">
             <p class="flex gap-2 text-xl font-bold text-slate-800">
-              <span class="material-symbols-outlined text-red-600"
-                >bookmark</span
-              >My Food Recipes
+              <span class="material-symbols-outlined text-orange-600"
+                >bookmark</span>My Food Recipes
             </p>
             <button
               @click="showForm = true"
-              class="px-6 py-3 flex items-center font-bold rounded-xl text-white gap-2 bg-secondary hover:bg-red-600 transition-all shadow-lg shadow-secondary/20"
+              class="px-6 py-3 flex items-center font-bold rounded-xl text-white gap-2 bg-secondary hover:bg-orange-600 transition-all shadow-lg shadow-secondary/20"
             >
               Add your own Recipes
               <span class="material-symbols-outlined"> add </span>

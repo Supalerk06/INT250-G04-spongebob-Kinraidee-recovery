@@ -388,9 +388,7 @@ const getIngredientIcon = (name) => {
 </script>
 
 <template>
-  <div
-    class="px-4 py-8 bg-slate-50 min-h-screen w-full flex flex-col gap-4 md:px-10 lg:flex-row font-sans"
-  >
+  <div class="px-4 py-8 bg-slate-50 min-h-screen w-full flex flex-col gap-4 md:px-10 lg:flex-row font-sans">
     <div class="flex flex-col gap-4 w-full lg:max-w-[1250px]">
       <div class="flex justify-between py-2">
         <div class="flex flex-col gap-1">
@@ -435,12 +433,8 @@ const getIngredientIcon = (name) => {
           Add Item
         </button>
       </div>
-      <div
-        class="flex rounded-3xl bg-white p-4 flex-wrap md:flex-nowrap shadow shadow-neutral-300 gap-3"
-      >
-        <div
-          class="shrink-2 bg-neutral-100 px-4 py-1 rounded-3xl w-full flex justify-center items-center"
-        >
+      <div class="flex rounded-3xl bg-white p-4 flex-wrap md:flex-nowrap shadow shadow-neutral-300 gap-3">
+        <div class="shrink-2 bg-neutral-100 px-4 py-1 rounded-3xl w-full flex justify-center items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -463,9 +457,7 @@ const getIngredientIcon = (name) => {
           />
         </div>
 
-        <div
-          class="shrink-0 bg-neutral-100 px-3 py-1 w-[218px] grow rounded-3xl cursor-pointer flex justify-center items-center md:px-4 md:py-1"
-        >
+        <div class="shrink-0 bg-neutral-100 px-3 py-1 w-[218px] grow rounded-3xl cursor-pointer flex justify-center items-center md:px-4 md:py-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -490,9 +482,7 @@ const getIngredientIcon = (name) => {
           </select>
         </div>
 
-        <div
-          class="shrink-0 bg-neutral-100 px-3 py-1 w-[208px] grow rounded-3xl cursor-pointer flex justify-center items-center md:px-4 md:py-1"
-        >
+        <div class="shrink-0 bg-neutral-100 px-3 py-1 w-[208px] grow rounded-3xl cursor-pointer flex justify-center items-center md:px-4 md:py-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -520,9 +510,7 @@ const getIngredientIcon = (name) => {
         </div>
       </div>
 
-      <div
-        class="flex flex-wrap lg:flex-no-wrap mt-4 mb-2 gap-3 overflow-x-auto pb-2 scrollbar-hide"
-      >
+      <div class="flex flex-wrap lg:flex-no-wrap mt-4 mb-2 gap-3 overflow-x-auto pb-2 scrollbar-hide">
         <button
           v-for="cat in categories"
           :key="cat.id"
@@ -562,13 +550,8 @@ const getIngredientIcon = (name) => {
     </div>
 
     <!-- Add Item -->
-    <div
-      v-if="showModal"
-      class="fixed inset-0 flex items-center justify-center bg-black/50"
-    >
-      <div
-        class="bg-white p-6 rounded-xl w-full max-w-[360px] max-h-[600px] overflow-y-scroll lg:max-w-[620px] lg:max-h-fit lg:py-10"
-      >
+    <div v-if="showModal" class="fixed inset-0 flex items-center justify-center bg-black/50">
+      <div class="bg-white p-6 rounded-xl w-full max-w-[360px] max-h-[600px] overflow-y-scroll lg:max-w-[620px] lg:max-h-fit lg:py-10">
         <h2 class="text-2xl font-bold mb-4">
           {{ editingItemId ? "Edit Item" : "Add Item" }}
         </h2>
@@ -685,7 +668,7 @@ const getIngredientIcon = (name) => {
               Cancel
             </button>
             <button
-              class="px-4 py-2 hover:bg-red-600 transition bg-secondary text-white rounded-xl focus:outline-none shadow-md shadow-secondary/20"
+              class="px-4 py-2 hover:bg-orange-600 transition bg-secondary text-white rounded-xl focus:outline-none shadow-md shadow-secondary/20"
               type="submit"
             >
               {{ editingItemId ? "Save Changes" : "Add Item" }}
@@ -695,15 +678,10 @@ const getIngredientIcon = (name) => {
       </div>
     </div>
 
-    <div
-      v-if="showDeleteModal"
-      class="fixed inset-0 flex items-center justify-center bg-black/50 z-[60]"
-    >
-      <div
-        class="bg-white p-6 rounded-2xl w-full max-w-[320px] text-center shadow-xl"
-      >
+    <div v-if="showDeleteModal" class="fixed inset-0 flex items-center justify-center bg-black/50 z-[60]">
+      <div class="bg-white p-6 rounded-2xl w-full max-w-[320px] text-center shadow-xl">
         <div class="flex justify-center mb-4">
-          <div class="bg-red-100 p-4 rounded-full">
+          <div class="bg-orange-100 p-4 rounded-full">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -734,7 +712,7 @@ const getIngredientIcon = (name) => {
           </button>
           <button
             @click="executeDelete"
-            class="flex-1 py-2 hover:bg-danger transition bg-danger text-white font-bold rounded-xl focus:outline-none shadow-md shadow-red-200"
+            class="flex-1 py-2 hover:bg-danger transition bg-danger text-white font-bold rounded-xl focus:outline-none shadow-md shadow-orange-200"
           >
             Delete
           </button>

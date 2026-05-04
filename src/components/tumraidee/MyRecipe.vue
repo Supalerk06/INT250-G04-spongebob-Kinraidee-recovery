@@ -202,7 +202,7 @@ function removeStep(i) {
                 data-alt="Thai style omelette on rice" :style="{ backgroundImage: `url(${image})` }">
             </div>
             <button @click.stop="showDeleteConfirm = true"
-                class="absolute top-2 right-2 bg-red-500 text-white px-3 py-1 rounded-full shadow-lg hover:bg-red-700 transition">
+                class="absolute top-2 right-2 bg-orange-500 text-white px-3 py-1 rounded-full shadow-lg hover:bg-orange-700 transition">
                 <span class="material-symbols-outlined text-sm">delete</span>
             </button>
             <button @click.stop="openEdit({
@@ -213,7 +213,7 @@ function removeStep(i) {
                 ingredients,
                 steps
             })"
-                class="absolute top-2 right-14 bg-blue-500 text-white px-3 py-1 rounded-full shadow-lg hover:bg-blue-700 transition">
+                class="absolute top-2 right-14 bg-orange-400 text-white px-3 py-1 rounded-full shadow-lg hover:bg-orange-500 transition">
                 <span class="material-symbols-outlined text-sm">edit</span>
             </button>
         </div>
@@ -239,7 +239,7 @@ function removeStep(i) {
             <h3 class="text-lg font-bold mb-4 text-center">
                 Are you sure you finished cooking?
             </h3>
-            <div v-if="errorMessage.length" class="bg-red-100 text-red-700 p-4 rounded-lg mb-4">
+            <div v-if="errorMessage.length" class="bg-orange-100 text-orange-700 p-4 rounded-lg mb-4">
                 <p class="font-bold">❌ Cook ไม่สำเร็จ</p>
                 <ul class="list-disc ml-5">
                     <li v-for="(item, i) in errorMessage" :key="i">
@@ -254,7 +254,7 @@ function removeStep(i) {
                 </button>
 
                 <button @click="confirmCook"
-                    class="font-bold px-6 py-2.5 rounded-xl bg-secondary text-white hover:bg-red-600 shadow-lg shadow-secondary/20 transition-all">
+                    class="font-bold px-6 py-2.5 rounded-xl bg-secondary text-white hover:bg-orange-600 shadow-lg shadow-secondary/20 transition-all">
                     Yes, Done
                 </button>
             </div>
@@ -264,7 +264,7 @@ function removeStep(i) {
     <div v-if="showDeleteConfirm" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
         <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl w-[90%] max-w-md shadow-xl">
 
-            <h3 class="text-lg font-bold mb-4 text-center text-red-500">
+            <h3 class="text-lg font-bold mb-4 text-center text-orange-500">
                 🗑 Delete Recipe
             </h3>
 
@@ -279,7 +279,7 @@ function removeStep(i) {
                 </button>
 
                 <button @click="confirmDelete"
-                    class="px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-700 font-bold">
+                    class="px-4 py-2 rounded-lg bg-orange-500 text-white hover:bg-orange-700 font-bold">
                     Delete
                 </button>
             </div>
@@ -333,7 +333,7 @@ function removeStep(i) {
                     <div class="flex justify-between items-center mb-2">
                         <label class="block text-sm font-semibold text-gray-700">Ingredients</label>
                         <button @click="addIngredient" type="button"
-                            class="text-sm bg-blue-50 text-blue-600 px-3 py-1 rounded-md hover:bg-blue-100 flex items-center gap-1">
+                            class="text-sm bg-orange-50 text-orange-600 px-3 py-1 rounded-md hover:bg-orange-100 flex items-center gap-1 font-bold">
                             <span class="material-symbols-outlined text-sm">add</span>
                             Add Ingredient
                         </button>
@@ -354,7 +354,7 @@ function removeStep(i) {
                                 <option value="g">g</option>
                             </select>
 
-                            <button @click="removeIngredient(index)" class="text-red-500 hover:bg-red-50 p-1 rounded">
+                            <button @click="removeIngredient(index)" class="text-orange-500 hover:bg-orange-50 p-1 rounded">
                                 <span class="material-symbols-outlined">delete</span>
                             </button>
                         </div>
@@ -367,7 +367,7 @@ function removeStep(i) {
                     <div class="flex justify-between items-center mb-2">
                         <label class="block text-sm font-semibold text-gray-700">Steps</label>
                         <button @click="addStep" type="button"
-                            class="text-sm bg-blue-50 text-blue-600 px-3 py-1 rounded-md hover:bg-blue-100 flex items-center gap-1">
+                            class="text-sm bg-orange-50 text-orange-600 px-3 py-1 rounded-md hover:bg-orange-100 flex items-center gap-1 font-bold">
                             <span class="material-symbols-outlined text-sm">add</span>
                             Add Step
                         </button>
@@ -382,7 +382,7 @@ function removeStep(i) {
                         <textarea v-model="editForm.steps[index]"
                             class="flex-1 px-3 py-2 border rounded-md h-20 border-gray-300"></textarea>
 
-                        <button @click="removeStep(index)" class="mt-2 text-red-500 hover:bg-red-50 p-1 rounded">
+                        <button @click="removeStep(index)" class="mt-2 text-orange-500 hover:bg-orange-50 p-1 rounded">
                             <span class="material-symbols-outlined">delete</span>
                         </button>
 
@@ -398,7 +398,7 @@ function removeStep(i) {
                 </button>
 
                 <button @click="saveEdit"
-                    class="px-8 py-2 bg-secondary text-white rounded-xl hover:bg-red-600 font-bold shadow-lg shadow-secondary/20 transition-all">
+                    class="px-8 py-2 bg-secondary text-white rounded-xl hover:bg-orange-600 font-bold shadow-lg shadow-secondary/20 transition-all">
                     Save Recipe
                 </button>
             </div>

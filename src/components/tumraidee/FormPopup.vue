@@ -172,10 +172,10 @@ onMounted(() => {
           <label class="block text-sm font-semibold text-gray-700 mb-2">Recipe Name</label>
           <input v-model="recipe.name" @input="errors.name = ''" :class="[
             'w-full px-4 py-2 border rounded-lg outline-none',
-            errors.name ? 'border-red-500' : 'border-gray-300'
+            errors.name ? 'border-orange-500' : 'border-gray-300'
           ]" />
 
-          <p v-if="errors.name" class="text-red-500 text-sm mt-1">
+          <p v-if="errors.name" class="text-orange-500 text-sm mt-1">
             {{ errors.name }}
           </p>
         </div>
@@ -183,10 +183,10 @@ onMounted(() => {
           <label class="block text-sm font-semibold text-gray-700 mb-2">Short Description</label>
           <input v-model="recipe.short_description" @input="errors.short_description = ''" :class="[
             'w-full px-4 py-2 border rounded-lg outline-none',
-            errors.short_description ? 'border-red-500' : 'border-gray-300'
+            errors.short_description ? 'border-orange-500' : 'border-gray-300'
           ]" />
 
-          <p v-if="errors.short_description" class="text-red-500 text-sm mt-1">
+          <p v-if="errors.short_description" class="text-orange-500 text-sm mt-1">
             {{ errors.short_description }}
           </p>
         </div>
@@ -195,10 +195,10 @@ onMounted(() => {
           <label class="block text-sm font-semibold text-gray-700 mb-2">Upload Photo</label>
           <input type="file" @change="(e) => { handleFileChange(e); errors.image = '' }" :class="[
             'w-full px-4 py-2 border rounded-lg',
-            errors.image ? 'border-red-500' : 'border-gray-300'
+            errors.image ? 'border-orange-500' : 'border-gray-300'
           ]" />
 
-          <p v-if="errors.image" class="text-red-500 text-sm mt-1">
+          <p v-if="errors.image" class="text-orange-500 text-sm mt-1">
             {{ errors.image }}
           </p>
           <img v-if="recipe.image" :src="recipe.image" class="w-40 mt-3 rounded-lg shadow" />
@@ -218,18 +218,18 @@ onMounted(() => {
             <div class="flex gap-2">
               <input v-model="item.name" @input="errors.ingredients[index] && (errors.ingredients[index].name = '')"
                 :class="['flex-1 px-3 py-2 border rounded-md',
-                  errors.ingredients[index]?.name ? 'border-red-500' : ''
+                  errors.ingredients[index]?.name ? 'border-orange-500' : ''
                 ]" placeholder="Name" />
 
               <input v-model.number="item.quantity" type="number"
                 @input="errors.ingredients[index] && (errors.ingredients[index].quantity = '')" :class="['w-20 px-3 py-2 border rounded-md',
-                  errors.ingredients[index]?.quantity ? 'border-red-500' : ''
+                  errors.ingredients[index]?.quantity ? 'border-orange-500' : ''
                 ]" />
 
               <select v-model="item.unit" @change="errors.ingredients[index] && (errors.ingredients[index].unit = '')"
                 :class="[
                   'w-24 px-3 py-2 border rounded-md',
-                  errors.ingredients[index]?.unit ? 'border-red-500' : ''
+                  errors.ingredients[index]?.unit ? 'border-orange-500' : ''
                 ]">
                 <option value="pcs">pcs</option>
                 <option value="ml">ml</option>
@@ -237,7 +237,7 @@ onMounted(() => {
               </select>
             </div>
 
-            <div class="text-red-500 text-xs flex gap-2">
+            <div class="text-orange-500 text-xs flex gap-2">
               <span v-if="errors.ingredients[index]?.name">Name required</span>
               <span v-if="errors.ingredients[index]?.quantity">Qty invalid</span>
               <span v-if="errors.ingredients[index]?.unit">Unit required</span>
@@ -262,10 +262,10 @@ onMounted(() => {
 
             <textarea v-model="recipe.steps[index]" @input="errors.steps[index] = ''" :class="[
               'flex-1 px-3 py-2 border rounded-md h-20',
-              errors.steps[index] ? 'border-red-500' : ''
+              errors.steps[index] ? 'border-orange-500' : ''
             ]"></textarea>
 
-            <button @click="removeStep(index)" class="mt-2 text-red-500 hover:bg-red-50 p-1 rounded">
+            <button @click="removeStep(index)" class="mt-2 text-orange-500 hover:bg-orange-50 p-1 rounded">
               <span class="material-symbols-outlined">delete</span>
             </button>
 
@@ -277,7 +277,7 @@ onMounted(() => {
         <button @click="emit('close')"
           class="px-6 py-2 border border-gray-100 rounded-xl text-slate-500 bg-white hover:bg-slate-100 font-bold transition-colors">Cancel</button>
         <button @click="handleSubmit"
-          class="px-8 py-2 bg-secondary text-white rounded-xl hover:bg-red-600 font-bold shadow-lg shadow-secondary/20 transition-all">
+          class="px-8 py-2 bg-secondary text-white rounded-xl hover:bg-orange-600 font-bold shadow-lg shadow-secondary/20 transition-all">
           Save Recipe
         </button>
       </div>

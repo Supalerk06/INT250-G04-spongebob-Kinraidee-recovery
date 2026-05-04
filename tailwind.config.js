@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
   content: [
@@ -9,7 +8,8 @@ module.exports = {
     extend: {
       colors: {
         primary: "#FFFFFF",
-        secondary: "#EE1B24",
+        secondary: "#f97316", 
+        danger: "#f97316",    
         "background-dark": "#121715",
         "card-dark": "#1c211f",
       },
