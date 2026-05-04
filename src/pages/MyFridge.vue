@@ -3,10 +3,8 @@ import FridgeItems from "../components/FridgeItems.vue";
 import UseItUp from "../components/UseItUp.vue";
 import FridgeHealth from "../components/FridgeHealth.vue";
 import RecommendMenu from "../components/RecommendMenu.vue";
-import users from "../data/users.js";
 import { ref, watch, computed } from "vue";
 
-import { fridgeItems as Mock } from "@/data/fridgeItems";
 
 let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || []);
 
