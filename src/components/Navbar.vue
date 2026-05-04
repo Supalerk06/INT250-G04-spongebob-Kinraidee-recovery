@@ -4,39 +4,33 @@
   >
     <div class="flex justify-center py-3 px-4 md:px-10">
       <div class="flex w-full max-w-[1280px] items-center justify-between">
-        <a href="/"
-          ><div class="flex items-center gap-4">
-            <div
-              class="size-8 text-secondary flex items-center justify-center rounded-lg bg-secondary/10"
-            >
-              <span class="material-symbols-outlined text-2xl">
-                restaurant_menu
-              </span>
+        <a href="/">
+          <div class="flex items-center gap-4">
+            <div class="size-8 text-secondary flex items-center justify-center rounded-lg bg-secondary/10">
+              <span class="material-symbols-outlined text-2xl">restaurant_menu</span>
             </div>
-            <h2 class="text-xl font-bold leading-tight tracking-tight">
-              KinRaiDee
-            </h2>
-          </div></a
-        >
+            <h2 class="text-xl font-bold leading-tight tracking-tight">KinRaiDee</h2>
+          </div>
+        </a>
         <div class="hidden md:flex flex-1 justify-end gap-8 items-center">
           <nav class="flex items-center gap-6 lg:gap-9">
             <a
               href="/kinraidee"
               class="text-sm font-medium hover:text-secondary transition-colors"
             >
-              KinRaiDee
+              สุ่มอาหาร
             </a>
             <a
               href="/tumraidee"
               class="text-sm font-medium hover:text-secondary transition-colors"
             >
-              TumraiDee
+              ทำไรดี
             </a>
             <a
               href="/myfridge"
               class="text-sm font-medium hover:text-secondary transition-colors"
             >
-              Fridge
+              ตู้เย็นของฉัน
             </a>
           </nav>
 
@@ -81,7 +75,7 @@
           class="text-sm font-medium hover:text-secondary transition-colors"
           href="#"
         >
-          About
+          เกี่ยวกับเรา
         </a>
       </nav>
     </div>

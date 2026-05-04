@@ -55,7 +55,7 @@ function confirmCook() {
             missingItems.push(`${recipeItem.name} (ไม่มี)`)
         } else if (item.quantity < recipeItem.quantity) {
             missingItems.push(
-                `${recipeItem.name} (ต้อง ${recipeItem.quantity} ${recipeItem.unit} แต่มี ${item.quantity})`
+                `${recipeItem.name} (ต้องใช้ ${recipeItem.quantity} ${recipeItem.unit} แต่มีเพียง ${item.quantity})`
             )
         }
     })
@@ -171,7 +171,7 @@ function handleEditFile(e) {
 
 // ➕➖ INGREDIENT
 function addIngredient() {
-    editForm.value.ingredients.push({ name: '', quantity: 1, unit: 'pcs' })
+    editForm.value.ingredients.push({ name: '', quantity: 1, unit: 'ชิ้น' })
 }
 
 function removeIngredient(i) {
@@ -222,8 +222,7 @@ function removeStep(i) {
                 <p class="text-xs text-slate-500">{{ short_description }}</p>
             </div>
             <div class="mt-auto pt-4 border-t border-gray-100 dark:border-gray-700 flex items-center justify-center">
-                <button @click.stop="openRecipe" class="text-secondary font-black text-sm hover:underline">View
-                    Recipe</button>
+                <button @click.stop="openRecipe" class="text-secondary font-black text-sm hover:underline">ดูวิธีทำ</button>
             </div>
         </div>
     </article>
@@ -236,10 +235,10 @@ function removeStep(i) {
     <div v-if="showConfirm" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
         <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl w-[90%] max-w-md shadow-xl">
             <h3 class="text-lg font-bold mb-4 text-center">
-                Are you sure you finished cooking?
+                คุณแน่ใจหรือไม่ว่าคุณทำอาหารเสร็จแล้ว?
             </h3>
             <div v-if="errorMessage.length" class="bg-orange-100 text-orange-700 p-4 rounded-lg mb-4">
-                <p class="font-bold">❌ Cook ไม่สำเร็จ</p>
+                <p class="font-bold">❌ ทำอาหารไม่สำเร็จ</p>
                 <ul class="list-disc ml-5">
                     <li v-for="(item, i) in errorMessage" :key="i">
                         {{ item }}
@@ -249,12 +248,12 @@ function removeStep(i) {
             <div class="flex justify-center gap-4">
                 <button @click="cancelCook"
                     class="font-bold px-6 py-2.5 rounded-xl bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors">
-                    Cancel
+                    ยกเลิก
                 </button>
 
                 <button @click="confirmCook"
                     class="font-bold px-6 py-2.5 rounded-xl bg-secondary text-white hover:bg-orange-600 shadow-lg shadow-secondary/20 transition-all">
-                    Yes, Done
+                    ใช่ เสร็จแล้ว
                 </button>
             </div>
         </div>
@@ -264,22 +263,22 @@ function removeStep(i) {
         <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl w-[90%] max-w-md shadow-xl">
 
             <h3 class="text-lg font-bold mb-4 text-center text-orange-500">
-                🗑 Delete Recipe
+                🗑 ลบสูตรอาหาร
             </h3>
 
             <p class="text-center mb-6 text-gray-600">
-                Are you sure you want to delete <br>
+                คุณแน่ใจหรือไม่ว่าต้องการลบสูตร <br>
                 <span class="font-bold text-black">{{ name }}</span> ?
             </p>
 
             <div class="flex justify-center gap-4">
                 <button @click="cancelDelete" class="px-4 py-2 rounded-lg bg-gray-300 hover:bg-gray-400 font-bold">
-                    Cancel
+                    ยกเลิก
                 </button>
 
                 <button @click="confirmDelete"
                     class="px-4 py-2 rounded-lg bg-orange-500 text-white hover:bg-orange-700 font-bold">
-                    Delete
+                    ลบเลย
                 </button>
             </div>
 
@@ -294,7 +293,7 @@ function removeStep(i) {
             <!-- HEADER -->
             <div class="p-6 border-b flex justify-between items-center sticky top-0 bg-white z-10">
                 <h2 class="text-2xl font-bold text-gray-800">
-                    Edit Recipe
+                    แก้ไขสูตรอาหาร
                 </h2>
                 <button @click="cancelEdit" class="text-gray-500 hover:text-gray-700">
                     <span class="material-symbols-outlined">close</span>
@@ -306,21 +305,21 @@ function removeStep(i) {
 
                 <!-- NAME -->
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Recipe Name</label>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">ชื่อสูตรอาหาร</label>
                     <input v-model="editForm.name"
                         class="w-full px-4 py-2 border rounded-lg outline-none border-gray-300" />
                 </div>
 
                 <!-- DESCRIPTION -->
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Short Description</label>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">คำอธิบายสั้นๆ</label>
                     <input v-model="editForm.short_description"
                         class="w-full px-4 py-2 border rounded-lg outline-none border-gray-300" />
                 </div>
 
                 <!-- IMAGE -->
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Upload Photo</label>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">อัปโหลดรูปภาพ</label>
                     <input type="file" @change="handleEditFile"
                         class="w-full px-4 py-2 border rounded-lg border-gray-300" />
 
@@ -330,11 +329,11 @@ function removeStep(i) {
                 <!-- INGREDIENT -->
                 <div>
                     <div class="flex justify-between items-center mb-2">
-                        <label class="block text-sm font-semibold text-gray-700">Ingredients</label>
+                        <label class="block text-sm font-semibold text-gray-700">วัตถุดิบ</label>
                         <button @click="addIngredient" type="button"
                             class="text-sm bg-orange-50 text-orange-600 px-3 py-1 rounded-md hover:bg-orange-100 flex items-center gap-1 font-bold">
                             <span class="material-symbols-outlined text-sm">add</span>
-                            Add Ingredient
+                            เพิ่มวัตถุดิบ
                         </button>
                     </div>
 
@@ -342,15 +341,15 @@ function removeStep(i) {
 
                         <div class="flex gap-2">
                             <input v-model="item.name" class="flex-1 px-3 py-2 border rounded-md border-gray-300"
-                                placeholder="Name" />
+                                placeholder="ชื่อวัตถุดิบ" />
 
                             <input v-model.number="item.quantity" type="number"
                                 class="w-20 px-3 py-2 border rounded-md border-gray-300" />
 
                             <select v-model="item.unit" class="w-24 px-3 py-2 border rounded-md border-gray-300">
-                                <option value="pcs">pcs</option>
-                                <option value="ml">ml</option>
-                                <option value="g">g</option>
+                                <option value="ชิ้น">ชิ้น</option>
+                                <option value="มล.">มล.</option>
+                                <option value="กรัม">กรัม</option>
                             </select>
 
                             <button @click="removeIngredient(index)" class="text-orange-500 hover:bg-orange-50 p-1 rounded">
@@ -364,11 +363,11 @@ function removeStep(i) {
                 <!-- STEPS -->
                 <div>
                     <div class="flex justify-between items-center mb-2">
-                        <label class="block text-sm font-semibold text-gray-700">Steps</label>
+                        <label class="block text-sm font-semibold text-gray-700">วิธีทำ</label>
                         <button @click="addStep" type="button"
                             class="text-sm bg-orange-50 text-orange-600 px-3 py-1 rounded-md hover:bg-orange-100 flex items-center gap-1 font-bold">
                             <span class="material-symbols-outlined text-sm">add</span>
-                            Add Step
+                            เพิ่มขั้นตอน
                         </button>
                     </div>
 
@@ -393,12 +392,12 @@ function removeStep(i) {
             <!-- FOOTER -->
             <div class="p-6 border-t flex justify-end gap-3 bg-slate-50">
                 <button @click="cancelEdit" class="px-6 py-2 border border-gray-100 rounded-xl text-slate-500 bg-white hover:bg-slate-50 transition-colors font-bold">
-                    Cancel
+                    ยกเลิก
                 </button>
 
                 <button @click="saveEdit"
                     class="px-8 py-2 bg-secondary text-white rounded-xl hover:bg-orange-600 font-bold shadow-lg shadow-secondary/20 transition-all">
-                    Save Recipe
+                    บันทึกสูตรอาหาร
                 </button>
             </div>
 

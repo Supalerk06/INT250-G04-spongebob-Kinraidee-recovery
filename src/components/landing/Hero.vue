@@ -14,26 +14,26 @@
       <span
         class="inline-block py-1.5 px-4 rounded-full bg-white border border-slate-100 text-secondary text-xs font-black tracking-widest uppercase mb-8 shadow-sm"
       >
-        Your Personal Food Assistant
+        ผู้ช่วยทำอาหารส่วนตัวของคุณ
       </span>
       <h1
         class="text-6xl md:text-8xl font-black leading-tight mb-6 tracking-tight text-slate-800"
       >
-        Solve the Question:<br />
-        <span class="text-secondary">"What to eat today?"</span>
+        แก้ปัญหาโลกแตก:<br />
+        <span class="text-secondary">"วันนี้กินอะไรดี?"</span>
       </h1>
       <p
         class="text-lg md:text-xl text-slate-500 mb-10 max-w-2xl mx-auto font-medium leading-relaxed"
       >
-        Decide your next meal in 3 seconds, discover delicious local spots, and
-        organize your fridge to craft your own secret recipes.
+        ตัดสินใจเลือกเมนูถัดไปได้ใน 3 วินาที ค้นพบร้านอร่อยในพื้นที่ของคุณ
+        และจัดระเบียบตู้เย็นเพื่อรังสรรค์สูตรอาหารลับของคุณเอง
       </p>
       <div class="flex flex-col sm:flex-row justify-center gap-4">
         <a href="/kinraidee"
           ><button
             class="px-10 py-5 rounded-2xl font-black text-xl bg-secondary text-white shadow-xl shadow-secondary/20 hover:scale-105 active:scale-95 transition-all"
           >
-            Get Started
+            เริ่มต้นใช้งานเลย
           </button>
         </a>
       </div>

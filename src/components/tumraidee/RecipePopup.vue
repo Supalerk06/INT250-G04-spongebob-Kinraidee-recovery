@@ -19,7 +19,7 @@ defineProps(['name', 'image', 'ingredients', 'steps', 'video'])
           <img :src="image" :alt="name" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end">
             <div class="p-6 md:p-10 w-full">
-              <span class="inline-block px-3 py-1 bg-secondary text-white text-xs font-bold rounded-full mb-3 uppercase tracking-widest">Recipe</span>
+              <span class="inline-block px-3 py-1 bg-secondary text-white text-xs font-bold rounded-full mb-3 uppercase tracking-widest">สูตรอาหาร</span>
               <h2 class="text-3xl md:text-5xl font-black text-white leading-tight drop-shadow-md">
                 {{ name }}
               </h2>
@@ -32,8 +32,7 @@ defineProps(['name', 'image', 'ingredients', 'steps', 'video'])
             <div class="lg:col-span-5">
               <div class="sticky top-0">
                 <h3 class="font-bold text-2xl mb-6 flex items-center gap-3 text-slate-800">
-                  <span class="material-symbols-outlined text-secondary bg-secondary/10 p-2 rounded-xl">restaurant_menu</span>
-                  Ingredients
+                  วัตถุดิบที่ต้องใช้
                 </h3>
                 
                 <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100">
@@ -55,7 +54,7 @@ defineProps(['name', 'image', 'ingredients', 'steps', 'video'])
             <div class="lg:col-span-7">
               <h3 class="font-bold text-2xl mb-6 flex items-center gap-3 text-slate-800">
                 <span class="material-symbols-outlined text-secondary bg-secondary/10 p-2 rounded-xl">instacart</span>
-                Cooking Steps
+                ขั้นตอนการทำ
               </h3>
 
               <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-z-10 before:h-full before:w-0.5 before:bg-secondary/10">
@@ -74,7 +73,7 @@ defineProps(['name', 'image', 'ingredients', 'steps', 'video'])
               <div v-if="video" class="mt-12">
                 <h3 class="font-bold text-xl mb-4 text-slate-800 flex items-center gap-2">
                    <span class="material-symbols-outlined">play_circle</span>
-                   Video Tutorial
+                   วิดีโอสอนทำอาหาร
                 </h3>
                 <div class="rounded-2xl overflow-hidden shadow-xl aspect-video border-4 border-slate-100">
                   <iframe class="w-full h-full" :src="video" frameborder="0"
@@ -94,13 +93,13 @@ defineProps(['name', 'image', 'ingredients', 'steps', 'video'])
         <button
           @click="emit('close')"
           class="order-2 md:order-1 px-8 py-3 rounded-xl font-bold text-slate-500 hover:bg-slate-100 transition-all active:scale-95">
-          Back to Recipes
+          กลับไปหน้ารวมสูตร
         </button>
         <button
           @click="emit('cook')"
           class="order-1 md:order-2 bg-secondary text-white px-10 py-3 rounded-xl font-bold hover:brightness-110 transition-all shadow-lg shadow-secondary/25 active:scale-95 flex items-center justify-center gap-2">
           <span class="material-symbols-outlined text-sm">check_circle</span>
-          I've Finished Cooking!
+          ฉันทำอาหารเสร็จแล้ว!
         </button>
       </div>
 

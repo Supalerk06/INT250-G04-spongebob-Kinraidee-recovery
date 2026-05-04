@@ -21,7 +21,7 @@ defineProps(['id','name','image','missList','missingCount'])
             <div
                 class="flex items-center gap-2 mb-3 bg-yellow-50 dark:bg-yellow-900/20 p-2 rounded-lg border border-yellow-100 dark:border-yellow-900/30">
                 <span class="material-symbols-outlined text-yellow-600 dark:text-yellow-500 text-[18px]">warning</span>
-                <p class="text-xs font-semibold text-yellow-800 dark:text-yellow-200 ">Missing:
+                <p class="text-xs font-semibold text-yellow-800 dark:text-yellow-200 ">ขาด:
                     <span class="underline decoration-dotted mr-1" v-for="(item, index) in missList" :key="index">
         {{ item.name }}{{ " " }}</span>
                 </p>

@@ -32,7 +32,7 @@ const emit = defineEmits(['close', 'roll', 'order'])
         
         <div class="flex items-center gap-2 text-slate-500 font-bold bg-slate-50 px-4 py-2 rounded-xl text-sm">
           <span class="material-symbols-outlined text-secondary">location_on</span>
-          {{ result.place || 'Local Restaurant' }}
+          {{ result.place || 'ร้านอาหารใกล้คุณ' }}
         </div>
         
         <p class="text-lg text-slate-600 leading-relaxed font-medium mt-2">
@@ -42,7 +42,7 @@ const emit = defineEmits(['close', 'roll', 'order'])
         <div class="flex gap-4 w-full mt-6">
           <button @click="emit('order')" class="flex-1 bg-secondary text-white py-5 rounded-2xl font-black text-lg shadow-lg shadow-secondary/20 hover:scale-[1.02] transition-all flex items-center justify-center gap-3">
             <span class="material-symbols-outlined">shopping_cart</span>
-            Order Now
+            สั่งเลยวันนี้
           </button>
           <button @click="emit('roll')" class="px-6 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-2xl font-bold transition-all flex items-center justify-center">
             <span class="material-symbols-outlined">refresh</span>

@@ -80,7 +80,7 @@ const isCooking = ref(false)
                     <div
                         class="flex items-center gap-1 text-xs font-bold text-secondary bg-secondary/10 px-2 py-1 rounded-md">
                         <span class="material-symbols-outlined text-[14px]">check</span>
-                        You have all items
+                        คุณมีวัตถุดิบครบถ้วนแล้ว
                     </div>
                 </div>
                 <p class="text-text-muted text-sm mb-4 line-clamp-2">{{ short_description }}</p>
@@ -94,7 +94,7 @@ const isCooking = ref(false)
             <div class="flex items-center justify-between mt-auto">
                 <button @click.stop="openRecipe"
                     class="bg-secondary hover:bg-orange-600 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-secondary/20 transition-all active:scale-95 flex items-center gap-2">
-                    Cook Now
+                    ทำอาหารเลย
                     <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
                 </button>
             </div>
@@ -107,15 +107,15 @@ const isCooking = ref(false)
     <div v-if="showConfirm" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
         <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl w-[90%] max-w-md shadow-xl">
             <h3 class="text-lg font-bold mb-4 text-center">
-                Are you sure you finished cooking?
+                คุณแน่ใจหรือไม่ว่าคุณทำอาหารเสร็จแล้ว?
             </h3>
             <div class="flex justify-center gap-4">
                 <button @click="cancelCook" class="font-bold px-4 py-2 rounded-lg bg-orange-500 text-white hover:bg-orange-700">
-                    Cancel
+                    ยกเลิก
                 </button>
 
                 <button @click="confirmCook" class="font-bold px-4 py-2 rounded-lg bg-secondary text-white hover:bg-orange-600 transition-all shadow-lg shadow-secondary/20">
-                    Yes, Done
+                    ใช่ เสร็จแล้ว
                 </button>
             </div>
         </div>

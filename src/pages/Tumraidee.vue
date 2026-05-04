@@ -25,6 +25,17 @@ const categories = [
   "Vegan",
 ];
 
+const categoryMapping = {
+  All: "ทั้งหมด",
+  Thai: "อาหารไทย",
+  Western: "อาหารตะวันตก",
+  Chinese: "อาหารจีน",
+  Mexican: "อาหารเม็กซิกัน",
+  Halal: "ฮาลาล",
+  Vegetarian: "มังสวิรัติ",
+  Vegan: "วีแกน",
+};
+
 const setCategory = (category) => {
   selectedCategory.value = category;
 };
@@ -89,14 +100,14 @@ async function deleteRecipe(id) {
           <div class="gap-5 flex flex-col">
             <div>
               <h2 class="mb-2 text-4xl text-slate-900 md:text-5xl font-black">
-                What to Cook?
+                ทำอะไรกินดี?
               </h2>
               <p class="text-lg text-slate-500 flex gap-2">
-                Generating ideas from
+                กำลังสร้างไอเดียจากวัตถุดิบ
                 <strong class="text-secondary font-black">
-                  {{ fridgeItems.length }} items
+                  {{ fridgeItems.length }} รายการ
                 </strong>
-                in your fridge
+                ในตู้เย็นของคุณ
               </p>
             </div>
             <div class="flex flex-wrap gap-2 items-center">
@@ -107,21 +118,21 @@ async function deleteRecipe(id) {
                 :class="[
                   'h-fit px-4 py-2 text-sm font-bold rounded-full shadow-md transition-all flex gap-1 items-center',
                   selectedCategory === cat
-                    ? 'bg-secondary text-white scale-105 shadow-secondary/40' // สไตล์เมื่อถูกเลือก
-                    : 'bg-white text-slate-600 hover:bg-slate-50 border border-gray-100', // สไตล์ปกติ
+                    ? 'bg-secondary text-white scale-105 shadow-secondary/40' 
+                    : 'bg-white text-slate-600 hover:bg-slate-50 border border-gray-100', 
                 ]"
               >
                 <span class="material-symbols-outlined text-[18px]">
-                  {{ selectedCategory === cat ? "check_circle" : "Search" }}
+                  {{ selectedCategory === cat ? "check_circle" : "search" }}
                 </span>
-                {{ cat }}
+                {{ categoryMapping[cat] || cat }}
               </button>
             </div>
           </div>
 
           <p class="flex gap-2 text-xl font-bold text-slate-800">
             <span class="material-symbols-outlined text-secondary fill-current">star</span>
-            Perfect Match (100%)
+            พร้อมปรุงทันที (100%)
           </p>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
             <PerfectMatch
@@ -139,7 +150,7 @@ async function deleteRecipe(id) {
           </div>
 
           <p class="flex gap-2 text-xl font-bold text-slate-800">
-            <span class="material-symbols-outlined text-orange-500">shopping_basket</span>Almost There (Missing 1-2 items)
+            <span class="material-symbols-outlined text-orange-500">shopping_basket</span>เกือบพร้อมแล้ว (ขาด 1-2 อย่าง)
           </p>
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5">
             <AlmostMatch
@@ -156,13 +167,13 @@ async function deleteRecipe(id) {
           <div class="flex justify-between items-center bg-slate-50 p-6 rounded-2xl border border-gray-100">
             <p class="flex gap-2 text-xl font-bold text-slate-800">
               <span class="material-symbols-outlined text-orange-600"
-                >bookmark</span>My Food Recipes
+                >bookmark</span>สูตรอาหารของฉัน
             </p>
             <button
               @click="showForm = true"
               class="px-6 py-3 flex items-center font-bold rounded-xl text-white gap-2 bg-secondary hover:bg-orange-600 transition-all shadow-lg shadow-secondary/20"
             >
-              Add your own Recipes
+              เพิ่มสูตรอาหารของคุณ
               <span class="material-symbols-outlined"> add </span>
             </button>
             <FormPopUp v-if="showForm" @close="showForm = false" />

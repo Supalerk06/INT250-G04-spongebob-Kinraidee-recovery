@@ -29,14 +29,14 @@ function goToMaps() {
 
       <div class="flex items-center justify-between pt-4 border-t border-gray-100">
         <div class="flex flex-col">
-          <span class="text-xs font-bold font-display text-gray-400">DISTANCE</span>
+          <span class="text-xs font-bold font-display text-gray-400">ระยะทาง</span>
           <span class="text-xl font-black font-display text-secondary">
-            {{ shop.distance }} KM
+            {{ shop.distance }} กม.
           </span>
         </div>
 
         <button @click="goToMaps" class="bg-secondary font-display font-black text-white px-3 py-2.5 rounded-2xl text-xs hover:bg-orange-600">
-          Get directions →
+          นำทางไปร้าน →
         </button>
       </div>
     </div>

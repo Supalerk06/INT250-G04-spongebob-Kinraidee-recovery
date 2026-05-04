@@ -5,11 +5,20 @@
     <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kinraidee</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap');
+      
+      body, h1, h2, h3, h4, h5, h6, p, span, a, button, input, select, textarea {
+        font-family: 'Noto Sans Thai', sans-serif !important;
+      }
+
+      .material-symbols-outlined {
+        font-family: 'Material Symbols Outlined' !important;
+      }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -28,8 +37,9 @@
                         "card-dark": "#1c211f",
                     },
                     fontFamily: {
-                        "display": ["Plus Jakarta Sans", "sans-serif"],
-                        "body": ["Noto Sans", "sans-serif"] 
+                        "sans": ["Noto Sans Thai", "sans-serif"],
+                        "display": ["Noto Sans Thai", "sans-serif"],
+                        "body": ["Noto Sans Thai", "sans-serif"] 
                     },
                     borderRadius: {"DEFAULT": "0.75rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
                 },

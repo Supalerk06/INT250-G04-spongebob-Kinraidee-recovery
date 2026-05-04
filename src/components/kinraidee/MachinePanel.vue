@@ -33,12 +33,12 @@ const emit = defineEmits(['roll'])
           :disabled="!canRoll"
           class="bg-secondary text-white px-10 py-5 rounded-2xl font-black text-2xl shadow-xl shadow-secondary/30 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:grayscale"
         >
-          ROLL NOW!
+          สุ่มเลย!
         </button>
       </div>
     </div>
     
-    <p class="text-slate-400 font-bold text-xs uppercase tracking-widest">Click to start the randomization</p>
+    <p class="text-slate-400 font-bold text-xs uppercase tracking-widest">คลิกเพื่อเริ่มต้นการสุ่มเมนู</p>
   </div>
 </template>
 

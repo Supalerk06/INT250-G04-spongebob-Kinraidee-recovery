@@ -76,7 +76,7 @@ function getRandomFoodImage() {
 function rollFood() {
   const pool = getFilteredFoods();
   if (pool.length === 0) {
-    alert("No foods match your filters. Please adjust your filters!");
+    alert("ไม่มีเมนูที่ตรงกับตัวกรองของคุณ กรุณาปรับเปลี่ยนตัวเลือกใหม่!");
     return;
   }
 

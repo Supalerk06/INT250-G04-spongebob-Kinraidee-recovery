@@ -31,15 +31,15 @@ const freshnessScore = computed(() => {
 
 <template>
 <div class="bg-secondary rounded-3xl flex flex-col p-6 shadow-lg shadow-secondary/20 gap-4 text-white">
-            <h3 class="font-bold text-xl">Fridge Health</h3>
+            <h3 class="font-bold text-xl">สุขภาพตู้เย็น</h3>
             <div class="flex justify-between">
                 <div>
                     <p class="text-3xl font-black">{{ freshnessScore }}%</p>
-                     <h2 class="text-sm opacity-90">Freshness Score</h2>
+                     <h2 class="text-sm opacity-90">คะแนนความสดใหม่</h2>
                 </div>
                 <div>
                     <p class="text-3xl font-black">{{ totalItems }}</p>
-                    <h2 class="text-sm opacity-90">Total Items</h2>
+                    <h2 class="text-sm opacity-90">วัตถุดิบทั้งหมด</h2>
                 </div>
             </div>
             <div class="bg-white/20 w-full p-1 rounded-full">

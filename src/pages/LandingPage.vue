@@ -8,36 +8,36 @@
       <!-- Feature 01 -->
       <FeatureSection
         index="01"
-        title="Food Randomizer"
-        accentTitle='"Kinraidee"'
-        description="Can't decide? Let us pick for you instantly! Perfect for busy days. Complete with smart filters tailored to your dietary preferences."
+        title="สุ่มเมนูอาหาร"
+        accentTitle='"กินไรดี"'
+        description="ตัดสินใจไม่ได้ใช่ไหม? ให้เราช่วยเลือกเมนูให้คุณทันที! เหมาะสำหรับวันที่เร่งรีบ พร้อมระบบคัดกรองอัจฉริยะที่ปรับแต่งได้ตามความต้องการของคุณ"
         :features="[
-          'Quick randomized results with animations',
-          'Advanced filtering (Halal, No Meat, etc.)'
+          'สุ่มเมนูรวดเร็วพร้อมอนิเมชั่นที่สวยงาม',
+          'ระบบกรองขั้นสูง (ฮาลาล, มังสวิรัติ, และอื่นๆ)'
         ]"
-        buttonText="Try Food Randomizer"
+        buttonText="ลองสุ่มเมนูเลย"
         buttonLink="/kinraidee"
         :image="kinraidee"
-        badgeText="Filter Option"
-        badgeTitle="Halal & Vegan Friendly"
+        badgeText="ตัวเลือกการกรอง"
+        badgeTitle="ฮาลาล และ วีแกน"
         badgeIcon="☪️"
       />
 
       <!-- Feature 02 -->
       <FeatureSection
         index="02"
-        title="Restaurant Guide"
-        accentTitle='"Near Me"'
-        description="Got your menu but don't want to cook? We'll direct you to the best nearby restaurants serving exactly what you crave, with a clean and easy-to-read map interface."
+        title="คู่มือร้านอาหาร"
+        accentTitle='"ร้านใกล้ฉัน"'
+        description="ได้เมนูที่ถูกใจแล้วแต่ไม่อยากทำเอง? เราจะนำคุณไปยังร้านอาหารที่ดีที่สุดในบริเวณใกล้เคียงที่เสิร์ฟเมนูที่คุณต้องการ พร้อมแผนที่ที่ดูง่ายและชัดเจน"
         :features="[
-          'Directly linked to your randomized results',
-          'Adjustable radius filters (e.g. 500m, 2km)'
+          'เชื่อมโยงโดยตรงจากเมนูที่คุณสุ่มได้',
+          'ปรับระยะการค้นหาได้ตามต้องการ (500ม., 2กม.)'
         ]"
-        buttonText="Find Places Near Me"
+        buttonText="ค้นหาร้านอาหารใกล้ตัว"
         buttonLink="/restaurants"
         :image="menu"
-        badgeText="Location Services"
-        badgeTitle="15 places within 1km"
+        badgeText="บริการระบุตำแหน่ง"
+        badgeTitle="พบ 15 ร้านในระยะ 1 กม."
         badgeIcon="📍"
         :reverse="true"
       />
@@ -45,14 +45,14 @@
       <!-- Feature 03 -->
       <FeatureSection
         index="03"
-        title="Smart Inventory"
-        accentTitle='"My Fridge"'
-        description="Turn your messy fridge into an organized inventory. Track ingredients, monitor expiry dates with intuitive color codes, and significantly reduce food waste."
+        title="คลังวัตถุดิบอัจฉริยะ"
+        accentTitle='"ตู้เย็นของฉัน"'
+        description="เปลี่ยนตู้เย็นที่วุ่นวายให้เป็นคลังวัตถุดิบที่เป็นระเบียบ ติดตามวันหมดอายุด้วยรหัสสีที่เข้าใจง่าย และช่วยลดขยะจากอาหารได้อย่างมีประสิทธิภาพ"
         :features="[
-          'Freely manage your grocery inventory',
-          'Check freshness via visual Color Coding'
+          'จัดการรายการวัตถุดิบได้อย่างอิสระ',
+          'ระบบเตือนความสดใหม่ด้วยรหัสสี'
         ]"
-        buttonText="Manage Your Fridge"
+        buttonText="จัดการตู้เย็นของคุณ"
         buttonLink="/myfridge"
         :image="myfridge"
         :customSlot="true"
@@ -60,16 +60,16 @@
         <template #image-overlay>
           <div class="absolute bottom-10 -right-6 bg-white border border-slate-50 p-6 rounded-2xl shadow-2xl z-20 w-64">
             <div class="flex justify-between items-center mb-4">
-              <span class="font-black text-sm text-slate-800 tracking-wide uppercase">Fridge Status</span>
+              <span class="font-black text-sm text-slate-800 tracking-wide uppercase">สถานะตู้เย็น</span>
             </div>
             <div class="space-y-3">
               <div class="flex justify-between items-center text-xs p-3 bg-slate-50 rounded-xl border border-slate-100">
-                <span class="text-slate-700 font-bold">Pork</span>
-                <span class="text-secondary font-black">Exp. Today!</span>
+                <span class="text-slate-700 font-bold">เนื้อหมู</span>
+                <span class="text-secondary font-black">หมดอายุวันนี้!</span>
               </div>
               <div class="flex justify-between items-center text-xs p-3 bg-slate-50 rounded-xl border border-slate-100">
-                <span class="text-slate-700 font-bold">Eggs</span>
-                <span class="text-secondary font-black">3 Days Left</span>
+                <span class="text-slate-700 font-bold">ไข่ไก่</span>
+                <span class="text-secondary font-black">อีก 3 วัน</span>
               </div>
             </div>
           </div>
@@ -79,10 +79,10 @@
       <!-- Feature 04 -->
       <FeatureSection
         index="04"
-        title="Recipe Suggestions"
-        accentTitle='"Tumraidee"'
-        description="Seamlessly integrated with 'My Fridge', this feature suggests recipes you can cook right now. It calculates your ingredient readiness and lets you store your secret personal recipes."
-        buttonText="Discover Recipes"
+        title="แนะนำสูตรอาหาร"
+        accentTitle='"ทำไรดี"'
+        description="เชื่อมโยงกับ 'ตู้เย็นของฉัน' อย่างไร้รอยต่อ เพื่อแนะนำเมนูที่คุณสามารถปรุงได้ทันทีจากวัตถุดิบที่มี พร้อมบันทึกสูตรอาหารส่วนตัวของคุณ"
+        buttonText="ค้นหาสูตรอาหาร"
         buttonLink="/tumraidee"
         :image="tumraidee"
         :reverse="true"
@@ -90,12 +90,12 @@
         <template #extra-content>
           <div class="grid grid-cols-2 gap-4 mb-8">
             <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100">
-              <div class="text-secondary font-black mb-1 text-sm tracking-wide">Perfect Match 🌟</div>
-              <p class="text-xs text-slate-500 font-bold">100% ingredients ready</p>
+              <div class="text-secondary font-black mb-1 text-sm tracking-wide">วัตถุดิบครบ 🌟</div>
+              <p class="text-xs text-slate-500 font-bold">ปรุงได้ทันที 100%</p>
             </div>
             <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100">
-              <div class="text-slate-800 font-black mb-1 text-sm tracking-wide">Almost There 🛒</div>
-              <p class="text-xs text-slate-500 font-bold">Missing just 1-2 items</p>
+              <div class="text-slate-800 font-black mb-1 text-sm tracking-wide">เกือบครบแล้ว 🛒</div>
+              <p class="text-xs text-slate-500 font-bold">ขาดเพียง 1-2 อย่าง</p>
             </div>
           </div>
         </template>

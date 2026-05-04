@@ -38,7 +38,7 @@ defineProps({
 
     <!-- Content Side -->
     <div :class="['w-full lg:w-1/2', reverse ? 'lg:order-1' : 'lg:order-2']">
-      <span class="text-secondary font-black tracking-widest uppercase text-sm">Feature {{ index }}</span>
+      <span class="text-secondary font-black tracking-widest uppercase text-sm">ฟีเจอร์ที่ {{ index }}</span>
       <h2 class="text-4xl md:text-5xl font-black mt-4 mb-6 text-slate-800">
         {{ title }}<br /><span class="text-secondary">{{ accentTitle }}</span>
       </h2>

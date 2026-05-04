@@ -11,8 +11,8 @@ const maxDistance = ref(1)
 
 const displayDistance = computed(() => {
   return maxDistance.value >= 1
-    ? maxDistance.value + ' km'
-    : (maxDistance.value * 1000) + ' m'
+    ? maxDistance.value + ' กม.'
+    : (maxDistance.value * 1000) + ' ม.'
 })
 
 const filteredFoods = computed(() => {
@@ -46,10 +46,10 @@ const allRestaurants = computed(() => {
 })
 
 const distanceOptions = [
-  { label: 'Very Close', value: 0.5 },
-  { label: '1 km', value: 1 },
-  { label: 'Moderate', value: 3 },
-  { label: 'All', value: 10 }
+  { label: 'ใกล้มาก', value: 0.5 },
+  { label: '1 กม.', value: 1 },
+  { label: 'ปานกลาง', value: 3 },
+  { label: 'ทั้งหมด', value: 10 }
 ]
 
 const resetFilters = () => {
@@ -71,13 +71,13 @@ console.log(filteredFoods.value)
         <div class="space-y-3">
           <span
             class="flex items-center gap-2 text-secondary font-black font-display text-[11px] uppercase tracking-[0.2em]">
-            📍 Current Location: KMUTT
+            📍 ตำแหน่งปัจจุบัน: มจธ. (KMUTT)
           </span>
           <h1 class="text-3xl md:text-5xl font-black text-slate-900">
-            {{ targetMenu || 'All Restaurants' }}
+            {{ targetMenu || 'ร้านอาหารทั้งหมด' }}
           </h1>
           <p class="text-slate-500 text-sm font-display font-medium">
-            Discover great restaurants around you
+            ค้นพบร้านอาหารดีๆ รอบตัวคุณ
           </p>
         </div>
 
@@ -89,7 +89,7 @@ console.log(filteredFoods.value)
           <div class="w-full sm:w-60">
             <div class="flex justify-between items-center mb-3">
               <span class="text-[12px] font-bold text-slate-400 font-display">
-                Distance
+                ระยะทาง
               </span>
               <span
                 class="text-white font-black bg-secondary px-2.5 py-0.5 rounded-md text-[11px] shadow-lg shadow-secondary/20">
@@ -107,16 +107,16 @@ console.log(filteredFoods.value)
           <!-- select option -->
          <div class="flex flex-col w-full sm:w-[140px] space-y-1">
             <span class="text-xs font-bold font-display text-slate-400">
-              Sort by
+              เรียงตาม
             </span>
             <select v-model="sortBy"
               class="text-sm font-bold font-display text-slate-700 border-b border-gray-200 focus:border-secondary outline-none cursor-pointer">
-              <option value="distance">Nearest</option>
-              <option value="rating">Top rated</option>
+              <option value="distance">ใกล้ที่สุด</option>
+              <option value="rating">คะแนนรีวิว</option>
             </select>
             <button @click="resetFilters"
               class="text-xs font-bold text-orange-500 hover:text-orange-600 transition pt-1 text-left">
-              Reset all
+              รีเซ็ตทั้งหมด
             </button>
           </div>
         </div>
@@ -136,7 +136,7 @@ console.log(filteredFoods.value)
       <!-- count rest -->
       <div class="flex items-center gap-2 ml-7 pt-2">
         <span class="text-xl font-black text-secondary">{{ allRestaurants.length }}</span>
-        <p class="text-slate-500 font-display font-bold text-base">restaurants nearby</p>
+        <p class="text-slate-500 font-display font-bold text-base">ร้านอาหารในบริเวณใกล้เคียง</p>
       </div>
 
       <!-- card -->
@@ -144,14 +144,14 @@ console.log(filteredFoods.value)
       <div v-if="allRestaurants.length === 0" class="text-center py-20 px-6">
         <div class="text-6xl mb-4">😢</div>
         <h2 class="text-2xl font-black text-slate-700 font-display ">
-          No restaurants found
+          ไม่พบร้านอาหาร
         </h2>
         <p class="text-sm text-slate-400 mt-2 font-display">
-          Try adjusting your filters or distance🍜
+          ลองปรับตัวกรองหรือระยะทางดูใหม่นะ🍜
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-6">
         <RestaurantCard v-for="(shop, index) in allRestaurants" :key="index" :shop="shop" />
       </div>
 

@@ -9,7 +9,6 @@ import { ref, watch, computed } from "vue";
 import { fridgeItems as Mock } from "@/data/fridgeItems";
 
 let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || []);
-// let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || Mock.value )
 
 const showModal = ref(false);
 
@@ -46,7 +45,6 @@ const error = ref({
 });
 
 function validateForm() {
-  // รีเซ็ต error ทุกครั้งที่กด Submit เพื่อล้างค่าเก่า
   error.value = {
     name: "",
     category: "",
@@ -58,59 +56,54 @@ function validateForm() {
 
   // --- 1. Name ---
   if (!name.value.trim()) {
-    error.value.name = "Please enter an item name.";
+    error.value.name = "กรุณากรอกชื่อวัตถุดิบ";
     isValid = false;
   } else {
-    // เช็คความสมเหตุสมผล (ชื่อซ้ำ)
     const isDuplicate = fridgeItems.value.some((item) => {
       if (editingItemId.value && item.id === editingItemId.value) return false;
       return item.name.toLowerCase() === name.value.trim().toLowerCase();
     });
     if (isDuplicate) {
       error.value.name =
-        "This item already exists in your fridge. Please go to that item and click “Edit.”";
+        "วัตถุดิบนี้มีอยู่ในตู้เย็นแล้ว หากต้องการแก้ไขกรุณากดที่ปุ่มแก้ไขของรายการนั้นๆ";
       isValid = false;
     }
   }
 
   // --- 2. Category ---
   if (!category.value) {
-    error.value.category = "Please select a category.";
+    error.value.category = "กรุณาเลือกหมวดหมู่";
     isValid = false;
   }
 
   // --- 3. Quantity ---
   if (!quantity.value) {
-    // เช็คว่ามีค่าไหม
-    error.value.quantity = "Please enter the quantity.";
+    error.value.quantity = "กรุณากรอกจำนวน";
     isValid = false;
   } else if (isNaN(quantity.value) || Number(quantity.value) <= 0) {
-    // เช็ค Type และความสมเหตุสมผล
-    error.value.quantity = "Quantity must be a valid number greater than 0.";
+    error.value.quantity = "จำนวนต้องเป็นตัวเลขที่มากกว่า 0";
     isValid = false;
   }
 
   // --- 4. Unit ---
   if (!unit.value) {
-    error.value.unit = "Please select a unit.";
+    error.value.unit = "กรุณาเลือกหน่วย";
     isValid = false;
   }
 
   // --- 5. Expired Date ---
   if (!expiredDate.value) {
-    // เช็คว่าเลือกวันหรือยัง
-    error.value.expiredDate = "Please select an expiration date.";
+    error.value.expiredDate = "กรุณาเลือกวันหมดอายุ";
     isValid = false;
   } else {
-    // เช็คความสมเหตุสมผล (หมดอายุไปแล้วหรือยัง)
     const today = new Date();
-    today.setHours(0, 0, 0, 0); // รีเซ็ตเวลาให้เป็นเที่ยงคืน เพื่อเทียบแค่วันที่
+    today.setHours(0, 0, 0, 0);
 
     const selectedDate = new Date(expiredDate.value);
     selectedDate.setHours(0, 0, 0, 0);
 
     if (selectedDate < today) {
-      error.value.expiredDate = "Expiration date cannot be in the past.";
+      error.value.expiredDate = "วันหมดอายุไม่สามารถเป็นวันที่ผ่านมาแล้วได้";
       isValid = false;
     }
   }
@@ -137,12 +130,10 @@ const openAddModal = () => {
 // deleteItem
 const showDeleteModal = ref(false);
 const itemToDeleteId = ref(null);
-// เมื่อกดรูปถังขยะจาก FridgeItems หรือ UseItUp จะเรียกฟังก์ชันนี้
 const confirmDelete = (id) => {
   itemToDeleteId.value = id;
   showDeleteModal.value = true;
 };
-// เมื่อกดยืนยันใน Modal
 const executeDelete = () => {
   if (itemToDeleteId.value !== null) {
     fridgeItems.value = fridgeItems.value.filter(
@@ -152,7 +143,6 @@ const executeDelete = () => {
     itemToDeleteId.value = null;
   }
 };
-// เมื่อกดยกเลิกใน Modal
 const cancelDelete = () => {
   showDeleteModal.value = false;
   itemToDeleteId.value = null;
@@ -260,10 +250,10 @@ function calculateExpiredDate(expiredDate) {
 // เปลี่ยนสี/ข้อความ
 function getExpiryMsg(expiredDate) {
   const diffInDays = calculateExpiredDate(expiredDate);
-  if (diffInDays > 1) return `${diffInDays} days left`;
-  else if (diffInDays === 1) return "Exp. Tomorrow";
-  else if (diffInDays === 0) return "Exp. Today";
-  else return "Expired";
+  if (diffInDays > 1) return `เหลืออีก ${diffInDays} วัน`;
+  else if (diffInDays === 1) return "หมดอายุพรุ่งนี้";
+  else if (diffInDays === 0) return "หมดอายุวันนี้";
+  else return "หมดอายุแล้ว";
 }
 
 // sort
@@ -274,18 +264,16 @@ const filterBy = ref("all");
 const selectedCategory = ref("all");
 
 const categories = [
-  { id: "all", name: "All Items" },
-  { id: "vegetable", name: "Vegetable 🥦" },
-  { id: "fruit", name: "Fruit 🍎" },
-  { id: "meat", name: "Meat & Poultry 🥩" },
-  { id: "seafood", name: "Seafood 🐟" },
-  { id: "dairy", name: "Dairy & Eggs 🥚" },
-  { id: "drink", name: "Drinks 🥤" },
+  { id: "all", name: "ทั้งหมด" },
+  { id: "vegetable", name: "ผัก 🥦" },
+  { id: "fruit", name: "ผลไม้ 🍎" },
+  { id: "meat", name: "เนื้อสัตว์ 🥩" },
+  { id: "seafood", name: "อาหารทะเล 🐟" },
+  { id: "dairy", name: "ไข่และนม 🥚" },
+  { id: "drink", name: "เครื่องดื่ม 🥤" },
 ];
 
-// 2. สร้าง Computed เพื่อกรองและจัดเรียงข้อมูลแบบเรียลไทม์
 const processedFridgeItems = computed(() => {
-  // ก๊อปปี้ array ออกมาก่อน จะได้ไม่กระทบข้อมูลต้นฉบับเวลา sort
   let result = [...fridgeItems.value];
 
   // --- Step 1: SEARCH ---
@@ -297,19 +285,16 @@ const processedFridgeItems = computed(() => {
   // --- Step 2: FILTER (เวลาที่เหลือ) ---
   if (filterBy.value !== "all") {
     result = result.filter((item) => {
-      // เรียกใช้ฟังก์ชันเดียวกันกับ UI เลย
       const diffInDays = calculateExpiredDate(item.expiredDate);
-
-      // จัดกลุ่มให้ตรงกับ UI
-      if (filterBy.value === "24h") return diffInDays === 0 || diffInDays === 1; // วันนี้ และ พรุ่งนี้
-      if (filterBy.value === "48h") return diffInDays === 2; // มะรืนนี้ (2 วัน)
-      if (filterBy.value === "more") return diffInDays > 2; // มากกว่า 2 วัน (สีเขียว)
-      if (filterBy.value === "expired") return diffInDays < 0; // หมดอายุไปแล้ว (สีแดง)
+      if (filterBy.value === "24h") return diffInDays === 0 || diffInDays === 1;
+      if (filterBy.value === "48h") return diffInDays === 2;
+      if (filterBy.value === "more") return diffInDays > 2;
+      if (filterBy.value === "expired") return diffInDays < 0;
       return true;
     });
   }
 
-  // --- Step 3: SORT ---
+  // --- Step 3: FILTER CATEGORY ---
   if (selectedCategory.value !== "all") {
     result = result.filter(
       (item) =>
@@ -408,9 +393,9 @@ const getIngredientIcon = (name) => {
               />
             </svg>
 
-            My Fridge
+            ตู้เย็นของฉัน
           </h1>
-          <p class="text-neutral-600">Manage your household ingredients</p>
+          <p class="text-neutral-600">จัดการวัตถุดิบในบ้านของคุณ</p>
         </div>
         <button
           class="rounded-full flex justify-center items-center min-w-[129px] shadow-lg shadow-secondary/20 bg-secondary text-white h-full max-h-10 gap-2 hover:scale-[1.025] transition py-3 px-1 md:py-2 md:px-5 lg:py-1 lg:px-4"
@@ -430,7 +415,7 @@ const getIngredientIcon = (name) => {
               d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
             />
           </svg>
-          Add Item
+          เพิ่มวัตถุดิบ
         </button>
       </div>
       <div class="flex rounded-3xl bg-white p-4 flex-wrap md:flex-nowrap shadow shadow-neutral-300 gap-3">
@@ -452,7 +437,7 @@ const getIngredientIcon = (name) => {
           <input
             v-model="searchQuery"
             class="w-full bg-neutral-100 outline-none focus:outline-none focus:ring-0 border-none"
-            placeholder="Search ingredients (e.g. Egg, Milk)"
+            placeholder="ค้นหาวัตถุดิบ (เช่น ไข่, นม)"
             type="text"
           />
         </div>
@@ -476,9 +461,9 @@ const getIngredientIcon = (name) => {
             v-model="sortBy"
             class="bg-transparent focus:ring-0 focus:outline-none border-0 ring-0 outline-none cursor-pointer appearance-none text-center font-medium w-full"
           >
-            <option value="a-z">Sort: A-Z</option>
-            <option value="expiry">Sort: Expiry</option>
-            <option value="purchase">Sort: Purchase</option>
+            <option value="a-z">เรียง: ก-ฮ</option>
+            <option value="expiry">เรียง: วันหมดอายุ</option>
+            <option value="purchase">เรียง: วันที่ซื้อ</option>
           </select>
         </div>
 
@@ -501,11 +486,11 @@ const getIngredientIcon = (name) => {
             v-model="filterBy"
             class="bg-transparent focus:ring-0 focus:outline-none border-0 ring-0 outline-none cursor-pointer appearance-none text-center font-medium w-full"
           >
-            <option value="all">Filter: All</option>
-            <option value="24h">Exp in 24h</option>
-            <option value="48h">Exp in 48h</option>
-            <option value="more">Exp after 48h</option>
-            <option value="expired">Expired</option>
+            <option value="all">ตัวกรอง: ทั้งหมด</option>
+            <option value="24h">หมดอายุใน 24 ชม.</option>
+            <option value="48h">หมดอายุใน 48 ชม.</option>
+            <option value="more">มากกว่า 48 ชม.</option>
+            <option value="expired">หมดอายุแล้ว</option>
           </select>
         </div>
       </div>
@@ -549,23 +534,23 @@ const getIngredientIcon = (name) => {
       <RecommendMenu :fridgeItems="fridgeItems" />
     </div>
 
-    <!-- Add Item -->
-    <div v-if="showModal" class="fixed inset-0 flex items-center justify-center bg-black/50">
+    <!-- Add Item Modal -->
+    <div v-if="showModal" class="fixed inset-0 flex items-center justify-center bg-black/50 z-[100]">
       <div class="bg-white p-6 rounded-xl w-full max-w-[360px] max-h-[600px] overflow-y-scroll lg:max-w-[620px] lg:max-h-fit lg:py-10">
         <h2 class="text-2xl font-bold mb-4">
-          {{ editingItemId ? "Edit Item" : "Add Item" }}
+          {{ editingItemId ? "แก้ไขวัตถุดิบ" : "เพิ่มวัตถุดิบ" }}
         </h2>
         <form
           @submit.prevent="submitAddItem"
           class="flex flex-col lg:grid grid-cols-2 gap-4"
         >
           <div class="flex flex-col gap-1 lg:order-0">
-            <label for="item-name">Name</label>
+            <label for="item-name">ชื่อวัตถุดิบ</label>
             <input
               type="text"
               id="item-name"
               v-model="name"
-              placeholder="Item Name (e.g. Egg)"
+              placeholder="ชื่อวัตถุดิบ (เช่น ไข่)"
               class="border-2 py-2 px-4 w-full rounded-xl focus:border-secondary focus:ring-0 focus:outline-none"
               :class="
                 error.name
@@ -579,12 +564,12 @@ const getIngredientIcon = (name) => {
           </div>
 
           <div class="flex flex-col gap-1 lg:order-2">
-            <label for="item-quantity">Quantity</label>
+            <label for="item-quantity">จำนวน</label>
             <input
               type="number"
               id="item-quantity"
               v-model="quantity"
-              placeholder="Item Quantity (e.g. 3)"
+              placeholder="จำนวน (เช่น 3)"
               class="border-2 py-2 px-4 w-full rounded-xl focus:border-secondary focus:ring-0 focus:outline-none"
               :class="
                 error.quantity
@@ -598,7 +583,7 @@ const getIngredientIcon = (name) => {
           </div>
 
           <div class="flex flex-col gap-1 lg:order-3">
-            <label for="item-unit">Unit</label>
+            <label for="item-unit">หน่วย</label>
             <select
               id="item-unit"
               v-model="unit"
@@ -609,10 +594,10 @@ const getIngredientIcon = (name) => {
                   : 'border-gray-100 focus:border-secondary'
               "
             >
-              <option value="" disabled selected>Select Unit</option>
-              <option value="ml">Milliliter</option>
-              <option value="g">Gram</option>
-              <option value="pcs">Pieces</option>
+              <option value="" disabled selected>เลือกหน่วย</option>
+              <option value="มล.">มิลลิลิตร (มล.)</option>
+              <option value="กรัม">กรัม</option>
+              <option value="ชิ้น">ชิ้น</option>
             </select>
             <div v-if="error.unit" class="text-danger text-sm mt-1 ml-1">
               {{ error.unit }}
@@ -620,7 +605,7 @@ const getIngredientIcon = (name) => {
           </div>
 
           <div class="flex flex-col gap-1 lg:order-1">
-            <label for="item-category">Category</label>
+            <label for="item-category">หมวดหมู่</label>
             <select
               id="item-category"
               v-model="category"
@@ -631,7 +616,7 @@ const getIngredientIcon = (name) => {
                   : 'border-gray-100 focus:border-secondary'
               "
             >
-              <option value="" disabled selected>Select Category</option>
+              <option value="" disabled selected>เลือกหมวดหมู่</option>
               <option v-for="cat in categories.slice(1)" :value="cat.id">
                 {{ cat.name }}
               </option>
@@ -642,12 +627,12 @@ const getIngredientIcon = (name) => {
           </div>
 
           <div class="flex flex-col gap-1 lg:order-4">
-            <label for="item-expired-date">Expired Date</label>
+            <label for="item-expired-date">วันหมดอายุ</label>
             <input
               type="date"
               id="item-expired-date"
               v-model="expiredDate"
-              placeholder="Item Expired Date"
+              placeholder="เลือกวันหมดอายุ"
               class="border-2 py-2 px-4 w-full rounded-xl focus:border-secondary focus:ring-0 focus:outline-none"
               :class="
                 error.expiredDate
@@ -663,22 +648,24 @@ const getIngredientIcon = (name) => {
           <div class="flex justify-end items-end gap-2 lg:order-5">
             <button
               @click="closeModal"
-              class="px-4 py-2 hover:bg-neutral-400 transition bg-gray-300 rounded-xl focus:border-success focus:ring-0 focus:outline-none"
+              type="button"
+              class="px-4 py-2 hover:bg-neutral-400 transition bg-gray-300 rounded-xl focus:outline-none"
             >
-              Cancel
+              ยกเลิก
             </button>
             <button
               class="px-4 py-2 hover:bg-orange-600 transition bg-secondary text-white rounded-xl focus:outline-none shadow-md shadow-secondary/20"
               type="submit"
             >
-              {{ editingItemId ? "Save Changes" : "Add Item" }}
+              {{ editingItemId ? "บันทึกการแก้ไข" : "เพิ่มวัตถุดิบ" }}
             </button>
           </div>
         </form>
       </div>
     </div>
 
-    <div v-if="showDeleteModal" class="fixed inset-0 flex items-center justify-center bg-black/50 z-[60]">
+    <!-- Delete Confirmation Modal -->
+    <div v-if="showDeleteModal" class="fixed inset-0 flex items-center justify-center bg-black/50 z-[120]">
       <div class="bg-white p-6 rounded-2xl w-full max-w-[320px] text-center shadow-xl">
         <div class="flex justify-center mb-4">
           <div class="bg-orange-100 p-4 rounded-full">
@@ -698,23 +685,22 @@ const getIngredientIcon = (name) => {
             </svg>
           </div>
         </div>
-        <h2 class="text-xl font-bold mb-2">Delete Item?</h2>
+        <h2 class="text-xl font-bold mb-2">ลบวัตถุดิบ?</h2>
         <p class="text-neutral-500 mb-6 text-sm">
-          Are you sure you want to delete this item? This action cannot be
-          undone.
+          คุณแน่ใจหรือไม่ว่าต้องการลบวัตถุดิบนี้? การดำเนินการนี้ไม่สามารถย้อนกลับได้
         </p>
         <div class="flex justify-center gap-3">
           <button
             @click="cancelDelete"
             class="flex-1 py-2 hover:bg-neutral-200 transition bg-neutral-100 text-neutral-700 font-bold rounded-xl focus:outline-none"
           >
-            Cancel
+            ยกเลิก
           </button>
           <button
             @click="executeDelete"
             class="flex-1 py-2 hover:bg-danger transition bg-danger text-white font-bold rounded-xl focus:outline-none shadow-md shadow-orange-200"
           >
-            Delete
+            ลบเลย
           </button>
         </div>
       </div>
