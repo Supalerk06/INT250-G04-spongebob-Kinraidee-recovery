@@ -131,7 +131,7 @@ const handleFileChange = async (e) => {
 }
 
 const props = defineProps({
-  recipeData: Object /
+  recipeData: Object 
 })
 
 onMounted(() => {
