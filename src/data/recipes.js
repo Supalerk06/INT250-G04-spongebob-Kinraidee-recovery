@@ -6,7 +6,7 @@ export const recipes = ref([
     "short_description": "A fluffy, buttery classic French-style omelette perfect for any breakfast.",
     "difficulty": "Easy",
     "categories": ["Western", "Halal"],
-    "image": "src/assets/recipeImg/Classic_Omelette.jpg",
+    "image": "/assets/recipeImg/Classic_Omelette.jpg",
     "video": null,
     "ingredients": [
       {"name": "Egg", "quantity": 3, "unit": "pcs"},
@@ -33,7 +33,7 @@ export const recipes = ref([
     "short_description": "A simple and quick fried egg with your choice of a runny or firm yolk.",
     "difficulty": "Easy",
     "categories": ["Western", "Halal", "Vegetarian"],
-    "image": "src/assets/recipeImg/Fried_Egg.jpg",
+    "image": "/assets/recipeImg/Fried_Egg.jpg",
     "video": null,
     "ingredients": [
       {"name": "Egg", "quantity": 1, "unit": "pcs"},
@@ -59,7 +59,7 @@ export const recipes = ref([
     "short_description": "Fragrant jasmine rice stir-fried with golden toasted garlic and savory soy sauce.",
     "difficulty": "Easy",
     "categories": ["Chinese", "Vegan"],
-    "image": "src/assets/recipeImg/Garlic_Fried_Rice.jpg",
+    "image": "/assets/recipeImg/Garlic_Fried_Rice.jpg",
     "video": null,
     "ingredients": [
       {"name": "Cooked Rice", "quantity": 200, "unit": "g"},
@@ -86,7 +86,7 @@ export const recipes = ref([
     "short_description": "Juicy, seasoned chicken breast grilled to perfection for a healthy protein boost.",
     "difficulty": "Intermediate",
     "categories": ["Western", "Halal"],
-    "image": "src/assets/recipeImg/Grilled_Chicken_Breast.jpg",
+    "image": "/assets/recipeImg/Grilled_Chicken_Breast.jpg",
     "video": null,
     "ingredients": [
       {"name": "Chicken Breast", "quantity": 200, "unit": "g"},
@@ -113,7 +113,7 @@ export const recipes = ref([
     "short_description": "Al dente pasta tossed in a rich, herb-infused tomato sauce.",
     "difficulty": "Easy",
     "categories": ["Western", "Vegan"],
-    "image": "src/assets/recipeImg/Simple_Tomato_Pasta.jpg",
+    "image": "/assets/recipeImg/Simple_Tomato_Pasta.jpg",
     "video": null,
     "ingredients": [
       {"name": "Pasta", "quantity": 100, "unit": "g"},
@@ -140,7 +140,7 @@ export const recipes = ref([
     "short_description": "Soft, golden-brown pancakes that melt in your mouth, served best with maple syrup.",
     "difficulty": "Easy",
     "categories": ["Western", "Halal", "Vegetarian"],
-    "image": "src/assets/recipeImg/Fluffy_Pancakes.jpg",
+    "image": "/assets/recipeImg/Fluffy_Pancakes.jpg",
     "video": null,
     "ingredients": [
       {"name": "Flour", "quantity": 120, "unit": "g"},
@@ -167,7 +167,7 @@ export const recipes = ref([
     "short_description": "Bread soaked in a sweet egg mixture and pan-fried until golden and custardy.",
     "difficulty": "Easy",
     "categories": ["Western", "Halal", "Vegetarian"],
-    "image": "src/assets/recipeImg/French_Toast.jpg",
+    "image": "/assets/recipeImg/French_Toast.jpg",
     "video": null,
     "ingredients": [
       {"name": "Bread", "quantity": 2, "unit": "pcs"},
@@ -194,7 +194,7 @@ export const recipes = ref([
     "short_description": "Creamy mashed avocado seasoned with lemon and salt on crisp toasted bread.",
     "difficulty": "Easy",
     "categories": ["Western", "Vegan"],
-    "image": "src/assets/recipeImg/Avocado_Toast.jpg",
+    "image": "/assets/recipeImg/Avocado_Toast.jpg",
     "video": null,
     "ingredients": [
       {"name": "Bread", "quantity": 2, "unit": "pcs"},
@@ -221,7 +221,7 @@ export const recipes = ref([
     "short_description": "Slow-cooked, creamy eggs with a velvety texture that pairs perfectly with toast.",
     "difficulty": "Easy",
     "categories": ["Western", "Halal", "Vegetarian"],
-    "image": "src/assets/recipeImg/Soft_Scrambled_Eggs.jpg",
+    "image": "/assets/recipeImg/Soft_Scrambled_Eggs.jpg",
     "video": null,
     "ingredients": [
       {"name": "Egg", "quantity": 3, "unit": "pcs"},
@@ -248,7 +248,7 @@ export const recipes = ref([
     "short_description": "Golden, shredded potatoes fried until perfectly crispy on the outside.",
     "difficulty": "Intermediate",
     "categories": ["Western", "Vegan"],
-    "image": "src/assets/recipeImg/Crispy_Hash_Browns.jpg",
+    "image": "/assets/recipeImg/Crispy_Hash_Browns.jpg",
     "video": null,
     "ingredients": [
       {"name": "Potato", "quantity": 300, "unit": "g"},
@@ -275,7 +275,7 @@ export const recipes = ref([
     "short_description": "Fresh romaine lettuce tossed with creamy dressing, crunchy croutons, and parmesan.",
     "difficulty": "Easy",
     "categories": ["Western"],
-    "image": "src/assets/recipeImg/Caesar_Salad.jpg",
+    "image": "/assets/recipeImg/Caesar_Salad.jpg",
     "video": null,
     "ingredients": [
       {"name": "Romaine Lettuce", "quantity": 300, "unit": "g"},
@@ -302,7 +302,7 @@ export const recipes = ref([
     "short_description": "Tender potato chunks mixed with a creamy mayonnaise dressing and crisp celery.",
     "difficulty": "Easy",
     "categories": ["Western", "Vegetarian"],
-    "image": "src/assets/recipeImg/Classic_Potato_Salad.jpg",
+    "image": "/assets/recipeImg/Classic_Potato_Salad.jpg",
     "video": null,
     "ingredients": [
       {"name": "Potato", "quantity": 400, "unit": "g"},
@@ -329,7 +329,7 @@ export const recipes = ref([
     "short_description": "A comforting sandwich filled with mashed hard-boiled eggs and creamy mayo.",
     "difficulty": "Easy",
     "categories": ["Western", "Halal", "Vegetarian"],
-    "image": "src/assets/recipeImg/Egg_Salad_Sandwich.jpg",
+    "image": "/assets/recipeImg/Egg_Salad_Sandwich.jpg",
     "video": null,
     "ingredients": [
       {"name": "Egg", "quantity": 2, "unit": "pcs"},
@@ -356,7 +356,7 @@ export const recipes = ref([
     "short_description": "Savory flaked tuna mixed with mayo and onions, served between fresh bread.",
     "difficulty": "Easy",
     "categories": ["Western", "Halal"],
-    "image": "src/assets/recipeImg/Tuna_Salad_Sandwich.jpg",
+    "image": "/assets/recipeImg/Tuna_Salad_Sandwich.jpg",
     "video": null,
     "ingredients": [
       {"name": "Canned Tuna", "quantity": 150, "unit": "g"},
@@ -383,7 +383,7 @@ export const recipes = ref([
     "short_description": "The iconic trio of crispy bacon, fresh lettuce, and juicy tomato in a sandwich.",
     "difficulty": "Easy",
     "categories": ["Western"],
-    "image": "src/assets/recipeImg/BLT_Sandwich.jpg",
+    "image": "/assets/recipeImg/BLT_Sandwich.jpg",
     "video": null,
     "ingredients": [
       {"name": "Bacon", "quantity": 3, "unit": "pcs"},
@@ -410,7 +410,7 @@ export const recipes = ref([
     "short_description": "Buttery toasted bread with a warm, gooey melted cheese center.",
     "difficulty": "Easy",
     "categories": ["Western", "Halal", "Vegetarian"],
-    "image": "src/assets/recipeImg/Grilled_Cheese_Sandwich.jpg",
+    "image": "/assets/recipeImg/Grilled_Cheese_Sandwich.jpg",
     "video": null,
     "ingredients": [
       {"name": "Bread", "quantity": 2, "unit": "pcs"},
@@ -436,7 +436,7 @@ export const recipes = ref([
     "short_description": "A juicy, flame-grilled beef patty served on a toasted bun with melted cheese.",
     "difficulty": "Intermediate",
     "categories": ["Western", "Halal"],
-    "image": "src/assets/recipeImg/Beef_Burger.jpg",
+    "image": "/assets/recipeImg/Beef_Burger.jpg",
     "video": null,
     "ingredients": [
       {"name": "Ground Beef", "quantity": 150, "unit": "g"},
@@ -463,7 +463,7 @@ export const recipes = ref([
     "short_description": "A savory steamed sausage nestled in a soft bun with ketchup and mustard.",
     "difficulty": "Easy",
     "categories": ["Western"],
-    "image": "src/assets/recipeImg/hot_dog.jpg",
+    "image": "/assets/recipeImg/hot_dog.jpg",
     "video": null,
     "ingredients": [
       {"name": "Sausage", "quantity": 1, "unit": "pcs"},
@@ -490,7 +490,7 @@ export const recipes = ref([
     "short_description": "A toasted tortilla packed with melted cheese and seasoned grilled chicken.",
     "difficulty": "Easy",
     "categories": ["Mexican", "Halal"],
-    "image": "src/assets/recipeImg/Chicken_Quesadilla.jpg",
+    "image": "/assets/recipeImg/Chicken_Quesadilla.jpg",
     "video": null,
     "ingredients": [
       {"name": "Tortilla", "quantity": 1, "unit": "pcs"},
@@ -517,7 +517,7 @@ export const recipes = ref([
     "short_description": "Seasoned ground beef served in crunchy taco shells with fresh toppings.",
     "difficulty": "Easy",
     "categories": ["Mexican", "Halal"],
-    "image": "src/assets/recipeImg/Beef_Tacos.jpg",
+    "image": "/assets/recipeImg/Beef_Tacos.jpg",
     "video": null,
     "ingredients": [
       {"name": "Ground Beef", "quantity": 150, "unit": "g"},
@@ -544,7 +544,7 @@ export const recipes = ref([
     "short_description": "Hearty pasta topped with a slow-simmered savory beef and tomato meat sauce.",
     "difficulty": "Intermediate",
     "categories": ["Western", "Halal"],
-    "image": "src/assets/recipeImg/Spaghetti_Bolognese.jpg",
+    "image": "/assets/recipeImg/Spaghetti_Bolognese.jpg",
     "video": null,
     "ingredients": [
       {"name": "Spaghetti", "quantity": 100, "unit": "g"},
@@ -571,7 +571,7 @@ export const recipes = ref([
     "short_description": "Tender macaroni coated in a rich, velvety cheddar cheese sauce.",
     "difficulty": "Easy",
     "categories": ["Western", "Halal", "Vegetarian"],
-    "image": "src/assets/recipeImg/Macaroni_and_Cheese.jpg",
+    "image": "/assets/recipeImg/Macaroni_and_Cheese.jpg",
     "video": null,
     "ingredients": [
       {"name": "Macaroni", "quantity": 100, "unit": "g"},
@@ -598,7 +598,7 @@ export const recipes = ref([
     "short_description": "Classic Thai stir-fried noodles with shrimp, egg, and a tangy tamarind sauce.",
     "difficulty": "Intermediate",
     "categories": ["Thai", "Halal"],
-    "image": "src/assets/recipeImg/Pad_Thai.jpg",
+    "image": "/assets/recipeImg/Pad_Thai.jpg",
     "video": null,
     "ingredients": [
       {"name": "Rice Noodles", "quantity": 100, "unit": "g"},
@@ -625,7 +625,7 @@ export const recipes = ref([
     "short_description": "Savory stir-fried rice with plump shrimp, scrambled eggs, and soy sauce.",
     "difficulty": "Easy",
     "categories": ["Chinese", "Halal"],
-    "image": "src/assets/recipeImg/Shrimp_Fried_Rice.jpg",
+    "image": "/assets/recipeImg/Shrimp_Fried_Rice.jpg",
     "video": null,
     "ingredients": [
       {"name": "Cooked Rice", "quantity": 200, "unit": "g"},
@@ -652,7 +652,7 @@ export const recipes = ref([
     "short_description": "A fragrant and creamy coconut-based curry with tender pieces of chicken.",
     "difficulty": "Intermediate",
     "categories": ["Thai", "Halal"],
-    "image": "src/assets/recipeImg/Quick_Chicken_Curry.jpg",
+    "image": "/assets/recipeImg/Quick_Chicken_Curry.jpg",
     "video": null,
     "ingredients": [
       {"name": "Chicken Breast", "quantity": 150, "unit": "g"},
@@ -679,7 +679,7 @@ export const recipes = ref([
     "short_description": "A hot and sour Thai soup with shrimp, lemongrass, and aromatic herbs.",
     "difficulty": "Intermediate",
     "categories": ["Thai", "Halal"],
-    "image": "src/assets/recipeImg/Tom_Yum_Goong.jpg",
+    "image": "/assets/recipeImg/Tom_Yum_Goong.jpg",
     "video": null,
     "ingredients": [
       {"name": "Shrimp", "quantity": 6, "unit": "pcs"},
@@ -706,7 +706,7 @@ export const recipes = ref([
     "short_description": "Fragrant, fluffy white rice steamed to perfection as the ideal side dish.",
     "difficulty": "Easy",
     "categories": ["Thai", "Vegan"],
-    "image": "src/assets/recipeImg/Steamed_Jasmine_Rice.jpg",
+    "image": "/assets/recipeImg/Steamed_Jasmine_Rice.jpg",
     "video": null,
     "ingredients": [
       {"name": "Jasmine Rice", "quantity": 200, "unit": "g"},
@@ -731,7 +731,7 @@ export const recipes = ref([
     "short_description": "Smooth and buttery potatoes mashed with milk for a comforting side dish.",
     "difficulty": "Easy",
     "categories": ["Western", "Halal", "Vegetarian"],
-    "image": "src/assets/recipeImg/Creamy_Mashed_Potatoes.jpg",
+    "image": "/assets/recipeImg/Creamy_Mashed_Potatoes.jpg",
     "video": null,
     "ingredients": [
       {"name": "Potato", "quantity": 400, "unit": "g"},
@@ -758,7 +758,7 @@ export const recipes = ref([
     "short_description": "Crispy baguette slices spread with a rich garlic and herb butter.",
     "difficulty": "Easy",
     "categories": ["Western", "Halal", "Vegetarian"],
-    "image": "src/assets/recipeImg/Garlic_Bread.jpg",
+    "image": "/assets/recipeImg/Garlic_Bread.jpg",
     "video": null,
     "ingredients": [
       {"name": "Baguette", "quantity": 1, "unit": "pcs"},
@@ -785,7 +785,7 @@ export const recipes = ref([
     "short_description": "A spicy and aromatic Thai classic featuring minced pork and fresh basil leaves.",
     "difficulty": "Easy",
     "categories": ["Thai", "Halal"],
-    "image": "src/assets/recipeImg/Stir-Fried_Basil_Pork.jpg",
+    "image": "/assets/recipeImg/Stir-Fried_Basil_Pork.jpg",
     "video": null,
     "ingredients": [
       {"name": "Minced Pork", "quantity": 150, "unit": "g"},
@@ -812,7 +812,7 @@ export const recipes = ref([
     "short_description": "A creamy and naturally sweet blend of ripe bananas, milk, and a hint of honey.",
     "difficulty": "Easy",
     "categories": ["Western", "Halal", "Vegetarian"],
-    "image": "src/assets/recipeImg/Banana_Smoothie.jpg",
+    "image": "/assets/recipeImg/Banana_Smoothie.jpg",
     "video": null,
     "ingredients": [
       {"name": "Banana", "quantity": 1, "unit": "pcs"},
@@ -839,7 +839,7 @@ export const recipes = ref([
     "short_description": "Crisp apple slices tossed with crunchy walnuts and a light yogurt dressing.",
     "difficulty": "Easy",
     "categories": ["Western", "Halal", "Vegetarian"],
-    "image": "src/assets/recipeImg/Apple_Walnut_Salad.jpg",
+    "image": "/assets/recipeImg/Apple_Walnut_Salad.jpg",
     "video": null,
     "ingredients": [
       {"name": "Apple", "quantity": 1, "unit": "pcs"},
@@ -866,7 +866,7 @@ export const recipes = ref([
     "short_description": "A classic Mexican dip made with ripe avocados, lime, and fresh aromatics.",
     "difficulty": "Easy",
     "categories": ["Mexican", "Vegan"],
-    "image": "src/assets/recipeImg/Guacamole.jpg",
+    "image": "/assets/recipeImg/Guacamole.jpg",
     "video": null,
     "ingredients": [
       {"name": "Avocado", "quantity": 1, "unit": "pcs"},
@@ -893,7 +893,7 @@ export const recipes = ref([
     "short_description": "Tender chicken and colorful bell peppers stir-fried in a savory ginger sauce.",
     "difficulty": "Intermediate",
     "categories": ["Chinese", "Halal"],
-    "image": "src/assets/recipeImg/Chicken_Stir-Fry.jpg",
+    "image": "/assets/recipeImg/Chicken_Stir-Fry.jpg",
     "video": null,
     "ingredients": [
       {"name": "Chicken Breast", "quantity": 200, "unit": "g"},
@@ -920,7 +920,7 @@ export const recipes = ref([
     "short_description": "Simple and flavorful chicken breast seared until golden and juicy.",
     "difficulty": "Easy",
     "categories": ["Western", "Halal"],
-    "image": "src/assets/recipeImg/Pan-seared_chicken.jpg",
+    "image": "/assets/recipeImg/Pan-seared_chicken.jpg",
     "video": null,
     "ingredients": [
       {"name": "Chicken Breast", "quantity": 200, "unit": "g"},
@@ -947,7 +947,7 @@ export const recipes = ref([
     "short_description": "Sweet and savory glazed chicken breast with a rich garlic aroma.",
     "difficulty": "Easy",
     "categories": ["Chinese", "Halal"],
-    "image": "src/assets/recipeImg/Honey_Garlic_Chicken.jpg",
+    "image": "/assets/recipeImg/Honey_Garlic_Chicken.jpg",
     "video": null,
     "ingredients": [
       {"name": "Chicken Breast", "quantity": 200, "unit": "g"},
@@ -974,7 +974,7 @@ export const recipes = ref([
     "short_description": "Tender-crisp broccoli florets roasted with olive oil and simple seasonings.",
     "difficulty": "Easy",
     "categories": ["Western", "Vegan"],
-    "image": "src/assets/recipeImg/Roasted_Broccoli.jpg",
+    "image": "/assets/recipeImg/Roasted_Broccoli.jpg",
     "video": null,
     "ingredients": [
       {"name": "Broccoli", "quantity": 150, "unit": "g"},
@@ -1001,7 +1001,7 @@ export const recipes = ref([
     "short_description": "Zesty and fresh chicken breast marinated with lemon juice and dried herbs.",
     "difficulty": "Easy",
     "categories": ["Western", "Halal"],
-    "image": "src/assets/recipeImg/Lemon_Chicken.jpg",
+    "image": "/assets/recipeImg/Lemon_Chicken.jpg",
     "video": null,
     "ingredients": [
       {"name": "Chicken Breast", "quantity": 200, "unit": "g"},
@@ -1028,7 +1028,7 @@ export const recipes = ref([
     "short_description": "Quickly cooked broccoli with garlic for a simple and nutritious side.",
     "difficulty": "Easy",
     "categories": ["Western", "Vegan"],
-    "image": "src/assets/recipeImg/Sauteed_Broccoli.jpg",
+    "image": "/assets/recipeImg/Sauteed_Broccoli.jpg",
     "video": null,
     "ingredients": [
       {"name": "Broccoli", "quantity": 150, "unit": "g"},
@@ -1055,7 +1055,7 @@ export const recipes = ref([
     "short_description": "Rich, dense, and chewy chocolate brownies with a perfectly fudgy center.",
     "difficulty": "Intermediate",
     "categories": ["Western", "Halal", "Vegetarian"],
-    "image": "src/assets/recipeImg/Fudgy_Chocolate_Brownie.jpg",
+    "image": "/assets/recipeImg/Fudgy_Chocolate_Brownie.jpg",
     "video": null,
     "ingredients": [
       {"name": "Chocolate", "quantity": 100, "unit": "g"},

@@ -1,9 +1,7 @@
 <script setup>
 import RecipePopup from './RecipePopup.vue';
 import { ref, toRaw , watch } from 'vue'
-// import {fridgeItems} from '@/data/fridgeItems';
 
-// let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || [])
 
 const Props = defineProps(['fridgeItems','id', 'name', 'short_description', 'difficulty', 'image', 'video', "ingredients", "steps"])
 
@@ -22,7 +20,7 @@ function closeModal() {
 const showConfirm = ref(false)
 
 function handleCook() {
-    closeModal()        // 👈 ปิด popup หลักก่อน
+    closeModal()       
     showConfirm.value = true
 }
 
@@ -106,7 +104,6 @@ const isCooking = ref(false)
     <RecipePopup v-if="showModal" :name="name" :image="image" :video="video" :ingredients="ingredients" :steps="steps"
         @close="closeModal" @cook="handleCook" ></RecipePopup>
 
-    <!-- pop up confirm -->
     <div v-if="showConfirm" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
         <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl w-[90%] max-w-md shadow-xl">
             <h3 class="text-lg font-bold mb-4 text-center">

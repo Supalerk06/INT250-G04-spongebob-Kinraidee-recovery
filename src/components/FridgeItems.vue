@@ -17,7 +17,6 @@ const props = defineProps({
   },
 });
 
-// edit/delete button on card
 const emit = defineEmits(["delete-item", "edit-item"]);
 const activeMenuId = ref(null);
 const toggleMenu = (id) => {

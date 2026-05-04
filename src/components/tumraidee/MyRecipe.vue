@@ -2,7 +2,7 @@
 import { db } from '@/data/userRecipes'
 import RecipePopup from './RecipePopup.vue';
 import { ref , watch} from 'vue';
-// import { fridgeItems } from '@/data/fridgeItems';
+
 import { toRaw } from 'vue'
 
 
@@ -10,7 +10,6 @@ const Props = defineProps(['fridgeItems','id', 'name', 'short_description', 'ima
 
 const emit = defineEmits(['cook', 'delete'])
 
-// let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || [])
 
 watch(
   Props.fridgeItems,

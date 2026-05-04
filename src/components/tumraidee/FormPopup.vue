@@ -6,15 +6,14 @@ import { onMounted } from 'vue'
 
 const emit = defineEmits(['close', 'save'])
 
-// โครงสร้างข้อมูลสำหรับ Form
 const recipe = reactive({
   name: '',
   image: '',
   short_description: '',
   ingredients: [
-    { name: '', quantity: 1, unit: 'pcs' } // ค่าเริ่มต้น 1 แถว
+    { name: '', quantity: 1, unit: 'pcs' } 
   ],
-  steps: [''] // ค่าเริ่มต้น 1 ขั้นตอน
+  steps: [''] 
 })
 
 const errors = reactive({
@@ -28,13 +27,11 @@ const errors = reactive({
 const validateForm = () => {
   let isValid = true
 
-  // reset error ก่อน
   errors.name = ''
   errors.image = ''
   errors.ingredients = []
   errors.steps = []
 
-  // 🔹 name
   if (!recipe.name.trim()) {
     errors.name = 'Recipe name is required'
     isValid = false
@@ -45,13 +42,11 @@ const validateForm = () => {
     isValid = false
   }
 
-  // 🔹 image
   if (!recipe.image) {
     errors.image = 'Please upload an image'
     isValid = false
   }
 
-  // 🔹 ingredients
   recipe.ingredients.forEach((item, i) => {
     const err = { name: '', quantity: '', unit: '' }
 
@@ -73,7 +68,6 @@ const validateForm = () => {
     errors.ingredients[i] = err
   })
 
-  // 🔹 steps
   recipe.steps.forEach((step, i) => {
     if (!step.trim()) {
       errors.steps[i] = 'Step is required'
@@ -84,7 +78,6 @@ const validateForm = () => {
   return isValid
 }
 
-// ฟังก์ชันเพิ่ม/ลบ วัตถุดิบ
 const addIngredient = () => {
   recipe.ingredients.push({ name: '', quantity: 1, unit: 'pcs' })
 }
@@ -92,7 +85,6 @@ const removeIngredient = (index) => {
   if (recipe.ingredients.length > 1) recipe.ingredients.splice(index, 1)
 }
 
-// ฟังก์ชันเพิ่ม/ลบ ขั้นตอน
 const addStep = () => {
   recipe.steps.push('')
 }
@@ -107,11 +99,9 @@ const handleSubmit = () => {
     const data = structuredClone(toRaw(recipe))
 
     if (props.recipeData?.id) {
-      // ✏️ EDIT MODE
       db.recipes.update(props.recipeData.id, data)
       console.log("Updated ✅")
     } else {
-      // ➕ ADD MODE
       db.recipes.add({
         ...data,
         createdAt: new Date()
@@ -134,14 +124,14 @@ const handleFileChange = async (e) => {
   const reader = new FileReader()
 
   reader.onload = () => {
-    recipe.image = reader.result // 👈 base64 string
+    recipe.image = reader.result 
   }
 
   reader.readAsDataURL(file)
 }
 
 const props = defineProps({
-  recipeData: Object // 👈 ใช้ตอน edit
+  recipeData: Object /
 })
 
 onMounted(() => {
