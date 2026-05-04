@@ -545,7 +545,7 @@ const getIngredientIcon = (name) => {
           class="flex flex-col lg:grid grid-cols-2 gap-4"
         >
           <div class="flex flex-col gap-1 lg:order-0">
-            <label for="item-name">ชื่อวัตถุดิบ</label>
+            <label for="item-name">ชื่อวัตถุดิบ <span class="text-secondary font-bold">*</span></label>
             <input
               type="text"
               id="item-name"
@@ -564,7 +564,7 @@ const getIngredientIcon = (name) => {
           </div>
 
           <div class="flex flex-col gap-1 lg:order-2">
-            <label for="item-quantity">จำนวน</label>
+            <label for="item-quantity">จำนวน <span class="text-secondary font-bold">*</span></label>
             <input
               type="number"
               id="item-quantity"
@@ -583,7 +583,7 @@ const getIngredientIcon = (name) => {
           </div>
 
           <div class="flex flex-col gap-1 lg:order-3">
-            <label for="item-unit">หน่วย</label>
+            <label for="item-unit">หน่วย <span class="text-secondary font-bold">*</span></label>
             <select
               id="item-unit"
               v-model="unit"
@@ -605,7 +605,7 @@ const getIngredientIcon = (name) => {
           </div>
 
           <div class="flex flex-col gap-1 lg:order-1">
-            <label for="item-category">หมวดหมู่</label>
+            <label for="item-category">หมวดหมู่ <span class="text-secondary font-bold">*</span></label>
             <select
               id="item-category"
               v-model="category"
@@ -616,7 +616,7 @@ const getIngredientIcon = (name) => {
                   : 'border-gray-100 focus:border-secondary'
               "
             >
-              <option value="" disabled selected>เลือกหมวดหมู่</option>
+              <option value="" disabled selected>เลือกหมวดหมู่ <span class="text-secondary font-bold">*</span></option>
               <option v-for="cat in categories.slice(1)" :value="cat.id">
                 {{ cat.name }}
               </option>
@@ -627,7 +627,7 @@ const getIngredientIcon = (name) => {
           </div>
 
           <div class="flex flex-col gap-1 lg:order-4">
-            <label for="item-expired-date">วันหมดอายุ</label>
+            <label for="item-expired-date">วันหมดอายุ <span class="text-secondary font-bold">*</span></label>
             <input
               type="date"
               id="item-expired-date"
