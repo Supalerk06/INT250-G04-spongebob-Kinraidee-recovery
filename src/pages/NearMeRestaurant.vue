@@ -48,7 +48,7 @@ const allRestaurants = computed(() => {
 const distanceOptions = [
   { label: 'ใกล้มาก', value: 0.5 },
   { label: '1 กม.', value: 1 },
-  { label: 'ปานกลาง', value: 3 },
+  { label: '3 กม.', value: 3 },
   { label: 'ทั้งหมด', value: 10 }
 ]
 

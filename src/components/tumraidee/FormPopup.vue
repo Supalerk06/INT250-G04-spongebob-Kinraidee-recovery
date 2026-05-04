@@ -11,7 +11,7 @@ const recipe = reactive({
   image: '',
   short_description: '',
   ingredients: [
-    { name: '', quantity: 1, unit: 'pcs' } 
+    { name: '', quantity: 1, unit: 'ชิ้น' } 
   ],
   steps: [''] 
 })
@@ -33,17 +33,17 @@ const validateForm = () => {
   errors.steps = []
 
   if (!recipe.name.trim()) {
-    errors.name = 'Recipe name is required'
+    errors.name = 'กรุณากรอกชื่อสูตรอาหาร'
     isValid = false
   }
 
   if (!recipe.short_description.trim()) {
-    errors.short_description = 'Recipe Short Description is required'
+    errors.short_description = 'กรุณากรอกคำอธิบายสั้นๆ'
     isValid = false
   }
 
   if (!recipe.image) {
-    errors.image = 'Please upload an image'
+    errors.image = 'กรุณาอัปโหลดรูปภาพ'
     isValid = false
   }
 
@@ -51,17 +51,17 @@ const validateForm = () => {
     const err = { name: '', quantity: '', unit: '' }
 
     if (!item.name.trim()) {
-      err.name = 'Required'
+      err.name = 'จำเป็น'
       isValid = false
     }
 
     if (!item.quantity || item.quantity <= 0) {
-      err.quantity = 'Invalid'
+      err.quantity = 'ไม่ถูกต้อง'
       isValid = false
     }
 
     if (!item.unit.trim()) {
-      err.unit = 'Required'
+      err.unit = 'จำเป็น'
       isValid = false
     }
 
@@ -70,7 +70,7 @@ const validateForm = () => {
 
   recipe.steps.forEach((step, i) => {
     if (!step.trim()) {
-      errors.steps[i] = 'Step is required'
+      errors.steps[i] = 'กรุณากรอกขั้นตอน'
       isValid = false
     }
   })
@@ -79,7 +79,7 @@ const validateForm = () => {
 }
 
 const addIngredient = () => {
-  recipe.ingredients.push({ name: '', quantity: 1, unit: 'pcs' })
+  recipe.ingredients.push({ name: '', quantity: 1, unit: 'ชิ้น' })
 }
 const removeIngredient = (index) => {
   if (recipe.ingredients.length > 1) recipe.ingredients.splice(index, 1)
@@ -149,7 +149,7 @@ onMounted(() => {
 
       <div class="p-6 border-b flex justify-between items-center sticky top-0 bg-white z-10">
         <h2 class="text-2xl font-bold text-gray-800">
-          {{ props.recipeData ? 'Edit Recipe' : 'Add New Recipe' }}
+          {{ props.recipeData ? 'แก้ไขสูตรอาหาร' : 'เพิ่มสูตรอาหารใหม่' }}
         </h2>
         <button @click="$emit('close')" class="text-gray-500 hover:text-gray-700">
           <span class="material-symbols-outlined">close</span>
@@ -158,8 +158,8 @@ onMounted(() => {
 
       <div class="p-6 space-y-6">
         <div>
-          <label class="block text-sm font-semibold text-gray-700 mb-2">Recipe Name <span class="text-secondary font-bold">*</span></label>
-          <input placeholder="Recipe Name (e.g. Pad Thai)" v-model="recipe.name" @input="errors.name = ''" :class="[
+          <label class="block text-sm font-semibold text-gray-700 mb-2">ชื่อสูตรอาหาร <span class="text-secondary font-bold">*</span></label>
+          <input placeholder="เช่น ผัดไท" v-model="recipe.name" @input="errors.name = ''" :class="[
             'w-full px-4 py-2 border rounded-lg outline-none',
             errors.name ? 'border-orange-500' : 'border-gray-300'
           ]" />
@@ -169,8 +169,8 @@ onMounted(() => {
           </p>
         </div>
         <div>
-          <label class="block text-sm font-semibold text-gray-700 mb-2">Short Description <span class="text-secondary font-bold">*</span></label>
-          <input placeholder="Short Description (e.g. Classic Thai stir-fried noodles with shrimp)" v-model="recipe.short_description" @input="errors.short_description = ''" :class="[
+          <label class="block text-sm font-semibold text-gray-700 mb-2">คำอธิบายสั้นๆ <span class="text-secondary font-bold">*</span></label>
+          <input placeholder="เช่น ผัดเส้นสไตล์ไทยแบบดั้งเดิมใส่กุ้ง" v-model="recipe.short_description" @input="errors.short_description = ''" :class="[
             'w-full px-4 py-2 border rounded-lg outline-none',
             errors.short_description ? 'border-orange-500' : 'border-gray-300'
           ]" />
@@ -181,7 +181,7 @@ onMounted(() => {
         </div>
 
         <div>
-          <label class="block text-sm font-semibold text-gray-700 mb-2">Upload Photo <span class="text-secondary font-bold">*</span></label>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">อัปโหลดรูปภาพ<span class="text-secondary font-bold">*</span></label>
           <input type="file" @change="(e) => { handleFileChange(e); errors.image = '' }" :class="[
             'w-full px-4 py-2 border rounded-lg',
             errors.image ? 'border-orange-500' : 'border-gray-300'
@@ -195,10 +195,10 @@ onMounted(() => {
 
         <div>
           <div class="flex justify-between items-center mb-2">
-            <label class="block text-sm font-semibold text-gray-700">Ingredients <span class="text-secondary font-bold">*</span></label>
+            <label class="block text-sm font-semibold text-gray-700">วัตถุดิบ <span class="text-secondary font-bold">*</span></label>
             <button @click="addIngredient" type="button"
               class="text-sm bg-secondary/10 text-secondary px-3 py-1 rounded-md hover:bg-secondary/20 flex items-center gap-1 font-bold transition-colors">
-              <span class="material-symbols-outlined text-sm">add</span> Add Ingredient
+              <span class="material-symbols-outlined text-sm">add</span> เพิ่มวัตถุดิบ
             </button>
           </div>
 
@@ -208,7 +208,7 @@ onMounted(() => {
               <input v-model="item.name" @input="errors.ingredients[index] && (errors.ingredients[index].name = '')"
                 :class="['flex-1 px-3 py-2 border rounded-md',
                   errors.ingredients[index]?.name ? 'border-orange-500' : ''
-                ]" placeholder="Name" />
+                ]" placeholder="ชื่อวัตถุดิบ" />
 
               <input v-model.number="item.quantity" type="number"
                 @input="errors.ingredients[index] && (errors.ingredients[index].quantity = '')" :class="['w-20 px-3 py-2 border rounded-md',
@@ -220,16 +220,16 @@ onMounted(() => {
                   'w-24 px-3 py-2 border rounded-md',
                   errors.ingredients[index]?.unit ? 'border-orange-500' : ''
                 ]">
-                <option value="pcs">pcs</option>
-                <option value="ml">ml</option>
-                <option value="g">g</option>
+                <option value="ชิ้น">ชิ้น</option>
+                <option value="มล.">มล.</option>
+                <option value="กรัม">กรัม</option>
               </select>
             </div>
 
             <div class="text-orange-500 text-xs flex gap-2">
-              <span v-if="errors.ingredients[index]?.name">Name required</span>
-              <span v-if="errors.ingredients[index]?.quantity">Qty invalid</span>
-              <span v-if="errors.ingredients[index]?.unit">Unit required</span>
+              <span v-if="errors.ingredients[index]?.name">กรุณากรอกชื่อ</span>
+              <span v-if="errors.ingredients[index]?.quantity">จำนวนไม่ถูกต้อง</span>
+              <span v-if="errors.ingredients[index]?.unit">กรุณาเลือกหน่วย</span>
             </div>
 
           </div>
@@ -237,10 +237,10 @@ onMounted(() => {
 
         <div>
           <div class="flex justify-between items-center mb-2">
-            <label class="block text-sm font-semibold text-gray-700">Steps <span class="text-secondary font-bold">*</span> <span class="text-xs bg-orange-100 text-orange-600 px-2 py-0.5 rounded-full font-medium">อย่างน้อย 1</span></label>
+            <label class="block text-sm font-semibold text-gray-700">ขั้นตอนการทำ <span class="text-secondary font-bold">*</span> <span class="text-xs bg-orange-100 text-orange-600 px-2 py-0.5 rounded-full font-medium">อย่างน้อย 1</span></label>
             <button @click="addStep" type="button"
               class="text-sm bg-secondary/10 text-secondary px-3 py-1 rounded-md hover:bg-secondary/20 flex items-center gap-1 font-bold transition-colors">
-              <span class="material-symbols-outlined text-sm">add</span> Add Step
+              <span class="material-symbols-outlined text-sm">add</span> เพิ่มขั้นตอน
             </button>
           </div>
           <div v-for="(step, index) in recipe.steps" :key="index" class="flex gap-3 mb-3 items-start">
@@ -264,10 +264,10 @@ onMounted(() => {
 
       <div class="p-6 border-t flex justify-end gap-3 bg-slate-50">
         <button @click="emit('close')"
-          class="px-6 py-2 border border-gray-100 rounded-xl text-slate-500 bg-white hover:bg-slate-100 font-bold transition-colors">Cancel</button>
+          class="px-6 py-2 border border-gray-100 rounded-xl text-slate-500 bg-white hover:bg-slate-100 font-bold transition-colors">ยกเลิก</button>
         <button @click="handleSubmit"
           class="px-8 py-2 bg-secondary text-white rounded-xl hover:bg-orange-600 font-bold shadow-lg shadow-secondary/20 transition-all">
-          Save Recipe
+          บันทึกสูตรอาหาร
         </button>
       </div>
 

@@ -1,6 +1,6 @@
 <script setup>
 import { computed , ref} from "vue";
-import { recipes } from "../data/recipes.js"
+import { recipes } from "../../data/recipes.js"
 
 
 
@@ -25,12 +25,12 @@ const availableRecipes = computed(() => {
   });
 });
 
-const menu = ref(availableRecipes.value[0])
+const menu = computed(() => availableRecipes.value[0]);
 
 </script>
 
 <template>
-  <div v-if="availableRecipes.length" class="bg-white rounded-3xl flex flex-col pb-4 shadow-xl border border-gray-100 gap-3 overflow-hidden relative group">
+  <div v-if="availableRecipes.length" class="bg-white cursor-pointer rounded-3xl flex flex-col pb-4 shadow-xl border border-gray-100 gap-3 overflow-hidden relative group">
     <div class="relative h-48 lg:h-36 overflow-hidden">
       <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" :src="menu.image" :alt="menu.name + ' image'">
       <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
@@ -49,8 +49,8 @@ const menu = ref(availableRecipes.value[0])
     
     <div class="px-4 pt-2 flex justify-between items-center">
         <div>
-          <p class="text-slate-900 font-black text-sm">ทำอาหารเลย!</p>
-          <p class="text-slate-400 text-[10px] font-bold uppercase tracking-tighter">ระดับ: {{ menu.difficulty }}</p>
+          <p class="text-slate-900 font-black text-lg">ทำอาหารเลย!</p>
+          <p class="text-slate-400 font-bold uppercase text-sm tracking-tighter">ระดับ: {{ menu.difficulty }}</p>
         </div>
         <a class="cursor-pointer hover:scale-110 transition-all duration-300 flex justify-center items-center rounded-xl size-10 bg-secondary text-white shadow-lg shadow-secondary/20"
            href="/tumraidee"

@@ -1,14 +1,12 @@
 <script setup>
 import RecipePopup from './RecipePopup.vue';
-import { ref, toRaw , watch } from 'vue'
+import { ref, toRaw, watch } from 'vue'
 
-
-const Props = defineProps(['fridgeItems','id', 'name', 'short_description', 'difficulty', 'image', 'video', "ingredients", "steps"])
+const Props = defineProps(['fridgeItems', 'id', 'name', 'short_description', 'difficulty', 'image', 'video', "ingredients", "steps"])
 
 const emit = defineEmits(['cook']);
 
 const showModal = ref(false)
-
 
 function openRecipe() {
     showModal.value = true;
@@ -32,24 +30,46 @@ watch(
   { deep: true }
 )
 
+// 👇 เพิ่มฟังก์ชันตรวจสอบวันหมดอายุ
+function isExpired(dateString) {
+    if (!dateString) return false;
+    
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // รีเซ็ตเวลาของวันนี้ให้เริ่มที่ 00:00:00
+    
+    const expDate = new Date(dateString);
+    expDate.setHours(0, 0, 0, 0);
+    
+    return expDate < today; // ถ้าวันที่หมดอายุน้อยกว่าวันนี้ = หมดอายุแล้ว
+}
+
 function confirmCook() {
+    let updatedFridgeItems = JSON.parse(JSON.stringify(Props.fridgeItems))
+
     Props.ingredients.forEach(recipeItem => {
-        const itemIndex = Props.fridgeItems.findIndex(
-            item => item.name.toLowerCase() === recipeItem.name.toLowerCase()
+        // 👇 แก้ไขเงื่อนไขการหา Index โดยเช็คว่าต้อง "ไม่หมดอายุ" ด้วย
+        const itemIndex = updatedFridgeItems.findIndex(
+            item => 
+                item.name.trim().toLowerCase() === recipeItem.name.trim().toLowerCase() && 
+                !isExpired(item.expiredDate) // เพิ่มการกรองของหมดอายุ
         )
 
         if (itemIndex !== -1) {
-            Props.fridgeItems[itemIndex].quantity -= recipeItem.quantity
+            updatedFridgeItems[itemIndex].quantity = Number(updatedFridgeItems[itemIndex].quantity) - Number(recipeItem.quantity)
 
-            if (Props.fridgeItems[itemIndex].quantity <= 0) {
-                Props.fridgeItems.splice(itemIndex, 1)
+            if (updatedFridgeItems[itemIndex].quantity <= 0) {
+                updatedFridgeItems.splice(itemIndex, 1)
             }
         } else {
-            console.warn(`ไม่พบ ${recipeItem.name}`)
+            // แจ้งเตือนหากของหมด, ไม่มีในตู้เย็น หรือ หมดอายุไปแล้ว
+            console.warn(`ไม่พบ ${recipeItem.name} ที่ใช้งานได้ (อาจหมดอายุหรือไม่มีในตู้เย็น)`)
         }
     })
 
-    emit('cook')
+    localStorage.setItem("fridgeItems", JSON.stringify(updatedFridgeItems))
+
+    emit('cook', updatedFridgeItems)
+    
     showConfirm.value = false
 }
 
@@ -58,8 +78,6 @@ function cancelCook() {
 }
 
 const isCooking = ref(false)
-
-
 </script>
 
 <template>

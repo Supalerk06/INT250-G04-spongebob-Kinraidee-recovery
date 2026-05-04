@@ -1,5 +1,4 @@
-<script setup>
-import { db } from '@/data/userRecipes'
+<script setup>import { db } from '@/data/userRecipes'
 import RecipePopup from './RecipePopup.vue';
 import { ref , watch} from 'vue';
 
@@ -41,49 +40,72 @@ function handleCook() {
 
 const errorMessage = ref([])
 
+// 👇 เพิ่มฟังก์ชันตรวจสอบวันหมดอายุ
+function isExpired(dateString) {
+    if (!dateString) return false;
+    
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); 
+    
+    const expDate = new Date(dateString);
+    expDate.setHours(0, 0, 0, 0);
+    
+    return expDate < today;
+}
 
 
 function confirmCook() {
     const missingItems = []
 
+    // 1. ตรวจสอบวัตถุดิบที่ขาด (ดึงจาก Props ตามปกติ)
     Props.ingredients.forEach(recipeItem => {
+        // 👇 เพิ่มเช็คไม่หมดอายุตอนหาวัตถุดิบ
         const item = Props.fridgeItems.find(
-            i => i.name.toLowerCase() === recipeItem.name.toLowerCase()
+            i => i.name.trim().toLowerCase() === recipeItem.name.trim().toLowerCase() && !isExpired(i.expiredDate)
         )
 
         if (!item) {
-            missingItems.push(`${recipeItem.name} (ไม่มี)`)
-        } else if (item.quantity < recipeItem.quantity) {
+            missingItems.push(`${recipeItem.name} (ไม่มี หรือ หมดอายุแล้ว)`)
+        } else if (Number(item.quantity) < Number(recipeItem.quantity)) {
             missingItems.push(
                 `${recipeItem.name} (ต้องใช้ ${recipeItem.quantity} ${recipeItem.unit} แต่มีเพียง ${item.quantity})`
             )
         }
     })
 
+    // ถ้ามีวัตถุดิบไม่พอ ให้แสดง Error และหยุดการทำงาน
     if (missingItems.length > 0) {
         errorMessage.value = missingItems
         return
     }
 
+    // 2. ถ้าผ่านเงื่อนไข คัดลอกข้อมูลเป็นตัวแปรใหม่ (เพื่อไม่ให้แก้ไข Prop โดยตรง)
+    let updatedFridgeItems = JSON.parse(JSON.stringify(Props.fridgeItems))
+
     Props.ingredients.forEach(recipeItem => {
-        const index = Props.fridgeItems.findIndex(
-            i => i.name.toLowerCase() === recipeItem.name.toLowerCase()
+        // 👇 เพิ่มเช็คไม่หมดอายุตอนหา Index เพื่อหักสต๊อก
+        const index = updatedFridgeItems.findIndex(
+            i => i.name.trim().toLowerCase() === recipeItem.name.trim().toLowerCase() && !isExpired(i.expiredDate)
         )
 
         if (index !== -1) {
-            Props.fridgeItems[index].quantity -= recipeItem.quantity
+            // หักลบจำนวน
+            updatedFridgeItems[index].quantity = Number(updatedFridgeItems[index].quantity) - Number(recipeItem.quantity)
 
-            if (Props.fridgeItems[index].quantity <= 0) {
-                Props.fridgeItems.splice(index, 1)
+            // ถ้าของหมด ให้ลบออกจาก Array
+            if (updatedFridgeItems[index].quantity <= 0) {
+                updatedFridgeItems.splice(index, 1)
             }
         }
     })
 
-    Props.fridgeItems = [...Props.fridgeItems]
+    // 3. บันทึกลง LocalStorage ทันที
+    localStorage.setItem("fridgeItems", JSON.stringify(updatedFridgeItems))
 
+    // 4. เคลียร์ Error, ปิด Popup และ Emit พร้อมแนบข้อมูลใหม่ไปให้ Parent Component
     errorMessage.value = []
     showConfirm.value = false
-    emit('cook')
+    emit('cook', updatedFridgeItems) 
 }
 
 function cancelCook() {
@@ -190,7 +212,6 @@ function removeStep(i) {
         editForm.value.steps.splice(i, 1)
     }
 }
-
 </script>
 <template>
 

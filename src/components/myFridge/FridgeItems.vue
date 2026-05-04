@@ -36,7 +36,7 @@ function getExpiryClassText(expiredDate) {
   } else if (diffInDays >= 0 && diffInDays <= 2) {
     return "text-warning bg-yellow-100";
   } else {
-    return "text-orange-800 bg-orange-100";
+    return "text-green-800 bg-green-100";
   }
 }
 
@@ -47,7 +47,7 @@ function getExpiryClassDiv(expiredDate) {
   } else if (diffInDays >= 0 && diffInDays <= 2) {
     return "border-4 border-yellow-200 shadow-yellow-100";
   } else {
-    return "border-4 border-orange-200 shadow-orange-50";
+    return "border-4 border-green-200 shadow-green-50";
   }
 }
 </script>
@@ -65,7 +65,8 @@ function getExpiryClassDiv(expiredDate) {
     lg:grid-cols-4">
 
     <div v-for="item in props.fridgeItems"
-      class="relative py-7 px-4 flex flex-col justify-center items-center rounded-3xl bg-white shadow w-full gap-4 "
+      class="relative py-7 px-4 flex flex-col justify-center items-center rounded-3xl bg-white shadow w-full gap-4 
+      hover:-translate-y-1 transition-all cursor-pointer"
       :class="getExpiryClassDiv(item.expiredDate)"
     >
       <div class="absolute top-5 right-5">

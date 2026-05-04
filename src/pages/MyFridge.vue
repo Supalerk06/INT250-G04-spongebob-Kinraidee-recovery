@@ -1,8 +1,8 @@
 <script setup>
-import FridgeItems from "../components/FridgeItems.vue";
-import UseItUp from "../components/UseItUp.vue";
-import FridgeHealth from "../components/FridgeHealth.vue";
-import RecommendMenu from "../components/RecommendMenu.vue";
+import FridgeItems from "../components/myFridge/FridgeItems.vue";
+import UseItUp from "../components/myFridge/UseItUp.vue";
+import FridgeHealth from "../components/myFridge/FridgeHealth.vue";
+import RecommendMenu from "../components/myFridge/RecommendMenu.vue";
 import { ref, watch, computed } from "vue";
 
 
@@ -332,21 +332,20 @@ const iconNames = Object.keys(icons).map((path) => {
 const getIngredientIcon = (name) => {
   const lowerName = name.toLowerCase().trim();
   const mapping = {
-    milk: "milk",
-    chick: "chicken",
-    meat: "meat",
-    fish: "fish",
-    steak: "steak",
-    shrimp: "shrimp",
-    chicken: "chicken",
-    strawb: "strawberry",
-    cheese: "cheese",
-    pork: "pork",
-    salad: "salad",
-    egg: "eggs",
-    bread: "bread",
-    carrot: "carrot",
-    broccoli: "broccoli",
+    นม: "milk",
+      
+    ไก่: "chicken",
+    เนื้อ: "meat",
+    ปลา: "fish",
+    สเต็ก: "steak",
+    กุ้ง: "shrimp",
+    สตรอเบอร์รี่: "strawberry",
+    ชีส: "cheese",
+    หมู: "pork",
+    สลัด: "salad",
+    ขนมปัง: "bread",
+    แครอท: "carrot",
+    บรอกโคลี: "broccoli",
   };
 
   let fileName = null;
@@ -368,6 +367,12 @@ const getIngredientIcon = (name) => {
     ""
   );
 };
+
+
+function handleCookUpdate(updatedItems) {
+  fridgeItems.value = updatedItems;
+}
+
 </script>
 
 <template>
@@ -529,7 +534,7 @@ const getIngredientIcon = (name) => {
       />
 
       <FridgeHealth :fridgeItems="fridgeItems" />
-      <RecommendMenu :fridgeItems="fridgeItems" />
+      <RecommendMenu :fridgeItems="fridgeItems" @cook="handleCookUpdate" />
     </div>
 
     <!-- Add Item Modal -->

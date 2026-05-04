@@ -30,7 +30,7 @@ const freshnessScore = computed(() => {
 </script>
 
 <template>
-<div class="bg-secondary rounded-3xl flex flex-col p-6 shadow-lg shadow-secondary/20 gap-4 text-white">
+<div class="bg-secondary rounded-3xl flex flex-col p-6 shadow-lg shadow-secondary/20 gap-4 hover:-translate-y-1 transition-all cursor-pointer text-white">
             <h3 class="font-bold text-xl">สุขภาพตู้เย็น</h3>
             <div class="flex justify-between">
                 <div>

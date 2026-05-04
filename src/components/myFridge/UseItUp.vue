@@ -43,7 +43,7 @@ function getExpiryClassText(expiredDate) {
 <template>
 <div>
 
-  <div v-if="aboutToExpire.length > 0" class="bg-white rounded-3xl flex flex-col p-5 border shadow-xl shadow-secondary/10 border-secondary/20 gap-2">
+  <div v-if="aboutToExpire.length > 0" class="bg-white rounded-3xl flex flex-col p-5 border shadow-xl shadow-secondary/10 border-secondary/20 gap-2 hover:-translate-y-1 transition-all cursor-pointer">
     <h3 class="font-bold text-xl flex items-center gap-2"> 
       <span class="size-6 flex items-center justify-center rounded-full text-white text-sm bg-secondary font-black">!</span> 
       ควรใช้ให้หมด!
