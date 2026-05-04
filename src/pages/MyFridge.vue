@@ -66,7 +66,7 @@ function validateForm() {
         "วัตถุดิบนี้มีอยู่ในตู้เย็นแล้ว หากต้องการแก้ไขกรุณากดที่ปุ่มแก้ไขของรายการนั้นๆ";
       isValid = false;
     }
-  }
+  };
 
   // --- 2. Category ---
   if (!category.value) {
