@@ -2,7 +2,7 @@
 import RecipePopup from './RecipePopup.vue';
 import { ref, toRaw, watch } from 'vue'
 
-const Props = defineProps(['fridgeItems', 'id', 'name', 'short_description', 'difficulty', 'image', 'video', "ingredients", "steps"])
+const Props = defineProps(['fridgeItems', 'id', 'name', 'short_description', 'difficulty', 'image', 'video', "ingredients", "steps", "categories", "categoryMapping"])
 
 const emit = defineEmits(['cook']);
 
@@ -83,7 +83,7 @@ const isCooking = ref(false)
 <template>
     <!-- อันที่ 1 -->
     <article @click="openRecipe"
-        class="border border-secondary/20 group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 md:col-span-2 lg:col-span-1 flex flex-col sm:flex-row h-auto sm:h-72">
+        class="border border-secondary/20 group relative bg-white dark:bg-card-dark rounded-2xl overflow-hidden shadow-lg dark:shadow-slate-900/50 hover:shadow-xl transition-all duration-300 md:col-span-2 lg:col-span-1 flex flex-col sm:flex-row h-auto sm:h-72">
         <div class="w-full sm:w-2/5 h-48 sm:h-full relative overflow-hidden">
             <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                 data-alt="Plate of Pad Kra Pao with fried egg and basil" :style="{ backgroundImage: `url(${image})` }">
@@ -93,7 +93,7 @@ const isCooking = ref(false)
             <div>
                 <div class="flex flex-col justify-center md:justify-between lg:justify-between items-start mb-2">
                     <h4
-                        class="text-2xl font-bold text-slate-900 group-hover:text-secondary transition-colors">
+                        class="text-2xl font-black text-slate-900 dark:text-white group-hover:text-secondary transition-colors">
                         {{ name }}</h4>
                     <div
                         class="flex items-center gap-1 text-xs font-bold text-secondary bg-secondary/10 px-2 py-1 rounded-md">
@@ -101,11 +101,18 @@ const isCooking = ref(false)
                         คุณมีวัตถุดิบครบถ้วนแล้ว
                     </div>
                 </div>
-                <p class="text-text-muted text-sm mb-4 line-clamp-2">{{ short_description }}</p>
+                <p class="text-slate-500 dark:text-slate-400 text-sm font-medium mb-4 line-clamp-2 leading-relaxed">{{ short_description }}</p>
                 <div class="flex flex-wrap gap-2 mb-4">
                     <span
                         class="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-gray-100 dark:bg-gray-700 text-xs font-medium text-text-muted dark:text-gray-300">
                         <span class="material-symbols-outlined text-[14px]">bar_chart</span> {{ difficulty }}
+                    </span>
+                    <span
+                        v-for="cat in categories"
+                        :key="cat"
+                        class="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-secondary/5 dark:bg-secondary/10 text-[10px] font-black text-secondary uppercase tracking-tight"
+                    >
+                        {{ categoryMapping[cat] || cat }}
                     </span>
                 </div>
             </div>

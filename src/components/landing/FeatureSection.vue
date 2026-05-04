@@ -21,14 +21,14 @@ defineProps({
     <!-- Image Side -->
     <div :class="['w-full lg:w-1/2 relative group', reverse ? 'lg:order-2' : 'lg:order-1']">
       <div class="absolute inset-0 bg-secondary/5 blur-[60px] rounded-full group-hover:bg-secondary/10 transition-colors duration-700"></div>
-      <img :src="image" :alt="title" class="relative z-10 rounded-[3rem] shadow-2xl shadow-slate-200/50 border-[10px] border-white object-cover w-full transform group-hover:-translate-y-2 transition-transform duration-500" />
+      <img :src="image" :alt="title" class="relative z-10 rounded-[3rem] shadow-2xl shadow-slate-200/50 dark:shadow-slate-900/50 border-[10px] border-white dark:border-card-dark object-cover w-full transform group-hover:-translate-y-2 transition-transform duration-500" />
       
       <!-- Badge -->
-      <div v-if="badgeTitle" class="absolute -bottom-6 -right-6 bg-white border border-slate-50 p-5 rounded-2xl shadow-2xl z-20 flex items-center gap-3">
-        <div class="bg-orange-50 p-2 rounded-xl text-secondary">{{ badgeIcon }}</div>
+      <div v-if="badgeTitle" class="absolute -bottom-6 -right-6 bg-white dark:bg-card-dark border border-slate-50 dark:border-card-dark-02 p-5 rounded-2xl shadow-2xl z-20 flex items-center gap-3">
+        <div class="bg-orange-50 dark:bg-secondary/10 p-2 rounded-xl text-secondary">{{ badgeIcon }}</div>
         <div>
-          <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">{{ badgeText }}</p>
-          <p class="font-bold text-slate-800">{{ badgeTitle }}</p>
+          <p class="text-xs text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider">{{ badgeText }}</p>
+          <p class="font-bold text-slate-800 dark:text-white">{{ badgeTitle }}</p>
         </div>
       </div>
       
@@ -39,16 +39,16 @@ defineProps({
     <!-- Content Side -->
     <div :class="['w-full lg:w-1/2', reverse ? 'lg:order-1' : 'lg:order-2']">
       <span class="text-secondary font-black tracking-widest uppercase text-sm">ฟีเจอร์ที่ {{ index }}</span>
-      <h2 class="text-4xl md:text-5xl font-black mt-4 mb-6 text-slate-800">
+      <h2 class="text-4xl md:text-5xl font-black mt-4 mb-6 text-slate-800 dark:text-white">
         {{ title }}<br /><span class="text-secondary">{{ accentTitle }}</span>
       </h2>
-      <p class="text-slate-500 text-lg leading-relaxed mb-8 font-medium">
+      <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed mb-8 font-medium">
         {{ description }}
       </p>
       
       <ul v-if="features" class="space-y-4 mb-8">
-        <li v-for="feat in features" :key="feat" class="flex items-center gap-3 text-slate-700 font-bold">
-          <span class="bg-orange-50 text-secondary rounded-full p-1.5">
+        <li v-for="feat in features" :key="feat" class="flex items-center gap-3 text-slate-700 dark:text-slate-300 font-bold">
+          <span class="bg-orange-50 dark:bg-secondary/10 text-secondary rounded-full p-1.5">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
             </svg>

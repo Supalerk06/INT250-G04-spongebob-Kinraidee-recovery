@@ -23,29 +23,29 @@ const filterLabels = {
         </span>
       </div>
       
-      <h1 class="text-5xl font-black leading-tight text-slate-900 tracking-tight mb-4">
+      <h1 class="text-5xl font-black leading-tight text-slate-900 dark:text-white tracking-tight mb-4">
         เลือกไม่ได้ใช่ไหม<br><span class="text-secondary">ว่าจะกินอะไร?</span>
       </h1>
       
-      <p class="text-base text-slate-500 leading-relaxed font-medium">
+      <p class="text-base text-slate-500 dark:text-slate-400 leading-relaxed font-medium transition-colors">
         ให้เราช่วยตัดสินใจให้คุณ! ระบบสุ่มอัจฉริยะของเราจะเลือกมื้ออาหารที่สมบูรณ์แบบตามความต้องการของคุณ
       </p>
     </div>
 
-    <div class="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-xl shadow-slate-200/50">
-      <p class="text-sm font-bold text-slate-800 mb-4 flex justify-between items-center">
+    <div class="bg-white dark:bg-card-dark p-6 rounded-[2rem] border border-slate-100 dark:border-card-dark-02 shadow-xl shadow-slate-200/50 dark:shadow-card-dark transition-colors">
+      <p class="text-sm font-bold text-slate-800 dark:text-slate-200 mb-4 flex justify-between items-center">
         <span>เงื่อนไขการคัดกรอง</span>
-        <span class="text-xs font-medium bg-slate-50 text-secondary px-3 py-1 rounded-full">พบ {{ filteredCount }} รายการ</span>
+        <span class="text-xs font-black bg-slate-50 dark:bg-card-dark-02 text-secondary px-3 py-1 rounded-full border border-slate-100 dark:border-slate-700">พบ {{ filteredCount }} รายการ</span>
       </p>
       <div class="flex flex-col gap-3">
         <button 
           v-for="(val, key) in filters" :key="key"
-          :class="filters[key] ? 'bg-secondary text-white border-transparent' : 'bg-slate-50 text-slate-600 border-slate-100 hover:bg-slate-100'" 
+          :class="filters[key] ? 'bg-secondary text-white border-transparent' : 'bg-slate-50 dark:bg-card-dark-02/50 text-slate-600 dark:text-slate-400 border-slate-100 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800'" 
           @click="filters[key] = !filters[key]"
-          class="px-5 py-3 border rounded-2xl text-sm font-bold transition-all duration-200 flex items-center justify-between group"
+          class="px-5 py-3 border rounded-2xl text-sm font-black transition-all duration-200 flex items-center justify-between group"
         >
           <span class="capitalize">{{ filterLabels[key] || key }}</span>
-          <div :class="filters[key] ? 'bg-white text-secondary' : 'bg-slate-200 text-slate-400'" class="w-6 h-6 rounded-full flex items-center justify-center text-xs">
+          <div :class="filters[key] ? 'bg-white text-secondary' : 'bg-slate-200 dark:bg-slate-700 text-slate-400 dark:text-slate-500'" class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black">
             {{ filters[key] ? '✓' : '' }}
           </div>
         </button>

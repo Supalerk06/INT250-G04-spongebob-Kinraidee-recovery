@@ -63,7 +63,7 @@ console.log(filteredFoods.value)
 
 </script>
 <template>
-  <div class="min-h-screen font-body text-slate-800 bg-slate-50">
+  <div class="min-h-screen font-body text-slate-800 dark:text-white bg-slate-50 dark:bg-background-dark transition-colors duration-300">
 
     <main class="max-w-7xl mx-auto pt-12 space-y-5"> 
 
@@ -73,10 +73,10 @@ console.log(filteredFoods.value)
             class="flex items-center gap-2 text-secondary font-black font-display text-[11px] uppercase tracking-[0.2em]">
             📍 ตำแหน่งปัจจุบัน: มจธ. (KMUTT)
           </span>
-          <h1 class="text-3xl md:text-5xl font-black text-slate-900">
+          <h1 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white">
             {{ targetMenu || 'ร้านอาหารทั้งหมด' }}
           </h1>
-          <p class="text-slate-500 text-sm font-display font-medium">
+          <p class="text-slate-500 dark:text-slate-400 text-sm font-display font-medium">
             ค้นพบร้านอาหารดีๆ รอบตัวคุณ
           </p>
         </div>
@@ -84,7 +84,7 @@ console.log(filteredFoods.value)
 
         <!-- distance box  -->
         <div
-          class="flex flex-col sm:flex-row items-center gap-6 w-full lg:w-auto bg-white p-5 rounded-3xl border border-gray-100 shadow-sm">
+          class="flex flex-col sm:flex-row items-center gap-6 w-full lg:w-auto bg-white dark:bg-card-dark p-5 rounded-3xl border border-gray-100 dark:border-card-dark-02 shadow-sm transition-colors">
 
           <div class="w-full sm:w-60">
             <div class="flex justify-between items-center mb-3">
@@ -99,23 +99,23 @@ console.log(filteredFoods.value)
             </div>
 
             <input type="range" v-model="maxDistance" min="0" max="10" step="0.1"
-              class="w-full h-1.5 bg-black rounded-full appearance-none cursor-pointer accent-secondary" />
+              class="w-full h-1.5 bg-black dark:bg-slate-700 rounded-full appearance-none cursor-pointer accent-secondary" />
           </div>
 
-          <div class="h-10 border-r border-gray-200 hidden sm:block"></div>
+          <div class="h-10 border-r border-gray-200 dark:border-slate-700 hidden sm:block"></div>
 
           <!-- select option -->
          <div class="flex flex-col w-full sm:w-[140px] space-y-1">
-            <span class="text-xs font-bold font-display text-slate-400">
+            <span class="text-xs font-bold font-display text-slate-400 dark:text-slate-500">
               เรียงตาม
             </span>
             <select v-model="sortBy"
-              class="text-sm font-bold font-display text-slate-700 border-b border-gray-200 focus:border-secondary outline-none cursor-pointer">
-              <option value="distance">ใกล้ที่สุด</option>
-              <option value="rating">คะแนนรีวิว</option>
+              class="text-sm font-bold font-display text-slate-700 dark:text-slate-300 bg-transparent border-b border-gray-200 dark:border-slate-700 focus:border-secondary outline-none cursor-pointer">
+              <option value="distance" class="dark:bg-card-dark-02">ใกล้ที่สุด</option>
+              <option value="rating" class="dark:bg-card-dark-02">คะแนนรีวิว</option>
             </select>
             <button @click="resetFilters"
-              class="text-xs font-bold text-orange-500 hover:text-orange-600 transition pt-1 text-left">
+              class="text-xs font-bold text-orange-500 dark:text-orange-400 hover:text-orange-600 transition pt-1 text-left">
               รีเซ็ตทั้งหมด
             </button>
           </div>
@@ -123,12 +123,12 @@ console.log(filteredFoods.value)
       </div>
 
       <!-- quick option button -->
-      <div class="flex gap-3 px-6">
+      <div class="flex flex-wrap gap-3 px-6">
         <button v-for="option in distanceOptions" :key="option.value" @click="maxDistance = option.value"
-          class="shrink-0 rounded-full px-4 py-2 font-display font-bold text-sm transition-all duration-200 border border-gray-200 hover:bg-gray-100"
+          class="shrink-0 rounded-full px-4 py-2 font-display font-bold text-sm transition-all duration-200 border border-gray-200 dark:border-slate-700 hover:bg-gray-100 dark:hover:bg-slate-800"
           :class="maxDistance === option.value
             ? 'bg-secondary text-white shadow-secondary/20 hover:bg-secondary'
-            : 'bg-white text-slate-600'">
+            : 'bg-white dark:bg-card-dark text-slate-600 dark:text-slate-300 shadow-sm'">
          {{ option.label }}
         </button>
       </div>
@@ -136,17 +136,17 @@ console.log(filteredFoods.value)
       <!-- count rest -->
       <div class="flex items-center gap-2 ml-7 pt-2">
         <span class="text-xl font-black text-secondary">{{ allRestaurants.length }}</span>
-        <p class="text-slate-500 font-display font-bold text-base">ร้านอาหารในบริเวณใกล้เคียง</p>
+        <p class="text-slate-500 dark:text-slate-400 font-display font-bold text-base transition-colors">ร้านอาหารในบริเวณใกล้เคียง</p>
       </div>
 
       <!-- card -->
       <!-- กรณีถ้าร้านไม่มีในระยะทางนั้น ๆ -->
       <div v-if="allRestaurants.length === 0" class="text-center py-20 px-6">
         <div class="text-6xl mb-4">😢</div>
-        <h2 class="text-2xl font-black text-slate-700 font-display ">
+        <h2 class="text-2xl font-black text-slate-700 dark:text-slate-300 font-display ">
           ไม่พบร้านอาหาร
         </h2>
-        <p class="text-sm text-slate-400 mt-2 font-display">
+        <p class="text-sm text-slate-400 dark:text-slate-500 mt-2 font-display font-medium">
           ลองปรับตัวกรองหรือระยะทางดูใหม่นะ🍜
         </p>
       </div>

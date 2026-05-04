@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white text-[#111111] min-h-screen font-sans selection:bg-secondary selection:text-white overflow-x-hidden">
+  <div class="bg-white dark:bg-background-dark text-[#111111] dark:text-white min-h-screen font-sans selection:bg-secondary selection:text-white overflow-x-hidden transition-colors duration-300">
     <!-- Hero Section -->
     <Hero />
 
@@ -58,17 +58,17 @@
         :customSlot="true"
       >
         <template #image-overlay>
-          <div class="absolute bottom-10 -right-6 bg-white border border-slate-50 p-6 rounded-2xl shadow-2xl z-20 w-64">
+          <div class="absolute bottom-10 -right-6 bg-white border dark:bg-card-dark dark:border-card-dark border-slate-50 p-6 rounded-2xl shadow-2xl z-20 w-64">
             <div class="flex justify-between items-center mb-4">
-              <span class="font-black text-sm text-slate-800 tracking-wide uppercase">สถานะตู้เย็น</span>
+              <span class="font-black text-sm text-slate-800 dark:text-white tracking-wide uppercase">สถานะตู้เย็น</span>
             </div>
             <div class="space-y-3">
-              <div class="flex justify-between items-center text-xs p-3 bg-slate-50 rounded-xl border border-slate-100">
-                <span class="text-slate-700 font-bold">เนื้อหมู</span>
-                <span class="text-secondary font-black">หมดอายุวันนี้!</span>
+              <div class="flex justify-between items-center  dark:bg-card-dark-02 dark:border-card-dark-02 text-xs p-3 bg-slate-50 rounded-xl border border-slate-100">
+                <span class="text-slate-700  dark:text-white font-bold">เนื้อหมู</span>
+                <span class="text-secondary  font-black">หมดอายุวันนี้!</span>
               </div>
-              <div class="flex justify-between items-center text-xs p-3 bg-slate-50 rounded-xl border border-slate-100">
-                <span class="text-slate-700 font-bold">ไข่ไก่</span>
+              <div class="flex justify-between items-center dark:bg-card-dark-02 dark:border-card-dark-02  text-xs p-3 bg-slate-50 rounded-xl border border-slate-100">
+                <span class="text-slate-700 dark:text-white font-bold">ไข่ไก่</span>
                 <span class="text-secondary font-black">อีก 3 วัน</span>
               </div>
             </div>
@@ -89,13 +89,13 @@
       >
         <template #extra-content>
           <div class="grid grid-cols-2 gap-4 mb-8">
-            <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100">
+            <div class="bg-slate-50 p-5 rounded-2xl border dark:bg-card-dark-02 dark:border-card-dark-02 border-slate-100">
               <div class="text-secondary font-black mb-1 text-sm tracking-wide">วัตถุดิบครบ 🌟</div>
-              <p class="text-xs text-slate-500 font-bold">ปรุงได้ทันที 100%</p>
+              <p class="text-xs text-slate-500 font-bold dark:text-white">ปรุงได้ทันที 100%</p>
             </div>
-            <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100">
-              <div class="text-slate-800 font-black mb-1 text-sm tracking-wide">เกือบครบแล้ว 🛒</div>
-              <p class="text-xs text-slate-500 font-bold">ขาดเพียง 1-2 อย่าง</p>
+            <div class="bg-slate-50 p-5 rounded-2xl border dark:bg-card-dark-02 dark:border-card-dark-02 border-slate-100">
+              <div class="text-slate-800 font-black mb-1 text-sm dark:text-secondary tracking-wide">เกือบครบแล้ว 🛒</div>
+              <p class="text-xs text-slate-500 font-bold dark:text-white">ขาดเพียง 1-2 อย่าง</p>
             </div>
           </div>
         </template>

@@ -30,7 +30,7 @@ const menu = computed(() => availableRecipes.value[0]);
 </script>
 
 <template>
-  <div v-if="availableRecipes.length" class="bg-white cursor-pointer rounded-3xl flex flex-col pb-4 shadow-xl border border-gray-100 gap-3 overflow-hidden relative group">
+  <div v-if="availableRecipes.length" class="bg-white dark:bg-card-dark cursor-pointer rounded-3xl flex flex-col pb-4 shadow-xl border border-gray-100 dark:border-card-dark-02 gap-3 overflow-hidden relative group transition-colors">
     <div class="relative h-48 lg:h-36 overflow-hidden">
       <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" :src="menu.image" :alt="menu.name + ' image'">
       <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
@@ -49,13 +49,14 @@ const menu = computed(() => availableRecipes.value[0]);
     
     <div class="px-4 pt-2 flex justify-between items-center">
         <div>
-          <p class="text-slate-900 font-black text-lg">ทำอาหารเลย!</p>
-          <p class="text-slate-400 font-bold uppercase text-sm tracking-tighter">ระดับ: {{ menu.difficulty }}</p>
+          <p class="text-slate-900 dark:text-white font-black text-lg">ทำอาหารเลย!</p>
+          <p class="text-slate-400 dark:text-slate-500 font-bold uppercase text-sm tracking-tighter">ระดับ: {{ menu.difficulty }}</p>
         </div>
-        <a class="cursor-pointer hover:scale-110 transition-all duration-300 flex justify-center items-center rounded-xl size-10 bg-secondary text-white shadow-lg shadow-secondary/20"
+        <a class="group/btn cursor-pointer hover:scale-105 transition-all duration-300 flex items-center gap-2 rounded-xl px-4 py-2.5 bg-secondary text-white shadow-lg shadow-secondary/20"
            href="/tumraidee"
         >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-5">
+            <span class="text-sm font-black uppercase">ทำไรดี</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-4 group-hover/btn:translate-x-1 transition-transform">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
             </svg>
         </a>

@@ -9,7 +9,7 @@ function goToMaps() {
 </script>
 
 <template>
-  <div class="bg-white rounded-3xl p-3 shadow-xl hover:-translate-y-2 transition-all duration-500 group border border-gray-100 flex flex-col">
+  <div class="bg-white dark:bg-card-dark-02 dark:border-card-dark rounded-3xl p-3 shadow-xl hover:-translate-y-2 transition-all duration-500 group border border-gray-100 flex flex-col">
 
     <div class="relative overflow-hidden rounded-3xl mb-4 bg-gray-50 h-48">
       <img :src="shop.imageUrl"
@@ -23,7 +23,7 @@ function goToMaps() {
     </div>
 
     <div class="px-2 pb-2 flex-1 flex flex-col justify-between">
-      <h3 class="font-display font-black text-xl mb-4 text-slate-900 group-hover:text-secondary ">
+      <h3 class="font-display font-black text-xl mb-4 dark:text-white text-slate-900 group-hover:text-secondary ">
         {{ shop.name }}
       </h3>
 

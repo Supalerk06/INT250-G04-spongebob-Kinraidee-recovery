@@ -1,10 +1,10 @@
 <template>
-  <section class="py-32 relative bg-slate-50">
+  <section class="py-32 relative bg-slate-50 dark:bg-card-dark transition-colors duration-300">
     <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-      <h2 class="text-5xl md:text-6xl font-black mb-8 text-slate-800 tracking-tight">
+      <h2 class="text-5xl md:text-6xl font-black mb-8 text-slate-800 dark:text-white tracking-tight">
         พร้อมจะเปลี่ยนมื้ออาหารของคุณหรือยัง?
       </h2>
-      <p class="text-slate-500 mb-12 text-xl font-medium">
+      <p class="text-slate-500 dark:text-slate-400 mb-12 text-xl font-medium">
         สัมผัสประสบการณ์ความสะดวกสบายจาก 4 ฟีเจอร์หลักของเราวันนี้
       </p>
       <a href="/kinraidee" class="inline-block">

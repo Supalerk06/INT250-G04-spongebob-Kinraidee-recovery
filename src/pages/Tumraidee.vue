@@ -13,7 +13,7 @@ let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || []);
 
 const showForm = ref(false);
 
-const selectedCategory = ref("All");
+const selectedCategories = ref(["All"]);
 const categories = [
   "All",
   "Thai",
@@ -36,15 +36,30 @@ const categoryMapping = {
   Vegan: "วีแกน",
 };
 
-const setCategory = (category) => {
-  selectedCategory.value = category;
+const toggleCategory = (category) => {
+  if (category === "All") {
+    selectedCategories.value = ["All"];
+  } else {
+    // Remove "All" if it exists
+    selectedCategories.value = selectedCategories.value.filter(c => c !== "All");
+    
+    if (selectedCategories.value.includes(category)) {
+      selectedCategories.value = selectedCategories.value.filter(c => c !== category);
+      // If empty, set back to "All"
+      if (selectedCategories.value.length === 0) {
+        selectedCategories.value = ["All"];
+      }
+    } else {
+      selectedCategories.value.push(category);
+    }
+  }
 };
 
 const availableRecipes = computed(() => {
   return recipes.value.filter((recipe) => {
     const matchCategory =
-      selectedCategory.value === "All" ||
-      recipe.categories.includes(selectedCategory.value);
+      selectedCategories.value.includes("All") ||
+      recipe.categories.some(cat => selectedCategories.value.includes(cat));
     if (!matchCategory) return false;
 
     return recipe.ingredients.every((ingredient) => {
@@ -62,8 +77,8 @@ const almostReadyRecipes = computed(() => {
   return recipes.value
     .filter(
       (recipe) =>
-        selectedCategory.value === "All" ||
-        recipe.categories.includes(selectedCategory.value),
+        selectedCategories.value.includes("All") ||
+        recipe.categories.some(cat => selectedCategories.value.includes(cat)),
     )
     .map((recipe) => {
       const missingIngredients = recipe.ingredients.filter((ing) => {
@@ -89,8 +104,8 @@ async function deleteRecipe(id) {
 </script>
 
 <template>
-  <div class="bg-white font-display text-slate-900 min-h-screen flex flex-col overflow-x-hidden relative">
-    <div class="absolute inset-0 bg-slate-50/30 pointer-events-none"></div>
+  <div class="bg-slate-50 dark:bg-background-dark font-sans text-slate-900 dark:text-white min-h-screen flex flex-col overflow-x-hidden relative transition-colors duration-300">
+    <div class="absolute inset-0 bg-slate-50/30 dark:bg-background-dark/30 pointer-events-none"></div>
     <div class="flex-1 max-w-[1400px] w-full mx-auto p-6 md:p-8 lg:p-10">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <aside class="lg:col-span-3">
@@ -99,10 +114,10 @@ async function deleteRecipe(id) {
         <main class="lg:col-span-9 flex flex-col gap-8">
           <div class="gap-5 flex flex-col">
             <div>
-              <h2 class="mb-2 text-4xl text-slate-900 md:text-5xl font-black">
+              <h2 class="mb-2 text-4xl text-slate-900 dark:text-white md:text-5xl font-black">
                 ทำอะไรกินดี?
               </h2>
-              <p class="text-lg text-slate-500 flex gap-2">
+              <p class="text-lg text-slate-900 dark:text-slate-300 font-bold flex gap-2">
                 กำลังสร้างไอเดียจากวัตถุดิบ
                 <strong class="text-secondary font-black">
                   {{ fridgeItems.length }} รายการ
@@ -114,23 +129,23 @@ async function deleteRecipe(id) {
               <button
                 v-for="cat in categories"
                 :key="cat"
-                @click="setCategory(cat)"
+                @click="toggleCategory(cat)"
                 :class="[
                   'h-fit px-4 py-2 text-sm font-bold rounded-full shadow-md transition-all flex gap-1 items-center',
-                  selectedCategory === cat
+                  selectedCategories.includes(cat)
                     ? 'bg-secondary text-white scale-105 shadow-secondary/40' 
-                    : 'bg-white text-slate-600 hover:bg-slate-50 border border-gray-100', 
+                    : 'bg-white dark:bg-card-dark text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 border border-gray-100 dark:border-card-dark-02', 
                 ]"
               >
                 <span class="material-symbols-outlined text-[18px]">
-                  {{ selectedCategory === cat ? "check_circle" : "search" }}
+                  {{ selectedCategories.includes(cat) ? "check_circle" : "search" }}
                 </span>
                 {{ categoryMapping[cat] || cat }}
               </button>
             </div>
           </div>
 
-          <p class="flex gap-2 text-xl font-bold text-slate-800">
+          <p class="flex gap-2 text-xl font-black text-slate-800 dark:text-white">
             <span class="material-symbols-outlined text-secondary fill-current">star</span>
             พร้อมปรุงทันที (100%)
           </p>
@@ -146,10 +161,12 @@ async function deleteRecipe(id) {
               :video="Perfect.video"
               :ingredients="Perfect.ingredients"
               :steps="Perfect.steps"
+              :categories="Perfect.categories"
+              :categoryMapping="categoryMapping"
             ></PerfectMatch>
           </div>
 
-          <p class="flex gap-2 text-xl font-bold text-slate-800">
+          <p class="flex gap-2 text-xl font-black text-slate-800 dark:text-white">
             <span class="material-symbols-outlined text-orange-500">shopping_basket</span>เกือบพร้อมแล้ว (ขาด 1-2 อย่าง)
           </p>
           <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5">
@@ -160,12 +177,14 @@ async function deleteRecipe(id) {
               :image="Almost.image"
               :missList="Almost.missingList"
               :missingCount="Almost.missingCount"
+              :categories="Almost.categories"
+              :categoryMapping="categoryMapping"
             >
             </AlmostMatch>
           </div>
 
-          <div class="flex justify-between items-center bg-slate-50 p-6 rounded-2xl border border-gray-100">
-            <p class="flex gap-2 text-xl font-bold text-slate-800">
+          <div class="flex flex-col sm:flex-row justify-between items-center bg-white dark:bg-card-dark p-6 rounded-3xl border border-gray-100 dark:border-card-dark-02 shadow-xl shadow-slate-200/50 dark:shadow-slate-900/50 gap-4 transition-colors">
+            <p class="flex gap-2 text-xl font-black text-slate-800 dark:text-white">
               <span class="material-symbols-outlined text-orange-600"
                 >bookmark</span>สูตรอาหารของฉัน
             </p>

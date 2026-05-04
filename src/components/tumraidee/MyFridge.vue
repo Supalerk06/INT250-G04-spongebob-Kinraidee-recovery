@@ -21,8 +21,11 @@ const groupedItems = computed(() => {
 
 </script>
 <template>
-    <div class="rounded-2xl p-6 shadow-xl bg-white border border-gray-100 text-slate-800">
-        <h3 class="font-bold text-lg flex items-center gap-2 mb-4">
+    <div class="rounded-3xl p-6 shadow-xl dark:shadow-slate-900/50 bg-white dark:bg-card-dark border border-gray-100 dark:border-card-dark-02 text-slate-800 dark:text-white transition-colors">
+        <span class="inline-block px-3 py-1 rounded-full bg-slate-50 dark:bg-card-dark-02 text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2 border border-slate-100 dark:border-slate-700">
+            สถานะวัตถุดิบ
+        </span>
+        <h3 class="font-bold text-xl flex items-center gap-2 mb-4">
             <span class="material-symbols-outlined text-secondary">kitchen</span>
             ตู้เย็นของฉัน
         </h3>
@@ -34,9 +37,9 @@ const groupedItems = computed(() => {
             </p>
 
             <ul class="space-y-3">
-                <li v-for="item in items" :key="item.id" class="flex justify-between items-center bg-slate-50/50 p-2 rounded-lg">
-                    <span class="font-medium text-sm">{{ item.name }}</span>
-                    <span class="text-[10px] font-bold bg-white px-2 py-0.5 rounded border border-gray-100 text-slate-400">
+                <li v-for="item in items" :key="item.id" class="flex justify-between items-center bg-slate-50/50 dark:bg-card-dark-02/50 p-2 rounded-lg transition-colors">
+                    <span class="font-bold text-sm dark:text-slate-200">{{ item.name }}</span>
+                    <span class="text-[10px] font-black bg-white dark:bg-card-dark-02 px-2 py-0.5 rounded border border-gray-100 dark:border-slate-700 text-slate-400 dark:text-slate-500">
                         {{ item.quantity }} {{ item.unit }}
                     </span>
                 </li>

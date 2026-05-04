@@ -66,7 +66,7 @@ function validateForm() {
         "วัตถุดิบนี้มีอยู่ในตู้เย็นแล้ว หากต้องการแก้ไขกรุณากดที่ปุ่มแก้ไขของรายการนั้นๆ";
       isValid = false;
     }
-  };
+  }
 
   // --- 2. Category ---
   if (!category.value) {
@@ -233,6 +233,23 @@ watch(
   { deep: true },
 );
 
+import { onMounted, onUnmounted } from 'vue';
+
+const handleEsc = (e) => {
+  if (e.key === 'Escape' && showModal.value) {
+    closeModal();
+  }
+};
+
+onMounted(() => {
+  window.addEventListener('keydown', handleEsc);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleEsc);
+});
+
+
 // คำนวนวันหมดอายุ
 function calculateExpiredDate(expiredDate) {
   const today = new Date();
@@ -269,6 +286,7 @@ const categories = [
   { id: "seafood", name: "อาหารทะเล 🐟" },
   { id: "dairy", name: "ไข่และนม 🥚" },
   { id: "drink", name: "เครื่องดื่ม 🥤" },
+  { id: "spice", name: "เครื่องเทศ 🧂" },
 ];
 
 const processedFridgeItems = computed(() => {
@@ -333,7 +351,7 @@ const getIngredientIcon = (name) => {
   const lowerName = name.toLowerCase().trim();
   const mapping = {
     นม: "milk",
-      
+    ไข่: "eggs",
     ไก่: "chicken",
     เนื้อ: "meat",
     ปลา: "fish",
@@ -376,11 +394,12 @@ function handleCookUpdate(updatedItems) {
 </script>
 
 <template>
-  <div class="px-4 py-8 bg-slate-50 min-h-screen w-full flex flex-col gap-4 md:px-10 lg:flex-row font-sans">
-    <div class="flex flex-col gap-4 w-full lg:max-w-[1250px]">
+  <div class="px-4 py-8 bg-slate-50 dark:bg-background-dark transition-colors duration-300 min-h-screen w-full flex flex-col gap-4 md:px-10 lg:flex-row font-sans justify-center">
+    <div class="flex flex-col gap-4 w-full max-w-[1280px] lg:flex-row">
+      <div class="flex flex-col gap-4 w-full lg:flex-1">
       <div class="flex justify-between py-2">
         <div class="flex flex-col gap-1">
-          <h1 class="text-3xl font-bold flex items-center gap-1">
+          <h1 class="text-3xl font-bold flex items-center gap-1 dark:text-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -398,7 +417,7 @@ function handleCookUpdate(updatedItems) {
 
             ตู้เย็นของฉัน
           </h1>
-          <p class="text-neutral-600">จัดการวัตถุดิบในบ้านของคุณ</p>
+          <p class="text-neutral-600 dark:text-neutral-400 font-medium">จัดการวัตถุดิบในบ้านของคุณ</p>
         </div>
         <button
           class="rounded-full flex justify-center items-center min-w-[129px] shadow-lg shadow-secondary/20 bg-secondary text-white h-full max-h-10 gap-2 hover:scale-[1.025] transition py-3 px-1 md:py-2 md:px-5 lg:py-1 lg:px-4"
@@ -421,15 +440,15 @@ function handleCookUpdate(updatedItems) {
           เพิ่มวัตถุดิบ
         </button>
       </div>
-      <div class="flex rounded-3xl bg-white p-4 flex-wrap md:flex-nowrap shadow shadow-neutral-300 gap-3">
-        <div class="shrink-2 bg-neutral-100 px-4 py-1 rounded-3xl w-full flex justify-center items-center">
+      <div class="flex rounded-3xl bg-white dark:bg-card-dark p-4 flex-wrap md:flex-nowrap shadow shadow-neutral-300 dark:shadow-slate-900/50 gap-3 border border-transparent dark:border-card-dark-02 transition-colors">
+        <div class="shrink-2 bg-neutral-100 dark:bg-card-dark-02 px-4 py-1 rounded-3xl w-full flex justify-center items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="size-5 text-neutral-500 mr-2"
+            class="size-5 text-neutral-500 dark:text-neutral-400 mr-2"
           >
             <path
               stroke-linecap="round"
@@ -439,13 +458,13 @@ function handleCookUpdate(updatedItems) {
           </svg>
           <input
             v-model="searchQuery"
-            class="w-full bg-neutral-100 outline-none focus:outline-none focus:ring-0 border-none"
+            class="w-full bg-neutral-100 dark:bg-card-dark-02 outline-none focus:outline-none focus:ring-0 border-none dark:text-white placeholder:dark:text-neutral-500"
             placeholder="ค้นหาวัตถุดิบ (เช่น ไข่, นม)"
             type="text"
           />
         </div>
 
-        <div class="shrink-0 bg-neutral-100 px-3 py-1 w-[218px] grow rounded-3xl cursor-pointer flex justify-center items-center md:px-4 md:py-1">
+        <div class="shrink-0 bg-neutral-100 dark:bg-card-dark-02 px-3 py-1 w-[218px] grow rounded-3xl cursor-pointer flex justify-center items-center md:px-4 md:py-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -462,15 +481,15 @@ function handleCookUpdate(updatedItems) {
           </svg>
           <select
             v-model="sortBy"
-            class="bg-transparent focus:ring-0 focus:outline-none border-0 ring-0 outline-none cursor-pointer appearance-none text-center font-medium w-full"
+            class="bg-transparent focus:ring-0 focus:outline-none border-0 ring-0 outline-none cursor-pointer appearance-none text-center font-bold w-full dark:text-white"
           >
-            <option value="a-z">เรียง: ก-ฮ</option>
-            <option value="expiry">เรียง: วันหมดอายุ</option>
-            <option value="purchase">เรียง: วันที่ซื้อ</option>
+            <option value="a-z" class="dark:bg-card-dark">เรียง: ก-ฮ</option>
+            <option value="expiry" class="dark:bg-card-dark">เรียง: วันหมดอายุ</option>
+            <option value="purchase" class="dark:bg-card-dark">เรียง: วันที่ซื้อ</option>
           </select>
         </div>
 
-        <div class="shrink-0 bg-neutral-100 px-3 py-1 w-[208px] grow rounded-3xl cursor-pointer flex justify-center items-center md:px-4 md:py-1">
+        <div class="shrink-0 bg-neutral-100 dark:bg-card-dark-02 px-3 py-1 w-[208px] grow rounded-3xl cursor-pointer flex justify-center items-center md:px-4 md:py-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -487,13 +506,13 @@ function handleCookUpdate(updatedItems) {
           </svg>
           <select
             v-model="filterBy"
-            class="bg-transparent focus:ring-0 focus:outline-none border-0 ring-0 outline-none cursor-pointer appearance-none text-center font-medium w-full"
+            class="bg-transparent focus:ring-0 focus:outline-none border-0 ring-0 outline-none cursor-pointer appearance-none text-center font-bold w-full dark:text-white"
           >
-            <option value="all">ตัวกรอง: ทั้งหมด</option>
-            <option value="24h">หมดอายุใน 24 ชม.</option>
-            <option value="48h">หมดอายุใน 48 ชม.</option>
-            <option value="more">มากกว่า 48 ชม.</option>
-            <option value="expired">หมดอายุแล้ว</option>
+            <option value="all" class="dark:bg-card-dark">ตัวกรอง: ทั้งหมด</option>
+            <option value="24h" class="dark:bg-card-dark">หมดอายุใน 24 ชม.</option>
+            <option value="48h" class="dark:bg-card-dark">หมดอายุใน 48 ชม.</option>
+            <option value="more" class="dark:bg-card-dark">มากกว่า 48 ชม.</option>
+            <option value="expired" class="dark:bg-card-dark">หมดอายุแล้ว</option>
           </select>
         </div>
       </div>
@@ -507,7 +526,7 @@ function handleCookUpdate(updatedItems) {
             'shrink-0 rounded-full shadow py-2 px-4 transition font-medium hover:scale-[1.015]',
             selectedCategory === cat.id
               ? 'bg-secondary text-white shadow-secondary/20'
-              : 'bg-white text-slate-600 shadow-slate-100 hover:bg-secondary/10 hover:text-secondary',
+              : 'bg-white dark:bg-card-dark text-slate-600 dark:text-slate-300 shadow-slate-100 dark:shadow-slate-900/50 hover:bg-secondary/10 hover:text-secondary',
           ]"
         >
           {{ cat.name }}
@@ -538,9 +557,13 @@ function handleCookUpdate(updatedItems) {
     </div>
 
     <!-- Add Item Modal -->
-    <div v-if="showModal" class="fixed inset-0 flex items-center justify-center bg-black/50 z-[100]">
-      <div class="bg-white p-6 rounded-xl w-full max-w-[360px] max-h-[600px] overflow-y-scroll lg:max-w-[620px] lg:max-h-fit lg:py-10">
-        <h2 class="text-2xl font-bold mb-4">
+    <div v-if="showModal" @click.self="closeModal" class="fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm z-[100] transition-all p-4">
+      <div class="bg-white dark:bg-card-dark p-6 rounded-3xl w-full max-w-[360px] max-h-[90vh] overflow-y-auto lg:max-w-[620px] lg:py-10 relative shadow-2xl border border-slate-100 dark:border-card-dark-02 custom-scrollbar">
+        <!-- Close Button -->
+        <button @click="closeModal" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+          <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        <h2 class="text-2xl font-bold mb-4 dark:text-white">
           {{ editingItemId ? "แก้ไขวัตถุดิบ" : "เพิ่มวัตถุดิบ" }}
         </h2>
         <form
@@ -548,13 +571,13 @@ function handleCookUpdate(updatedItems) {
           class="flex flex-col lg:grid grid-cols-2 gap-4"
         >
           <div class="flex flex-col gap-1 lg:order-0">
-            <label for="item-name">ชื่อวัตถุดิบ <span class="text-secondary font-bold">*</span></label>
+            <label class="dark:text-white" for="item-name">ชื่อวัตถุดิบ <span class="text-secondary  font-bold">*</span></label>
             <input
               type="text"
               id="item-name"
               v-model="name"
               placeholder="ชื่อวัตถุดิบ (เช่น ไข่)"
-              class="border-2 py-2 px-4 w-full rounded-xl focus:border-secondary focus:ring-0 focus:outline-none"
+              class=" border-2 py-2 px-4 w-full rounded-xl focus:border-secondary focus:ring-0 focus:outline-none"
               :class="
                 error.name
                   ? 'border-danger focus:border-danger'
@@ -567,13 +590,13 @@ function handleCookUpdate(updatedItems) {
           </div>
 
           <div class="flex flex-col gap-1 lg:order-2">
-            <label for="item-quantity">จำนวน <span class="text-secondary font-bold">*</span></label>
+            <label class="dark:text-white" for="item-quantity">จำนวน <span class="text-secondary font-bold">*</span></label>
             <input
               type="number"
               id="item-quantity"
               v-model="quantity"
               placeholder="จำนวน (เช่น 3)"
-              class="border-2 py-2 px-4 w-full rounded-xl focus:border-secondary focus:ring-0 focus:outline-none"
+              class=" border-2 py-2 px-4 w-full rounded-xl focus:border-secondary focus:ring-0 focus:outline-none"
               :class="
                 error.quantity
                   ? 'border-danger focus:border-danger'
@@ -586,11 +609,11 @@ function handleCookUpdate(updatedItems) {
           </div>
 
           <div class="flex flex-col gap-1 lg:order-3">
-            <label for="item-unit">หน่วย <span class="text-secondary font-bold">*</span></label>
+            <label class="dark:text-white" for="item-unit">หน่วย <span class="text-secondary font-bold">*</span></label>
             <select
               id="item-unit"
               v-model="unit"
-              class="border-2 py-2 px-4 w-full rounded-xl focus:border-secondary focus:ring-0 focus:outline-none"
+              class=" border-2 py-2 px-4 w-full rounded-xl focus:border-secondary focus:ring-0 focus:outline-none"
               :class="
                 error.unit
                   ? 'border-danger focus:border-danger'
@@ -608,11 +631,11 @@ function handleCookUpdate(updatedItems) {
           </div>
 
           <div class="flex flex-col gap-1 lg:order-1">
-            <label for="item-category">หมวดหมู่ <span class="text-secondary font-bold">*</span></label>
+            <label class="dark:text-white" for="item-category">หมวดหมู่ <span class="text-secondary font-bold">*</span></label>
             <select
               id="item-category"
               v-model="category"
-              class="border-2 py-2 px-4 w-full rounded-xl focus:border-secondary focus:ring-0 focus:outline-none"
+              class=" border-2 py-2 px-4 w-full rounded-xl focus:border-secondary focus:ring-0 focus:outline-none"
               :class="
                 error.category
                   ? 'border-danger focus:border-danger'
@@ -630,13 +653,13 @@ function handleCookUpdate(updatedItems) {
           </div>
 
           <div class="flex flex-col gap-1 lg:order-4">
-            <label for="item-expired-date">วันหมดอายุ <span class="text-secondary font-bold">*</span></label>
+            <label class="dark:text-white" for="item-expired-date">วันหมดอายุ <span class="text-secondary font-bold">*</span></label>
             <input
               type="date"
               id="item-expired-date"
               v-model="expiredDate"
               placeholder="เลือกวันหมดอายุ"
-              class="border-2 py-2 px-4 w-full rounded-xl focus:border-secondary focus:ring-0 focus:outline-none"
+              class=" border-2 py-2 px-4 w-full rounded-xl focus:border-secondary focus:ring-0 focus:outline-none"
               :class="
                 error.expiredDate
                   ? 'border-danger focus:border-danger'
@@ -669,7 +692,7 @@ function handleCookUpdate(updatedItems) {
 
     <!-- Delete Confirmation Modal -->
     <div v-if="showDeleteModal" class="fixed inset-0 flex items-center justify-center bg-black/50 z-[120]">
-      <div class="bg-white p-6 rounded-2xl w-full max-w-[320px] text-center shadow-xl">
+      <div class="bg-white  dark:bg-card-dark p-6 rounded-2xl w-full max-w-[320px] text-center shadow-xl">
         <div class="flex justify-center mb-4">
           <div class="bg-orange-100 p-4 rounded-full">
             <svg
@@ -688,26 +711,27 @@ function handleCookUpdate(updatedItems) {
             </svg>
           </div>
         </div>
-        <h2 class="text-xl font-bold mb-2">ลบวัตถุดิบ?</h2>
+        <h2 class="text-xl font-bold dark:text-white mb-2">ลบวัตถุดิบ?</h2>
         <p class="text-neutral-500 mb-6 text-sm">
           คุณแน่ใจหรือไม่ว่าต้องการลบวัตถุดิบนี้? การดำเนินการนี้ไม่สามารถย้อนกลับได้
         </p>
         <div class="flex justify-center gap-3">
           <button
             @click="cancelDelete"
-            class="flex-1 py-2 hover:bg-neutral-200 transition bg-neutral-100 text-neutral-700 font-bold rounded-xl focus:outline-none"
+            class="flex-1 py-2 hover:bg-neutral-200 hover:-translate-y-1 transition-all duration-500 bg-neutral-100 text-neutral-700 font-bold rounded-xl focus:outline-none"
           >
             ยกเลิก
           </button>
           <button
             @click="executeDelete"
-            class="flex-1 py-2 hover:bg-danger transition bg-danger text-white font-bold rounded-xl focus:outline-none shadow-md shadow-orange-200"
+            class="flex-1 py-2 hover:bg-danger hover:-translate-y-1 transition-all duration-500 bg-danger text-white font-bold rounded-xl focus:outline-none shadow-md shadow-orange-100 dark:shadow-none"
           >
             ลบเลย
           </button>
         </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 

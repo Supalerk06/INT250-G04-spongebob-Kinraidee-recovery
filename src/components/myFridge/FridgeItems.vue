@@ -34,20 +34,20 @@ function getExpiryClassText(expiredDate) {
   if (diffInDays < 0) {
     return "text-danger bg-orange-100";
   } else if (diffInDays >= 0 && diffInDays <= 2) {
-    return "text-warning bg-yellow-100";
+    return "text-warning bg-yellow-100 dark:bg-yellow-900/30";
   } else {
-    return "text-green-800 bg-green-100";
+    return "text-green-800 dark:text-green-200 bg-green-100 dark:bg-green-900/30";
   }
 }
 
 function getExpiryClassDiv(expiredDate) {
   const diffInDays = props.calculateExpiredDate(expiredDate);
   if (diffInDays < 0) {
-    return "border-4 border-orange-400 shadow-orange-100";
+    return "border-4 border-orange-400 shadow-orange-100 dark:shadow-orange-900/20";
   } else if (diffInDays >= 0 && diffInDays <= 2) {
-    return "border-4 border-yellow-200 shadow-yellow-100";
+    return "border-4 border-yellow-200 dark:border-yellow-900/40 shadow-yellow-100 dark:shadow-yellow-900/20";
   } else {
-    return "border-4 border-green-200 shadow-green-50";
+    return "border-4 border-green-200 dark:border-green-900/40 shadow-green-50 dark:shadow-green-900/20";
   }
 }
 </script>
@@ -56,24 +56,24 @@ function getExpiryClassDiv(expiredDate) {
   <div>
     <div
       v-if="!fridgeItems || fridgeItems.length === 0"
-      class="flex flex-col justify-center items-center w-full p-12 bg-white rounded-[2.5rem] border-2 border-dashed border-gray-100"
+      class="flex flex-col justify-center items-center w-full p-12 bg-white dark:bg-card-dark rounded-[2.5rem] border-2 border-dashed border-gray-100 dark:border-card-dark-02 transition-colors"
     >
-      <h1 class="text-slate-400 font-bold">ไม่พบวัตถุดิบในตู้เย็นของคุณ</h1>
+      <h1 class="text-slate-400 dark:text-slate-500 font-bold">ไม่พบวัตถุดิบในตู้เย็นของคุณ</h1>
     </div>
     <div v-else class="grid grid-cols-[repeat(auto-fit,minmax(185px,1fr))] justify-center w-full py-3 gap-4
   md:grid-cols-3
     lg:grid-cols-4">
 
     <div v-for="item in props.fridgeItems"
-      class="relative py-7 px-4 flex flex-col justify-center items-center rounded-3xl bg-white shadow w-full gap-4 
-      hover:-translate-y-1 transition-all cursor-pointer"
+      class="relative py-7 px-4 flex flex-col justify-center items-center rounded-3xl bg-white dark:bg-card-dark shadow w-full gap-4 
+      hover:-translate-y-1 transition-all"
       :class="getExpiryClassDiv(item.expiredDate)"
     >
       <div class="absolute top-5 right-5">
         <svg
           @click.stop="toggleMenu(item.id)"
           xmlns="http://www.w3.org/2000/svg"
-          class="fill-neutral-500 cursor-pointer hover:fill-black transition-colors"
+          class="fill-neutral-500 dark:fill-slate-400 cursor-pointer hover:fill-black dark:hover:fill-white transition-colors"
           height="24px"
           viewBox="0 -960 960 960"
           width="24px"
@@ -85,11 +85,11 @@ function getExpiryClassDiv(expiredDate) {
 
         <div
           v-if="activeMenuId === item.id"
-          class="absolute right-0 mt-2 w-32 bg-white border rounded-lg shadow-lg z-10 overflow-hidden"
+          class="absolute right-0 mt-2 w-32 bg-white dark:bg-card-dark-02 border dark:border-slate-700 rounded-lg shadow-lg z-10 overflow-hidden"
         >
           <button
             @click="emit('edit-item', item)"
-            class="w-full text-left px-5 py-3 text-sm hover:bg-gray-100 transition flex items-center gap-2"
+            class="w-full text-left px-5 py-3 text-sm hover:bg-gray-100 dark:hover:bg-slate-700 transition flex items-center gap-2 dark:text-white"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +109,7 @@ function getExpiryClassDiv(expiredDate) {
           </button>
           <button
             @click="emit('delete-item', item.id)"
-            class="w-full text-left px-5 py-3 text-sm hover:bg-orange-50 hover:text-danger transition flex items-center gap-2"
+            class="w-full text-left px-5 py-3 text-sm hover:bg-orange-50 dark:hover:bg-orange-900/30 hover:text-danger transition flex items-center gap-2 dark:text-slate-300"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -136,10 +136,10 @@ function getExpiryClassDiv(expiredDate) {
       />
       <div class="flex flex-col gap-3 w-full">
         <div>
-          <h1 class="text-xl font-bold line-clamp-1 text-slate-900">{{ item.name }}</h1>
-          <p class="text-slate-500 font-medium text-sm">{{ item.quantity }} {{ item.unit }}</p>
+          <h1 class="text-xl font-bold line-clamp-1 text-slate-900 dark:text-white">{{ item.name }}</h1>
+          <p class="text-slate-500 dark:text-slate-400 font-medium text-sm">{{ item.quantity }} {{ item.unit }}</p>
         </div>
-        <hr />
+        <hr class="dark:border-card-dark-02" />
         <h1
           class="rounded px-3 py-2 w-fit text-sm font-bold"
           :class="getExpiryClassText(item.expiredDate)"

@@ -1,11 +1,11 @@
 <script setup>
 
-defineProps(['id','name','image','missList','missingCount'])
+defineProps(['id','name','image','missList','missingCount', 'categories', 'categoryMapping'])
 </script>
 <template>
     <!-- 1 -->
     <article
-        class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col border border-gray-100 hover:border-secondary/30">
+        class="group bg-white dark:bg-card-dark rounded-2xl overflow-hidden shadow-lg dark:shadow-slate-900/50 hover:shadow-xl transition-all duration-300 flex flex-col border border-gray-100 dark:border-card-dark-02 hover:border-secondary/30">
         <div class="h-40 relative overflow-hidden">
             <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 grayscale-[30%] group-hover:grayscale-0"
                 data-alt="Bowl of Tom Yum Kung soup"
@@ -13,6 +13,17 @@ defineProps(['id','name','image','missList','missingCount'])
             </div>
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60">
             </div>
+            
+            <div class="absolute top-3 left-3 flex flex-wrap gap-1">
+                <span
+                    v-for="cat in categories"
+                    :key="cat"
+                    class="px-2 py-0.5 rounded-md bg-black/40 backdrop-blur-sm text-[8px] font-black text-white uppercase tracking-tight border border-white/20"
+                >
+                    {{ categoryMapping[cat] || cat }}
+                </span>
+            </div>
+
             <div class="absolute bottom-3 left-3 text-white">
                 <h4 class="font-bold text-lg leading-tight">{{ name }}</h4>
             </div>
