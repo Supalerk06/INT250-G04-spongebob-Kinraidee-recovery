@@ -14,24 +14,9 @@
         </a>
         <div class="hidden md:flex flex-1 justify-end gap-8 items-center">
           <nav class="flex items-center gap-6 lg:gap-9">
-            <a
-              href="/kinraidee"
-              class="text-sm font-medium hover:text-secondary transition-colors"
-            >
-              สุ่มอาหาร
-            </a>
-            <a
-              href="/tumraidee"
-              class="text-sm font-medium hover:text-secondary transition-colors"
-            >
-              ทำไรดี
-            </a>
-            <a
-              href="/myfridge"
-              class="text-sm font-medium hover:text-secondary transition-colors"
-            >
-              ตู้เย็นของฉัน
-            </a>
+            <a href="/kinraidee" class="text-sm font-medium hover:text-secondary transition-colors">สุ่มอาหาร</a>
+            <a href="/tumraidee" class="text-sm font-medium hover:text-secondary transition-colors">ทำไรดี</a>
+            <a href="/myfridge" class="text-sm font-medium hover:text-secondary transition-colors">ตู้เย็นของฉัน</a>
           </nav>
 
           <div class="flex gap-3"></div>
@@ -53,30 +38,10 @@
       class="md:hidden border-t border-gray-100 dark:border-[#2a302d] bg-white dark:bg-card-dark px-4 pb-4"
     >
       <nav class="flex flex-col gap-4 py-4">
-        <a
-          class="text-sm font-medium hover:text-secondary transition-colors"
-          href="#"
-        >
-          KinRaiDee
-        </a>
-        <a
-          href="/tumraidee"
-          class="text-sm font-medium hover:text-secondary transition-colors"
-        >
-          TumraiDee
-        </a>
-        <a
-          class="text-sm font-medium hover:text-secondary transition-colors"
-          href="/myfridge"
-        >
-          Fridge
-        </a>
-        <a
-          class="text-sm font-medium hover:text-secondary transition-colors"
-          href="#"
-        >
-          เกี่ยวกับเรา
-        </a>
+        <a class="text-sm font-medium hover:text-secondary transition-colors" href="/kinraidee">KinRaiDee</a>
+        <a class="text-sm font-medium hover:text-secondary transition-colors" href="/tumraidee">TumraiDee</a>
+        <a class="text-sm font-medium hover:text-secondary transition-colors" href="/myfridge">Fridge</a>
+        <a class="text-sm font-medium hover:text-secondary transition-colors" href="#">เกี่ยวกับเรา</a>
       </nav>
     </div>
   </header>
