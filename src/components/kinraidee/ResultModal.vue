@@ -1,8 +1,24 @@
 <script setup>
+import { onMounted, onUnmounted } from 'vue'
+
 defineProps({
   result: Object
 })
 const emit = defineEmits(['close', 'roll', 'order'])
+
+const handleEsc = (e) => {
+  if (e.key === 'Escape') {
+    emit('close')
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleEsc)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleEsc)
+})
 </script>
 
 <template>

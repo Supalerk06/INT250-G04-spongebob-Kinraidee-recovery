@@ -463,7 +463,7 @@ export const recipes = ref([
     "short_description": "ไส้กรอกลวกสุกรสกลมกล่อม ในขนมปังนุ่มๆ ราดด้วยซอสมะเขือเทศและมัสตาร์ด",
     "difficulty": "ง่าย",
     "categories": ["ตะวันตก"],
-    "image": "/assets/recipeImg/hot_dog.jpg",
+    "image": "/assets/recipeImg/Classic_Hot_Dog.jpg",
     "video": null,
     "ingredients": [
       {"name": "ไส้กรอก", "quantity": 1, "unit": "ชิ้น"},
@@ -920,7 +920,7 @@ export const recipes = ref([
     "short_description": "อกไก่ปรุงรสอย่างง่าย จี่บนกระทะจนผิวนอกเป็นสีทองและเนื้อในยังฉ่ำ",
     "difficulty": "ง่าย",
     "categories": ["ตะวันตก", "ฮาลาล"],
-    "image": "/assets/recipeImg/Pan-seared_chicken.jpg",
+    "image": "/assets/recipeImg/Pan-Seared_Chicken.jpg",
     "video": null,
     "ingredients": [
       {"name": "อกไก่", "quantity": 200, "unit": "กรัม"},

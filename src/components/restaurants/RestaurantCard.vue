@@ -34,8 +34,8 @@ function goToMaps() {
             {{ shop.distance }} กม.
           </span>
         </div>
-        
-        <button @click="goToMaps" class="bg-secondary font-display font-black text-white px-3 py-2.5 rounded-2xl text-xs hover:bg-orange-600">
+
+        <button @click="goToMaps" class="bg-secondary font-display font-bold text-white px-3 py-2.5 rounded-2xl text-sm hover:bg-orange-600">
           ไปที่ร้าน →
         </button>
       </div>

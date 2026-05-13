@@ -1,11 +1,8 @@
 <template>
   <div class="bg-white dark:bg-background-dark text-[#111111] dark:text-white min-h-screen font-sans selection:bg-secondary selection:text-white overflow-x-hidden transition-colors duration-300">
-    <!-- Hero Section -->
     <Hero />
 
-    <!-- Features Section -->
     <section class="max-w-7xl mx-auto px-6 lg:px-12 py-24 space-y-32">
-      <!-- Feature 01 -->
       <FeatureSection
         index="01"
         title="สุ่มเมนูอาหาร"
@@ -23,7 +20,6 @@
         badgeIcon="☪️"
       />
 
-      <!-- Feature 02 -->
       <FeatureSection
         index="02"
         title="คู่มือร้านอาหาร"
@@ -42,7 +38,6 @@
         :reverse="true"
       />
 
-      <!-- Feature 03 -->
       <FeatureSection
         index="03"
         title="คลังวัตถุดิบอัจฉริยะ"
@@ -63,11 +58,11 @@
               <span class="font-black text-sm text-slate-800 dark:text-white tracking-wide uppercase">สถานะตู้เย็น</span>
             </div>
             <div class="space-y-3">
-              <div class="flex justify-between items-center  dark:bg-card-dark-02 dark:border-card-dark-02 text-xs p-3 bg-slate-50 rounded-xl border border-slate-100">
-                <span class="text-slate-700  dark:text-white font-bold">เนื้อหมู</span>
-                <span class="text-secondary  font-black">หมดอายุวันนี้!</span>
+              <div class="flex justify-between items-center dark:bg-card-dark-02 dark:border-card-dark-02 text-xs p-3 bg-slate-50 rounded-xl border border-slate-100">
+                <span class="text-slate-700 dark:text-white font-bold">เนื้อหมู</span>
+                <span class="text-secondary font-black">หมดอายุวันนี้!</span>
               </div>
-              <div class="flex justify-between items-center dark:bg-card-dark-02 dark:border-card-dark-02  text-xs p-3 bg-slate-50 rounded-xl border border-slate-100">
+              <div class="flex justify-between items-center dark:bg-card-dark-02 dark:border-card-dark-02 text-xs p-3 bg-slate-50 rounded-xl border border-slate-100">
                 <span class="text-slate-700 dark:text-white font-bold">ไข่ไก่</span>
                 <span class="text-secondary font-black">อีก 3 วัน</span>
               </div>
@@ -76,7 +71,6 @@
         </template>
       </FeatureSection>
 
-      <!-- Feature 04 -->
       <FeatureSection
         index="04"
         title="แนะนำสูตรอาหาร"
@@ -102,7 +96,6 @@
       </FeatureSection>
     </section>
 
-    <!-- CTA Section -->
     <CTASection />
   </div>
 </template>

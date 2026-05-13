@@ -52,14 +52,14 @@ const menu = computed(() => availableRecipes.value[0]);
           <p class="text-slate-900 dark:text-white font-black text-lg">ทำอาหารเลย!</p>
           <p class="text-slate-400 dark:text-slate-500 font-bold uppercase text-sm tracking-tighter">ระดับ: {{ menu.difficulty }}</p>
         </div>
-        <a class="group/btn cursor-pointer hover:scale-105 transition-all duration-300 flex items-center gap-2 rounded-xl px-4 py-2.5 bg-secondary text-white shadow-lg shadow-secondary/20"
-           href="/tumraidee"
+        <router-link class="group/btn cursor-pointer hover:scale-105 transition-all duration-300 flex items-center gap-2 rounded-xl px-4 py-2.5 bg-secondary text-white shadow-lg shadow-secondary/20"
+           :to="`/recipe/${menu.id}`"
         >
-            <span class="text-sm font-black uppercase">ทำไรดี</span>
+            <span class="text-sm font-black uppercase">ดูวิธีทำ</span>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-4 group-hover/btn:translate-x-1 transition-transform">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
             </svg>
-        </a>
+        </router-link>
     </div>
   </div>
 </template>

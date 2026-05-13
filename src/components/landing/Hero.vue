@@ -2,7 +2,9 @@
   <section
     class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-white dark:bg-background-dark transition-colors duration-300"
   >
-    <div class="absolute inset-0 bg-slate-50/50 dark:bg-background-dark/50 z-0"></div>
+    <div
+      class="absolute inset-0 bg-slate-50/50 dark:bg-background-dark/50 z-0"
+    ></div>
     <div
       class="absolute top-1/4 left-1/4 w-[30vw] h-[30vw] bg-secondary/5 blur-[120px] rounded-full mix-blend-multiply animate-pulse"
     ></div>
@@ -19,8 +21,8 @@
       <h1
         class="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.1] mb-6 tracking-tight text-slate-800 dark:text-white"
       >
-        แก้ปัญหาโลกแตก:
-        <span class="text-secondary block mt-2">"วันนี้กินอะไรดี?"</span>
+        แก้ปัญหาโลกแตก
+        <span class="text-secondary block mt-10">"วันนี้กินอะไรดี?"</span>
       </h1>
       <p
         class="text-lg md:text-xl text-slate-500 mb-10 max-w-2xl mx-auto font-medium leading-relaxed"

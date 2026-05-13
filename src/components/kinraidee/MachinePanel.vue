@@ -9,10 +9,10 @@ const emit = defineEmits(['roll'])
 
 <template>
   <div class="w-full lg:w-1/2 flex flex-col items-center gap-8 order-1 lg:order-2 ">
-    <div class="relative w-full aspect-square max-w-[450px] bg-white dark:bg-card-dark rounded-[3rem] border-[12px] border-slate-100 dark:border-card-dark/80 shadow-2xl dark:shadow-black/60 overflow-hidden flex items-center justify-center group transition-colors duration-500 ease-in-out">
+    <div class="relative w-full aspect-square max-w-[320px] md:max-w-[450px] bg-white dark:bg-card-dark rounded-[3rem] border-[12px] border-slate-100 dark:border-card-dark/80 shadow-2xl dark:shadow-black/60 overflow-hidden flex items-center justify-center group transition-colors duration-500 ease-in-out">
   
-  <div v-if="isRolling" class="absolute inset-0 flex flex-col items-center justify-center animate-shuffle">
-    <div v-for="i in 10" :key="i" class="w-full h-full flex-shrink-0 flex items-center justify-center border-b border-slate-50 dark:border-white/5 transition-colors duration-500">
+  <div v-if="isRolling" class="absolute top-0 left-0 w-full animate-shuffle">
+    <div v-for="i in 10" :key="i" class="w-full aspect-square flex items-center justify-center border-b border-slate-50 dark:border-white/5 transition-colors duration-500">
        <img :src="getRandomFoodImage()" class="w-4/5 h-4/5 object-cover rounded-full opacity-50 dark:opacity-60 grayscale dark:brightness-75 transition-all duration-500" />
     </div>
   </div>

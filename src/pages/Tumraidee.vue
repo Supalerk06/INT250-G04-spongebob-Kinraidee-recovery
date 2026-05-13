@@ -9,7 +9,7 @@ import MyRecipe from "@/components/tumraidee/MyRecipe.vue";
 import MyFridge from "@/components/tumraidee/MyFridge.vue";
 import FormPopUp from "@/components/tumraidee/FormPopup.vue";
 
-let fridgeItems = ref(JSON.parse(localStorage.getItem("fridgeItems")) || []);
+import { fridgeItems } from "@/data/fridgeItems";
 
 const showForm = ref(false);
 
@@ -27,10 +27,10 @@ const categories = [
 
 const categoryMapping = {
   All: "ทั้งหมด",
-  Thai: "อาหารไทย",
-  Western: "อาหารตะวันตก",
-  Chinese: "อาหารจีน",
-  Mexican: "อาหารเม็กซิกัน",
+  Thai: "ไทย",         
+  Western: "ตะวันตก",   
+  Chinese: "จีน",       
+  Mexican: "เม็กซิกัน",
   Halal: "ฮาลาล",
   Vegetarian: "มังสวิรัติ",
   Vegan: "วีแกน",
@@ -40,12 +40,10 @@ const toggleCategory = (category) => {
   if (category === "All") {
     selectedCategories.value = ["All"];
   } else {
-    // Remove "All" if it exists
     selectedCategories.value = selectedCategories.value.filter(c => c !== "All");
     
     if (selectedCategories.value.includes(category)) {
       selectedCategories.value = selectedCategories.value.filter(c => c !== category);
-      // If empty, set back to "All"
       if (selectedCategories.value.length === 0) {
         selectedCategories.value = ["All"];
       }
@@ -59,7 +57,10 @@ const availableRecipes = computed(() => {
   return recipes.value.filter((recipe) => {
     const matchCategory =
       selectedCategories.value.includes("All") ||
-      recipe.categories.some(cat => selectedCategories.value.includes(cat));
+      recipe.categories.some(cat => 
+        selectedCategories.value.some(selectedEn => categoryMapping[selectedEn] === cat)
+      );
+
     if (!matchCategory) return false;
 
     return recipe.ingredients.every((ingredient) => {
@@ -75,10 +76,11 @@ const almostReadyRecipes = computed(() => {
   if (!recipes.value || !fridgeItems.value) return [];
 
   return recipes.value
-    .filter(
-      (recipe) =>
-        selectedCategories.value.includes("All") ||
-        recipe.categories.some(cat => selectedCategories.value.includes(cat)),
+    .filter((recipe) =>
+      selectedCategories.value.includes("All") ||
+      recipe.categories.some(cat => 
+        selectedCategories.value.some(selectedEn => categoryMapping[selectedEn] === cat)
+      )
     )
     .map((recipe) => {
       const missingIngredients = recipe.ingredients.filter((ing) => {
@@ -149,7 +151,7 @@ async function deleteRecipe(id) {
             <span class="material-symbols-outlined text-secondary fill-current">star</span>
             พร้อมปรุงทันที (100%)
           </p>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
+          <div v-if="availableRecipes.length" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
             <PerfectMatch
               v-for="Perfect in availableRecipes"
               :fridgeItems="fridgeItems"
@@ -165,11 +167,14 @@ async function deleteRecipe(id) {
               :categoryMapping="categoryMapping"
             ></PerfectMatch>
           </div>
+          <div v-else class="flex flex-col items-center justify-center p-8 bg-white dark:bg-card-dark rounded-3xl border border-dashed border-gray-200 dark:border-card-dark-02">
+             <p class="text-slate-500 font-bold">ไม่พบสูตรอาหารที่พร้อมปรุงด้วยวัตถุดิบที่คุณมี</p>
+          </div>
 
           <p class="flex gap-2 text-xl font-black text-slate-800 dark:text-white">
             <span class="material-symbols-outlined text-orange-500">shopping_basket</span>เกือบพร้อมแล้ว (ขาด 1-2 อย่าง)
           </p>
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5">
+          <div v-if="almostReadyRecipes.length" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-5">
             <AlmostMatch
               v-for="Almost in almostReadyRecipes"
               :id="Almost.id"
@@ -182,11 +187,13 @@ async function deleteRecipe(id) {
             >
             </AlmostMatch>
           </div>
+          <div v-else class="flex flex-col items-center justify-center p-8 bg-white dark:bg-card-dark rounded-3xl border border-dashed border-gray-200 dark:border-card-dark-02">
+             <p class="text-slate-500 font-bold">ไม่พบสูตรอาหารที่ใกล้เคียง</p>
+          </div>
 
           <div class="flex flex-col sm:flex-row justify-between items-center bg-white dark:bg-card-dark p-6 rounded-3xl border border-gray-100 dark:border-card-dark-02 shadow-xl shadow-slate-200/50 dark:shadow-slate-900/50 gap-4 transition-colors">
             <p class="flex gap-2 text-xl font-black text-slate-800 dark:text-white">
-              <span class="material-symbols-outlined text-orange-600"
-                >bookmark</span>สูตรอาหารของฉัน
+              <span class="material-symbols-outlined text-orange-600">bookmark</span>สูตรอาหารของฉัน
             </p>
             <button
               @click="showForm = true"
@@ -198,7 +205,7 @@ async function deleteRecipe(id) {
             <FormPopUp v-if="showForm" @close="showForm = false" />
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div v-if="userRecipes.length" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             <MyRecipe
               v-for="(myRecipes, index) in userRecipes"
               :fridgeItems="fridgeItems"
@@ -210,6 +217,9 @@ async function deleteRecipe(id) {
               :steps="myRecipes.steps"
               @delete="deleteRecipe"
             />
+          </div>
+          <div v-else class="flex flex-col items-center justify-center p-8 bg-white dark:bg-card-dark rounded-3xl border border-dashed border-gray-200 dark:border-card-dark-02">
+             <p class="text-slate-500 font-bold">คุณยังไม่มีสูตรอาหารของตัวเอง ลองเพิ่มดูสิ!</p>
           </div>
         </main>
       </div>

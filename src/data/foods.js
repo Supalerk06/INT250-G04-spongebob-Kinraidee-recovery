@@ -6,12 +6,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://homeyselect.co/wp-content/uploads/2024/04/%E0%B8%82%E0%B9%89%E0%B8%B2%E0%B8%A7%E0%B8%AB%E0%B8%A1%E0%B8%81%E0%B9%84%E0%B8%81%E0%B9%88-%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2-Instant-Pot-%E0%B8%AA%E0%B8%B9%E0%B8%95%E0%B8%A3%E0%B8%9E%E0%B8%A5%E0%B8%9E%E0%B8%A3%E0%B8%A3%E0%B8%84%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%9B%E0%B8%A3%E0%B8%B8%E0%B8%87.jpg",
+    imageUrl:
+      "https://homeyselect.co/wp-content/uploads/2024/04/%E0%B8%82%E0%B9%89%E0%B8%B2%E0%B8%A7%E0%B8%AB%E0%B8%A1%E0%B8%81%E0%B9%84%E0%B8%81%E0%B9%88-%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2-Instant-Pot-%E0%B8%AA%E0%B8%B9%E0%B8%95%E0%B8%A3%E0%B8%9E%E0%B8%A5%E0%B8%9E%E0%B8%A3%E0%B8%A3%E0%B8%84%E0%B8%99%E0%B8%B1%E0%B8%81%E0%B8%9B%E0%B8%A3%E0%B8%B8%E0%B8%87.jpg",
     detail: "หอมกลิ่นเครื่องเทศ ไก่นุ่มละลายในปาก",
     restaurants: [
       { name: "ร้านอาลี", star: 4, distance: 0.8 },
-      { name: "ข้าวหมกไก่ยะลา", star: 4.5, distance: 1.2 }
-    ]
+      { name: "ข้าวหมกไก่ยะลา", star: 4.5, distance: 1.2 },
+      { name: "ครัวฮาลาล", star: 4.2, distance: 1.7 },
+      { name: "อิ่มอร่อย", star: 4.3, distance: 2.1 },
+      { name: "ข้าวหมกไก่สายไหม", star: 4.7, distance: 2.5 },
+      { name: "บ้านเครื่องเทศ", star: 4.1, distance: 3.0 },
+      { name: "Food Corner", star: 3.9, distance: 3.4 },
+      { name: "ครัวปักษ์ใต้", star: 4.4, distance: 4.0 },
+      { name: "Halal Station", star: 4.6, distance: 4.5 },
+      { name: "กินดี", star: 4.0, distance: 5.2 },
+    ],
   },
   {
     id: 2,
@@ -19,12 +28,21 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://img.wongnai.com/p/1968x0/2019/10/19/c1d48452622f4abdadfe1bebfabc9d3d.jpg",
+    imageUrl:
+      "https://img.wongnai.com/p/1968x0/2019/10/19/c1d48452622f4abdadfe1bebfabc9d3d.jpg",
     detail: "หมูกรอบสะท้านฟ้า รสชาติเผ็ดร้อนทะลวงไส้",
     restaurants: [
       { name: "ร้านป้าสั่งลุย", star: 5, distance: 0.5 },
-      { name: "ตามสั่งลุงชัย", star: 4, distance: 1.1 }
-    ]
+      { name: "ตามสั่งลุงชัย", star: 4, distance: 1.1 },
+      { name: "ครัวกะเพราไฟลุก", star: 4.5, distance: 1.8 },
+      { name: "เจ๊แดงอาหารตามสั่ง", star: 4, distance: 2.4 },
+      { name: "กะเพราถาดยักษ์", star: 5, distance: 3.0 },
+      { name: "อิ่มจังตามสั่ง", star: 4, distance: 1.7 },
+      { name: "ครัวบ้านพริก", star: 4.5, distance: 2.2 },
+      { name: "กะเพราโบราณ", star: 4, distance: 3.6 },
+      { name: "ร้านเด็ดเผ็ดลืม", star: 5, distance: 4.1 },
+      { name: "ผัดไวไฟแรง", star: 4.5, distance: 2.9 },
+    ],
   },
   {
     id: 3,
@@ -36,8 +54,16 @@ const foods = [
     detail: "กุ้งตัวโตในน้ำต้มยำรสจัดจ้านถึงเครื่อง",
     restaurants: [
       { name: "ซีฟู้ดสเตชั่น", star: 5, distance: 2.1 },
-      { name: "ต้มยำกุ้งแม่กลอง", star: 4.5, distance: 3.5 }
-    ]
+      { name: "ต้มยำกุ้งแม่กลอง", star: 4.5, distance: 3.5 },
+      { name: "ทะเลเดือดซีฟู้ด", star: 4, distance: 2.8 },
+      { name: "ครัวริมหาด", star: 4.5, distance: 4.0 },
+      { name: "แซ่บทะเลหม้อไฟ", star: 5, distance: 3.3 },
+      { name: "บ้านกุ้งเผา", star: 4, distance: 2.6 },
+      { name: "ครัวต้มยำโบราณ", star: 4.5, distance: 1.9 },
+      { name: "อ่าวไทยซีฟู้ด", star: 4, distance: 5.0 },
+      { name: "กุ้งแม่น้ำเผาเฮ้าส์", star: 5, distance: 4.4 },
+      { name: "ครัวสมุนไพรไทย", star: 4.5, distance: 3.1 },
+    ],
   },
   {
     id: 4,
@@ -45,12 +71,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://www.unileverfoodsolutions.co.th/dam/global-ufs/mcos/SEA/calcmenu/recipes/TH-recipes/pasta-dishes/%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B9%84%E0%B8%97%E0%B8%A2%E0%B8%81%E0%B8%B8%E0%B9%89%E0%B8%87%E0%B8%AA%E0%B8%94/%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B9%84%E0%B8%97%E0%B8%A2%E0%B8%81%E0%B8%B8%E0%B9%89%E0%B8%87%E0%B8%AA%E0%B8%94_header.jpg",
+    imageUrl:
+      "https://www.unileverfoodsolutions.co.th/dam/global-ufs/mcos/SEA/calcmenu/recipes/TH-recipes/pasta-dishes/%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B9%84%E0%B8%97%E0%B8%A2%E0%B8%81%E0%B8%B8%E0%B9%89%E0%B8%87%E0%B8%AA%E0%B8%94/%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B9%84%E0%B8%97%E0%B8%A2%E0%B8%81%E0%B8%B8%E0%B9%89%E0%B8%87%E0%B8%AA%E0%B8%94_header.jpg",
     detail: "เส้นจันท์เหนียวนุ่ม ผัดซอสสูตรโบราณ",
     restaurants: [
       { name: "แม่จิตรผัดไทย", star: 4, distance: 1.5 },
-      { name: "ผัดไทยเจริญนคร", star: 4.5, distance: 2.8 }
-    ]
+      { name: "ผัดไทยเจริญนคร", star: 4.5, distance: 2.8 },
+      { name: "ผัดไทยทะเลทอง", star: 4.6, distance: 1.9 },
+      { name: "Thai Noodle Cafe", star: 4.4, distance: 4.2 },
+      { name: "ผัดไทยกุ้งแม่น้ำ", star: 4.8, distance: 3.5 },
+      { name: "เส้นจันท์รสเด็ด", star: 4.3, distance: 2.7 },
+      { name: "Pad Thai Corner", star: 4.5, distance: 5.0 },
+      { name: "บ้านผัดไทย", star: 4.6, distance: 2.4 },
+      { name: "ผัดไทยสูตรคุณยาย", star: 4.7, distance: 3.8 },
+      { name: "ครัวไทยซีฟู้ด", star: 4.4, distance: 4.1 },
+    ],
   },
   {
     id: 5,
@@ -58,12 +93,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: true,
-    imageUrl: "https://www.unileverfoodsolutions.co.th/th/chef-inspiration/simple-tips-for-great-flavour/somtum-green-papaya-salad-recipes/jcr:content/parsys/content-aside-footer/tipsandadvice_953595464/image.img.jpg/1695118661607.jpg",
+    imageUrl:
+      "https://www.unileverfoodsolutions.co.th/th/chef-inspiration/simple-tips-for-great-flavour/somtum-green-papaya-salad-recipes/jcr:content/parsys/content-aside-footer/tipsandadvice_953595464/image.img.jpg/1695118661607.jpg",
     detail: "มะละกอกรอบ รสเปรี้ยวหวานลงตัว",
     restaurants: [
       { name: "แซ่บอีหลี", star: 4, distance: 0.9 },
-      { name: "ส้มตำป้าณี", star: 4.5, distance: 1.6 }
-    ]
+      { name: "ส้มตำป้าณี", star: 4.5, distance: 1.6 },
+      { name: "ส้มตำอุบล", star: 4.6, distance: 3.2 },
+      { name: "ครกทองส้มตำ", star: 4.4, distance: 1.8 },
+      { name: "ตำนัว Kitchen", star: 4.8, distance: 2.7 },
+      { name: "ส้มตำริมทาง", star: 4.3, distance: 0.7 },
+      { name: "Zaap Zaap", star: 4.5, distance: 4.0 },
+      { name: "อีสานฟู้ดฮับ", star: 4.6, distance: 3.5 },
+      { name: "ส้มตำรสนัว", star: 4.7, distance: 2.0 },
+      { name: "ตำไทยไข่เค็มเด็ด", star: 4.4, distance: 1.9 },
+    ],
   },
   {
     id: 6,
@@ -71,12 +115,21 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://www.unileverfoodsolutions.co.th/dam/global-ufs/mcos/SEA/calcmenu/recipes/TH-recipes/red-meats-&-red-meat-dishes/grilled-pork-collar-with-northeastern-thai-style-spicy-dipping-sauce/main-header.jpg",
+    imageUrl:
+      "https://www.unileverfoodsolutions.co.th/dam/global-ufs/mcos/SEA/calcmenu/recipes/TH-recipes/red-meats-&-red-meat-dishes/grilled-pork-collar-with-northeastern-thai-style-spicy-dipping-sauce/main-header.jpg",
     detail: "หมูหมักนุ่มย่างเตาถ่าน หอมกลิ่นข้าวคั่ว",
     restaurants: [
       { name: "แซ่บอีหลี", star: 5, distance: 0.9 },
-      { name: "ย่างเนยกระทะร้อน", star: 4, distance: 2.0 }
-    ]
+      { name: "ย่างเนยกระทะร้อน", star: 4, distance: 2.0 },
+      { name: "ก๋วยเตี๋ยวเรือสูตรเข้มข้น", star: 4.5, distance: 2.7 },
+      { name: "เตี๋ยวเรือฮาลาล", star: 4.8, distance: 1.9 },
+      { name: "Beef Noodle Corner", star: 4.3, distance: 4.1 },
+      { name: "ก๋วยเตี๋ยวเรือคลองสาน", star: 4.4, distance: 3.0 },
+      { name: "เรือทองก๋วยเตี๋ยว", star: 4.6, distance: 2.3 },
+      { name: "เตี๋ยวตุ๋นพรีเมียม", star: 4.5, distance: 5.2 },
+      { name: "Halal Beef Bowl", star: 4.7, distance: 3.8 },
+      { name: "ก๋วยเตี๋ยวเรือบ้านสวน", star: 4.2, distance: 2.9 },
+    ],
   },
   {
     id: 7,
@@ -84,12 +137,21 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://img.wongnai.com/p/1920x0/2015/06/29/ad43f38f3d214eb5804fcad8c9c469cb.jpg",
+    imageUrl:
+      "https://img.wongnai.com/p/1920x0/2015/06/29/ad43f38f3d214eb5804fcad8c9c469cb.jpg",
     detail: "ข้าวเรียงเม็ดสวย ไก่เนื้อฉ่ำ น้ำจิ้มเด็ด",
     restaurants: [
       { name: "เฮียตี๋ข้าวมันไก่", star: 4, distance: 1.2 },
-      { name: "ข้าวมันไก่ประตูน้ำ", star: 4.5, distance: 4.0 }
-    ]
+      { name: "ข้าวมันไก่ประตูน้ำ", star: 4.5, distance: 4.0 },
+      { name: "Chicken Rice House", star: 4.4, distance: 2.8 },
+      { name: "ข้าวมันไก่นายฮ้อ", star: 4.6, distance: 1.9 },
+      { name: "Steam Chicken Cafe", star: 4.3, distance: 4.2 },
+      { name: "ข้าวมันไก่เจ๊หมวย", star: 4.8, distance: 3.7 },
+      { name: "Classic Chicken Rice", star: 4.5, distance: 2.4 },
+      { name: "ครัวข้าวมันไก่", star: 4.4, distance: 5.0 },
+      { name: "ข้าวมันไก่สูตรโบราณ", star: 4.6, distance: 3.1 },
+      { name: "อร่อยดีข้าวมันไก่", star: 4.2, distance: 2.6 },
+    ],
   },
   {
     id: 8,
@@ -97,12 +159,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://s359.kapook.com/pagebuilder/0b827a5d-ef60-4a14-87a8-5fe2e6dc327b.jpg",
+    imageUrl:
+      "https://s359.kapook.com/pagebuilder/0b827a5d-ef60-4a14-87a8-5fe2e6dc327b.jpg",
     detail: "น้ำตกเข้มข้น เนื้อตุ๋นเปื่อยแทบไม่ต้องเคี้ยว",
     restaurants: [
       { name: "เตี๋ยวเรืออยุธยา", star: 5, distance: 1.8 },
-      { name: "ก๋วยเตี๋ยวเรือลุงจิตร", star: 4, distance: 2.5 }
-    ]
+      { name: "ก๋วยเตี๋ยวเรือลุงจิตร", star: 4, distance: 2.5 },
+      { name: "บ้านสวนอาหารไทย", star: 4, distance: 2.4 },
+      { name: "ครัวบางกอก", star: 4.5, distance: 5.1 },
+      { name: "ไทยออริจินัล", star: 4, distance: 3.7 },
+      { name: "รสมือยาย", star: 5, distance: 2.5 },
+      { name: "เรือนเครื่องแกง", star: 4, distance: 4.3 },
+      { name: "ครัวบ้านทุ่ง", star: 4.5, distance: 1.9 },
+      { name: "สำรับไทยซีเคร็ต", star: 4, distance: 3.4 },
+      { name: "แกงไทยโฮมเมด", star: 4.5, distance: 4.8 },
+    ],
   },
   {
     id: 9,
@@ -110,12 +181,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://www.unileverfoodsolutions.co.th/dam/global-ufs/mcos/SEA/calcmenu/recipes/TH-recipes/chicken-&-other-poultry-dishes/%E0%B8%82%E0%B9%89%E0%B8%B2%E0%B8%A7%E0%B8%8B%E0%B8%AD%E0%B8%A2%E0%B9%84%E0%B8%81%E0%B9%88/main-header.jpg",
+    imageUrl:
+      "https://www.unileverfoodsolutions.co.th/dam/global-ufs/mcos/SEA/calcmenu/recipes/TH-recipes/chicken-&-other-poultry-dishes/%E0%B8%82%E0%B9%89%E0%B8%B2%E0%B8%A7%E0%B8%8B%E0%B8%AD%E0%B8%A2%E0%B9%84%E0%B8%81%E0%B9%88/main-header.jpg",
     detail: "น้ำแกงกะทิเข้มข้น เส้นกรอบอร่อย",
     restaurants: [
       { name: "เฮือนชาวเหนือ", star: 4, distance: 3.2 },
-      { name: "ข้าวซอยเชียงใหม่", star: 4.5, distance: 4.1 }
-    ]
+      { name: "ข้าวซอยเชียงใหม่", star: 4.5, distance: 4.1 },
+      { name: "ล้านนาลำแต๊", star: 4, distance: 2.7 },
+      { name: "ครัวเมืองเหนือ", star: 4.5, distance: 3.8 },
+      { name: "คำเมืองฟู้ด", star: 4, distance: 2.9 },
+      { name: "กาดหลวงคาเฟ่", star: 4, distance: 5.0 },
+      { name: "เหนือรสเด็ด", star: 5, distance: 4.4 },
+      { name: "บ้านข้าวซอย", star: 4.5, distance: 1.9 },
+      { name: "ลานนาไทยคิทเช่น", star: 4, distance: 3.3 },
+      { name: "อาหารเชียงใหม่เฮ้าส์", star: 4.5, distance: 4.7 },
+    ],
   },
   {
     id: 10,
@@ -127,8 +207,16 @@ const foods = [
     detail: "เครื่องแกงหอมกรุ่น มันฝรั่งนุ่มอร่อย",
     restaurants: [
       { name: "ร้านอาลี", star: 5, distance: 0.8 },
-      { name: "ครัวไทยเดิม", star: 4, distance: 1.5 }
-    ]
+      { name: "ครัวไทยเดิม", star: 4, distance: 1.5 },
+      { name: "ฮาลาลฟู้ดเฮาส์", star: 4.5, distance: 2.0 },
+      { name: "ครัวสุลต่าน", star: 4, distance: 3.1 },
+      { name: "ต้นเครื่องแกง", star: 4.5, distance: 2.9 },
+      { name: "บ้านอาหารไทย", star: 4, distance: 1.7 },
+      { name: "เรือนไทยรสมือแม่", star: 5, distance: 4.2 },
+      { name: "ครัวมุสลิมริมทาง", star: 4, distance: 3.6 },
+      { name: "ตำรับไทยโบราณ", star: 4.5, distance: 2.8 },
+      { name: "สำรับทอง", star: 4, distance: 4.5 },
+    ],
   },
   {
     id: 11,
@@ -136,12 +224,13 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://img.wongnai.com/p/1920x0/2019/03/18/11e7bbd7bbab421f9e1f2bc6c1d64e59.jpg",
+    imageUrl:
+      "https://img.wongnai.com/p/1920x0/2019/03/18/11e7bbd7bbab421f9e1f2bc6c1d64e59.jpg",
     detail: "รสชาติไทยแท้ ทานคู่กับขนมจีนหรือข้าวสวยร้อนๆ",
     restaurants: [
       { name: "ครัวริมน้ำ", star: 4, distance: 2.2 },
-      { name: "แกงไทยแม่สมบุญ", star: 4.5, distance: 3.0 }
-    ]
+      { name: "แกงไทยแม่สมบุญ", star: 4.5, distance: 3.0 },
+    ],
   },
   {
     id: 12,
@@ -149,12 +238,23 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://aowtakiabseafood.com/delivery/wp-content/uploads/2019/06/20180606_120808.jpg",
+    imageUrl:
+      "https://aowtakiabseafood.com/delivery/wp-content/uploads/2019/06/20180606_120808.jpg",
     detail: "เครื่องแน่น รสจัดจ้าน เปรี้ยวเผ็ดกำลังดี",
     restaurants: [
       { name: "ซีฟู้ดสเตชั่น", star: 4, distance: 2.1 },
-      { name: "ยำแซ่บสะดุ้ง", star: 4, distance: 1.3 }
-    ]
+      { name: "ยำแซ่บสะดุ้ง", star: 4, distance: 1.3 },
+      { name: "ครัวยำทะเลเดือด", star: 4.5, distance: 2.8 },
+      { name: "Spicy Glass Noodle", star: 4.2, distance: 3.0 },
+      { name: "ยำริมทะเล", star: 4.4, distance: 1.7 },
+      { name: "แซ่บเว่อร์ซีฟู้ด", star: 4.6, distance: 4.2 },
+      { name: "Sea Yum House", star: 4.1, distance: 2.4 },
+      { name: "ยำจี๊ดจ๊าด", star: 4.3, distance: 1.9 },
+      { name: "Ocean Spice Cafe", star: 4.7, distance: 5.0 },
+      { name: "ครัววุ้นเส้นทะเล", star: 4.0, distance: 2.6 },
+      { name: "ทะเลแซ่บนัว", star: 4.5, distance: 3.8 },
+      { name: "Yum Station", star: 4.4, distance: 4.5 },
+    ],
   },
   {
     id: 13,
@@ -162,12 +262,23 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://images.aws.nestle.recipes/original/015d516530e1d8ccf2c07e5830f4a67b_thai-stir-fried-wide-noodles.jpg",
+    imageUrl:
+      "https://images.aws.nestle.recipes/original/015d516530e1d8ccf2c07e5830f4a67b_thai-stir-fried-wide-noodles.jpg",
     detail: "เส้นใหญ่ผัดหอมกลิ่นคั่วกระทะ",
     restaurants: [
       { name: "เจ๊ไฝผัดกระทะร้อน", star: 3, distance: 1.0 },
-      { name: "ราดหน้ายอดผัก", star: 4, distance: 1.8 }
-    ]
+      { name: "ราดหน้ายอดผัก", star: 4, distance: 1.8 },
+      { name: "คั่วกระทะทอง", star: 4.3, distance: 2.2 },
+      { name: "Pad See Ew Hub", star: 4.5, distance: 3.1 },
+      { name: "เส้นใหญ่ไฟแรง", star: 4.1, distance: 1.6 },
+      { name: "Wok Noodle House", star: 4.6, distance: 4.0 },
+      { name: "ผัดซีอิ๊วโบราณ", star: 4.2, distance: 2.7 },
+      { name: "ครัวเส้นหอม", star: 4.4, distance: 1.9 },
+      { name: "Thai Wok Kitchen", star: 4.0, distance: 3.5 },
+      { name: "เส้นใหญ่เจ้าดัง", star: 4.7, distance: 4.8 },
+      { name: "ก๋วยเตี๋ยวคั่วไฟ", star: 4.5, distance: 2.9 },
+      { name: "Eat Noodle Cafe", star: 4.3, distance: 3.7 },
+    ],
   },
   {
     id: 14,
@@ -175,12 +286,23 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://img.wongnai.com/p/1920x0/2017/06/26/16b349df2d5b471bbca679e6117f1544.jpg",
+    imageUrl:
+      "https://img.wongnai.com/p/1920x0/2017/06/26/16b349df2d5b471bbca679e6117f1544.jpg",
     detail: "เนื้อหนังนุ่มละมุน น้ำพะโล้รสกลมกล่อม",
     restaurants: [
       { name: "ขาหมูตรอกซุง", star: 5, distance: 3.5 },
-      { name: "ขาหมูเจริญกรุง", star: 4.5, distance: 4.2 }
-    ]
+      { name: "ขาหมูเจริญกรุง", star: 4.5, distance: 4.2 },
+      { name: "ขาหมูนายเข้ม", star: 4.4, distance: 2.1 },
+      { name: "Pork Leg Town", star: 4.6, distance: 3.9 },
+      { name: "ครัวพะโล้", star: 4.2, distance: 1.8 },
+      { name: "ข้าวขาหมูสูตรโบราณ", star: 4.7, distance: 5.0 },
+      { name: "Stewed Pork House", star: 4.1, distance: 2.7 },
+      { name: "ขาหมูคากิเด็ด", star: 4.5, distance: 3.3 },
+      { name: "อร่อยขาหมู", star: 4.3, distance: 1.5 },
+      { name: "Thai Pork Leg Kitchen", star: 4.6, distance: 4.4 },
+      { name: "ขาหมูเตาถ่าน", star: 4.0, distance: 2.5 },
+      { name: "เจริญพะโล้", star: 4.4, distance: 3.6 },
+    ],
   },
   {
     id: 15,
@@ -188,12 +310,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://img.wongnai.com/p/400x0/2021/04/03/05971711ac86403dba85b8eaa1549d7b.jpg",
+    imageUrl:
+      "https://img.wongnai.com/p/400x0/2021/04/03/05971711ac86403dba85b8eaa1549d7b.jpg",
     detail: "ซุปรสเปรี้ยวเผ็ด ซดคล่องคอ",
     restaurants: [
       { name: "ร้านอาลี", star: 4, distance: 0.8 },
-      { name: "ซุปหางวัวอิสลาม", star: 4.5, distance: 2.5 }
-    ]
+      { name: "ซุปหางวัวอิสลาม", star: 4.5, distance: 2.5 },
+      { name: "ฮาลาลฟู้ดเฮาส์", star: 4.6, distance: 1.4 },
+      { name: "ครัวมุสลิม", star: 4.3, distance: 2.7 },
+      { name: "Soup Corner", star: 4.5, distance: 3.1 },
+      { name: "บ้านซุป", star: 4.7, distance: 1.9 },
+      { name: "Spicy Oxtail", star: 4.4, distance: 2.3 },
+      { name: "ครัวอิสลาม", star: 4.2, distance: 3.6 },
+      { name: "Halal Taste", star: 4.6, distance: 4.0 },
+      { name: "ซุปแซ่บหม้อใหญ่", star: 4.5, distance: 2.8 },
+    ],
   },
   {
     id: 16,
@@ -201,12 +332,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://cdn.prod.website-files.com/629732c7c0e1401011449adc/6350f5166cfda1f319196a94_CrabFriedRice%402x.webp",
+    imageUrl:
+      "https://cdn.prod.website-files.com/629732c7c0e1401011449adc/6350f5166cfda1f319196a94_CrabFriedRice%402x.webp",
     detail: "ข้าวผัดร่วนๆ เนื้อปูเน้นๆ กลิ่นหอมกระทะ",
     restaurants: [
       { name: "ครัวริมน้ำ", star: 4, distance: 2.2 },
-      { name: "ข้าวผัดปูเมืองทอง", star: 5, distance: 5.0 }
-    ]
+      { name: "ข้าวผัดปูเมืองทอง", star: 5, distance: 5.0 },
+      { name: "ปูทองซีฟู้ด", star: 4.7, distance: 1.8 },
+      { name: "Sea Crab House", star: 4.5, distance: 3.4 },
+      { name: "ครัวทะเลทอง", star: 4.6, distance: 2.6 },
+      { name: "Wok Fried Rice", star: 4.4, distance: 4.2 },
+      { name: "ร้านปูเป็น", star: 4.8, distance: 5.1 },
+      { name: "Crab Lover", star: 4.3, distance: 3.7 },
+      { name: "ทะเลหอม", star: 4.6, distance: 2.5 },
+      { name: "ครัวปูพรีเมียม", star: 4.9, distance: 5.4 },
+    ],
   },
   {
     id: 17,
@@ -218,8 +358,16 @@ const foods = [
     detail: "เครื่องแกงเข้มข้น ไข่ข้นละมุนลิ้น",
     restaurants: [
       { name: "ซีฟู้ดสเตชั่น", star: 5, distance: 2.1 },
-      { name: "สมบูรณ์โภชนา", star: 4.5, distance: 4.8 }
-    ]
+      { name: "สมบูรณ์โภชนา", star: 4.5, distance: 4.8 },
+      { name: "Golden Curry Crab", star: 4.8, distance: 2.0 },
+      { name: "ทะเลเดือดซีฟู้ด", star: 4.6, distance: 3.5 },
+      { name: "ครัวปูผัดผง", star: 4.4, distance: 2.9 },
+      { name: "Seafood Delight", star: 4.7, distance: 4.4 },
+      { name: "ปูไข่เยิ้ม", star: 4.5, distance: 3.2 },
+      { name: "ปูผัดผงกะหรี่ต้นตำรับ", star: 4.8, distance: 4.1 },
+      { name: "Ocean Curry Crab", star: 4.4, distance: 3.0 },
+      { name: "ครัวซีฟู้ดฮาลาล", star: 4.7, distance: 5.2 },
+    ],
   },
   {
     id: 18,
@@ -227,12 +375,23 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://img.wongnai.com/p/1920x0/2018/12/15/bb08773d48034780ab503b1a4902a6f8.jpg",
+    imageUrl:
+      "https://img.wongnai.com/p/1920x0/2018/12/15/bb08773d48034780ab503b1a4902a6f8.jpg",
     detail: "แป้งกรอบนอกนุ่มใน หอยแมลงภู่สดๆ",
     restaurants: [
       { name: "เจ๊ไฝผัดกระทะร้อน", star: 4, distance: 1.0 },
-      { name: "หอยทอดชาวเล", star: 4, distance: 2.7 }
-    ]
+      { name: "หอยทอดชาวเล", star: 4, distance: 2.7 },
+      { name: "หอยทอดริมทาง", star: 4.3, distance: 1.8 },
+      { name: "Oyster Crunch House", star: 4.5, distance: 3.1 },
+      { name: "ครัวทะเลกรอบ", star: 4.1, distance: 2.0 },
+      { name: "แป้งกรอบซีฟู้ด", star: 4.6, distance: 4.0 },
+      { name: "Street Oyster Pan", star: 4.2, distance: 2.9 },
+      { name: "หอยทอดตลาดเก่า", star: 4.4, distance: 1.5 },
+      { name: "ซีฟู้ดจานร้อน", star: 4.0, distance: 3.3 },
+      { name: "Crunchy Mussel Cafe", star: 4.7, distance: 4.6 },
+      { name: "ครัวหอยใหญ่", star: 4.3, distance: 2.4 },
+      { name: "ทะเลทอดหอม", star: 4.5, distance: 3.8 },
+    ],
   },
   {
     id: 19,
@@ -240,12 +399,23 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://www.mk1642.com/getmetafile/3e8e210f-3da1-4a4f-a983-b9d7a1b23d77/%E0%B8%8A%E0%B8%B8%E0%B8%94%E0%B9%81%E0%B8%AE%E0%B8%9B%E0%B8%9B%E0%B8%B5%E0%B9%89%E0%B8%9A%E0%B9%87%E0%B8%AD%E0%B8%81%E0%B8%8B%E0%B9%8C-%E0%B8%82%E0%B9%89%E0%B8%B2%E0%B8%A7%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%94.aspx",
+    imageUrl:
+      "https://www.mk1642.com/getmetafile/3e8e210f-3da1-4a4f-a983-b9d7a1b23d77/%E0%B8%8A%E0%B8%B8%E0%B8%94%E0%B9%81%E0%B8%AE%E0%B8%9B%E0%B8%9B%E0%B8%B5%E0%B9%89%E0%B8%9A%E0%B9%87%E0%B8%AD%E0%B8%81%E0%B8%8B%E0%B9%8C-%E0%B8%82%E0%B9%89%E0%B8%B2%E0%B8%A7%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%94.aspx",
     detail: "เป็ดหนังกรอบ เนื้อนุ่ม ราดน้ำซอสหวานเค็ม",
     restaurants: [
       { name: "เป็ดย่างรสเด็ด", star: 4, distance: 1.4 },
-      { name: "เป็ดย่างโฟร์ซีซั่น", star: 4.5, distance: 6.0 }
-    ]
+      { name: "เป็ดย่างโฟร์ซีซั่น", star: 4.5, distance: 6.0 },
+      { name: "Duck Master", star: 4.6, distance: 3.2 },
+      { name: "ครัวเป็ดทอง", star: 4.2, distance: 2.1 },
+      { name: "Roasted Duck Town", star: 4.4, distance: 4.5 },
+      { name: "เป็ดย่างเตาถ่าน", star: 4.1, distance: 2.8 },
+      { name: "ฮ่องกงเป็ดย่าง", star: 4.7, distance: 5.1 },
+      { name: "Duck Bowl Kitchen", star: 4.3, distance: 3.0 },
+      { name: "ครัวจีนรสดี", star: 4.0, distance: 1.9 },
+      { name: "เป็ดย่างเจ้าดัง", star: 4.5, distance: 4.2 },
+      { name: "Golden Duck Rice", star: 4.6, distance: 5.4 },
+      { name: "บ้านเป็ดย่าง", star: 4.2, distance: 2.6 },
+    ],
   },
   {
     id: 20,
@@ -253,12 +423,23 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://s359.kapook.com/pagebuilder/f103aacb-cbd7-4e82-9e73-c134b2551aef.jpg",
+    imageUrl:
+      "https://s359.kapook.com/pagebuilder/f103aacb-cbd7-4e82-9e73-c134b2551aef.jpg",
     detail: "กะทิหอมมัน ตัดเปรี้ยวด้วยมะนาวสด",
     restaurants: [
       { name: "ครัวริมน้ำ", star: 4, distance: 2.2 },
-      { name: "เรือนไทยอาหารป่า", star: 4, distance: 3.1 }
-    ]
+      { name: "เรือนไทยอาหารป่า", star: 4, distance: 3.1 },
+      { name: "บ้านต้มข่า", star: 4.5, distance: 1.7 },
+      { name: "Thai Coconut Soup", star: 4.3, distance: 2.9 },
+      { name: "ครัวสมุนไพร", star: 4.4, distance: 1.4 },
+      { name: "Tom Kha Delight", star: 4.6, distance: 4.0 },
+      { name: "ครัวมะพร้าวหอม", star: 4.1, distance: 2.5 },
+      { name: "Soup Thai House", star: 4.2, distance: 3.3 },
+      { name: "ต้มข่าโบราณ", star: 4.7, distance: 4.8 },
+      { name: "อิ่มอุ่นครัวไทย", star: 4.3, distance: 2.0 },
+      { name: "Thai Spice Kitchen", star: 4.5, distance: 3.6 },
+      { name: "ครัวกะทิสด", star: 4.4, distance: 1.8 },
+    ],
   },
 
   // --- หมวดสุขภาพ & วีแกน/เจ (21-40) ---
@@ -268,12 +449,21 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://www.unileverfoodsolutions.co.th/dam/global-ufs/mcos/SEA/calcmenu/recipes/TH-recipes/pasta-dishes/%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B9%84%E0%B8%97%E0%B8%A2%E0%B9%80%E0%B8%88/%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B9%84%E0%B8%97%E0%B8%A2%E0%B9%80%E0%B8%88_header.jpg",
+    imageUrl:
+      "https://www.unileverfoodsolutions.co.th/dam/global-ufs/mcos/SEA/calcmenu/recipes/TH-recipes/pasta-dishes/%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B9%84%E0%B8%97%E0%B8%A2%E0%B9%80%E0%B8%88/%E0%B8%9C%E0%B8%B1%E0%B8%94%E0%B9%84%E0%B8%97%E0%B8%A2%E0%B9%80%E0%B8%88_header.jpg",
     detail: "เส้นเหนียวนุ่ม ครบเครื่องเรื่องเจ อร่อยลงตัว",
     restaurants: [
       { name: "ร้านเจ", star: 4, distance: 1.0 },
-      { name: "อาหารเจช้างเผือก", star: 4.5, distance: 2.2 }
-    ]
+      { name: "อาหารเจช้างเผือก", star: 4.5, distance: 2.2 },
+      { name: "Vegan Bowl", star: 4.7, distance: 2.0 },
+      { name: "Green Vegan House", star: 4.4, distance: 3.5 },
+      { name: "Healthy Kitchen", star: 4.6, distance: 2.8 },
+      { name: "Plant Cafe", star: 4.3, distance: 5.0 },
+      { name: "Fresh Veggie", star: 4.5, distance: 3.0 },
+      { name: "Organic Story", star: 4.8, distance: 6.1 },
+      { name: "Nature Food Hub", star: 4.2, distance: 2.7 },
+      { name: "Clean Food Corner", star: 4.9, distance: 4.8 },
+    ],
   },
   {
     id: 22,
@@ -281,12 +471,21 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://www.foodequipment.co.th/wp-content/uploads/2024/08/4-4.jpg",
+    imageUrl:
+      "https://www.foodequipment.co.th/wp-content/uploads/2024/08/4-4.jpg",
     detail: "ผักออร์แกนิกกรอบๆ พร้อมน้ำสลัดสูตรพิเศษ",
     restaurants: [
       { name: "Healthy Bowl", star: 4, distance: 0.7 },
-      { name: "Salad Factory", star: 4.5, distance: 3.0 }
-    ]
+      { name: "Salad Factory", star: 4.5, distance: 3.0 },
+      { name: "Fresh Garden", star: 4.3, distance: 1.5 },
+      { name: "Fit Food", star: 4.8, distance: 2.2 },
+      { name: "Organic Farm", star: 4.6, distance: 4.1 },
+      { name: "Green Space", star: 4.4, distance: 2.7 },
+      { name: "Healthy Hub", star: 4.2, distance: 3.8 },
+      { name: "Nature Bowl", star: 4.7, distance: 5.0 },
+      { name: "Veggie Story", star: 4.5, distance: 1.9 },
+      { name: "Clean Eat Cafe", star: 4.9, distance: 6.0 },
+    ],
   },
   {
     id: 23,
@@ -294,12 +493,21 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://www.pim.in.th/images/all-side-dish-fish/fish-tofu-in-sweet-and-sour-sauce/01.jpg",
+    imageUrl:
+      "https://www.pim.in.th/images/all-side-dish-fish/fish-tofu-in-sweet-and-sour-sauce/01.jpg",
     detail: "เต้าหู้ทอดกรอบ คลุกเคล้าซอสเปรี้ยวหวาน",
     restaurants: [
       { name: "ร้านเจ", star: 3, distance: 1.0 },
-      { name: "โรงอาหารมังสวิรัติ", star: 4, distance: 1.8 }
-    ]
+      { name: "โรงอาหารมังสวิรัติ", star: 4, distance: 1.8 },
+      { name: "Tofu Kitchen", star: 4.4, distance: 2.5 },
+      { name: "Vegan Heaven", star: 4.6, distance: 3.2 },
+      { name: "Plant Story", star: 4.1, distance: 4.0 },
+      { name: "Healthy Tofu", star: 4.7, distance: 2.7 },
+      { name: "Nature Vegan", star: 4.3, distance: 5.4 },
+      { name: "Green Bowl", star: 4.5, distance: 3.1 },
+      { name: "Organic Taste", star: 4.8, distance: 6.2 },
+      { name: "Veggie Corner", star: 4.0, distance: 1.9 },
+    ],
   },
   {
     id: 24,
@@ -307,12 +515,21 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://img.kapook.com/u/pirawan/Cooking1/thai%20spicy%20mushrooms%20salad.jpg",
+    imageUrl:
+      "https://img.kapook.com/u/pirawan/Cooking1/thai%20spicy%20mushrooms%20salad.jpg",
     detail: "เห็ด 3 อย่างยำรสแซ่บ แคลอรี่ต่ำ",
     restaurants: [
       { name: "Healthy Bowl", star: 4, distance: 0.7 },
-      { name: "Vegan Heaven", star: 4.5, distance: 2.4 }
-    ]
+      { name: "Vegan Heaven", star: 4.5, distance: 2.4 },
+      { name: "Mushroom House", star: 4.7, distance: 3.0 },
+      { name: "Green Veggie", star: 4.4, distance: 2.8 },
+      { name: "Plantiful", star: 4.6, distance: 4.3 },
+      { name: "Organic Cafe", star: 4.2, distance: 1.7 },
+      { name: "Nature Bowl", star: 4.5, distance: 3.9 },
+      { name: "Healthy Story", star: 4.8, distance: 5.2 },
+      { name: "Veggie Land", star: 4.3, distance: 2.1 },
+      { name: "Fresh Vegan", star: 4.9, distance: 6.1 },
+    ],
   },
   {
     id: 25,
@@ -320,12 +537,21 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://www.maggi.co.th/sites/default/files/srh_recipes/b7027d0d0002e421bbaca8aac7e34051.jpeg",
+    imageUrl:
+      "https://www.maggi.co.th/sites/default/files/srh_recipes/b7027d0d0002e421bbaca8aac7e34051.jpeg",
     detail: "โปรตีนเกษตรเนื้อหนึบ ผัดกะเพราหอมๆ",
     restaurants: [
       { name: "ร้านเจ", star: 4, distance: 1.0 },
-      { name: "เจริญกรุงอาหารเจ", star: 4, distance: 3.1 }
-    ]
+      { name: "เจริญกรุงอาหารเจ", star: 4, distance: 3.1 },
+      { name: "Plant Protein Hub", star: 4.5, distance: 2.5 },
+      { name: "Healthy Bowl", star: 4.7, distance: 1.9 },
+      { name: "Green Kitchen", star: 4.4, distance: 3.7 },
+      { name: "Organic Vegan", star: 4.8, distance: 5.1 },
+      { name: "Fit Food", star: 4.3, distance: 2.4 },
+      { name: "Nature Vegan", star: 4.5, distance: 4.2 },
+      { name: "Plantiful", star: 4.6, distance: 3.0 },
+      { name: "Veggie Corner", star: 4.9, distance: 6.3 },
+    ],
   },
   {
     id: 26,
@@ -333,12 +559,21 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://img.wongnai.com/p/1920x0/2020/05/16/45c0aca66c684e53b2214edf1b8d8381.jpg",
+    imageUrl:
+      "https://img.wongnai.com/p/1920x0/2020/05/16/45c0aca66c684e53b2214edf1b8d8381.jpg",
     detail: "ซูเปอร์ฟู้ดเต็มคำ ท็อปปิ้งผลไม้สดแน่นๆ",
     restaurants: [
       { name: "Fresh Juice Bar", star: 5, distance: 1.2 },
-      { name: "Acai Story", star: 4.5, distance: 2.5 }
-    ]
+      { name: "Acai Story", star: 4.5, distance: 2.5 },
+      { name: "Healthy Bowl", star: 4.7, distance: 1.8 },
+      { name: "Fruit Paradise", star: 4.4, distance: 3.0 },
+      { name: "Smoothie Planet", star: 4.6, distance: 2.2 },
+      { name: "Nature Juice", star: 4.3, distance: 4.1 },
+      { name: "Berry Bliss", star: 4.8, distance: 5.0 },
+      { name: "Clean Drink Cafe", star: 4.5, distance: 2.9 },
+      { name: "Organic Smoothie", star: 4.9, distance: 6.3 },
+      { name: "Fresh Bowl Hub", star: 4.2, distance: 3.4 },
+    ],
   },
   {
     id: 27,
@@ -350,8 +585,16 @@ const foods = [
     detail: "ผักตุ๋นจนเปื่อย รสชาติกลมกล่อมทานง่าย",
     restaurants: [
       { name: "ร้านเจ", star: 3, distance: 1.0 },
-      { name: "ข้าวแกงเจเจ๊หมวย", star: 4, distance: 1.5 }
-    ]
+      { name: "ข้าวแกงเจเจ๊หมวย", star: 4, distance: 1.5 },
+      { name: "Healthy Vegan", star: 4.5, distance: 2.0 },
+      { name: "Plant Kitchen", star: 4.3, distance: 2.8 },
+      { name: "Green Bowl", star: 4.6, distance: 3.7 },
+      { name: "Organic Story", star: 4.4, distance: 4.2 },
+      { name: "Veggie House", star: 4.7, distance: 5.0 },
+      { name: "Nature Vegan", star: 4.5, distance: 3.1 },
+      { name: "Fresh Herb Cafe", star: 4.8, distance: 6.1 },
+      { name: "Clean Food Hub", star: 4.2, distance: 2.4 },
+    ],
   },
   {
     id: 28,
@@ -359,12 +602,22 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://www.pholfoodmafia.com/wp-content/uploads/2021/10/6Vegan-Spring-Roll.jpg",
+    imageUrl:
+      "https://www.pholfoodmafia.com/wp-content/uploads/2021/10/6Vegan-Spring-Roll.jpg",
     detail: "ไส้วุ้นเส้นและผัก แป้งกรอบฟูจิ้มน้ำจิ้มบ๊วย",
     restaurants: [
       { name: "เจริญกรุงติ่มซำ", star: 4, distance: 2.8 },
-      { name: "ติ่มซำวังหลัง", star: 4.5, distance: 4.0 }
-    ]
+      { name: "ติ่มซำวังหลัง", star: 4.5, distance: 4.0 },
+      { name: "Vegan Snack Bar", star: 4.6, distance: 2.1 },
+      { name: "ครัวสุขภาพ", star: 4.5, distance: 2.0 },
+      { name: "บ้านผักออร์แกนิก", star: 4.3, distance: 2.8 },
+      { name: "อิ่มบุญอาหารเจ", star: 4.6, distance: 3.7 },
+      { name: "สวนผักสุขใจ", star: 4.4, distance: 4.2 },
+      { name: "กินดีคลีนฟู้ด", star: 4.7, distance: 5.0 },
+      { name: "ครัวมังสวิรัติ", star: 4.5, distance: 3.1 },
+      { name: "เจ๊น้อยอาหารคลีน", star: 4.8, distance: 6.1 },
+      { name: "อร่อยเพื่อสุขภาพ", star: 4.2, distance: 2.4 },
+    ],
   },
   {
     id: 29,
@@ -372,12 +625,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://www.unileverfoodsolutions.co.th/dam/global-ufs/mcos/SEA/calcmenu/recipes/TH-recipes/makro-event/%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%8A%E0%B8%AD%E0%B9%82%E0%B8%A1%E0%B8%A5%E0%B8%B2%E0%B8%AA%E0%B8%A5%E0%B8%B1%E0%B8%94%E0%B8%84%E0%B8%A7%E0%B8%B4%E0%B8%99%E0%B8%B1%E0%B8%A7_header.jpg",
+    imageUrl:
+      "https://www.unileverfoodsolutions.co.th/dam/global-ufs/mcos/SEA/calcmenu/recipes/TH-recipes/makro-event/%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%8A%E0%B8%AD%E0%B9%82%E0%B8%A1%E0%B8%A5%E0%B8%B2%E0%B8%AA%E0%B8%A5%E0%B8%B1%E0%B8%94%E0%B8%84%E0%B8%A7%E0%B8%B4%E0%B8%99%E0%B8%B1%E0%B8%A7_header.jpg",
     detail: "คาร์บดี โปรตีนสูง เหมาะกับคนคุมน้ำหนัก",
     restaurants: [
       { name: "Healthy Bowl", star: 5, distance: 0.7 },
-      { name: "Fit Food", star: 4.5, distance: 1.8 }
-    ]
+      { name: "Fit Food", star: 4.5, distance: 1.8 },
+      { name: "กินดีคลีนฟู้ด", star: 4.7, distance: 2.1 },
+      { name: "ครัวสุขภาพ", star: 4.4, distance: 2.9 },
+      { name: "สลัดเฮลท์ตี้", star: 4.6, distance: 3.4 },
+      { name: "Lean & Clean", star: 4.3, distance: 4.0 },
+      { name: "Organic Bowl", star: 4.8, distance: 5.2 },
+      { name: "บ้านอาหารคลีน", star: 4.5, distance: 3.0 },
+      { name: "Green Fit Cafe", star: 4.9, distance: 6.1 },
+      { name: "โปรตีนคิทเช่น", star: 4.2, distance: 2.5 },
+    ],
   },
   {
     id: 30,
@@ -389,8 +651,16 @@ const foods = [
     detail: "เต้าหู้ออร์แกนิกคลุกเครื่องลาบอีสาน",
     restaurants: [
       { name: "แซ่บอีหลี", star: 4, distance: 0.9 },
-      { name: "ครัวสุขภาพ", star: 4, distance: 2.2 }
-    ]
+      { name: "ครัวสุขภาพ", star: 4, distance: 2.2 },
+      { name: "ร้านเจ", star: 4.5, distance: 1.5 },
+      { name: "อิ่มบุญอาหารเจ", star: 4.3, distance: 2.8 },
+      { name: "ลาบอีสานคลีน", star: 4.6, distance: 3.1 },
+      { name: "บ้านมังสวิรัติ", star: 4.4, distance: 4.3 },
+      { name: "Veggie Zaap", star: 4.7, distance: 2.0 },
+      { name: "ครัวเจริญสุข", star: 4.5, distance: 5.0 },
+      { name: "Green Vegan House", star: 4.8, distance: 6.2 },
+      { name: "สุขใจอาหารคลีน", star: 4.2, distance: 3.4 },
+    ],
   },
   {
     id: 31,
@@ -402,8 +672,16 @@ const foods = [
     detail: "น้ำซุปใส หอมกลิ่นสาหร่ายทะเล",
     restaurants: [
       { name: "ร้านเจ", star: 3, distance: 1.0 },
-      { name: "เจ๊น้อยอาหารเจ", star: 4, distance: 1.4 }
-    ]
+      { name: "เจ๊น้อยอาหารเจ", star: 4, distance: 1.4 },
+      { name: "Tofu Forest", star: 4.1, distance: 3.1 },
+      { name: "กินดีอยู่ดี", star: 4.4, distance: 1.8 },
+      { name: "Vegtopia", star: 4.7, distance: 4.2 },
+      { name: "บ้านผักริมทาง", star: 4.0, distance: 0.8 },
+      { name: "สดชื่นคาเฟ่", star: 4.6, distance: 2.9 },
+      { name: "Leaf & Bowl", star: 4.2, distance: 3.5 },
+      { name: "ครัวธรรมชาติ", star: 4.5, distance: 1.3 },
+      { name: "บาลานซ์ฟู้ด", star: 4.4, distance: 2.7 },
+    ],
   },
   {
     id: 32,
@@ -411,12 +689,23 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://img.wongnai.com/p/1920x0/2017/08/04/93ffdaf4431445488f335e57db218a08.jpg",
+    imageUrl:
+      "https://img.wongnai.com/p/1920x0/2017/08/04/93ffdaf4431445488f335e57db218a08.jpg",
     detail: "อุดมไปด้วยกากใยอาหารจากธัญพืช 5 ชนิด",
     restaurants: [
       { name: "Healthy Bowl", star: 4, distance: 0.7 },
-      { name: "Organic Farm", star: 4.5, distance: 3.5 }
-    ]
+      { name: "Organic Farm", star: 4.5, distance: 3.5 },
+      { name: "ครัวธัญพืช", star: 4.3, distance: 1.2 },
+      { name: "Rice & Grain", star: 4.6, distance: 2.4 },
+      { name: "บ้านอาหารคลีนใจ", star: 4.1, distance: 1.9 },
+      { name: "Green Harvest", star: 4.7, distance: 4.1 },
+      { name: "สมดุลสุขภาพ", star: 4.2, distance: 2.8 },
+      { name: "Nature Dish", star: 4.5, distance: 3.0 },
+      { name: "ครัวไรซ์เบอร์รี่", star: 4.4, distance: 1.5 },
+      { name: "Wellness Kitchen", star: 4.6, distance: 2.2 },
+      { name: "ฟาร์มสุขโภชนา", star: 4.0, distance: 3.7 },
+      { name: "Vita Bowl", star: 4.8, distance: 4.5 },
+    ],
   },
   {
     id: 33,
@@ -424,12 +713,23 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://www.brandbuffet.in.th/wp-content/uploads/2019/10/nestle-burger.jpg",
+    imageUrl:
+      "https://www.brandbuffet.in.th/wp-content/uploads/2019/10/nestle-burger.jpg",
     detail: "เนื้อเบอร์เกอร์จากพืช อร่อยเหมือนเนื้อจริง",
     restaurants: [
       { name: "Vegan Burger Co.", star: 5, distance: 2.0 },
-      { name: "Plantiful", star: 4.5, distance: 3.2 }
-    ]
+      { name: "Plantiful", star: 4.5, distance: 3.2 },
+      { name: "Green Patty House", star: 4.4, distance: 1.8 },
+      { name: "เบอร์เกอร์สายเขียว", star: 4.2, distance: 2.6 },
+      { name: "Plant Power Grill", star: 4.7, distance: 3.9 },
+      { name: "Leafy Bite", star: 4.1, distance: 1.4 },
+      { name: "Veggie Smash", star: 4.6, distance: 4.3 },
+      { name: "ครัวโปรตีนพืช", star: 4.3, distance: 2.1 },
+      { name: "Nature Burger Lab", star: 4.8, distance: 5.0 },
+      { name: "Bun & Roots", star: 4.5, distance: 3.5 },
+      { name: "Plant Fusion Cafe", star: 4.4, distance: 2.7 },
+      { name: "สายคลีนเบอร์เกอร์", star: 4.0, distance: 1.2 },
+    ],
   },
   {
     id: 34,
@@ -437,12 +737,23 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://www.umamiinfo.com/recipes2/.assets/thumbnail/123145920_383905139320052_7269629544079873997_n-i.jpeg",
+    imageUrl:
+      "https://www.umamiinfo.com/recipes2/.assets/thumbnail/123145920_383905139320052_7269629544079873997_n-i.jpeg",
     detail: "ซุปครีมฟักทองเนื้อเนียน หอมมัน",
     restaurants: [
       { name: "Western Grill", star: 4, distance: 3.5 },
-      { name: "Soup & Bread", star: 4, distance: 1.5 }
-    ]
+      { name: "Soup & Bread", star: 4, distance: 1.5 },
+      { name: "Pumpkin Pot", star: 4.5, distance: 2.1 },
+      { name: "ครัวฟักทอง", star: 4.2, distance: 1.7 },
+      { name: "Velvet Soup Cafe", star: 4.6, distance: 3.2 },
+      { name: "ซุปบ้านสวน", star: 4.1, distance: 2.5 },
+      { name: "Golden Pumpkin", star: 4.7, distance: 4.0 },
+      { name: "Warm Bowl Kitchen", star: 4.3, distance: 2.9 },
+      { name: "ฟักทองละมุน", star: 4.4, distance: 1.3 },
+      { name: "Creamy Corner", star: 4.5, distance: 3.6 },
+      { name: "Nature Soup Hub", star: 4.0, distance: 2.0 },
+      { name: "บ้านซุปสุขใจ", star: 4.6, distance: 4.4 },
+    ],
   },
   {
     id: 35,
@@ -450,12 +761,23 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://i.ytimg.com/vi/urpqVqy4KlA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCAdpb-n-GnSZzOfjAW_xyopEeLVQ",
+    imageUrl:
+      "https://i.ytimg.com/vi/urpqVqy4KlA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCAdpb-n-GnSZzOfjAW_xyopEeLVQ",
     detail: "แป้งบางใส ผักแน่น จิ้มน้ำจิ้มซีฟู้ดเจ",
     restaurants: [
       { name: "Healthy Bowl", star: 4, distance: 0.7 },
-      { name: "ลุยสวนคุณยาย", star: 4.5, distance: 1.1 }
-    ]
+      { name: "ลุยสวนคุณยาย", star: 4.5, distance: 1.1 },
+      { name: "Roll & Fresh", star: 4.4, distance: 2.2 },
+      { name: "สวนผักโรล", star: 4.1, distance: 1.6 },
+      { name: "Veggie Wrap Cafe", star: 4.7, distance: 3.8 },
+      { name: "ครัวโรลสุขภาพ", star: 4.3, distance: 2.5 },
+      { name: "Fresh Leaf Kitchen", star: 4.5, distance: 4.1 },
+      { name: "บ้านลุยสวน", star: 4.0, distance: 1.9 },
+      { name: "Green Roll House", star: 4.6, distance: 3.0 },
+      { name: "ผักแน่นเต็มคำ", star: 4.2, distance: 2.7 },
+      { name: "Roll Paradise", star: 4.8, distance: 4.5 },
+      { name: "สุขใจสลัดโรล", star: 4.4, distance: 1.4 },
+    ],
   },
   {
     id: 36,
@@ -463,12 +785,23 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://static.cdntap.com/tap-assets-prod/wp-content/uploads/sites/25/2021/11/pumpkin6.jpg",
+    imageUrl:
+      "https://static.cdntap.com/tap-assets-prod/wp-content/uploads/sites/25/2021/11/pumpkin6.jpg",
     detail: "ฟักทองหวานมัน ผัดไข่หอมๆ",
     restaurants: [
       { name: "ข้าวแกงแม่สม", star: 4, distance: 0.5 },
-      { name: "ครัวคุณต๋อย", star: 4, distance: 1.9 }
-    ]
+      { name: "ครัวคุณต๋อย", star: 4, distance: 1.9 },
+      { name: "บ้านฟักทอง", star: 4.3, distance: 1.2 },
+      { name: "Pumpkin Wok", star: 4.5, distance: 2.7 },
+      { name: "ครัวบ้านทุ่ง", star: 4.1, distance: 1.6 },
+      { name: "ฟักทองทองคำ", star: 4.6, distance: 3.1 },
+      { name: "Thai Veggie Cook", star: 4.2, distance: 2.0 },
+      { name: "อิ่มอร่อยโฮมเมด", star: 4.4, distance: 1.4 },
+      { name: "สุขใจอาหารคลีน", star: 4.5, distance: 3.5 },
+      { name: "ครัวผัดหอม", star: 4.0, distance: 2.3 },
+      { name: "Golden Pumpkin Pan", star: 4.7, distance: 4.0 },
+      { name: "มุมข้าวบ้าน", star: 4.3, distance: 1.8 },
+    ],
   },
   {
     id: 37,
@@ -480,8 +813,18 @@ const foods = [
     detail: "ผักกระเฉดยอดอ่อน ผัดไฟแรงหอมๆ",
     restaurants: [
       { name: "ร้านเจ", star: 4, distance: 1.0 },
-      { name: "เจ๊หน่อยตามสั่ง", star: 4, distance: 2.1 }
-    ]
+      { name: "เจ๊หน่อยตามสั่ง", star: 4, distance: 2.1 },
+      { name: "ครัวกระเฉด", star: 4.5, distance: 2.8 },
+      { name: "Veggie Noodle House", star: 4.2, distance: 1.7 },
+      { name: "เส้นหมี่สุขใจ", star: 4.4, distance: 3.0 },
+      { name: "บ้านอาหารเจริมคลอง", star: 4.1, distance: 2.2 },
+      { name: "Wok & Green", star: 4.6, distance: 3.8 },
+      { name: "กระเฉดไฟแรง", star: 4.3, distance: 1.5 },
+      { name: "ครัวมังสวิรัติบ้านสวน", star: 4.5, distance: 2.9 },
+      { name: "Leafy Bowl", star: 4.0, distance: 4.1 },
+      { name: "ผัดเส้นออร์แกนิก", star: 4.7, distance: 3.4 },
+      { name: "เส้นหมี่บ้านนา", star: 4.2, distance: 1.9 },
+    ],
   },
   {
     id: 38,
@@ -489,12 +832,21 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://sharp-weeclub.com/wp-content/uploads/2021/05/%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%95%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%B9%E0%B9%893-990x510-1.jpg",
+    imageUrl:
+      "https://sharp-weeclub.com/wp-content/uploads/2021/05/%E0%B8%99%E0%B9%89%E0%B8%B3%E0%B9%80%E0%B8%95%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%B9%E0%B9%893-990x510-1.jpg",
     detail: "น้ำเต้าหู้คั้นสด เครื่องแน่นเต็มถ้วย",
     restaurants: [
       { name: "เต้าหู้ตี๋น้อย", star: 4, distance: 1.3 },
-      { name: "น้ำเต้าหู้เยาวราช", star: 4.5, distance: 4.5 }
-    ]
+      { name: "น้ำเต้าหู้เยาวราช", star: 4.5, distance: 4.5 },
+      { name: "เต้าฮวยมงคล", star: 4.7, distance: 1.7 },
+      { name: "Morning Soy", star: 4.5, distance: 2.8 },
+      { name: "Healthy Soy Cafe", star: 4.8, distance: 3.6 },
+      { name: "ถั่วเหลืองบ้านเรา", star: 4.3, distance: 2.2 },
+      { name: "Soy & Smile", star: 4.6, distance: 4.1 },
+      { name: "Sweet Tofu", star: 4.4, distance: 1.9 },
+      { name: "บ้านน้ำเต้าหู้", star: 4.7, distance: 2.5 },
+      { name: "เต้าหู้โฮมเมด", star: 4.5, distance: 3.3 },
+    ],
   },
   {
     id: 39,
@@ -502,12 +854,21 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://png.pngtree.com/background/20250602/original/pngtree-healthy-avocado-and-egg-salad-with-cherry-tomatoes-picture-image_16607275.jpg",
+    imageUrl:
+      "https://png.pngtree.com/background/20250602/original/pngtree-healthy-avocado-and-egg-salad-with-cherry-tomatoes-picture-image_16607275.jpg",
     detail: "ไขมันดีจากอะโวคาโด ทานคู่ไข่ต้มยางมะตูม",
     restaurants: [
       { name: "Healthy Bowl", star: 5, distance: 0.7 },
-      { name: "Green Space", star: 4.5, distance: 2.6 }
-    ]
+      { name: "Green Space", star: 4.5, distance: 2.6 },
+      { name: "Salad Hub", star: 4.7, distance: 2.2 },
+      { name: "Organic House", star: 4.9, distance: 3.1 },
+      { name: "Veggie Corner", star: 4.4, distance: 2.8 },
+      { name: "Nature Bowl", star: 4.5, distance: 1.5 },
+      { name: "Lean & Green", star: 4.7, distance: 3.6 },
+      { name: "Fit Food Cafe", star: 4.8, distance: 4.0 },
+      { name: "Healthy Living", star: 4.3, distance: 2.4 },
+      { name: "Green Delight", star: 4.6, distance: 1.8 },
+    ],
   },
   {
     id: 40,
@@ -515,12 +876,13 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://www.pim.in.th/images/all-one-dish-shrimp-crab/spicy-and-sour-soup-with-shrimp-and-vegetable-omelette/spicy-and-sour-soup-vegetable-omelette14.JPG",
+    imageUrl:
+      "https://www.pim.in.th/images/all-one-dish-shrimp-crab/spicy-and-sour-soup-with-shrimp-and-vegetable-omelette/spicy-and-sour-soup-vegetable-omelette14.JPG",
     detail: "น้ำแกงส้มรสเด็ด ใช้ไข่เจียวเจจากเต้าหู้",
     restaurants: [
       { name: "ร้านเจ", star: 4, distance: 1.0 },
-      { name: "มังสวิรัติร่มไม้", star: 4, distance: 3.3 }
-    ]
+      { name: "มังสวิรัติร่มไม้", star: 4, distance: 3.3 },
+    ],
   },
 
   // --- หมวดอาหารญี่ปุ่น & เกาหลี (41-60) ---
@@ -530,12 +892,21 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://www.ryoiireview.com/upload/article/202407/1719822174_a7588c28e803e63a640f38d74b198962.jpg",
+    imageUrl:
+      "https://www.ryoiireview.com/upload/article/202407/1719822174_a7588c28e803e63a640f38d74b198962.jpg",
     detail: "วัตถุดิบพรีเมียม สดใหม่ส่งตรงจากทะเลญี่ปุ่น",
     restaurants: [
       { name: "Sushi Station", star: 5, distance: 2.5 },
-      { name: "Sushiro", star: 4.5, distance: 5.2 }
-    ]
+      { name: "Sushiro", star: 4.5, distance: 5.2 },
+      { name: "Premium Sushi House", star: 4.7, distance: 2.0 },
+      { name: "Tokyo Fish Market", star: 4.4, distance: 3.6 },
+      { name: "Fresh Sushi Cafe", star: 4.6, distance: 2.9 },
+      { name: "Zen Sushi", star: 4.3, distance: 5.0 },
+      { name: "Omakase Story", star: 4.5, distance: 3.1 },
+      { name: "Ocean Sushi Hub", star: 4.8, distance: 6.0 },
+      { name: "Sakura Sushi", star: 4.2, distance: 4.1 },
+      { name: "Golden Sushi", star: 4.9, distance: 5.5 },
+    ],
   },
   {
     id: 42,
@@ -543,12 +914,21 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://res.cloudinary.com/jnto/image/upload/w_750,h_450,c_fill,f_auto,fl_lossy,q_60/v1/media/filer_public/e0/3c/e03c7f75-06a7-45ed-920b-dc5d7ad6eb60/mar22_ramen_12_e4tdxz",
+    imageUrl:
+      "https://res.cloudinary.com/jnto/image/upload/w_750,h_450,c_fill,f_auto,fl_lossy,q_60/v1/media/filer_public/e0/3c/e03c7f75-06a7-45ed-920b-dc5d7ad6eb60/mar22_ramen_12_e4tdxz",
     detail: "น้ำซุปกระดูกหมูเคี่ยวนาน 12 ชม. เข้มข้นสุดๆ",
     restaurants: [
       { name: "Tokyo Ramen", star: 5, distance: 1.8 },
-      { name: "Ippudo", star: 4.5, distance: 4.1 }
-    ]
+      { name: "Ippudo", star: 4.5, distance: 4.1 },
+      { name: "Ramen House", star: 4.7, distance: 2.3 },
+      { name: "Tonkotsu Kitchen", star: 4.4, distance: 3.7 },
+      { name: "Noodle Story", star: 4.6, distance: 2.8 },
+      { name: "Japanese Soup Cafe", star: 4.3, distance: 5.2 },
+      { name: "Pork Broth Hub", star: 4.5, distance: 3.0 },
+      { name: "Hot Bowl Japan", star: 4.8, distance: 6.1 },
+      { name: "Zen Ramen", star: 4.2, distance: 4.0 },
+      { name: "Golden Broth", star: 4.9, distance: 5.4 },
+    ],
   },
   {
     id: 43,
@@ -556,12 +936,21 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://chillchilljapan.com/wp-content/uploads/2020/10/pixta_37613851_M.jpg",
+    imageUrl:
+      "https://chillchilljapan.com/wp-content/uploads/2020/10/pixta_37613851_M.jpg",
     detail: "ปลาไหลย่างซีอิ๊วหอมๆ บนข้าวญี่ปุ่นร้อนๆ",
     restaurants: [
       { name: "Sushi Station", star: 4, distance: 2.5 },
-      { name: "Unagi Express", star: 4.5, distance: 3.4 }
-    ]
+      { name: "Unagi Express", star: 4.5, distance: 3.4 },
+      { name: "Unagi House", star: 4.7, distance: 2.2 },
+      { name: "Japanese Grill Bowl", star: 4.4, distance: 3.9 },
+      { name: "Tokyo Eel Cafe", star: 4.6, distance: 2.7 },
+      { name: "Rice Bowl Japan", star: 4.3, distance: 5.1 },
+      { name: "Eel Story", star: 4.5, distance: 3.0 },
+      { name: "Golden Unagi", star: 4.8, distance: 6.2 },
+      { name: "Fresh Eel Kitchen", star: 4.2, distance: 4.1 },
+      { name: "Sakura Bowl", star: 4.9, distance: 5.6 },
+    ],
   },
   {
     id: 44,
@@ -569,12 +958,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://image.makewebeasy.net/makeweb/m_1920x0/drSrTAwzc/DefaultData/%E0%B8%9B%E0%B8%A5%E0%B8%B2%E0%B9%81%E0%B8%8B%E0%B8%A5%E0%B8%A1%E0%B8%AD%E0%B8%993.jpg?v=202405291424",
+    imageUrl:
+      "https://image.makewebeasy.net/makeweb/m_1920x0/drSrTAwzc/DefaultData/%E0%B8%9B%E0%B8%A5%E0%B8%B2%E0%B9%81%E0%B8%8B%E0%B8%A5%E0%B8%A1%E0%B8%AD%E0%B8%993.jpg?v=202405291424",
     detail: "แซลมอนนอร์เวย์เกรดพรีเมียม ลายไขมันสวย",
     restaurants: [
       { name: "Sushi Station", star: 5, distance: 2.5 },
-      { name: "Maguro", star: 4.5, distance: 6.0 }
-    ]
+      { name: "Maguro", star: 4.5, distance: 6.0 },
+      { name: "Salmon House", star: 4.7, distance: 2.1 },
+      { name: "Fresh Fish Cafe", star: 4.4, distance: 3.8 },
+      { name: "Ocean Sashimi", star: 4.6, distance: 2.9 },
+      { name: "Norway Fish Hub", star: 4.3, distance: 5.2 },
+      { name: "Sakura Salmon", star: 4.5, distance: 3.0 },
+      { name: "Premium Sashimi", star: 4.8, distance: 6.1 },
+      { name: "Japanese Fish Story", star: 4.2, distance: 4.0 },
+      { name: "Golden Salmon", star: 4.9, distance: 5.7 },
+    ],
   },
   {
     id: 45,
@@ -586,8 +984,16 @@ const foods = [
     detail: "หมึกยักษ์ชิ้นโต แป้งกรอบนอกนุ่มใน",
     restaurants: [
       { name: "Osaka Street", star: 4, distance: 1.1 },
-      { name: "Gindaco", star: 4.5, distance: 3.5 }
-    ]
+      { name: "Gindaco", star: 4.5, distance: 3.5 },
+      { name: "Takoyaki House", star: 4.7, distance: 2.0 },
+      { name: "Japanese Snack Cafe", star: 4.4, distance: 3.6 },
+      { name: "Octopus Ball Kitchen", star: 4.6, distance: 2.8 },
+      { name: "Street Food Japan", star: 4.3, distance: 5.0 },
+      { name: "Takoyaki Story", star: 4.5, distance: 3.1 },
+      { name: "Hot Plate Snack", star: 4.8, distance: 6.2 },
+      { name: "Crunchy Ball Hub", star: 4.2, distance: 2.7 },
+      { name: "Golden Tako", star: 4.9, distance: 4.9 },
+    ],
   },
   {
     id: 46,
@@ -595,12 +1001,21 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://f.btwcdn.com/store-45841/blog_image/15891/8ede5d99-5917-7f0f-7f58-66163bc08b5f.jpg",
+    imageUrl:
+      "https://f.btwcdn.com/store-45841/blog_image/15891/8ede5d99-5917-7f0f-7f58-66163bc08b5f.jpg",
     detail: "หมูทอดทงคัตสึชิ้นหนา แกงกะหรี่เข้มข้น",
     restaurants: [
       { name: "Katsu Curry Co.", star: 4, distance: 2.0 },
-      { name: "CoCo Ichibanya", star: 4.5, distance: 4.2 }
-    ]
+      { name: "CoCo Ichibanya", star: 4.5, distance: 4.2 },
+      { name: "Japanese Curry House", star: 4.7, distance: 2.3 },
+      { name: "Katsu Kitchen", star: 4.4, distance: 3.7 },
+      { name: "Curry Bowl Cafe", star: 4.6, distance: 2.9 },
+      { name: "Tokyo Curry", star: 4.3, distance: 5.0 },
+      { name: "Golden Katsu", star: 4.5, distance: 3.2 },
+      { name: "Rice Curry Story", star: 4.8, distance: 6.1 },
+      { name: "Japanese Pork Hub", star: 4.2, distance: 4.0 },
+      { name: "Hot Curry Corner", star: 4.9, distance: 5.5 },
+    ],
   },
   {
     id: 47,
@@ -608,12 +1023,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://image.makewebeasy.net/makeweb/0/Ommd4Syoj/DefaultData/shutterstock_1423201865_1.jpg?v=202305101549",
+    imageUrl:
+      "https://image.makewebeasy.net/makeweb/0/Ommd4Syoj/DefaultData/shutterstock_1423201865_1.jpg?v=202305101549",
     detail: "ไก่ทอดกรอบเคลือบซอสโคชูจัง เผ็ดหวานลงตัว",
     restaurants: [
       { name: "Seoul Chicken", star: 5, distance: 1.5 },
-      { name: "Bonchon", star: 4.5, distance: 3.8 }
-    ]
+      { name: "Bonchon", star: 4.5, distance: 3.8 },
+      { name: "Korean Fried Chicken", star: 4.7, distance: 2.1 },
+      { name: "Spicy Chicken House", star: 4.4, distance: 3.5 },
+      { name: "K-Chicken Hub", star: 4.6, distance: 2.8 },
+      { name: "Crunchy Seoul", star: 4.3, distance: 5.1 },
+      { name: "Hot Sauce Kitchen", star: 4.5, distance: 3.0 },
+      { name: "Korean Snack Cafe", star: 4.8, distance: 6.0 },
+      { name: "Chicken Story", star: 4.2, distance: 4.2 },
+      { name: "Golden Chicken", star: 4.9, distance: 5.6 },
+    ],
   },
   {
     id: 48,
@@ -621,12 +1045,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://api2.krua.co/wp-content/uploads/2021/03/RI1635_Gallery_-01-scaled.jpg",
+    imageUrl:
+      "https://api2.krua.co/wp-content/uploads/2021/03/RI1635_Gallery_-01-scaled.jpg",
     detail: "แป้งต๊อกเหนียวนุ่ม ชีสยืดๆ ฟินสุดๆ",
     restaurants: [
       { name: "Seoul Chicken", star: 4, distance: 1.5 },
-      { name: "K-Street Food", star: 4, distance: 2.2 }
-    ]
+      { name: "K-Street Food", star: 4, distance: 2.2 },
+      { name: "Tteokbokki House", star: 4.7, distance: 2.0 },
+      { name: "Cheese Seoul Cafe", star: 4.4, distance: 3.6 },
+      { name: "Spicy Rice Cake", star: 4.6, distance: 2.7 },
+      { name: "Korean Snack Hub", star: 4.3, distance: 5.0 },
+      { name: "Hot Cheese Kitchen", star: 4.5, distance: 3.1 },
+      { name: "Seoul Street Bowl", star: 4.8, distance: 6.1 },
+      { name: "Rice Cake Story", star: 4.2, distance: 2.8 },
+      { name: "Golden Tteok", star: 4.9, distance: 4.7 },
+    ],
   },
   {
     id: 49,
@@ -634,12 +1067,21 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://jangjihoo.com/wp-content/uploads/2023/07/1646297561944_0-1.jpg",
+    imageUrl:
+      "https://jangjihoo.com/wp-content/uploads/2023/07/1646297561944_0-1.jpg",
     detail: "หมูสามชั้นย่างเกรียมๆ ทานคู่กับผักและน้ำจิ้ม",
     restaurants: [
       { name: "K-BBQ", star: 5, distance: 2.8 },
-      { name: "Saemaeul", star: 4.5, distance: 5.5 }
-    ]
+      { name: "Saemaeul", star: 4.5, distance: 5.5 },
+      { name: "Korean Grill House", star: 4.7, distance: 2.3 },
+      { name: "Samgyeopsal Hub", star: 4.4, distance: 3.9 },
+      { name: "Seoul BBQ Kitchen", star: 4.6, distance: 2.9 },
+      { name: "Pork Grill Story", star: 4.3, distance: 5.2 },
+      { name: "Hot Meat Cafe", star: 4.5, distance: 3.1 },
+      { name: "Korean Fire Grill", star: 4.8, distance: 6.0 },
+      { name: "BBQ Corner", star: 4.2, distance: 4.1 },
+      { name: "Golden Pork BBQ", star: 4.9, distance: 5.7 },
+    ],
   },
   {
     id: 50,
@@ -651,8 +1093,16 @@ const foods = [
     detail: "ข้าวยำเครื่องแน่น เสิร์ฟในชามหินร้อน",
     restaurants: [
       { name: "Seoul Chicken", star: 4, distance: 1.5 },
-      { name: "Bibim House", star: 4, distance: 2.7 }
-    ]
+      { name: "Bibim House", star: 4, distance: 2.7 },
+      { name: "Korean Bowl", star: 4.7, distance: 2.2 },
+      { name: "Hot Stone Cafe", star: 4.4, distance: 3.8 },
+      { name: "Seoul Kitchen", star: 4.6, distance: 2.9 },
+      { name: "Bibimbap Story", star: 4.3, distance: 4.5 },
+      { name: "K-Food Corner", star: 4.5, distance: 3.1 },
+      { name: "Rice Bowl House", star: 4.8, distance: 5.7 },
+      { name: "Spicy Seoul", star: 4.2, distance: 2.6 },
+      { name: "Korean Taste Hub", star: 4.9, distance: 6.0 },
+    ],
   },
   {
     id: 51,
@@ -660,12 +1110,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://resources.matcha-jp.com/resize/480x2000/2022/03/16-124165.webp",
+    imageUrl:
+      "https://resources.matcha-jp.com/resize/480x2000/2022/03/16-124165.webp",
     detail: "เส้นอุด้งเหนียวนุ่ม กุ้งเทมปุระกรอบๆ",
     restaurants: [
       { name: "Tokyo Ramen", star: 4, distance: 1.8 },
-      { name: "Marugame Seimen", star: 4.5, distance: 4.0 }
-    ]
+      { name: "Marugame Seimen", star: 4.5, distance: 4.0 },
+      { name: "Udon House", star: 4.7, distance: 2.0 },
+      { name: "Tempura Kitchen", star: 4.4, distance: 3.5 },
+      { name: "Japanese Bowl", star: 4.6, distance: 2.9 },
+      { name: "Noodle Station", star: 4.3, distance: 5.1 },
+      { name: "Zen Udon", star: 4.5, distance: 3.2 },
+      { name: "Tokyo Tempura", star: 4.8, distance: 6.0 },
+      { name: "Fresh Noodle Cafe", star: 4.2, distance: 2.8 },
+      { name: "Golden Tempura", star: 4.9, distance: 4.7 },
+    ],
   },
   {
     id: 52,
@@ -673,12 +1132,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/8/89/Chawan-mushi.JPG",
+    imageUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/8/89/Chawan-mushi.JPG",
     detail: "ไข่ตุ๋นเนื้อเนียนนุ่ม เครื่องทะเลแน่น",
     restaurants: [
       { name: "Sushi Station", star: 3, distance: 2.5 },
-      { name: "Zen Japanese", star: 4, distance: 3.2 }
-    ]
+      { name: "Zen Japanese", star: 4, distance: 3.2 },
+      { name: "Chawan House", star: 4.7, distance: 2.1 },
+      { name: "Egg Bowl Cafe", star: 4.4, distance: 3.6 },
+      { name: "Japanese Steam Kitchen", star: 4.6, distance: 2.8 },
+      { name: "Tokyo Spoon", star: 4.3, distance: 5.0 },
+      { name: "Soft Egg Story", star: 4.5, distance: 3.0 },
+      { name: "Seafood Egg House", star: 4.8, distance: 6.1 },
+      { name: "Zen Bowl", star: 4.2, distance: 2.7 },
+      { name: "Warm Japanese Cafe", star: 4.9, distance: 4.9 },
+    ],
   },
   {
     id: 53,
@@ -686,12 +1154,21 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://image.makewebeasy.net/makeweb/m_1200x600/Ommd4Syoj/Contacts/60dac1d1N76726bb3_jpg_q70.jpg",
+    imageUrl:
+      "https://image.makewebeasy.net/makeweb/m_1200x600/Ommd4Syoj/Contacts/60dac1d1N76726bb3_jpg_q70.jpg",
     detail: "เนื้อสไลด์บางแกว่งในน้ำซุปร้อนๆ",
     restaurants: [
       { name: "Shabu King", star: 5, distance: 3.1 },
-      { name: "Momo Paradise", star: 5, distance: 6.5 }
-    ]
+      { name: "Momo Paradise", star: 5, distance: 6.5 },
+      { name: "Hot Pot House", star: 4.7, distance: 2.4 },
+      { name: "Beef Shabu Cafe", star: 4.4, distance: 4.2 },
+      { name: "Japanese Hotpot", star: 4.6, distance: 3.5 },
+      { name: "Shabu Story", star: 4.3, distance: 5.1 },
+      { name: "Premium Beef Pot", star: 4.5, distance: 2.9 },
+      { name: "Soup & Meat", star: 4.8, distance: 6.0 },
+      { name: "Wagyu Hub", star: 4.2, distance: 3.7 },
+      { name: "Hot Soup Corner", star: 4.9, distance: 5.4 },
+    ],
   },
   {
     id: 54,
@@ -703,8 +1180,16 @@ const foods = [
     detail: "ทอดกระทะด้านล่างกรอบ ด้านบนนุ่ม",
     restaurants: [
       { name: "Tokyo Ramen", star: 4, distance: 1.8 },
-      { name: "Kinza Gyoza", star: 4.5, distance: 2.9 }
-    ]
+      { name: "Kinza Gyoza", star: 4.5, distance: 2.9 },
+      { name: "Gyoza House", star: 4.7, distance: 2.0 },
+      { name: "Pan Fry Kitchen", star: 4.4, distance: 3.6 },
+      { name: "Japanese Dumpling Cafe", star: 4.6, distance: 2.7 },
+      { name: "Tokyo Bite", star: 4.3, distance: 5.2 },
+      { name: "Golden Gyoza", star: 4.5, distance: 3.1 },
+      { name: "Dumpling Story", star: 4.8, distance: 6.1 },
+      { name: "Crispy Pan House", star: 4.2, distance: 2.8 },
+      { name: "Zen Dumpling", star: 4.9, distance: 4.6 },
+    ],
   },
   {
     id: 55,
@@ -712,12 +1197,21 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://chillchilljapan.com/wp-content/uploads/2020/09/shutterstock_1262590948.jpg",
+    imageUrl:
+      "https://chillchilljapan.com/wp-content/uploads/2020/09/shutterstock_1262590948.jpg",
     detail: "เครื่องแน่น ซอสฉ่ำ โรยปลาแห้งหอมๆ",
     restaurants: [
       { name: "Osaka Street", star: 4, distance: 1.1 },
-      { name: "Teppan Boy", star: 4, distance: 3.4 }
-    ]
+      { name: "Teppan Boy", star: 4, distance: 3.4 },
+      { name: "Okonomiyaki House", star: 4.7, distance: 2.2 },
+      { name: "Japanese Grill Cafe", star: 4.4, distance: 3.8 },
+      { name: "Osaka Kitchen", star: 4.6, distance: 2.9 },
+      { name: "Teppan Story", star: 4.3, distance: 5.0 },
+      { name: "Sauce & Grill", star: 4.5, distance: 3.0 },
+      { name: "Hot Plate Japan", star: 4.8, distance: 6.2 },
+      { name: "Japanese Pizza Hub", star: 4.2, distance: 2.7 },
+      { name: "Golden Teppan", star: 4.9, distance: 4.8 },
+    ],
   },
   {
     id: 56,
@@ -725,12 +1219,21 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://www.sgethai.com/wp-content/uploads/2023/08/1_result-1.webp",
+    imageUrl:
+      "https://www.sgethai.com/wp-content/uploads/2023/08/1_result-1.webp",
     detail: "บะหมี่ซอสดำเกาหลี รสชาติเข้มข้น",
     restaurants: [
       { name: "Seoul Chicken", star: 4, distance: 1.5 },
-      { name: "Banjoo BBQ", star: 4.5, distance: 4.0 }
-    ]
+      { name: "Banjoo BBQ", star: 4.5, distance: 4.0 },
+      { name: "Jajang House", star: 4.7, distance: 2.3 },
+      { name: "Black Noodle Cafe", star: 4.4, distance: 3.9 },
+      { name: "Korean Noodle Hub", star: 4.6, distance: 2.8 },
+      { name: "Seoul Bowl", star: 4.3, distance: 5.0 },
+      { name: "Black Bean Kitchen", star: 4.5, distance: 3.1 },
+      { name: "K-Noodle Story", star: 4.8, distance: 6.1 },
+      { name: "Spicy Seoul Cafe", star: 4.2, distance: 2.9 },
+      { name: "Golden Jajang", star: 4.9, distance: 4.7 },
+    ],
   },
   {
     id: 57,
@@ -738,12 +1241,21 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://img.wongnai.com/p/1920x0/2020/04/02/f8f00b00930f43a289910c69352fe955.jpg",
+    imageUrl:
+      "https://img.wongnai.com/p/1920x0/2020/04/02/f8f00b00930f43a289910c69352fe955.jpg",
     detail: "ซุปเผ็ดร้อน เต้าหู้นุ่มละมุน",
     restaurants: [
       { name: "Seoul Chicken", star: 4, distance: 1.5 },
-      { name: "Tofu House", star: 4.5, distance: 2.8 }
-    ]
+      { name: "Tofu House", star: 4.5, distance: 2.8 },
+      { name: "Kimchi Story", star: 4.7, distance: 2.1 },
+      { name: "Korean Soup Cafe", star: 4.4, distance: 3.7 },
+      { name: "Seoul Bowl", star: 4.6, distance: 2.9 },
+      { name: "Spicy Tofu Kitchen", star: 4.3, distance: 4.5 },
+      { name: "Kimchi House", star: 4.5, distance: 3.0 },
+      { name: "K-Food Corner", star: 4.8, distance: 5.6 },
+      { name: "Hot Soup Hub", star: 4.2, distance: 2.4 },
+      { name: "Soft Tofu Town", star: 4.9, distance: 6.1 },
+    ],
   },
   {
     id: 58,
@@ -755,8 +1267,16 @@ const foods = [
     detail: "ข้าวห่อสาหร่ายสไตล์เกาหลี ไส้แน่นทานง่าย",
     restaurants: [
       { name: "Seoul Chicken", star: 3, distance: 1.5 },
-      { name: "K-Roll", star: 4, distance: 2.1 }
-    ]
+      { name: "K-Roll", star: 4, distance: 2.1 },
+      { name: "Kimbab House", star: 4.7, distance: 2.0 },
+      { name: "Seaweed Roll Cafe", star: 4.4, distance: 3.5 },
+      { name: "Korean Bite", star: 4.6, distance: 2.7 },
+      { name: "Rice Roll Hub", star: 4.3, distance: 4.2 },
+      { name: "Seoul Snack", star: 4.5, distance: 3.1 },
+      { name: "K-Food Station", star: 4.8, distance: 5.4 },
+      { name: "Roll Story", star: 4.2, distance: 2.9 },
+      { name: "Fresh Kimbab", star: 4.9, distance: 6.0 },
+    ],
   },
   {
     id: 59,
@@ -768,8 +1288,16 @@ const foods = [
     detail: "แซลมอนชิ้นโตดองซีอิ๊วหอมๆ ทานกับข้าวสาหร่าย",
     restaurants: [
       { name: "K-BBQ", star: 5, distance: 2.8 },
-      { name: "โคตรยำ", star: 4.5, distance: 3.5 }
-    ]
+      { name: "โคตรยำ", star: 4.5, distance: 3.5 },
+      { name: "Salmon Soy House", star: 4.7, distance: 2.3 },
+      { name: "Seoul Seafood", star: 4.4, distance: 4.0 },
+      { name: "Fresh Salmon Cafe", star: 4.6, distance: 3.1 },
+      { name: "Korean Fish Hub", star: 4.3, distance: 5.0 },
+      { name: "Ocean Seoul", star: 4.5, distance: 2.9 },
+      { name: "Soy Sauce Kitchen", star: 4.8, distance: 6.2 },
+      { name: "Salmon Story", star: 4.2, distance: 3.6 },
+      { name: "K-Seafood Corner", star: 4.9, distance: 4.8 },
+    ],
   },
   {
     id: 60,
@@ -777,12 +1305,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlnHz5u-3D348c3jJWE1KNls7pZOzR1XFpwQ&s",
+    imageUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlnHz5u-3D348c3jJWE1KNls7pZOzR1XFpwQ&s",
     detail: "เส้นโซบะทำมือ เสิร์ฟเย็นชื่นใจ",
     restaurants: [
       { name: "Tokyo Ramen", star: 3, distance: 1.8 },
-      { name: "Soba Factory", star: 4.5, distance: 4.4 }
-    ]
+      { name: "Soba Factory", star: 4.5, distance: 4.4 },
+      { name: "ฮอกไกโดโซบะ", star: 4, distance: 2.1 },
+      { name: "ครัวญี่ปุ่นฟูจิ", star: 4.5, distance: 3.7 },
+      { name: "ซากุระคิทเช่น", star: 4, distance: 2.9 },
+      { name: "โอซาก้าดีไลท์", star: 5, distance: 5.0 },
+      { name: "อูมามิราเมง", star: 4, distance: 1.6 },
+      { name: "นิฮอนโชคุโด", star: 4.5, distance: 3.2 },
+      { name: "โซบะเฮ้าส์", star: 4, distance: 2.4 },
+      { name: "คันไซฟู้ด", star: 4.5, distance: 4.8 },
+    ],
   },
 
   // --- หมวดอาหารตะวันตก (61-80) ---
@@ -792,12 +1329,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnE5zIyFxNLCMyTkZjX536poImZGknVGoQuQ&s",
+    imageUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnE5zIyFxNLCMyTkZjX536poImZGknVGoQuQ&s",
     detail: "เนื้อออสเตรเลียย่างความสุก Medium Rare",
     restaurants: [
       { name: "Western Grill", star: 5, distance: 3.5 },
-      { name: "Arno's Butcher", star: 4.5, distance: 5.8 }
-    ]
+      { name: "Arno's Butcher", star: 4.5, distance: 5.8 },
+      { name: "Ribeye House", star: 4.7, distance: 2.4 },
+      { name: "Prime Steak Cafe", star: 4.4, distance: 4.0 },
+      { name: "Beef Master", star: 4.6, distance: 3.1 },
+      { name: "Smoke Grill", star: 4.3, distance: 5.2 },
+      { name: "Steak Story", star: 4.5, distance: 2.9 },
+      { name: "Fire Beef Kitchen", star: 4.8, distance: 6.1 },
+      { name: "The Meat Room", star: 4.2, distance: 3.8 },
+      { name: "Premium Grill", star: 4.9, distance: 4.7 },
+    ],
   },
   {
     id: 62,
@@ -805,12 +1351,21 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://s359.kapook.com/pagebuilder/827b5b4c-e396-49bc-a9ba-282ba7e20f83.jpg",
+    imageUrl:
+      "https://s359.kapook.com/pagebuilder/827b5b4c-e396-49bc-a9ba-282ba7e20f83.jpg",
     detail: "ครีมซอสเข้มข้น เบคอนกรอบๆ และพาเมซานชีส",
     restaurants: [
       { name: "Italiano", star: 4, distance: 2.4 },
-      { name: "Pasta Ama", star: 4.5, distance: 3.7 }
-    ]
+      { name: "Pasta Ama", star: 4.5, distance: 3.7 },
+      { name: "Carbonara House", star: 4.7, distance: 2.2 },
+      { name: "Creamy Pasta Cafe", star: 4.4, distance: 4.1 },
+      { name: "Bacon Bowl", star: 4.6, distance: 3.0 },
+      { name: "The Pasta Room", star: 4.3, distance: 5.3 },
+      { name: "Italian Cream Kitchen", star: 4.5, distance: 2.8 },
+      { name: "Cheese & Pasta", star: 4.8, distance: 6.0 },
+      { name: "Pasta Story", star: 4.2, distance: 3.5 },
+      { name: "Golden Carbonara", star: 4.9, distance: 4.7 },
+    ],
   },
   {
     id: 63,
@@ -818,12 +1373,21 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://oskar-bistro.myshopify.com/cdn/shop/products/MARGHERITA-pizza_580x.jpg?v=1597296501",
+    imageUrl:
+      "https://oskar-bistro.myshopify.com/cdn/shop/products/MARGHERITA-pizza_580x.jpg?v=1597296501",
     detail: "แป้งบางกรอบ มอสซาเรลล่าชีสและโหระพาอิตาลี",
     restaurants: [
       { name: "Italiano", star: 4, distance: 2.4 },
-      { name: "Peppina", star: 5, distance: 4.5 }
-    ]
+      { name: "Peppina", star: 5, distance: 4.5 },
+      { name: "Pizza Garden", star: 4.7, distance: 2.1 },
+      { name: "Cheese Oven", star: 4.4, distance: 3.8 },
+      { name: "Basil Pizza House", star: 4.6, distance: 2.9 },
+      { name: "Italian Slice", star: 4.3, distance: 5.0 },
+      { name: "Fire Oven Pizza", star: 4.8, distance: 3.4 },
+      { name: "The Pizza Room", star: 4.5, distance: 6.2 },
+      { name: "Mozza Cafe", star: 4.2, distance: 4.0 },
+      { name: "Classic Pizza Hub", star: 4.9, distance: 5.5 },
+    ],
   },
   {
     id: 64,
@@ -831,12 +1395,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://img.wongnai.com/p/1920x0/2017/10/22/b2eb8aad285342da94ce93815c9ccfef.jpg",
+    imageUrl:
+      "https://img.wongnai.com/p/1920x0/2017/10/22/b2eb8aad285342da94ce93815c9ccfef.jpg",
     detail: "เนื้อบดฉ่ำๆ ชีสเยิ้มๆ ขนมปังโฮมเมด",
     restaurants: [
       { name: "Burger Bros", star: 5, distance: 1.6 },
-      { name: "Shake Shack", star: 4.5, distance: 5.0 }
-    ]
+      { name: "Shake Shack", star: 4.5, distance: 5.0 },
+      { name: "Beef Burger House", star: 4.7, distance: 2.0 },
+      { name: "Cheese Burger Hub", star: 4.4, distance: 3.5 },
+      { name: "Big Bite Burger", star: 4.6, distance: 2.8 },
+      { name: "Grill Bun Cafe", star: 4.3, distance: 4.6 },
+      { name: "Burger Town", star: 4.5, distance: 3.2 },
+      { name: "Smash Burger", star: 4.8, distance: 5.9 },
+      { name: "Juicy Grill", star: 4.2, distance: 4.1 },
+      { name: "Burger Story", star: 4.9, distance: 6.3 },
+    ],
   },
   {
     id: 65,
@@ -844,12 +1417,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://www.cookwithnabeela.com/wp-content/uploads/2024/02/FishandChips.webp",
+    imageUrl:
+      "https://www.cookwithnabeela.com/wp-content/uploads/2024/02/FishandChips.webp",
     detail: "ปลาชุบแป้งเบียร์ทอดกรอบ เสิร์ฟพร้อมมันฝรั่งทอด",
     restaurants: [
       { name: "Western Grill", star: 4, distance: 3.5 },
-      { name: "Fish & Chips BKK", star: 4.5, distance: 4.2 }
-    ]
+      { name: "Fish & Chips BKK", star: 4.5, distance: 4.2 },
+      { name: "Ocean Fry", star: 4.7, distance: 2.6 },
+      { name: "Golden Fish House", star: 4.4, distance: 3.1 },
+      { name: "Crispy Catch", star: 4.6, distance: 5.0 },
+      { name: "Seafood Fry Cafe", star: 4.3, distance: 2.9 },
+      { name: "British Bite", star: 4.5, distance: 6.2 },
+      { name: "Fish Story", star: 4.2, distance: 3.8 },
+      { name: "ทอดกรอบซีฟู้ด", star: 4.8, distance: 4.4 },
+      { name: "Fresh Ocean Grill", star: 4.9, distance: 5.6 },
+    ],
   },
   {
     id: 66,
@@ -857,12 +1439,21 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://img.wongnai.com/p/1920x0/2020/10/28/969f449598b14922b7bfc06053f67743.jpg",
+    imageUrl:
+      "https://img.wongnai.com/p/1920x0/2020/10/28/969f449598b14922b7bfc06053f67743.jpg",
     detail: "สเต็กหมูชิ้นหนานุ่ม ราดซอสพริกไทยดำ",
     restaurants: [
       { name: "Western Grill", star: 4, distance: 3.5 },
-      { name: "Santa Fe", star: 4, distance: 2.0 }
-    ]
+      { name: "Santa Fe", star: 4, distance: 2.0 },
+      { name: "Pork Steak House", star: 4.7, distance: 2.8 },
+      { name: "Black Pepper Grill", star: 4.4, distance: 4.2 },
+      { name: "Steak Story", star: 4.5, distance: 3.1 },
+      { name: "Meat Corner", star: 4.3, distance: 5.0 },
+      { name: "Hot Plate Cafe", star: 4.6, distance: 2.5 },
+      { name: "Grill Town", star: 4.2, distance: 6.1 },
+      { name: "Pork Lover", star: 4.8, distance: 3.8 },
+      { name: "Smoke Grill", star: 4.9, distance: 4.6 },
+    ],
   },
   {
     id: 67,
@@ -870,12 +1461,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://www.foodequipment.co.th/wp-content/uploads/2025/01/6-11.jpg",
+    imageUrl:
+      "https://www.foodequipment.co.th/wp-content/uploads/2025/01/6-11.jpg",
     detail: "ชีสเยิ้มๆ ซอสเนื้อเข้มข้น อบมาร้อนๆ",
     restaurants: [
       { name: "Italiano", star: 4, distance: 2.4 },
-      { name: "Mama Mia", star: 4.5, distance: 3.1 }
-    ]
+      { name: "Mama Mia", star: 4.5, distance: 3.1 },
+      { name: "Lasagna House", star: 4.7, distance: 2.2 },
+      { name: "Cheese Oven", star: 4.4, distance: 4.0 },
+      { name: "Pasta Corner", star: 4.6, distance: 3.3 },
+      { name: "Italian Kitchen", star: 4.5, distance: 5.1 },
+      { name: "Bake & Cheese", star: 4.3, distance: 2.9 },
+      { name: "The Pasta Room", star: 4.8, distance: 6.0 },
+      { name: "Lasagna Story", star: 4.2, distance: 3.6 },
+      { name: "Golden Cheese Cafe", star: 4.9, distance: 4.8 },
+    ],
   },
   {
     id: 68,
@@ -883,12 +1483,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://media.istockphoto.com/id/1281404116/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B8%AA%E0%B9%80%E0%B8%95%E0%B9%87%E0%B8%81%E0%B8%9B%E0%B8%A5%E0%B8%B2%E0%B9%81%E0%B8%8B%E0%B8%A5%E0%B8%A1%E0%B8%AD%E0%B8%99%E0%B8%97%E0%B8%AD%E0%B8%94%E0%B8%A1%E0%B8%B1%E0%B8%99%E0%B8%9D%E0%B8%A3%E0%B8%B1%E0%B9%88%E0%B8%87%E0%B8%97%E0%B8%AD%E0%B8%94%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%9C%E0%B8%B1%E0%B8%81%E0%B8%AA%E0%B8%94%E0%B8%9A%E0%B8%99%E0%B9%82%E0%B8%95%E0%B9%8A%E0%B8%B0%E0%B9%84%E0%B8%A1%E0%B9%89.jpg?s=612x612&w=0&k=20&c=GjRAiH-w56CFiHCr3En1Yb3cI9hnwnuIkayhWBFDHiU=",
+    imageUrl:
+      "https://media.istockphoto.com/id/1281404116/th/%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%96%E0%B9%88%E0%B8%B2%E0%B8%A2/%E0%B8%AA%E0%B9%80%E0%B8%95%E0%B9%87%E0%B8%81%E0%B8%9B%E0%B8%A5%E0%B8%B2%E0%B9%81%E0%B8%8B%E0%B8%A5%E0%B8%A1%E0%B8%AD%E0%B8%99%E0%B8%97%E0%B8%AD%E0%B8%94%E0%B8%A1%E0%B8%B1%E0%B8%99%E0%B8%9D%E0%B8%A3%E0%B8%B1%E0%B9%88%E0%B8%87%E0%B8%97%E0%B8%AD%E0%B8%94%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%9C%E0%B8%B1%E0%B8%81%E0%B8%AA%E0%B8%94%E0%B8%9A%E0%B8%99%E0%B9%82%E0%B8%95%E0%B9%8A%E0%B8%B0%E0%B9%84%E0%B8%A1%E0%B9%89.jpg?s=612x612&w=0&k=20&c=GjRAiH-w56CFiHCr3En1Yb3cI9hnwnuIkayhWBFDHiU=",
     detail: "แซลมอนย่างเกลือ หนังกรอบ เนื้อฉ่ำ",
     restaurants: [
       { name: "Western Grill", star: 5, distance: 3.5 },
-      { name: "Sizzler", star: 4, distance: 2.8 }
-    ]
+      { name: "Sizzler", star: 4, distance: 2.8 },
+      { name: "Salmon House", star: 4.7, distance: 2.1 },
+      { name: "Ocean Grill", star: 4.5, distance: 4.4 },
+      { name: "Seafood Corner", star: 4.6, distance: 3.0 },
+      { name: "Fish Story", star: 4.3, distance: 5.2 },
+      { name: "Golden Salmon", star: 4.8, distance: 2.9 },
+      { name: "Healthy Fish Cafe", star: 4.2, distance: 6.0 },
+      { name: "Grilled Ocean", star: 4.4, distance: 3.7 },
+      { name: "Fresh Catch", star: 4.9, distance: 4.5 },
+    ],
   },
   {
     id: 69,
@@ -896,12 +1505,21 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://newyorkpizza.online/live/wp-content/uploads/2020/06/Bacon-Salad.jpg",
+    imageUrl:
+      "https://newyorkpizza.online/live/wp-content/uploads/2020/06/Bacon-Salad.jpg",
     detail: "ผักคอสกรอบ คลุกเคล้าน้ำสลัดซีซาร์",
     restaurants: [
       { name: "Italiano", star: 4, distance: 2.4 },
-      { name: "The Salad Bar", star: 4, distance: 1.5 }
-    ]
+      { name: "The Salad Bar", star: 4, distance: 1.5 },
+      { name: "Green Bowl", star: 4.5, distance: 2.1 },
+      { name: "Fresh Salad Cafe", star: 4.2, distance: 3.0 },
+      { name: "Healthy Dish", star: 4.4, distance: 2.7 },
+      { name: "Bacon & Greens", star: 4.6, distance: 4.1 },
+      { name: "Veggie Corner", star: 4.1, distance: 1.9 },
+      { name: "Caesar House", star: 4.7, distance: 5.0 },
+      { name: "Fresh Bite", star: 4.3, distance: 2.8 },
+      { name: "Salad Station", star: 4.8, distance: 3.5 },
+    ],
   },
   {
     id: 70,
@@ -909,12 +1527,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://img.wongnai.com/p/1920x0/2018/08/04/af5f930f8a0a4c798d903e22bc25d2f8.jpg",
+    imageUrl:
+      "https://img.wongnai.com/p/1920x0/2018/08/04/af5f930f8a0a4c798d903e22bc25d2f8.jpg",
     detail: "ฟิวชั่นอิตาเลียน-ไทย รสชาติจัดจ้านถึงใจ",
     restaurants: [
       { name: "Italiano", star: 5, distance: 2.4 },
-      { name: "บ้านพาสต้า", star: 4.5, distance: 3.0 }
-    ]
+      { name: "บ้านพาสต้า", star: 4.5, distance: 3.0 },
+      { name: "Sea Pasta House", star: 4.7, distance: 2.2 },
+      { name: "Spicy Pasta Hub", star: 4.4, distance: 4.0 },
+      { name: "Ocean Dish", star: 4.6, distance: 3.1 },
+      { name: "Fusion Kitchen", star: 4.3, distance: 5.2 },
+      { name: "Thai Italian Cafe", star: 4.5, distance: 2.9 },
+      { name: "ทะเลเดือด", star: 4.8, distance: 6.0 },
+      { name: "Garlic Seafood Pasta", star: 4.2, distance: 3.4 },
+      { name: "Pasta Story", star: 4.9, distance: 4.6 },
+    ],
   },
   {
     id: 71,
@@ -922,12 +1549,21 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://www.greengenelife.com/wp-content/uploads/2024/09/Truffle-mushroom-soup-1.jpg",
+    imageUrl:
+      "https://www.greengenelife.com/wp-content/uploads/2024/09/Truffle-mushroom-soup-1.jpg",
     detail: "หอมกลิ่นทรัฟเฟิล เสิร์ฟพร้อมขนมปังกระเทียม",
     restaurants: [
       { name: "Western Grill", star: 5, distance: 3.5 },
-      { name: "Truffle Bar", star: 4.5, distance: 4.8 }
-    ]
+      { name: "Truffle Bar", star: 4.5, distance: 4.8 },
+      { name: "Mushroom House", star: 4.7, distance: 2.4 },
+      { name: "Soup & Bread", star: 4.3, distance: 3.2 },
+      { name: "Creamy Bowl", star: 4.6, distance: 2.8 },
+      { name: "Truffle Kitchen", star: 4.8, distance: 5.5 },
+      { name: "Healthy Spoon", star: 4.2, distance: 1.9 },
+      { name: "The Soup Room", star: 4.4, distance: 4.1 },
+      { name: "Forest Flavor", star: 4.5, distance: 3.6 },
+      { name: "Golden Truffle", star: 4.9, distance: 6.3 },
+    ],
   },
   {
     id: 72,
@@ -935,12 +1571,21 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://www.pholfoodmafia.com/wp-content/uploads/2019/11/5Salted-Yolk-Flavored-Mac-and-Cheese6.jpg",
+    imageUrl:
+      "https://www.pholfoodmafia.com/wp-content/uploads/2019/11/5Salted-Yolk-Flavored-Mac-and-Cheese6.jpg",
     detail: "มักกะโรนีอบชีส 3 ชนิด หอมมันยืดดด",
     restaurants: [
       { name: "Burger Bros", star: 4, distance: 1.6 },
-      { name: "Cheese Factory", star: 4.5, distance: 3.3 }
-    ]
+      { name: "Cheese Factory", star: 4.5, distance: 3.3 },
+      { name: "Mac House", star: 4.7, distance: 2.0 },
+      { name: "Cheesy Bowl", star: 4.3, distance: 4.1 },
+      { name: "Pasta Cheese Hub", star: 4.6, distance: 3.5 },
+      { name: "Creamy Kitchen", star: 4.2, distance: 2.8 },
+      { name: "Golden Cheese", star: 4.8, distance: 5.0 },
+      { name: "The Cheese Room", star: 4.4, distance: 6.2 },
+      { name: "Macaroni Story", star: 4.5, distance: 3.1 },
+      { name: "Cheddar Corner", star: 4.9, distance: 4.6 },
+    ],
   },
   {
     id: 73,
@@ -948,12 +1593,21 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBpWHVHD9nYwGQpr348L8sL0kLbbnlFcehkQ&s",
+    imageUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBpWHVHD9nYwGQpr348L8sL0kLbbnlFcehkQ&s",
     detail: "หน้าเปปเปอโรนีแบบจัดเต็ม แป้งหนานุ่ม",
     restaurants: [
       { name: "Italiano", star: 4, distance: 2.4 },
-      { name: "Domino's Pizza", star: 4, distance: 1.2 }
-    ]
+      { name: "Domino's Pizza", star: 4, distance: 1.2 },
+      { name: "Pizza Planet", star: 4.7, distance: 2.3 },
+      { name: "Pepperoni House", star: 4.5, distance: 3.8 },
+      { name: "Cheese Crust", star: 4.3, distance: 2.7 },
+      { name: "Pizza Town", star: 4.6, distance: 4.5 },
+      { name: "Italian Slice", star: 4.4, distance: 5.1 },
+      { name: "The Pizza Hub", star: 4.8, distance: 3.0 },
+      { name: "Big Bite Pizza", star: 4.2, distance: 6.0 },
+      { name: "Fire Oven Pizza", star: 4.9, distance: 4.2 },
+    ],
   },
   {
     id: 74,
@@ -961,12 +1615,21 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://www.recipeworkbook.com/wp-content/uploads/2021/09/onion-rings3-480x270.jpg",
+    imageUrl:
+      "https://www.recipeworkbook.com/wp-content/uploads/2021/09/onion-rings3-480x270.jpg",
     detail: "หอมทอดกรอบๆ ทานเล่นเพลินๆ",
     restaurants: [
       { name: "Burger Bros", star: 3, distance: 1.6 },
-      { name: "Texas Chicken", star: 4, distance: 2.1 }
-    ]
+      { name: "Texas Chicken", star: 4, distance: 2.1 },
+      { name: "Crispy Snack", star: 4.5, distance: 2.8 },
+      { name: "Golden Rings", star: 4.2, distance: 3.4 },
+      { name: "ทอดมันส์", star: 4.1, distance: 1.9 },
+      { name: "Crunchy Bite", star: 4.6, distance: 4.0 },
+      { name: "Snack Corner", star: 4.3, distance: 2.5 },
+      { name: "Fried House", star: 4.4, distance: 5.2 },
+      { name: "Onion Hub", star: 4.7, distance: 3.1 },
+      { name: "Ring Ring Cafe", star: 4.8, distance: 4.7 },
+    ],
   },
   {
     id: 75,
@@ -974,12 +1637,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://img.wongnai.com/p/1920x0/2023/04/30/94a757df2f3a43ab9f2e451e52fcf78d.jpg",
+    imageUrl:
+      "https://img.wongnai.com/p/1920x0/2023/04/30/94a757df2f3a43ab9f2e451e52fcf78d.jpg",
     detail: "เนื้อไก่ส่วนสะโพก หมักเครื่องเทศรสจัด",
     restaurants: [
       { name: "Western Grill", star: 4, distance: 3.5 },
-      { name: "Eat Am Are", star: 4.5, distance: 2.5 }
-    ]
+      { name: "Eat Am Are", star: 4.5, distance: 2.5 },
+      { name: "Spicy Chicken House", star: 4.7, distance: 2.0 },
+      { name: "Grill Master", star: 4.3, distance: 4.1 },
+      { name: "Chicken Town", star: 4.6, distance: 3.3 },
+      { name: "Fire Grill", star: 4.8, distance: 5.0 },
+      { name: "Hot Plate Kitchen", star: 4.2, distance: 2.7 },
+      { name: "BBQ Chicken Hub", star: 4.4, distance: 6.1 },
+      { name: "Steak Story", star: 4.5, distance: 3.0 },
+      { name: "Chicken Lover", star: 4.9, distance: 4.8 },
+    ],
   },
   {
     id: 76,
@@ -987,12 +1659,21 @@ const foods = [
     halal: true,
     vegetarian: true,
     noMeat: true,
-    imageUrl: "https://image.makewebeasy.net/makeweb/m_1920x0/Ommd4Syoj/DefaultData/cheese_fries.jpg",
+    imageUrl:
+      "https://image.makewebeasy.net/makeweb/m_1920x0/Ommd4Syoj/DefaultData/cheese_fries.jpg",
     detail: "มันฝรั่งทอดกรอบ ราดชีสเยิ้มๆ",
     restaurants: [
       { name: "Burger Bros", star: 4, distance: 1.6 },
-      { name: "Potato Corner", star: 4.5, distance: 1.9 }
-    ]
+      { name: "Potato Corner", star: 4.5, distance: 1.9 },
+      { name: "Cheese Master", star: 4.8, distance: 2.1 },
+      { name: "The Fries Station", star: 4.3, distance: 3.5 },
+      { name: "Melted Hub", star: 4.6, distance: 1.2 },
+      { name: "Crunchy Potato", star: 4.1, distance: 4.0 },
+      { name: "Snack Time", star: 3.9, distance: 0.8 },
+      { name: "Yummy Bite", star: 4.2, distance: 2.5 },
+      { name: "Street Fried", star: 4.0, distance: 5.2 },
+      { name: "Happy Snacks", star: 4.4, distance: 1.5 },
+    ],
   },
   {
     id: 77,
@@ -1000,12 +1681,21 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://theamiablegourmand.com/wp-content/uploads/2025/09/Oktoberfest-Sausage-Platter-Wurstbrett.png",
+    imageUrl:
+      "https://theamiablegourmand.com/wp-content/uploads/2025/09/Oktoberfest-Sausage-Platter-Wurstbrett.png",
     detail: "ไส้กรอกพรีเมียม เสิร์ฟพร้อมซาวร์เคราท์",
     restaurants: [
       { name: "Western Grill", star: 4, distance: 3.5 },
-      { name: "German Beer House", star: 4.5, distance: 5.2 }
-    ]
+      { name: "German Beer House", star: 4.5, distance: 5.2 },
+      { name: "Bavarian Kitchen", star: 4.7, distance: 2.9 },
+      { name: "Sausage Town", star: 4.3, distance: 4.1 },
+      { name: "Berlin Bite", star: 4.6, distance: 3.8 },
+      { name: "Oktober Grill", star: 4.8, distance: 6.0 },
+      { name: "Bratwurst House", star: 4.4, distance: 2.5 },
+      { name: "European Feast", star: 4.2, distance: 5.4 },
+      { name: "Meat Meister", star: 4.5, distance: 3.1 },
+      { name: "German Sausage Hub", star: 4.9, distance: 7.0 },
+    ],
   },
   {
     id: 78,
@@ -1013,12 +1703,21 @@ const foods = [
     halal: true,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://3catsfoodie.com/wp-content/uploads/2023/01/537D214F-33F5-439B-B19F-025C7F6A4864_1_201_a-500x500.jpeg",
+    imageUrl:
+      "https://3catsfoodie.com/wp-content/uploads/2023/01/537D214F-33F5-439B-B19F-025C7F6A4864_1_201_a-500x500.jpeg",
     detail: "เส้นพาสต้าหมึกดำ ผัดกระเทียมและหมึกสด",
     restaurants: [
       { name: "Italiano", star: 4, distance: 2.4 },
-      { name: "Nero Pasta", star: 4.5, distance: 3.9 }
-    ]
+      { name: "Nero Pasta", star: 4.5, distance: 3.9 },
+      { name: "Black Ink Kitchen", star: 4.7, distance: 2.8 },
+      { name: "Sea Pasta House", star: 4.3, distance: 4.1 },
+      { name: "Pasta Story", star: 4.6, distance: 3.0 },
+      { name: "Ocean Dish", star: 4.2, distance: 5.2 },
+      { name: "The Italian Bowl", star: 4.4, distance: 2.7 },
+      { name: "Garlic & Ink", star: 4.8, distance: 6.0 },
+      { name: "Pasta Corner", star: 4.1, distance: 1.9 },
+      { name: "Squid Ink Cafe", star: 4.5, distance: 3.5 },
+    ],
   },
   {
     id: 79,
@@ -1026,12 +1725,21 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://img.wongnai.com/p/1920x0/2017/09/27/76bc300005c14ebca32743d482f91a70.jpg",
+    imageUrl:
+      "https://img.wongnai.com/p/1920x0/2017/09/27/76bc300005c14ebca32743d482f91a70.jpg",
     detail: "แซนด์วิชไส้แน่น แฮม เบคอน ไก่ และไข่",
     restaurants: [
       { name: "Burger Bros", star: 4, distance: 1.6 },
-      { name: "Subway", star: 4, distance: 1.0 }
-    ]
+      { name: "Subway", star: 4, distance: 1.0 },
+      { name: "Club House Cafe", star: 4.5, distance: 2.1 },
+      { name: "Toast & Bite", star: 4.2, distance: 3.4 },
+      { name: "Sandwich Corner", star: 4.6, distance: 2.7 },
+      { name: "Quick Bite", star: 3.9, distance: 4.0 },
+      { name: "Snack Hub", star: 4.1, distance: 2.5 },
+      { name: "The Toast Room", star: 4.7, distance: 5.3 },
+      { name: "Bread Story", star: 4.3, distance: 1.8 },
+      { name: "Daily Sandwich", star: 4.4, distance: 3.0 },
+    ],
   },
   {
     id: 80,
@@ -1039,13 +1747,22 @@ const foods = [
     halal: false,
     vegetarian: false,
     noMeat: false,
-    imageUrl: "https://www.spendwithpennies.com/wp-content/uploads/2022/06/Oven-Baked-Ribs-SpendWithPennies-4.jpg",
+    imageUrl:
+      "https://www.spendwithpennies.com/wp-content/uploads/2022/06/Oven-Baked-Ribs-SpendWithPennies-4.jpg",
     detail: "ซี่โครงหมูอบซอส BBQ เปื่อยร่อนจากกระดูก",
     restaurants: [
       { name: "Western Grill", star: 5, distance: 3.5 },
-      { name: "Ribs & Wings", star: 4.5, distance: 4.1 }
-    ]
-  }
+      { name: "Ribs & Wings", star: 4.5, distance: 4.1 },
+      { name: "Smoke House", star: 4.7, distance: 2.8 },
+      { name: "BBQ Town", star: 4.3, distance: 5.0 },
+      { name: "Grill Master", star: 4.6, distance: 3.2 },
+      { name: "Fire Rib", star: 4.1, distance: 6.3 },
+      { name: "Texas Grill", star: 4.8, distance: 4.4 },
+      { name: "Meat Lover", star: 4.0, distance: 1.9 },
+      { name: "House of BBQ", star: 4.4, distance: 2.5 },
+      { name: "King Ribs", star: 4.9, distance: 7.1 },
+    ],
+  },
 ];
 
 export default foods;

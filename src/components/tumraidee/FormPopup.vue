@@ -1,8 +1,7 @@
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted, onUnmounted } from 'vue'
 import { db } from '@/data/userRecipes'
 import { toRaw } from 'vue'
-import { onMounted } from 'vue'
 
 const emit = defineEmits(['close', 'save'])
 
@@ -134,17 +133,28 @@ const props = defineProps({
   recipeData: Object 
 })
 
+const handleEsc = (e) => {
+  if (e.key === 'Escape') {
+    emit('close')
+  }
+}
+
 onMounted(() => {
   if (props.recipeData) {
     Object.assign(recipe, structuredClone(props.recipeData))
   }
+  window.addEventListener('keydown', handleEsc)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleEsc)
 })
 
 
 </script>
 
 <template>
-  <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+  <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" @click.self="$emit('close')">
     <div class="bg-white dark:bg-card-dark rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl border border-transparent dark:border-card-dark-02 transition-colors">
 
       <div class="p-6 border-b dark:border-card-dark-02 flex justify-between items-center sticky top-0 bg-white dark:bg-card-dark z-10 transition-colors">
@@ -224,6 +234,10 @@ onMounted(() => {
                 <option value="มล." class="dark:bg-card-dark-02">มล.</option>
                 <option value="กรัม" class="dark:bg-card-dark-02">กรัม</option>
               </select>
+
+              <button @click="removeIngredient(index)" class="text-orange-500 dark:text-orange-400 hover:bg-orange-50 dark:hover:bg-orange-900/30 p-1 rounded transition-colors">
+                <span class="material-symbols-outlined">delete</span>
+              </button>
             </div>
 
             <div class="text-orange-500 text-xs flex gap-2">

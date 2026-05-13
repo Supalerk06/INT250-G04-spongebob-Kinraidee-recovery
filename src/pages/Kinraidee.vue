@@ -1,18 +1,10 @@
 <template>
-  <div class="relative w-screen h-screen bg-slate-50 overflow-hidden font-sans text-[#111111] select-none flex flex-col items-center justify-center">
-    
-    <div class="absolute inset-0 bg-white z-0 dark:bg-card-dark-02"></div>
-    <div class="absolute top-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-secondary/5 blur-[150px] rounded-full z-0 pointer-events-none"></div>
-    <div class="absolute bottom-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-orange-200/10 blur-[120px] rounded-full z-0 pointer-events-none"></div>
-
-    <div v-show="!isWarping" class="ิrelative z-10 w-full max-w-6xl h-full flex flex-col lg:flex-row items-center justify-center gap-12 px-8">
-      <!-- Left Info Panel -->
+  <div class="relative w-screen h-screen bg-slate-50 dark:bg-background-dark overflow-hidden font-sans text-[#111111] select-none flex flex-col items-center justify-center transition-colors duration-300">
+    <div v-show="!isWarping" class="relative z-10 w-full max-w-6xl h-full flex flex-col lg:flex-row items-center justify-center gap-12 px-8">
       <InfoPanel
         :filters="filters"
         :filteredCount="getFilteredFoods().length"
       />
-
-      <!-- Center Machine Panel -->
       <MachinePanel
         :isRolling="isRolling"
         :canRoll="getFilteredFoods().length > 0"
@@ -20,8 +12,6 @@
         @roll="rollFood"
       />
     </div>
-
-    <!-- Redesigned Result Modal -->
     <ResultModal
       v-if="showResult && result"
       :result="result"
@@ -98,5 +88,4 @@ function closeModal() {
 </script>
 
 <style scoped>
-/* Main page specific styles if any */
 </style>
