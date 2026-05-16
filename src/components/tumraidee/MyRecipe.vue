@@ -32,14 +32,14 @@ function closeModal() {
 const showConfirm = ref(false);
 
 function handleCook() {
-  closeModal(); // 👈 ปิด popup หลักก่อน
+  closeModal(); 
   errorMessage.value = [];
   showConfirm.value = true;
 }
 
 const errorMessage = ref([]);
 
-// 👇 เพิ่มฟังก์ชันตรวจสอบวันหมดอายุ
+
 function isExpired(dateString) {
   if (!dateString) return false;
 
@@ -55,9 +55,9 @@ function isExpired(dateString) {
 function confirmCook() {
   const missingItems = [];
 
-  // 1. ตรวจสอบวัตถุดิบที่ขาด (ดึงจาก Props ตามปกติ)
+  
   Props.ingredients.forEach((recipeItem) => {
-    // 👇 เพิ่มเช็คไม่หมดอายุตอนหาวัตถุดิบ
+    
     const item = Props.fridgeItems.find(
       (i) =>
         i.name.trim().toLowerCase() === recipeItem.name.trim().toLowerCase() &&
@@ -73,13 +73,13 @@ function confirmCook() {
     }
   });
 
-  // ถ้ามีวัตถุดิบไม่พอ ให้แสดง Error และหยุดการทำงาน
+  
   if (missingItems.length > 0) {
     errorMessage.value = missingItems;
     return;
   }
 
-  // 2. ถ้าผ่านเงื่อนไข อัปเดตข้อมูลโดยตรงกับ global state
+  
   Props.ingredients.forEach((recipeItem) => {
     const index = globalFridgeItems.value.findIndex(
       (i) =>
@@ -88,19 +88,19 @@ function confirmCook() {
     );
 
     if (index !== -1) {
-      // หักลบจำนวน
+      
       globalFridgeItems.value[index].quantity =
         Number(globalFridgeItems.value[index].quantity) -
         Number(recipeItem.quantity);
 
-      // ถ้าของหมด ให้ลบออกจาก Array
+      
       if (globalFridgeItems.value[index].quantity <= 0) {
         globalFridgeItems.value.splice(index, 1);
       }
     }
   });
 
-  // 4. เคลียร์ Error, ปิด Popup
+  
   errorMessage.value = [];
   showConfirm.value = false;
   emit("cook");
@@ -113,7 +113,7 @@ function cancelCook() {
 const isCooking = ref(false);
 
 function confirmDelete() {
-  emit("delete", Props.id); // 👈 ส่ง id กลับไปลบใน parent
+  emit("delete", Props.id); 
   showDeleteConfirm.value = false;
 }
 
@@ -160,7 +160,7 @@ async function saveEdit() {
     short_description: rawData.short_description,
     image: rawData.image,
 
-    // 👇 clone ใหม่กัน proxy
+    
     ingredients: rawData.ingredients.map((i) => ({
       name: i.name,
       quantity: i.quantity,
@@ -188,7 +188,7 @@ function handleEditFile(e) {
   reader.readAsDataURL(file);
 }
 
-// ➕➖ INGREDIENT
+
 function addIngredient() {
   editForm.value.ingredients.push({ name: "", quantity: 1, unit: "ชิ้น" });
 }
@@ -199,7 +199,7 @@ function removeIngredient(i) {
   }
 }
 
-// ➕➖ STEP
+
 function addStep() {
   editForm.value.steps.push("");
 }
@@ -353,7 +353,7 @@ function removeStep(i) {
     <div
       class="bg-white dark:bg-card-dark rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl border border-transparent dark:border-card-dark-02 transition-colors"
     >
-      <!-- HEADER -->
+      
       <div
         class="p-6 border-b dark:border-card-dark-02 flex justify-between items-center sticky top-0 bg-white dark:bg-card-dark z-10 transition-colors"
       >
@@ -368,9 +368,9 @@ function removeStep(i) {
         </button>
       </div>
 
-      <!-- BODY -->
+      
       <div class="p-6 space-y-6">
-        <!-- NAME -->
+        
         <div>
           <label
             class="block text-sm font-semibold text-gray-700 dark:text-slate-300 mb-2"
@@ -382,7 +382,7 @@ function removeStep(i) {
           />
         </div>
 
-        <!-- DESCRIPTION -->
+        
         <div>
           <label
             class="block text-sm font-semibold text-gray-700 dark:text-slate-300 mb-2"
@@ -394,7 +394,7 @@ function removeStep(i) {
           />
         </div>
 
-        <!-- IMAGE -->
+        
         <div>
           <label
             class="block text-sm font-semibold text-gray-700 dark:text-slate-300 mb-2"
@@ -413,7 +413,7 @@ function removeStep(i) {
           />
         </div>
 
-        <!-- INGREDIENT -->
+        
         <div>
           <div class="flex justify-between items-center mb-2">
             <label
@@ -467,7 +467,7 @@ function removeStep(i) {
           </div>
         </div>
 
-        <!-- STEPS -->
+        
         <div>
           <div class="flex justify-between items-center mb-2">
             <label
@@ -508,7 +508,7 @@ function removeStep(i) {
         </div>
       </div>
 
-      <!-- FOOTER -->
+      
       <div
         class="p-6 border-t dark:border-card-dark-02 flex justify-end gap-3 bg-slate-50 dark:bg-card-dark transition-colors"
       >

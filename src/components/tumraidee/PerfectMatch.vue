@@ -30,28 +30,28 @@ watch(
   { deep: true }
 )
 
-// 👇 เพิ่มฟังก์ชันตรวจสอบวันหมดอายุ
+
 function isExpired(dateString) {
     if (!dateString) return false;
     
     const today = new Date();
-    today.setHours(0, 0, 0, 0); // รีเซ็ตเวลาของวันนี้ให้เริ่มที่ 00:00:00
+    today.setHours(0, 0, 0, 0); 
     
     const expDate = new Date(dateString);
     expDate.setHours(0, 0, 0, 0);
     
-    return expDate < today; // ถ้าวันที่หมดอายุน้อยกว่าวันนี้ = หมดอายุแล้ว
+    return expDate < today; 
 }
 
 function confirmCook() {
     let updatedFridgeItems = JSON.parse(JSON.stringify(Props.fridgeItems))
 
     Props.ingredients.forEach(recipeItem => {
-        // 👇 แก้ไขเงื่อนไขการหา Index โดยเช็คว่าต้อง "ไม่หมดอายุ" ด้วย
+        
         const itemIndex = updatedFridgeItems.findIndex(
             item => 
                 item.name.trim().toLowerCase() === recipeItem.name.trim().toLowerCase() && 
-                !isExpired(item.expiredDate) // เพิ่มการกรองของหมดอายุ
+                !isExpired(item.expiredDate) 
         )
 
         if (itemIndex !== -1) {
@@ -61,7 +61,7 @@ function confirmCook() {
                 updatedFridgeItems.splice(itemIndex, 1)
             }
         } else {
-            // แจ้งเตือนหากของหมด, ไม่มีในตู้เย็น หรือ หมดอายุไปแล้ว
+            
             console.warn(`ไม่พบ ${recipeItem.name} ที่ใช้งานได้ (อาจหมดอายุหรือไม่มีในตู้เย็น)`)
         }
     })
@@ -81,7 +81,7 @@ const isCooking = ref(false)
 </script>
 
 <template>
-    <!-- อันที่ 1 -->
+    
     <article @click="openRecipe"
         class="border border-secondary/20 group relative bg-white dark:bg-card-dark rounded-2xl overflow-hidden shadow-lg dark:shadow-slate-900/50 hover:shadow-xl transition-all duration-300 md:col-span-2 lg:col-span-1 flex flex-col sm:flex-row h-auto sm:h-72">
         <div class="w-full sm:w-2/5 h-48 sm:h-full relative overflow-hidden">

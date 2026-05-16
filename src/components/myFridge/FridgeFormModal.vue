@@ -59,59 +59,79 @@ function resetErrors() {
   };
 }
 
-function validateForm() {
-  resetErrors();
-  let isValid = true;
-
+function validateName() {
+  error.value.name = "";
   if (!name.value.trim()) {
     error.value.name = "กรุณากรอกชื่อวัตถุดิบ";
-    isValid = false;
-  } else {
-    const isDuplicate = props.fridgeItems.some((item) => {
-      if (props.item && item.id === props.item.id) return false;
-      return item.name.toLowerCase() === name.value.trim().toLowerCase();
-    });
-    if (isDuplicate) {
-      error.value.name = "วัตถุดิบนี้มีอยู่ในตู้เย็นแล้ว หากต้องการแก้ไขกรุณากดที่ปุ่มแก้ไขของรายการนั้นๆ";
-      isValid = false;
-    }
+    return false;
   }
+  const isDuplicate = props.fridgeItems.some((item) => {
+    if (props.item && item.id === props.item.id) return false;
+    return item.name.toLowerCase() === name.value.trim().toLowerCase();
+  });
+  if (isDuplicate) {
+    error.value.name = "วัตถุดิบนี้มีอยู่ในตู้เย็นแล้ว หากต้องการแก้ไขกรุณากดที่ปุ่มแก้ไขของรายการนั้นๆ";
+    return false;
+  }
+  return true;
+}
 
+function validateCategory() {
+  error.value.category = "";
   if (!category.value) {
     error.value.category = "กรุณาเลือกหมวดหมู่";
-    isValid = false;
+    return false;
   }
+  return true;
+}
 
+function validateQuantity() {
+  error.value.quantity = "";
   if (!quantity.value) {
     error.value.quantity = "กรุณากรอกจำนวน";
-    isValid = false;
-  } else if (isNaN(quantity.value) || Number(quantity.value) <= 0) {
-    error.value.quantity = "จำนวนต้องเป็นตัวเลขที่มากกว่า 0";
-    isValid = false;
+    return false;
   }
+  if (isNaN(quantity.value) || Number(quantity.value) <= 0) {
+    error.value.quantity = "จำนวนต้องเป็นตัวเลขที่มากกว่า 0";
+    return false;
+  }
+  return true;
+}
 
+function validateUnit() {
+  error.value.unit = "";
   if (!unit.value) {
     error.value.unit = "กรุณาเลือกหน่วย";
-    isValid = false;
+    return false;
   }
+  return true;
+}
 
+function validateExpiredDate() {
+  error.value.expiredDate = "";
   if (!expiredDate.value) {
     error.value.expiredDate = "กรุณาเลือกวันหมดอายุ";
-    isValid = false;
-  } else {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    const selectedDate = new Date(expiredDate.value);
-    selectedDate.setHours(0, 0, 0, 0);
-
-    if (selectedDate < today) {
-      error.value.expiredDate = "วันหมดอายุไม่สามารถเป็นวันที่ผ่านมาแล้วได้";
-      isValid = false;
-    }
+    return false;
   }
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const selectedDate = new Date(expiredDate.value);
+  selectedDate.setHours(0, 0, 0, 0);
+  if (selectedDate < today) {
+    error.value.expiredDate = "วันหมดอายุไม่สามารถเป็นวันที่ผ่านมาแล้วได้";
+    return false;
+  }
+  return true;
+}
 
-  return isValid;
+function validateForm() {
+  const isNameValid = validateName();
+  const isCategoryValid = validateCategory();
+  const isQuantityValid = validateQuantity();
+  const isUnitValid = validateUnit();
+  const isExpiredDateValid = validateExpiredDate();
+  
+  return isNameValid && isCategoryValid && isQuantityValid && isUnitValid && isExpiredDateValid;
 }
 
 function handleSubmit() {
@@ -162,6 +182,7 @@ onUnmounted(() => {
             type="text"
             id="item-name"
             v-model="name"
+            @blur="validateName"
             placeholder="ชื่อวัตถุดิบ (เช่น ไข่)"
             class="border-2 py-2 px-4 w-full rounded-xl focus:border-secondary focus:ring-0 focus:outline-none"
             :class="error.name ? 'border-danger focus:border-danger' : 'border-gray-100 focus:border-secondary'"
@@ -175,6 +196,7 @@ onUnmounted(() => {
             type="number"
             id="item-quantity"
             v-model="quantity"
+            @blur="validateQuantity"
             placeholder="จำนวน (เช่น 3)"
             class="border-2 py-2 px-4 w-full rounded-xl focus:border-secondary focus:ring-0 focus:outline-none"
             :class="error.quantity ? 'border-danger focus:border-danger' : 'border-gray-100 focus:border-secondary'"
@@ -187,6 +209,7 @@ onUnmounted(() => {
           <select
             id="item-unit"
             v-model="unit"
+            @blur="validateUnit"
             class="border-2 py-2 px-4 w-full rounded-xl focus:border-secondary focus:ring-0 focus:outline-none"
             :class="error.unit ? 'border-danger focus:border-danger' : 'border-gray-100 focus:border-secondary'"
           >
@@ -203,6 +226,7 @@ onUnmounted(() => {
           <select
             id="item-category"
             v-model="category"
+            @blur="validateCategory"
             class="border-2 py-2 px-4 w-full rounded-xl focus:border-secondary focus:ring-0 focus:outline-none"
             :class="error.category ? 'border-danger focus:border-danger' : 'border-gray-100 focus:border-secondary'"
           >
@@ -220,6 +244,7 @@ onUnmounted(() => {
             type="date"
             id="item-expired-date"
             v-model="expiredDate"
+            @blur="validateExpiredDate"
             placeholder="เลือกวันหมดอายุ"
             class="border-2 py-2 px-4 w-full rounded-xl focus:border-secondary focus:ring-0 focus:outline-none"
             :class="error.expiredDate ? 'border-danger focus:border-danger' : 'border-gray-100 focus:border-secondary'"

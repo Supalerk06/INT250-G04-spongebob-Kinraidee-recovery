@@ -267,7 +267,7 @@ const getIngredientIcon = (name) => {
         <RecommendMenu :fridgeItems="fridgeItems" />
       </div>
 
-      <!-- Modals -->
+      
       <FridgeFormModal
         :show="showModal"
         :item="editingItem"

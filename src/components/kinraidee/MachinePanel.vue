@@ -8,7 +8,7 @@ const emit = defineEmits(['roll'])
 </script>
 
 <template>
-  <div class="w-full lg:w-1/2 flex flex-col items-center gap-8 order-1 lg:order-2 ">
+  <div class="w-full md:w-3/5 lg:w-1/2 flex flex-col items-center gap-8 lg:order-2 ">
     <div class="relative w-full aspect-square max-w-[320px] md:max-w-[450px] bg-white dark:bg-card-dark rounded-[3rem] border-[12px] border-slate-100 dark:border-card-dark/80 shadow-2xl dark:shadow-black/60 overflow-hidden flex items-center justify-center group transition-colors duration-500 ease-in-out">
   
   <div v-if="isRolling" class="absolute top-0 left-0 w-full animate-shuffle">
@@ -19,7 +19,7 @@ const emit = defineEmits(['roll'])
 
   <div v-else class="relative w-full h-full flex items-center justify-center p-8 transition-colors duration-500">
     <div class="w-full h-full rounded-full border-[8px] border-secondary/10 dark:border-secondary/40 bg-slate-50/50 dark:bg-card-dark/40 flex items-center justify-center transition-colors duration-500 shadow-inner dark:shadow-black/20">
-       <span class="text-8xl animate-bounce drop-shadow-xl dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">🍱</span>
+       <span class="text-7xl md:text-8xl animate-bounce drop-shadow-xl dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">🍱</span>
     </div>
   </div>
 
@@ -29,7 +29,7 @@ const emit = defineEmits(['roll'])
      <button 
       @click="emit('roll')" 
       :disabled="!canRoll"
-      class="bg-secondary text-white px-10 py-5 rounded-2xl font-black text-2xl shadow-xl shadow-secondary/30 dark:shadow-secondary/40 hover:scale-105 hover:shadow-2xl active:scale-95 transition-all duration-300 disabled:opacity-50 disabled:grayscale"
+      class="min-w-[128px] bg-secondary text-white px-8 py-4 md:px-10 md:py-5 rounded-2xl font-black text-xl md:text-2xl shadow-xl shadow-secondary/30 dark:shadow-secondary/40 hover:scale-105 hover:shadow-2xl active:scale-95 transition-all duration-300 disabled:opacity-50 disabled:grayscale"
     >
       สุ่มเลย!
     </button>

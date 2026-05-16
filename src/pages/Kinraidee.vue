@@ -1,6 +1,6 @@
 <template>
-  <div class="relative w-screen h-screen bg-slate-50 dark:bg-background-dark overflow-hidden font-sans text-[#111111] select-none flex flex-col items-center justify-center transition-colors duration-300">
-    <div v-show="!isWarping" class="relative z-10 w-full max-w-6xl h-full flex flex-col lg:flex-row items-center justify-center gap-12 px-8">
+  <div class="relative w-full min-h-screen bg-slate-50 dark:bg-background-dark font-sans text-[#111111] select-none flex flex-col items-center justify-center transition-colors duration-300">
+    <div v-show="!isWarping" class="relative z-10 w-full max-w-6xl flex flex-col-reverse md:flex-row items-center justify-center gap-8 lg:gap-12 px-8 py-12 md:py-0">
       <InfoPanel
         :filters="filters"
         :filteredCount="getFilteredFoods().length"

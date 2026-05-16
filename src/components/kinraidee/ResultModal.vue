@@ -27,7 +27,7 @@ onUnmounted(() => {
     
     <div class="relative bg-white dark:bg-card-dark text-slate-900 dark:text-white p-2 rounded-[3.5rem] w-full max-w-lg shadow-[0_0_100px_rgba(0,0,0,0.2)] dark:shadow-slate-900 transform transition-all animate-popIn overflow-hidden border border-transparent dark:border-card-dark-02">
       
-      <!-- Header Image -->
+      
       <div class="relative h-64 w-full overflow-hidden rounded-[2.8rem]">
         <img :src="result.imageUrl" :alt="result.name" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-black/20"></div>

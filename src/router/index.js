@@ -4,7 +4,6 @@ import Kinraidee from "../pages/Kinraidee.vue"
 import NearMeRestaurant from "../pages/NearMeRestaurant.vue"
 import MyFridge from "../pages/MyFridge.vue"
 import Tumraidee from "@/pages/Tumraidee.vue"
-import RecipeDetail from "@/pages/RecipeDetail.vue"
 import NotFound from "@/pages/NotFound.vue"
 
 const routes = [
@@ -33,11 +32,6 @@ const routes = [
     path: "/myfridge",
     name: "myfridge",
     component: MyFridge
-  },
-  {
-    path: "/recipe/:id",
-    name: "recipe-detail",
-    component: RecipeDetail
   },
   {
     path: "/:pathMatch(.*)*",

@@ -3,7 +3,7 @@
 defineProps(['id','name','image','missList','missingCount', 'categories', 'categoryMapping'])
 </script>
 <template>
-    <!-- 1 -->
+    
     <article
         class="group bg-white dark:bg-card-dark rounded-2xl overflow-hidden shadow-lg dark:shadow-slate-900/50 hover:shadow-xl transition-all duration-300 flex flex-col border border-gray-100 dark:border-card-dark-02 hover:border-secondary/30">
         <div class="h-40 relative overflow-hidden">

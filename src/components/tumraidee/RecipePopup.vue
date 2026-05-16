@@ -23,7 +23,7 @@ onUnmounted(() => {
   <div class="bg-card-dark/60 backdrop-blur-sm fixed inset-0 flex items-center justify-center z-50 p-0 md:p-6 transition-all" @click.self="emit('close')">
     
     <div class="bg-white dark:bg-card-dark-02 w-full max-w-5xl max-h-screen md:max-h-[92vh] md:rounded-3xl shadow-2xl overflow-hidden flex flex-col relative border border-transparent dark:border-card-dark-02 transition-colors">
-      <!-- Close Button -->
+      
       <button 
         @click="emit('close')" 
         class="absolute top-4 right-4 z-50 bg-white/90 dark:bg-card-dark-02/90 backdrop-blur-md p-2 rounded-full shadow-lg hover:bg-white dark:hover:bg-slate-700 transition-all active:scale-90 text-slate-600 dark:text-slate-300"
@@ -32,7 +32,7 @@ onUnmounted(() => {
       </button>
 
       <div class="overflow-y-auto custom-scrollbar flex-1">
-        <!-- Hero Section -->
+        
         <div class="relative h-[250px] md:h-[350px] overflow-hidden">
           <img :src="image" :alt="name" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end">
@@ -45,11 +45,11 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <!-- Content Grid -->
+        
         <div class="p-6 md:p-8">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
-            <!-- Left Column: Ingredients -->
+            
             <div class="lg:col-span-5">
               <div class="sticky top-0">
                 <h3 class="font-bold text-xl mb-4 flex items-center gap-3 text-slate-800 dark:text-white">
@@ -72,7 +72,7 @@ onUnmounted(() => {
                   </ul>
                 </div>
 
-                <!-- Video Player if available -->
+                
                 <div v-if="video" class="mt-6 hidden lg:block">
                   <h3 class="font-bold text-xl mb-4 text-slate-800 dark:text-white flex items-center gap-2">
                      <span class="material-symbols-outlined text-secondary">play_circle</span>
@@ -88,7 +88,7 @@ onUnmounted(() => {
               </div>
             </div>
 
-            <!-- Right Column: Steps -->
+            
             <div class="lg:col-span-7">
               <h3 class="font-bold text-xl mb-4 flex items-center gap-3 text-slate-800 dark:text-white">
                 <span class="material-symbols-outlined text-secondary bg-secondary/10 p-2 rounded-xl">format_list_numbered</span>
@@ -108,7 +108,7 @@ onUnmounted(() => {
                 </div>
               </div>
 
-              <!-- Video Player for Mobile (below steps) -->
+              
               <div v-if="video" class="mt-6 lg:hidden">
                 <h3 class="font-bold text-xl mb-4 text-slate-800 dark:text-white flex items-center gap-2">
                    <span class="material-symbols-outlined text-secondary">play_circle</span>
@@ -127,7 +127,7 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- Footer Actions -->
+      
       <div class="p-4 border-t border-slate-100 dark:border-card-dark-02 bg-white/80 dark:bg-card-dark/80 backdrop-blur-md flex flex-col md:flex-row justify-end gap-3 transition-colors">
         <button
           @click="emit('close')"
