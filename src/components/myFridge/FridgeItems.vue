@@ -32,7 +32,7 @@ onUnmounted(() => window.removeEventListener("click", closeMenu));
 function getExpiryClassText(expiredDate) {
   const diffInDays = props.calculateExpiredDate(expiredDate);
   if (diffInDays < 0) {
-    return "text-danger bg-orange-100";
+    return "text-red-600 dark:text-red-400 bg-red-100 dark:bg-red-900/30";
   } else if (diffInDays >= 0 && diffInDays <= 2) {
     return "text-warning bg-yellow-100 dark:bg-yellow-900/30";
   } else {
@@ -43,11 +43,11 @@ function getExpiryClassText(expiredDate) {
 function getExpiryClassDiv(expiredDate) {
   const diffInDays = props.calculateExpiredDate(expiredDate);
   if (diffInDays < 0) {
-    return "border-4 border-orange-400 shadow-orange-100 dark:shadow-orange-900/20";
+    return "border-4 border-red-500 dark:border-red-600 shadow-red-100 dark:shadow-red-900/20";
   } else if (diffInDays >= 0 && diffInDays <= 2) {
-    return "border-4 border-yellow-200 dark:border-yellow-900/40 shadow-yellow-100 dark:shadow-yellow-900/20";
+    return "border-4 border-yellow-200 dark:border-yellow-900 shadow-yellow-100 dark:shadow-yellow-900/20";
   } else {
-    return "border-4 border-green-200 dark:border-green-900/40 shadow-green-50 dark:shadow-green-900/20";
+    return "border-4 border-green-200 dark:border-green-900 shadow-green-50 dark:shadow-green-900/20";
   }
 }
 </script>

@@ -19,6 +19,7 @@ const categories = [
   { id: "fruit", name: "ผลไม้ 🍎" },
   { id: "meat", name: "เนื้อสัตว์ 🥩" },
   { id: "seafood", name: "อาหารทะเล 🐟" },
+  { id: "bakery", name: "เบเกอรี่ 🍞" },
   { id: "dairy", name: "ไข่และนม 🥚" },
   { id: "drink", name: "เครื่องดื่ม 🥤" },
   { id: "spice", name: "เครื่องเทศ 🧂" },
@@ -139,7 +140,7 @@ const iconNames = Object.keys(icons).map((path) => path.split("/").pop().replace
 const getIngredientIcon = (name) => {
   const lowerName = name.toLowerCase().trim();
   const mapping = {
-    นม: "milk", ไข่: "eggs", ไก่: "chicken", เนื้อ: "meat", ปลา: "fish",
+    ขนมปัง: "bread" , นม: "milk", ไข่: "eggs", ไก่: "chicken", เนื้อ: "meat", ปลา: "fish",
     สเต็ก: "steak", กุ้ง: "shrimp", สตรอเบอร์รี่: "strawberry", ชีส: "cheese",
     หมู: "pork", สลัด: "salad", ขนมปัง: "bread", แครอท: "carrot", บรอกโคลี: "broccoli",
   };
