@@ -144,6 +144,7 @@ function handleSubmit() {
     unit: unit.value,
     expiredDate: expiredDate.value,
   });
+  resetForm();
 }
 
 function handleClose() {
