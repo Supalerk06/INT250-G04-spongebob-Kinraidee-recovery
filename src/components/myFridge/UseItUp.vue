@@ -50,7 +50,7 @@ function getExpiryClassText(expiredDate) {
     </h3>
     <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">วัตถุดิบเหล่านี้กำลังจะหมดอายุภายใน 48 ชั่วโมง</p>
     
-    <div class="flex flex-col gap-1">
+    <div class="flex flex-col gap-1 max-h-64 overflow-y-auto custom-scrollbar pr-2">
 
     <div v-for="item in aboutToExpire" :key="item.id" class="flex gap-2 py-1 px-3 justify-between items-center w-full rounded-xl bg-neutral-100 dark:bg-card-dark-02 mt-2 transition-colors">
       <div class="flex gap-1">
@@ -75,4 +75,17 @@ function getExpiryClassText(expiredDate) {
 </template>
 
 <style scoped>
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.1);
+}
 </style>

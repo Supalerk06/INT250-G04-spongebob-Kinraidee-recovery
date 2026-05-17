@@ -1,6 +1,6 @@
 <script setup>
 import RecipePopup from './RecipePopup.vue';
-import { ref, toRaw, watch } from 'vue'
+import { ref, toRaw, watch, onMounted, onUnmounted } from 'vue'
 
 const Props = defineProps(['fridgeItems', 'id', 'name', 'short_description', 'difficulty', 'image', 'video', "ingredients", "steps", "categories", "categoryMapping"])
 
@@ -78,6 +78,24 @@ function cancelCook() {
 }
 
 const isCooking = ref(false)
+
+const handleKeydown = (e) => {
+    if (e.key === 'Escape') {
+        if (showConfirm.value) {
+            cancelCook()
+        } else if (showModal.value) {
+            closeModal()
+        }
+    }
+}
+
+onMounted(() => {
+    window.addEventListener('keydown', handleKeydown)
+})
+
+onUnmounted(() => {
+    window.removeEventListener('keydown', handleKeydown)
+})
 </script>
 
 <template>
@@ -135,7 +153,7 @@ const isCooking = ref(false)
                 คุณแน่ใจหรือไม่ว่าคุณทำอาหารเสร็จแล้ว?
             </h3>
             <div class="flex justify-center gap-4">
-                <button @click="cancelCook" class="font-bold px-4 py-2 rounded-lg bg-orange-500 text-white hover:bg-orange-700">
+                <button @click="cancelCook" class="font-bold px-4 py-2 rounded-lg bg-neutral-400 text-white hover:bg-orange-700">
                     ยกเลิก
                 </button>
 
